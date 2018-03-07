@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Country;
+use App\Events\RegisterRepresentant;
 use App\Mail\PleaseConfirmYourEmail;
 use App\Mail\PorFavorConfirmeSuCorreo;
 use App\User;
@@ -84,7 +85,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        dd($data);
         return User::create([
             'name' => $data['name'],
             'last_name' => $data['last_name'],
@@ -92,8 +92,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'referred' => $data['referred'],
             'language' => $data['language'],
-            'subscribed' => $data['
-            '],
+            'subscribed' => $data['subscribed'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'confirmation_token' => str_limit(md5($data['email'] . str_random()), 25, '')
@@ -102,11 +101,7 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
-        switch ($user->language) {
-            case 'en':
-                return Mail::to($user)->send(new PleaseConfirmYourEmail($user));
-            case 'es':
-                return Mail::to($user)->send(new PorFavorConfirmeSuCorreo($user));
-        }
+        event(new RegisterRepresentant($user));
+//
     }
 }

@@ -22,7 +22,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'phone'=>$faker->phoneNumber,
         'referred'=>$faker->randomElement(['invited','contact','another']),
         'language'=>$faker->languageCode,
-        'subscribed'=>$faker->boolean,
+        'subscribed'=>true,
         'confirmed'=>true,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
@@ -34,13 +34,15 @@ $factory->state(App\User::class, 'unconfirmed', function () {
         'confirmed' => false
     ];
 });
-$factory->state(App\User::class, 'administrator', function () {
+$factory->state(App\User::class, 'unsubscribbed', function () {
     return [
-        'email' => 'jorgelsaud@gmail.com'
+        'subscribed' => false
     ];
 });
-$factory->state(App\User::class, 'jurado', function () {
+$factory->state(App\User::class, 'unconfirmedunsubscribbed', function () {
     return [
-        'name' => 'jurado@gmail.com'
+        'subscribed' => false,
+        'confirmed' => false
+
     ];
 });

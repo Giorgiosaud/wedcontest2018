@@ -49,4 +49,11 @@ class UserTest extends TestCase
         $this->assertTrue($user->isAdmin());
 
     }
+
+    /**
+     * @test
+     */
+    public function all_users_have_at_least_one_role(){
+        $this->assertInstanceOf(\App\Role::class,$this->user->roles->first());
+    }
 }

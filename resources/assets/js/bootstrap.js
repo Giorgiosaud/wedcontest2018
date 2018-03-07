@@ -1,6 +1,8 @@
 
 window._ = require('lodash');
-window.Popper = require('popper.js').default;
+
+import VModal from 'vue-js-modal';
+import VueSelect from 'vue-select';
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -11,9 +13,19 @@ window.Popper = require('popper.js').default;
 try {
     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap');
-    require('select2-bootstrap-theme');
-} catch (e) {}
+
+} catch (e) { }
+require('select2');
+/**
+ * Vue is a modern JavaScript library for building interactive web interfaces
+ * using reactive data binding and reusable components. Vue's API is clean
+ * and simple, leaving you to focus on building your next great project.
+ */
+
+window.Vue = require('vue');
+
+Vue.use(VModal);
+Vue.component('v-select', VueSelect);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -38,6 +50,19 @@ if (token) {
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
+
+
+
+
+
+
+window.events = new Vue();
+
+window.flash = function (message, level = 'success') {
+    window.events.$emit('flash', { message, level });
+};
+
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

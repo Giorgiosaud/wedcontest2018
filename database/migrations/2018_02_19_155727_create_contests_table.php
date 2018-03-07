@@ -19,6 +19,7 @@ class CreateContestsTable extends Migration
             $table->string('topic');
             $table->string('slug');
             $table->string('year');
+            $table->boolean('active')->default(false);
             $table->text('description')->nullable();
             $table->foreign('user_id')
                 ->references('id')->on('users');

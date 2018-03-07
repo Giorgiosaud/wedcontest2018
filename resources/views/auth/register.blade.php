@@ -104,12 +104,14 @@
                                 <div class="col-md-6">
                                     <select class="form-control{{ $errors->has('referred') ? ' is-invalid' : '' }}"
                                             name="referred" required>
-                                        <option @if('invited'==old('referred')) selected @endif
-                                        val="invited">@lang('registration.referred.options.1')</option>
-                                        <option @if('contact'==old('referred')) selected @endif
-                                        val="contact">@lang('registration.referred.options.2')</option>
-                                        <option @if('contact'==old('referred')) selected @endif
-                                        val="other">@lang('registration.referred.options.3')</option>
+                                        <option
+                                                @if('invited'==old('referred')) selected @endif
+                                        value="invited">@lang('registration.referred.options.1')</option>
+                                        <option
+                                                @if('contact'==old('referred')) selected @endif
+                                        value="contact">@lang('registration.referred.options.2')</option>
+                                        <option @if('other'==old('referred')) selected @endif
+                                        value="other">@lang('registration.referred.options.3')</option>
                                     </select>
                                 </div>
                             </div>
@@ -118,8 +120,9 @@
                                     <legend class="col-form-label col-md-4 text-md-right">@lang('registration.language.label')</legend>
                                     <div class="col-md-6 form-inline">
                                         <div class="form-check">
+                                            {{old('languague')}}
                                             <input class="form-check-input" type="radio" name="language" id="es"
-                                                   @if('es'==old('language')) selected @endif
+                                                   @if(old('language')=='es') checked @endif
                                                    value="es">
                                             <label class="form-check-label" for="es">
                                                 @lang('registration.language.options.es')
@@ -127,7 +130,7 @@
                                         </div>
                                         <div class="form-check ml-2">
                                             <input class="form-check-input" type="radio" name="language" id="En"
-                                                   @if('en'==old('language')) selected @endif
+                                                   @if(old('language')=='en') checked @endif
                                                    value="en">
                                             <label class="form-check-label" for="En">
                                                 @lang('registration.language.options.en')
@@ -171,7 +174,9 @@
                                     <input type="checkbox"
                                            class="custom-control-input {{ $errors->has('subscribed') ? ' is-invalid' : '' }}"
                                            name="subscribed"
-                                           id="subscribed" val="1">
+                                           id="subscribed"
+                                           @if(old('subscribed')==1) checked @endif
+                                           value="1">
                                     <label class="custom-control-label"
                                            for="subscribed">@lang('registration.subscribed')</label>
                                 </div>

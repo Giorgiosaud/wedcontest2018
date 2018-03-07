@@ -23,6 +23,7 @@ class User extends Authenticatable
         'last_name',
         'country',
         'phone',
+        'avatar_path',
         'referred',
         'subscribed',
         'language',
@@ -33,20 +34,20 @@ class User extends Authenticatable
     /**
      * @var array
      */
-    protected $casts=[
-        'subscribed'=>'boolean',
-        'confirmed'=>'boolean'
+    protected $casts = [
+        'subscribed' => 'boolean',
+        'confirmed' => 'boolean'
     ];
     /**
      * @var array
      */
-    protected $administratorsEmails=[
+    protected $administratorsEmails = [
         'jorgelsaud@gmail.com'
     ];
     /**
      * @var array
      */
-    protected $judgesEmails=[
+    protected $judgesEmails = [
         'jorgelsaud+judge@gmail.com'
     ];
 
@@ -63,30 +64,50 @@ class User extends Authenticatable
     /**
      *Check if user is Admin
      */
-    public function isAdmin(){
-        return in_array($this->email,$this->administratorsEmails);
+    public function isAdmin()
+    {
+        return in_array($this->email, $this->administratorsEmails);
     }
 
     /**
      * @return bool
      */
-    public function isJudge(){
-        return in_array($this->email,$this->administratorsEmails);
+    public function isJudge()
+    {
+        return in_array($this->email, $this->administratorsEmails);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function contestants(){
-        return $this->hasMany(Contestant::class,'representant_id');
+    public function contestants()
+    {
+        return $this->hasMany(Contestant::class, 'representant_id');
+    }
+
+    /**
+     * Get the path to the user's avatar.
+     *
+     * @param  string $avatar
+     * @return string
+     */
+    public function getAvatarPathAttribute($avatar)
+    {
+        return  asset($avatar ?: 'images/avatars/default.svg');
     }
 
     /**
      *
      */
-    public function confirm(){
+    public function confirm()
+    {
         $this->confirmed = true;
         $this->confirmation_token = null;
         $this->save();
+    }
+
+    public function roles()
+    {
+        return  $this->belongsToMany(Role::class);
     }
 }

@@ -11,6 +11,8 @@ class ContestAndCategoriesSeed extends Seeder
      */
     public function run()
     {
+        $cont=factory(App\Contest::class)->states('active')->create();
+        factory(\App\Category::class,3)->create(['contest_id'=>$cont->id]);
         factory(App\Contest::class, 3)->create()->each(
             function ($contest) {
                 $categories=factory(App\Category::class, 3)->make(['contest_id' => $contest->id]);

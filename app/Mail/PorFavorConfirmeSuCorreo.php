@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -17,7 +18,7 @@ class PorFavorConfirmeSuCorreo extends Mailable implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct(User $user)
     {
         //
         $this->user = $user;
@@ -29,6 +30,6 @@ class PorFavorConfirmeSuCorreo extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->markdown('=emails.confirmar-email');
+        return $this->markdown('emails.confirmar-email');
     }
 }

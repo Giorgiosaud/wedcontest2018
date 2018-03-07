@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('referred');
             $table->string('language');
             $table->text('comments')->nullable();
+            $table->string('avatar_path')->nullable();
             $table->boolean('subscribed')->default(true);
             $table->boolean('confirmed')->default(false);
             $table->string('confirmation_token', 25)->nullable()->unique();

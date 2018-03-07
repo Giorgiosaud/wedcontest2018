@@ -39,5 +39,6 @@ return [
     'countryselect'=>'Select Your Country',
      'mail'=>array(
         'subject'=>'Porfavor Confirma tu Correo'
-    )
+    ),
+    'register'=>'Registrate'
 ];

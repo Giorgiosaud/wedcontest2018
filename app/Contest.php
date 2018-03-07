@@ -20,7 +20,10 @@ class Contest extends Model
         'slug',
         'year'
     ];
-
+    protected $appends=[
+        'path',
+        'intro_image'
+    ];
     /**
      * Get the route key name.
      *
@@ -38,7 +41,10 @@ class Contest extends Model
     {
         return '/contests/' . $this->slug;
     }
-
+    public function getPathAttribute()
+    {
+        return $this->path();
+    }
     /**
      * Set the proper slug attribute.
      *
@@ -65,5 +71,14 @@ class Contest extends Model
     public function categories()
     {
         return $this->hasMany(Category::class);
+    }
+    /**
+     *
+     * @param  string $avatar
+     * @return string
+     */
+    public function getIntroImageAttribute($intro_image)
+    {
+        return asset($intro_image ?: 'images/Home/ContestIntro.jpg');
     }
 }

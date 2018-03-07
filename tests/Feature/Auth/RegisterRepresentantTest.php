@@ -40,7 +40,7 @@ class RegisterRepresentantTest extends TestCase
         return array_merge([
             'name' => 'Pedro',
             'last_name' => 'Perez',
-            'country' => 'VE',
+            'country' => 'CL',
             'phone' => '+56528899982',
             'referred' => 'invited',
             'language' => 'Es',
@@ -56,6 +56,7 @@ class RegisterRepresentantTest extends TestCase
      */
     public function a_guest_can_register_as_representant_and_appears_as_unconfirmed()
     {
+        $this->withExceptionHandling();
         $response = $this->post(route('register'), $this->validParams());
         $response->assertRedirect('/the_contest');
         $this->assertTrue(Auth::check());

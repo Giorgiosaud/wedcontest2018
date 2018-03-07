@@ -22,7 +22,6 @@ class CreateContestTest extends TestCase
         $this->signIn($user);
         $contest= make(Contest::class);
         $response = $this->post('/contests', $contest->toArray());
-//        dd($response->headers->get('Location'));
         $this->get($response->headers->get('Location'))
             ->assertSee($contest->topic)
             ->assertSee((string)$contest->year)

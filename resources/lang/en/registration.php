@@ -39,5 +39,6 @@ return [
     'countryselect' => 'Select Your Country',
     'mail' => array(
         'subject' => 'Please Confirm Your Email'
-    )
+    ),
+    'register'=>'Register'
 ];

@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Contest;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\App;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -26,7 +27,7 @@ class ContestTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->contest = create(Contest::class);
+        $this->contest = create(\App\Contest::class);
     }
     /**
      * A basic test example.
@@ -63,5 +64,36 @@ class ContestTest extends TestCase
             'Illuminate\Database\Eloquent\Collection',
             $this->contest->categories
         );
+    }
+
+    /**
+     * @test
+     */
+    function a_contest_have_active_prop(){
+
+        $data=[
+            'active'=>'0'
+        ];
+        $this->getJson('contests/'.$this->contest->slug)
+            ->assertJsonFragment($data);
+    }
+    /**
+    * @test
+     */
+    function a_contest_could_have_a_intro_image(){
+        $data=[
+            'intro_image'=>'http://concurso.zonapro/images/Home/ContestIntro.jpg'
+        ];
+        $this->getJson('contests/'.$this->contest->slug)
+        ->assertJsonFragment($data);
+
+    }
+
+    /**
+     * @test
+     */
+    function a_default_contest_image_can_change(){
+        $this->markTestSkipped("Working.");
+
     }
 }
