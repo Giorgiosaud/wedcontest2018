@@ -21,7 +21,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
  */
 class RegisterRepresentantTest extends TestCase
 {
-    use DatabaseMigrations;
+    use DatabaseMigrations,
+        DatabaseTransactions;
     
     protected $userInitialCount;
 
