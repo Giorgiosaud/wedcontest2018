@@ -31,6 +31,9 @@ class RegisterRepresentantTest extends TestCase
     public function setUp()
     {
         parent::setUp();
+        (new \DatabaseSeeder)->run();
+
+        
         Mail::fake();
         $this->userInitialCount=User::all()->count();
     }
