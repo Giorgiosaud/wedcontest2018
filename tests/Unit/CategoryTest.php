@@ -15,7 +15,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
  */
 class CategoryTest extends TestCase
 {
-    use DatabaseTransactions;
+    use DatabaseMigrations;
 
     /**
      * @var

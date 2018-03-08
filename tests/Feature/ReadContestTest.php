@@ -15,7 +15,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
  */
 class ReadContestTest extends TestCase
 {
-    use DatabaseTransactions;
+    use DatabaseMigrations;
 
 
     /**

@@ -17,7 +17,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
  */
 class UserTest extends TestCase
 {
-    use DatabaseTransactions;
+    use DatabaseMigrations;
     /**
      * @var
      */
@@ -29,6 +29,8 @@ class UserTest extends TestCase
     public function setUp()
     {
         parent::setUp();
+        (new \DatabaseSeeder)->run();
+
         $this->user = create(User::class);
     }
 
@@ -47,6 +49,7 @@ class UserTest extends TestCase
     public function a_user_can_be_an_administrator()
     {
         $this->withExceptionHandling();
+        
         $user=User::whereEmail('jorgelsaud@gmail.com')->first();
         $this->assertTrue($user->isAdmin());
     }

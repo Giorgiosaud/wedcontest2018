@@ -14,7 +14,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
  */
 class ContestantTest extends TestCase
 {
-    use DatabaseTransactions;
+    use DatabaseMigrations;
     /**
      * @var
      */

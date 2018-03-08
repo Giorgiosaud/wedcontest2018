@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\App;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
  * Class ContestTest
@@ -16,7 +15,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
  */
 class ContestTest extends TestCase
 {
-    use DatabaseTransactions;
+    use DatabaseMigrations;
     /**
      * @var
      */
