@@ -29,7 +29,7 @@ class UserTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        (new \DatabaseSeeder)->run();
+        // (new \DatabaseSeeder)->run();
 
         $this->user = create(User::class);
     }

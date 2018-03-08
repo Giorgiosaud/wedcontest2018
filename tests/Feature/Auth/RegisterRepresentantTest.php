@@ -31,7 +31,6 @@ class RegisterRepresentantTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        (new \DatabaseSeeder)->run();
 
         
         Mail::fake();
@@ -62,14 +61,15 @@ class RegisterRepresentantTest extends TestCase
      */
     public function a_guest_can_register_as_representant_and_appears_as_unconfirmed()
     {
+        $userCount=User::all()->count();
         $this->withExceptionHandling();
-        $userCount=$this->userInitialCount;
         $response = $this->post(route('register'), $this->validParams());
         $response->assertRedirect('/the_contest');
         $this->assertTrue(Auth::check());
         $userCount++;
         $this->assertCount($userCount, User::all());
-        tap(User::latest()->first(), function ($user) {
+        
+        tap(auth()->user(), function ($user) {
             $this->assertEquals('Pedro', $user->name);
             $this->assertEquals('Perez', $user->last_name);
             $this->assertEquals('CL', $user->country);

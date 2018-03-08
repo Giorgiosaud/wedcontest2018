@@ -29,7 +29,7 @@ class RegisterRepresentantTranslationTest extends TestCase
     {
         parent::setUp();
         Mail::fake();
-        (new \DatabaseSeeder)->run();
+        // (new \DatabaseSeeder)->run();
     }
 
 

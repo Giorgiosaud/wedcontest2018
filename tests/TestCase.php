@@ -13,12 +13,14 @@ abstract class TestCase extends BaseTestCase
     protected function setUp()
     {
         parent::setUp();
+        $this->seedMigrations();
+
         $this->disableExceptionHandling();
     }
 
-    protected function SeedMigrations()
+    protected function seedMigrations()
     {
-        (new \DatabaseSeeder())->run();
+        (new \DatabaseSeeder)->run();
     }
     protected function signIn($user = null)
     {
