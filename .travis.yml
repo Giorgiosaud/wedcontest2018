@@ -10,7 +10,6 @@ before_script:
 
 script:
   - php artisan key:generate
-  - php artisan migrate --seed -v
   - vendor/bin/phpunit
 
 services:
