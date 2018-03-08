@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\App;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
  * Class ContestTest
@@ -15,7 +16,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
  */
 class ContestTest extends TestCase
 {
-    use DatabaseMigrations;
+    use DatabaseTransactions;
     /**
      * @var
      */
@@ -46,19 +47,20 @@ class ContestTest extends TestCase
     /**
      * @test
      */
-    public function a_contest_can_be_called_by_slug(){
+    public function a_contest_can_be_called_by_slug()
+    {
         $this->get('contests/'.$this->contest->slug)
             ->assertSee($this->contest->topic)
             ->assertSee($this->contest->description)
             ->assertSee((string)$this->contest->year);
     }
     /** @test */
-    function a_contest_has_a_creator()
+    public function a_contest_has_a_creator()
     {
         $this->assertInstanceOf(\App\User::class, $this->contest->creator);
     }
     /** @test */
-    function a_thread_has_categories()
+    public function a_thread_has_categories()
     {
         $this->assertInstanceOf(
             'Illuminate\Database\Eloquent\Collection',
@@ -69,31 +71,28 @@ class ContestTest extends TestCase
     /**
      * @test
      */
-    function a_contest_have_active_prop(){
-
-        $data=[
-            'active'=>'0'
-        ];
-        $this->getJson('contests/'.$this->contest->slug)
-            ->assertJsonFragment($data);
+    public function a_contest_have_active_prop()
+    {
+        $this->get('contests/'.$this->contest->slug)
+            ->assertSee('Inactive');
     }
     /**
     * @test
      */
-    function a_contest_could_have_a_intro_image(){
+    public function a_contest_could_have_a_intro_image()
+    {
         $data=[
             'intro_image'=>'http://concurso.zonapro/images/Home/ContestIntro.jpg'
         ];
         $this->getJson('contests/'.$this->contest->slug)
         ->assertJsonFragment($data);
-
     }
 
     /**
      * @test
      */
-    function a_default_contest_image_can_change(){
+    public function a_default_contest_image_can_change()
+    {
         $this->markTestSkipped("Working.");
-
     }
 }

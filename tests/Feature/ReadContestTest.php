@@ -7,6 +7,7 @@ use App\Contest;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
  * Class ContestTest
@@ -14,7 +15,8 @@ use Tests\TestCase;
  */
 class ReadContestTest extends TestCase
 {
-    use DatabaseMigrations;
+    use DatabaseTransactions;
+
 
     /**
      * @test
@@ -41,13 +43,11 @@ class ReadContestTest extends TestCase
     }
 
     /** @test */
-    function a_user_can_request_all_categories_for_a_given_contest()
+    public function a_user_can_request_all_categories_for_a_given_contest()
     {
         $contest = create(Contest::class);
         create(Category::class, ['contest_id' => $contest->id], 2);
         $response = $this->getJson($contest->path() . '/categories')->json();
         $this->assertCount(2, $response);
     }
-
 }
-

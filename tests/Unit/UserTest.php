@@ -9,6 +9,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
  * Class UserTest
@@ -16,7 +17,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
  */
 class UserTest extends TestCase
 {
-    use DatabaseMigrations;
+    use DatabaseTransactions;
     /**
      * @var
      */
@@ -43,17 +44,18 @@ class UserTest extends TestCase
     /**
      * @test
      */
-    public function a_user_can_be_an_administrator(){
+    public function a_user_can_be_an_administrator()
+    {
         $this->withExceptionHandling();
-        $user=factory(User::class)->create(['email'=>'jorgelsaud@gmail.com']);
+        $user=User::whereEmail('jorgelsaud@gmail.com')->first();
         $this->assertTrue($user->isAdmin());
-
     }
 
     /**
      * @test
      */
-    public function all_users_have_at_least_one_role(){
-        $this->assertInstanceOf(\App\Role::class,$this->user->roles->first());
+    public function all_users_have_at_least_one_role()
+    {
+        $this->assertInstanceOf(\App\Role::class, $this->user->roles->first());
     }
 }

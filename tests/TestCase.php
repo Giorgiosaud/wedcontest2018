@@ -14,6 +14,7 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
         $this->disableExceptionHandling();
+        // $this->SeedMigrations();
     }
 
     protected function signIn($user = null)
@@ -33,8 +34,7 @@ abstract class TestCase extends BaseTestCase
     protected function disableExceptionHandling()
     {
         $this->oldExceptionHandler = $this->app->make(ExceptionHandler::class);
-        $this->app->instance(ExceptionHandler::class, new class extends Handler
-        {
+        $this->app->instance(ExceptionHandler::class, new class extends Handler {
             public function __construct()
             {
             }
@@ -56,4 +56,3 @@ abstract class TestCase extends BaseTestCase
         return $this;
     }
 }
-

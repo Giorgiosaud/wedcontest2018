@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
  * Class CategoryTest
@@ -14,7 +15,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
  */
 class CategoryTest extends TestCase
 {
-    use DatabaseMigrations;
+    use DatabaseTransactions;
+
     /**
      * @var
      */

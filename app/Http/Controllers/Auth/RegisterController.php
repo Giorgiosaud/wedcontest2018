@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Country;
+use App\Contest;
 use App\Events\RegisterRepresentant;
 use App\Mail\PleaseConfirmYourEmail;
 use App\Mail\PorFavorConfirmeSuCorreo;
@@ -34,7 +35,8 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         $countries=Country::all();
-        return view('auth.register',compact('countries'));
+        $contest=Contest::whereActive(true)->first();
+        return view('auth.register', compact('countries', 'contest'));
     }
 
 

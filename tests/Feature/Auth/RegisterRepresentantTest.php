@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
  * Class CreateRepresentantTest
@@ -20,8 +21,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
  */
 class RegisterRepresentantTest extends TestCase
 {
-    use RefreshDatabase;
-
+    use DatabaseTransactions;
+    
+    protected $userInitialCount;
 
     /**
      *
@@ -30,6 +32,7 @@ class RegisterRepresentantTest extends TestCase
     {
         parent::setUp();
         Mail::fake();
+        $this->userInitialCount=User::all()->count();
     }
     /**
      * @param array $overrides
@@ -57,11 +60,13 @@ class RegisterRepresentantTest extends TestCase
     public function a_guest_can_register_as_representant_and_appears_as_unconfirmed()
     {
         $this->withExceptionHandling();
+        $userCount=$this->userInitialCount;
         $response = $this->post(route('register'), $this->validParams());
         $response->assertRedirect('/the_contest');
         $this->assertTrue(Auth::check());
-        $this->assertCount(1, User::all());
-        tap(User::first(), function ($user) {
+        $userCount++;
+        $this->assertCount($userCount, User::all());
+        tap(User::latest()->first(), function ($user) {
             $this->assertEquals('Pedro', $user->name);
             $this->assertEquals('Perez', $user->last_name);
             $this->assertEquals('CL', $user->country);
@@ -71,7 +76,7 @@ class RegisterRepresentantTest extends TestCase
             $this->assertEquals(false, $user->confirmed);
             $this->assertEquals('ppres@zon.com', $user->email);
             $this->assertTrue(Hash::check('secret', $user->password));
-            $this->assertEquals(25,strlen($user->confirmation_token));
+            $this->assertEquals(25, strlen($user->confirmation_token));
         });
     }
     /** @test */
@@ -110,7 +115,7 @@ class RegisterRepresentantTest extends TestCase
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('name');
         $this->assertFalse(Auth::check());
-        $this->assertCount(0, User::all());
+        $this->assertCount($this->userInitialCount, User::all());
     }
 
     /** @test */
@@ -124,7 +129,7 @@ class RegisterRepresentantTest extends TestCase
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('email');
         $this->assertFalse(Auth::check());
-        $this->assertCount(0, User::all());
+        $this->assertCount($this->userInitialCount, User::all());
     }
 
     /** @test */
@@ -138,7 +143,7 @@ class RegisterRepresentantTest extends TestCase
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('email');
         $this->assertFalse(Auth::check());
-        $this->assertCount(0, User::all());
+        $this->assertCount($this->userInitialCount, User::all());
     }
     /** @test */
     public function email_cannot_exceed_255_chars()
@@ -151,7 +156,7 @@ class RegisterRepresentantTest extends TestCase
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('email');
         $this->assertFalse(Auth::check());
-        $this->assertCount(0, User::all());
+        $this->assertCount($this->userInitialCount, User::all());
     }
     /** @test */
     public function email_is_unique()
@@ -165,7 +170,8 @@ class RegisterRepresentantTest extends TestCase
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('email');
         $this->assertFalse(Auth::check());
-        $this->assertCount(1, User::all());
+        $userCount=$this->userInitialCount+1;
+        $this->assertCount($userCount, User::all());
     }
     /** @test */
     public function password_is_required()
@@ -178,7 +184,7 @@ class RegisterRepresentantTest extends TestCase
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('password');
         $this->assertFalse(Auth::check());
-        $this->assertCount(0, User::all());
+        $this->assertCount($this->userInitialCount, User::all());
     }
     /** @test */
     public function password_must_be_confirmed()
@@ -192,7 +198,7 @@ class RegisterRepresentantTest extends TestCase
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('password');
         $this->assertFalse(Auth::check());
-        $this->assertCount(0, User::all());
+        $this->assertCount($this->userInitialCount, User::all());
     }
     /** @test */
     public function password_must_be_6_chars()
@@ -206,9 +212,6 @@ class RegisterRepresentantTest extends TestCase
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('password');
         $this->assertFalse(Auth::check());
-        $this->assertCount(0, User::all());
+        $this->assertCount($this->userInitialCount, User::all());
     }
-
-
-
 }

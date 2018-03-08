@@ -6,6 +6,7 @@ use App\Contestant;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
  * Class ContestantTest
@@ -13,7 +14,7 @@ use Tests\TestCase;
  */
 class ContestantTest extends TestCase
 {
-    use DatabaseMigrations;
+    use DatabaseTransactions;
     /**
      * @var
      */
@@ -31,7 +32,8 @@ class ContestantTest extends TestCase
     /**
      * @test
      */
-    public function a_contestant_must_have_a_representant(){
-        $this->assertInstanceOf(User::class,$this->contestant->representant);
+    public function a_contestant_must_have_a_representant()
+    {
+        $this->assertInstanceOf(User::class, $this->contestant->representant);
     }
 }

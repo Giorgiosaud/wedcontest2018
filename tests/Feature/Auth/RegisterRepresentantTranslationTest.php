@@ -20,7 +20,7 @@ use Webpatser\Countries\Countries;
  */
 class RegisterRepresentantTranslationTest extends TestCase
 {
-    use DatabaseTransactions,DatabaseMigrations;
+    use DatabaseTransactions;
 
     /**
      *
@@ -88,6 +88,7 @@ class RegisterRepresentantTranslationTest extends TestCase
      */
     public function a_user_see_form_in_english_if_browser_locale_is_set_in_english()
     {
+        $this->withExceptionHandling();
         App::setLocale('en');
         $this->get(route('register'))
             ->assertSee('Name')

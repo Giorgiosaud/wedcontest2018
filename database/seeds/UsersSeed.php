@@ -25,9 +25,9 @@ class UsersSeed extends Seeder
                 'email' => 'jorgelsaud@gmail.com',
                 'password' => bcrypt('W3dc0nt3st'),
                 'remember_token' => str_random(10),
-            ]);
+            ]
+        );
         $roles_id=Role::all()->pluck('id');
         $user->roles()->sync($roles_id);
-
     }
 }

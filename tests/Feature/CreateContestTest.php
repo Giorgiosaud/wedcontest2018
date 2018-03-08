@@ -8,16 +8,18 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CreateContestTest extends TestCase
 {
-    use DatabaseMigrations;
+    use DatabaseTransactions;
 
     /**
      * @test
      */
-    function an_administrator_user_can_create_new_contest()
+    public function an_administrator_user_can_create_new_contest()
     {
+        $this->markTestIncomplete('the section is not ready');
         $user=factory(User::class)->create(['email'=>'jorgelsaud@gmail.com']);
         $this->signIn($user);
         $contest= make(Contest::class);
@@ -38,5 +40,4 @@ class CreateContestTest extends TestCase
         $this->post('/contests')
             ->assertRedirect('/login');
     }
-
 }

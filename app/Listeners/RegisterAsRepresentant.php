@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\RegisterRepresentant;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Role;
 
 class RegisterAsRepresentant
 {
@@ -26,6 +27,8 @@ class RegisterAsRepresentant
      */
     public function handle(RegisterRepresentant $event)
     {
-     $event->user->
+        
+        $role=Role::whereName('Representant')->first();
+        $event->user->roles()->attach($role);
     }
 }

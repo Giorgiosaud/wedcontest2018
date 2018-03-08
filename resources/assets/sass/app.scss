@@ -40,3 +40,6 @@ nav#main-menu-container {
   font-weight: bold;
   @apply .text-black;
 }
+.v--modal-overlay{
+  overflow:scroll;
+}

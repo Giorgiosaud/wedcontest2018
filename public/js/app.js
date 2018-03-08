@@ -47813,7 +47813,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 email: "",
                 password: "",
                 password_confirmation: "",
-                subscribed: ""
+                subscribed: false
             },
             country: "",
             feedback: "",
@@ -47839,10 +47839,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     },
     watch: {
         country: function country(newCountry, oldCountry) {
-            if ((typeof newCountry === "undefined" ? "undefined" : _typeof(newCountry)) === "object") {
-                return this.form.country = newCountry.code;
+            if ((typeof newCountry === "undefined" ? "undefined" : _typeof(newCountry)) != "object") {
+                return this.form.country = '';
             }
-            return this.form.country = '';
+            this.form.country = newCountry.code;
+            this.form.phone = '+' + newCountry.calling_code;
         }
     }
 });

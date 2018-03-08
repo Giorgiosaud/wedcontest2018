@@ -5486,6 +5486,10 @@ nav#main-menu-container {
   color: #22292f;
 }
 
+.v--modal-overlay {
+  overflow: scroll;
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;

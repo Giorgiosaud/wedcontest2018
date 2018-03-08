@@ -14,7 +14,7 @@
                     email: "",
                     password: "",
                     password_confirmation: "",
-                    subscribed: ""
+                    subscribed: false
                 },
                 country:"",
                 feedback: "",
@@ -40,11 +40,11 @@
         },
         watch:{
             country(newCountry,oldCountry){
-                if(typeof newCountry==="object"){
-                    return this.form.country=newCountry.code;
+                if(typeof newCountry!="object"){
+                    return this.form.country='';
                 }
-                return this.form.country='';
-            }
+                this.form.country=newCountry.code;
+                this.form.phone='+'+newCountry.calling_code;}
         }
     };
 </script>
