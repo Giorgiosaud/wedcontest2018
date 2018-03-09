@@ -125,37 +125,43 @@ class RegisterRepresentantTest extends TestCase
     {
         $this->withExceptionHandling();
         $this->from(route('register'));
-        $response = $this->post(route('register'), $this->validParams([
+        $response = $this->post(route('register'), $this->validParams(
+            [
             'name' => str_repeat('a', 256),
-            ]));
+            ]
+        ));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('name');
         $this->assertFalse(Auth::check());
         $this->assertCount($this->userInitialCount, User::all());
     }
-        
+    
     /** @test */
     public function email_is_required()
     {
         $this->withExceptionHandling();
         $this->from(route('register'));
-        $response = $this->post(route('register'), $this->validParams([
-                'email' => '',
-                ]));
+        $response = $this->post(route('register'), $this->validParams(
+            [
+            'email' => '',
+            ]
+        ));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('email');
         $this->assertFalse(Auth::check());
         $this->assertCount($this->userInitialCount, User::all());
     }
-            
+    
     /** @test */
     public function email_is_valid()
     {
         $this->withExceptionHandling();
         $this->from(route('register'));
-        $response = $this->post(route('register'), $this->validParams([
-                    'email' => 'not-an-email-address',
-                    ]));
+        $response = $this->post(route('register'), $this->validParams(
+            [
+            'email' => 'not-an-email-address',
+            ]
+        ));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('email');
         $this->assertFalse(Auth::check());
@@ -167,8 +173,8 @@ class RegisterRepresentantTest extends TestCase
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
-                        'email' => substr(str_repeat('a', 256) . '@example.com', -256),
-                        ]));
+            'email' => substr(str_repeat('a', 256) . '@example.com', -256),
+            ]));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('email');
         $this->assertFalse(Auth::check());
@@ -180,9 +186,11 @@ class RegisterRepresentantTest extends TestCase
         create(\App\User::class, ['email' => 'johndoe@example.com']);
         $this->withExceptionHandling();
         $this->from(route('register'));
-        $response = $this->post(route('register'), $this->validParams([
-                            'email' => 'johndoe@example.com',
-                            ]));
+        $response = $this->post(route('register'), $this->validParams(
+                [
+                'email' => 'johndoe@example.com',
+                ]
+            ));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('email');
         $this->assertFalse(Auth::check());
@@ -194,9 +202,11 @@ class RegisterRepresentantTest extends TestCase
     {
         $this->withExceptionHandling();
         $this->from(route('register'));
-        $response = $this->post(route('register'), $this->validParams([
-                                'password' => '',
-                                ]));
+        $response = $this->post(route('register'), $this->validParams(
+                [
+                'password' => '',
+                ]
+            ));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('password');
         $this->assertFalse(Auth::check());
@@ -207,10 +217,12 @@ class RegisterRepresentantTest extends TestCase
     {
         $this->withExceptionHandling();
         $this->from(route('register'));
-        $response = $this->post(route('register'), $this->validParams([
-                                    'password' => 'foo',
-                                    'password_confirmation' => 'bar'
-                                    ]));
+        $response = $this->post(route('register'), $this->validParams(
+                [
+                'password' => 'foo',
+                'password_confirmation' => 'bar'
+                ]
+            ));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('password');
         $this->assertFalse(Auth::check());
@@ -221,10 +233,12 @@ class RegisterRepresentantTest extends TestCase
     {
         $this->withExceptionHandling();
         $this->from(route('register'));
-        $response = $this->post(route('register'), $this->validParams([
-                                        'password' => 'foo',
-                                        'password_confirmation' => 'foo',
-                                        ]));
+        $response = $this->post(route('register'), $this->validParams(
+                [
+                'password' => 'foo',
+                'password_confirmation' => 'foo',
+                ]
+            ));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('password');
         $this->assertFalse(Auth::check());
