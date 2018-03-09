@@ -93,6 +93,7 @@ class RegisterRepresentantTest extends TestCase
     {
         $this->withExceptionHandling();
         NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
+        Newsletter::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
 
         $this->post(route('register'), $this->validParams());
          tap(auth()->user(),function($user){
