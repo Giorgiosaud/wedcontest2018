@@ -6,8 +6,7 @@ use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Country
- * @package App
+ * Class Country.
  */
 class Country extends Model
 {
@@ -20,9 +19,10 @@ class Country extends Model
     /**
      * @var array
      */
-    protected $fillable = ['code','flag','calling_code'];
+    protected $fillable = ['code', 'flag', 'calling_code'];
 
-    public function getFlagAttribute($flag){
-        return asset('images/flags/'.$flag );
+    public function getFlagAttribute($flag)
+    {
+        return asset('images/flags/'.$flag);
     }
 }

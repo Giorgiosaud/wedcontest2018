@@ -2,12 +2,11 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 /**
- * Class User
- * @package App
+ * Class User.
  */
 class User extends Authenticatable
 {
@@ -29,28 +28,27 @@ class User extends Authenticatable
         'language',
         'email',
         'password',
-        'confirmation_token'
+        'confirmation_token',
     ];
     /**
      * @var array
      */
     protected $casts = [
         'subscribed' => 'boolean',
-        'confirmed' => 'boolean'
+        'confirmed'  => 'boolean',
     ];
     /**
      * @var array
      */
     protected $administratorsEmails = [
-        'jorgelsaud@gmail.com'
+        'jorgelsaud@gmail.com',
     ];
     /**
      * @var array
      */
     protected $judgesEmails = [
-        'jorgelsaud+judge@gmail.com'
+        'jorgelsaud+judge@gmail.com',
     ];
-
 
     /**
      * The attributes that should be hidden for arrays.
@@ -62,7 +60,7 @@ class User extends Authenticatable
     ];
 
     /**
-     *Check if user is Admin
+     *Check if user is Admin.
      */
     public function isAdmin()
     {
@@ -88,7 +86,8 @@ class User extends Authenticatable
     /**
      * Get the path to the user's avatar.
      *
-     * @param  string $avatar
+     * @param string $avatar
+     *
      * @return string
      */
     public function getAvatarPathAttribute($avatar)
@@ -96,9 +95,6 @@ class User extends Authenticatable
         return  asset($avatar ?: 'images/avatars/default.svg');
     }
 
-    /**
-     *
-     */
     public function confirm()
     {
         $this->confirmed = true;

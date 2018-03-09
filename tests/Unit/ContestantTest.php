@@ -6,11 +6,9 @@ use App\Contestant;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
- * Class ContestantTest
- * @package Tests\Unit
+ * Class ContestantTest.
  */
 class ContestantTest extends TestCase
 {
@@ -20,9 +18,6 @@ class ContestantTest extends TestCase
      */
     protected $contestant;
 
-    /**
-     *
-     */
     public function setUp()
     {
         parent::setUp();

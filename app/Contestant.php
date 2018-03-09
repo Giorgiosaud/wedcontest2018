@@ -5,15 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Contestant
- * @package App
+ * Class Contestant.
  */
 class Contestant extends Model
 {
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function representant(){
-        return $this->belongsTo(User::Class,'representant_id');
+    public function representant()
+    {
+        return $this->belongsTo(User::class, 'representant_id');
     }
 }

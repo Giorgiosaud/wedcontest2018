@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCountryTranslationsTable extends Migration
 {
@@ -18,7 +18,7 @@ class CreateCountryTranslationsTable extends Migration
             $table->integer('country_id')->unsigned();
             $table->string('name');
             $table->string('locale')->index();
-            $table->unique(['country_id','locale']);
+            $table->unique(['country_id', 'locale']);
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
         });
     }

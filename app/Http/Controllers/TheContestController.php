@@ -15,15 +15,15 @@ class TheContestController extends Controller
      */
     public function index()
     {
-        $contest=Contest::whereActive('1')->get()->first();
+        $contest = Contest::whereActive('1')->get()->first();
         if (request()->wantsJson()) {
             return $contest;
         }
-        $countries=Country::all();
-        
+        $countries = Country::all();
+
         return view('the_contest.index', [
-            'contest' => $contest,
-            'countries'=>$countries
+            'contest'  => $contest,
+            'countries'=> $countries,
         ]);
     }
 
@@ -40,7 +40,8 @@ class TheContestController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -51,7 +52,8 @@ class TheContestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -62,7 +64,8 @@ class TheContestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -73,8 +76,9 @@ class TheContestController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -85,7 +89,8 @@ class TheContestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

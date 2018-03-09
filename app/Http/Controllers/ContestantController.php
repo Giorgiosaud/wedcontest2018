@@ -30,7 +30,8 @@ class ContestantController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +42,8 @@ class ContestantController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Contestant  $contestant
+     * @param \App\Contestant $contestant
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Contestant $contestant)
@@ -52,7 +54,8 @@ class ContestantController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Contestant  $contestant
+     * @param \App\Contestant $contestant
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Contestant $contestant)
@@ -63,8 +66,9 @@ class ContestantController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Contestant  $contestant
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Contestant          $contestant
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Contestant $contestant)
@@ -75,7 +79,8 @@ class ContestantController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Contestant  $contestant
+     * @param \App\Contestant $contestant
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Contestant $contestant)
