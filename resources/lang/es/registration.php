@@ -13,32 +13,32 @@ return [
     |
     */
 
-    'name' => 'Nombre(s)',
+    'name'      => 'Nombre(s)',
     'last_name' => 'Apellido(s)',
-    'country' => 'País',
-    'phone' => 'Telefono',
-    'referred' => array(
-        'label'=>'Referred',
-        'options'=>array(
-            '1'=>'Invitado de Dirpoinduca',
-            '2'=>'Invitado por un Familiar o Contacto de Diproinduca',
-            '3'=>'Other'
-        )
-    ),
+    'country'   => 'País',
+    'phone'     => 'Telefono',
+    'referred'  => [
+        'label'  => 'Referred',
+        'options'=> [
+            '1'=> 'Invitado de Dirpoinduca',
+            '2'=> 'Invitado por un Familiar o Contacto de Diproinduca',
+            '3'=> 'Other',
+        ],
+    ],
     'language' => [
-        'label' => 'Idioma',
+        'label'   => 'Idioma',
         'options' => [
             'en' => 'Ingles',
-            'es' => 'Español'
-        ]
+            'es' => 'Español',
+        ],
     ],
-    'subscribed' => 'Subscribirse a newsletter',
-    'email' => 'Email',
-    'password' => 'Contraseña',
+    'subscribed'            => 'Subscribirse a newsletter',
+    'email'                 => 'Email',
+    'password'              => 'Contraseña',
     'password_confirmation' => 'Confirmacion de Contraseña',
-    'countryselect'=>'Select Your Country',
-     'mail'=>array(
-        'subject'=>'Porfavor Confirma tu Correo'
-    ),
-    'register'=>'Registrate'
+    'countryselect'         => 'Select Your Country',
+     'mail'                 => [
+        'subject'=> 'Porfavor Confirma tu Correo',
+    ],
+    'register'=> 'Registrate',
 ];

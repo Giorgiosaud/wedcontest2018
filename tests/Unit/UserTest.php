@@ -7,13 +7,9 @@ use App\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
- * Class UserTest
- * @package Tests\Unit
+ * Class UserTest.
  */
 class UserTest extends TestCase
 {
@@ -23,9 +19,6 @@ class UserTest extends TestCase
      */
     protected $user;
 
-    /**
-     *
-     */
     public function setUp()
     {
         parent::setUp();
@@ -49,8 +42,8 @@ class UserTest extends TestCase
     public function a_user_can_be_an_administrator()
     {
         $this->withExceptionHandling();
-        
-        $user=User::whereEmail('jorgelsaud@gmail.com')->first();
+
+        $user = User::whereEmail('jorgelsaud@gmail.com')->first();
         $this->assertTrue($user->isAdmin());
     }
 

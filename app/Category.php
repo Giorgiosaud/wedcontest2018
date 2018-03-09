@@ -5,15 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Category
- * @package App
+ * Class Category.
  */
 class Category extends Model
 {
-
-    /**
-     *
-     */
     protected static function boot()
     {
         parent::boot();
@@ -25,7 +20,8 @@ class Category extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function contest(){
+    public function contest()
+    {
         return $this->belongsTo(Contest::class);
     }
 }

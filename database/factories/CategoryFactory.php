@@ -8,7 +8,7 @@ $factory->define(Category::class, function (Faker $faker) {
         'contest_id' => function () {
             return factory(\App\Contest::class)->create()->id;
         },
-        'name' => $faker->sentences(1, true),
-        'max_age' => $faker->unique()->numberBetween(0, 18)
+        'name'    => $faker->sentences(1, true),
+        'max_age' => $faker->unique()->numberBetween(0, 18),
     ];
 });

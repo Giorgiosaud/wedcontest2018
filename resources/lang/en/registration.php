@@ -13,32 +13,32 @@ return [
     |
     */
 
-    'name' => 'Name',
+    'name'      => 'Name',
     'last_name' => 'Last Name',
-    'country' => 'Country',
-    'phone' => 'Phone',
-    'referred' => array(
-        'label' => 'Referred',
-        'options' => array(
+    'country'   => 'Country',
+    'phone'     => 'Phone',
+    'referred'  => [
+        'label'   => 'Referred',
+        'options' => [
             '1' => 'Invited of Dirpoinduca',
             '2' => 'Invited by Family or Diproinduca Contact',
-            '3' => 'Other'
-        )
-    ),
+            '3' => 'Other',
+        ],
+    ],
     'language' => [
-        'label' => 'Language',
+        'label'   => 'Language',
         'options' => [
             'en' => 'English',
-            'es' => 'Spanish'
-        ]
+            'es' => 'Spanish',
+        ],
     ],
-    'subscribed' => 'Subscribe to email newsletter',
-    'email' => 'E-Mail Address',
-    'password' => 'Password',
+    'subscribed'            => 'Subscribe to email newsletter',
+    'email'                 => 'E-Mail Address',
+    'password'              => 'Password',
     'password_confirmation' => 'Confirm Password',
-    'countryselect' => 'Select Your Country',
-    'mail' => array(
-        'subject' => 'Please Confirm Your Email'
-    ),
-    'register'=>'Register'
+    'countryselect'         => 'Select Your Country',
+    'mail'                  => [
+        'subject' => 'Please Confirm Your Email',
+    ],
+    'register'=> 'Register',
 ];

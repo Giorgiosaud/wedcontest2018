@@ -5,13 +5,9 @@ namespace Tests\Unit;
 use App\Category;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
- * Class CategoryTest
- * @package Tests\Unit
+ * Class CategoryTest.
  */
 class CategoryTest extends TestCase
 {
@@ -22,14 +18,12 @@ class CategoryTest extends TestCase
      */
     protected $category;
 
-    /**
-     *
-     */
     public function setUp()
     {
         parent::setUp();
         $this->category = create(Category::class);
     }
+
     /**
      * @test
      */

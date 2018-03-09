@@ -5,8 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Contest
- * @package App
+ * Class Contest.
  */
 class Contest extends Model
 {
@@ -18,12 +17,13 @@ class Contest extends Model
         'topic',
         'description',
         'slug',
-        'year'
+        'year',
     ];
-    protected $appends=[
+    protected $appends = [
         'path',
-        'intro_image'
+        'intro_image',
     ];
+
     /**
      * Get the route key name.
      *
@@ -39,12 +39,14 @@ class Contest extends Model
      */
     public function path()
     {
-        return '/contests/' . $this->slug;
+        return '/contests/'.$this->slug;
     }
+
     public function getPathAttribute()
     {
         return $this->path();
     }
+
     /**
      * Set the proper slug attribute.
      *
@@ -61,8 +63,9 @@ class Contest extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function creator(){
-        return $this->belongsTo(User::class,'user_id');
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -72,9 +75,10 @@ class Contest extends Model
     {
         return $this->hasMany(Category::class);
     }
+
     /**
+     * @param string $avatar
      *
-     * @param  string $avatar
      * @return string
      */
     public function getIntroImageAttribute($intro_image)

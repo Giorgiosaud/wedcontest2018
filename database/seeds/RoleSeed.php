@@ -13,16 +13,16 @@ class RoleSeed extends Seeder
     public function run()
     {
         factory(Role::class)->create([
-            'name'=>'Administrator'
+            'name'=> 'Administrator',
         ]);
         factory(Role::class)->create([
-            'name'=>'Representant'
+            'name'=> 'Representant',
         ]);
         factory(Role::class)->create([
-            'name'=>'Judge'
+            'name'=> 'Judge',
         ]);
         factory(Role::class)->create([
-            'name'=>'Contestant'
+            'name'=> 'Contestant',
         ]);
     }
 }

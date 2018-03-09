@@ -20,26 +20,31 @@ abstract class TestCase extends BaseTestCase
 
     protected function seedMigrations()
     {
-        (new \DatabaseSeeder)->run();
+        (new \DatabaseSeeder())->run();
     }
+
     protected function signIn($user = null)
     {
         $user = $user ?: create('App\User');
         $this->actingAs($user);
+
         return $this;
     }
+
     protected function signInAdmin($admin = null)
     {
         $admin = $admin ?: create(\App\User::class);
         config(['concurso.administrators' => [$admin->email]]);
         $this->actingAs($admin);
+
         return $this;
     }
+
     // Hat tip, @adamwathan.
     protected function disableExceptionHandling()
     {
         $this->oldExceptionHandler = $this->app->make(ExceptionHandler::class);
-        $this->app->instance(ExceptionHandler::class, new class extends Handler {
+        $this->app->instance(ExceptionHandler::class, new class() extends Handler {
             public function __construct()
             {
             }
@@ -58,6 +63,7 @@ abstract class TestCase extends BaseTestCase
     protected function withExceptionHandling()
     {
         $this->app->instance(ExceptionHandler::class, $this->oldExceptionHandler);
+
         return $this;
     }
 }

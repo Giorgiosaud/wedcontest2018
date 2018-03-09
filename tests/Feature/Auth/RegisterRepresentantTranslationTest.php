@@ -2,29 +2,20 @@
 
 namespace Tests\Feature;
 
-use App\CountryTranslation;
 use App\Mail\PleaseConfirmYourEmail;
 use App\Mail\PorFavorConfirmeSuCorreo;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Webpatser\Countries\Countries;
 
 /**
- * Class CreateRepresentantTest
- * @package Tests\Feature
+ * Class CreateRepresentantTest.
  */
 class RegisterRepresentantTranslationTest extends TestCase
 {
     use DatabaseMigrations;
 
-    /**
-     *
-     */
     protected function setUp()
     {
         parent::setUp();
@@ -32,23 +23,23 @@ class RegisterRepresentantTranslationTest extends TestCase
         // (new \DatabaseSeeder)->run();
     }
 
-
     /**
      * @param array $overrides
+     *
      * @return array
      */
     private function validParams($overrides = [])
     {
         return array_merge([
-            'name' => 'Pedro',
-            'last_name' => 'Perez',
-            'country' => 'VE',
-            'phone' => '+56528899982',
-            'referred' => 'invited',
-            'language' => 'es',
-            'subscribed' => true,
-            'email' => 'ppres@zon.com',
-            'password' => 'secret',
+            'name'                  => 'Pedro',
+            'last_name'             => 'Perez',
+            'country'               => 'VE',
+            'phone'                 => '+56528899982',
+            'referred'              => 'invited',
+            'language'              => 'es',
+            'subscribed'            => true,
+            'email'                 => 'ppres@zon.com',
+            'password'              => 'secret',
             'password_confirmation' => 'secret',
         ], $overrides);
     }
@@ -85,6 +76,7 @@ class RegisterRepresentantTranslationTest extends TestCase
         $this->post(route('register'), $this->validParams(['language'=>'es']));
         Mail::assertQueued(PorFavorConfirmeSuCorreo::class);
     }
+
     /** @test */
     public function a_confirmation_email_is_sent_upon_registration_in_english()
     {

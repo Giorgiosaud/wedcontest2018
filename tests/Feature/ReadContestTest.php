@@ -4,19 +4,15 @@ namespace Tests\Feature;
 
 use App\Category;
 use App\Contest;
-use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
- * Class ContestTest
- * @package Tests\Feature
+ * Class ContestTest.
  */
 class ReadContestTest extends TestCase
 {
     use DatabaseMigrations;
-
 
     /**
      * @test
@@ -26,9 +22,8 @@ class ReadContestTest extends TestCase
         $contest = factory(Contest::class)->create();
         $this->get('/contests')
             ->assertSee($contest->topic)
-            ->assertSee((string)$contest->year);
+            ->assertSee((string) $contest->year);
     }
-
 
     /**
      * @test
@@ -36,10 +31,10 @@ class ReadContestTest extends TestCase
     public function a_can_see_a_single_test()
     {
         $contest = factory(Contest::class)->create();
-        $this->get('/contests/' . $contest->slug)
+        $this->get('/contests/'.$contest->slug)
             ->assertSee($contest->topic)
             ->assertSee($contest->description)
-            ->assertSee((string)$contest->year);
+            ->assertSee((string) $contest->year);
     }
 
     /** @test */
@@ -47,7 +42,7 @@ class ReadContestTest extends TestCase
     {
         $contest = create(Contest::class);
         create(Category::class, ['contest_id' => $contest->id], 2);
-        $response = $this->getJson($contest->path() . '/categories')->json();
+        $response = $this->getJson($contest->path().'/categories')->json();
         $this->assertCount(2, $response);
     }
 }

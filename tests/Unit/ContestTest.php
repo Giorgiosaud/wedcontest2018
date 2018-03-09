@@ -2,16 +2,11 @@
 
 namespace Tests\Unit;
 
-use App\Contest;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Support\Facades\App;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 /**
- * Class ContestTest
- * @package Tests\Unit
+ * Class ContestTest.
  */
 class ContestTest extends TestCase
 {
@@ -21,14 +16,12 @@ class ContestTest extends TestCase
      */
     protected $contest;
 
-    /**
-     *
-     */
     public function setUp()
     {
         parent::setUp();
         $this->contest = create(\App\Contest::class);
     }
+
     /**
      * A basic test example.
      *
@@ -51,13 +44,15 @@ class ContestTest extends TestCase
         $this->get('contests/'.$this->contest->slug)
             ->assertSee($this->contest->topic)
             ->assertSee($this->contest->description)
-            ->assertSee((string)$this->contest->year);
+            ->assertSee((string) $this->contest->year);
     }
+
     /** @test */
     public function a_contest_has_a_creator()
     {
         $this->assertInstanceOf(\App\User::class, $this->contest->creator);
     }
+
     /** @test */
     public function a_thread_has_categories()
     {
@@ -75,14 +70,15 @@ class ContestTest extends TestCase
         $this->get('contests/'.$this->contest->slug)
             ->assertSee('Inactive');
     }
+
     /**
-    * @test
+     * @test
      */
     public function a_contest_could_have_a_intro_image()
     {
         $this->markTestSkipped('fail on different host name');
-        $data=[
-            'intro_image'=>'http://concurso.zonapro/images/Home/ContestIntro.jpg'
+        $data = [
+            'intro_image'=> 'http://concurso.zonapro/images/Home/ContestIntro.jpg',
         ];
         $this->getJson('contests/'.$this->contest->slug)
         ->assertJsonStructure()
@@ -94,6 +90,6 @@ class ContestTest extends TestCase
      */
     public function a_default_contest_image_can_change()
     {
-        $this->markTestSkipped("Working.");
+        $this->markTestSkipped('Working.');
     }
 }

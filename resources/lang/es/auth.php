@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Estas credenciales no coinciden con los datos del sistema.',
+    'failed'   => 'Estas credenciales no coinciden con los datos del sistema.',
     'throttle' => 'Muchos Intentos. Porfavor espere :seconds segundos para intentarlo nuevamente.',
 
 ];

@@ -5,12 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class CountryTranslation
- * @package App
+ * Class CountryTranslation.
  */
 class CountryTranslation extends Model
 {
-
     /**
      * @var bool
      */
