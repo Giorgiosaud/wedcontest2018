@@ -78,11 +78,15 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function contestants()
+    public function representant()
     {
-        return $this->hasMany(Contestant::class, 'representant_id');
+        return $this->belongsTo(User::class, 'representant_id');
     }
 
+    public function contestants()
+    {
+        return $this->hasMany(User::class, 'representant_id');
+    }
     /**
      * Get the path to the user's avatar.
      *

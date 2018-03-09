@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->boolean('subscribed')->default(true);
             $table->boolean('confirmed')->default(false);
             $table->string('confirmation_token', 25)->nullable()->unique();
+            $table->unsignedInteger('representant_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

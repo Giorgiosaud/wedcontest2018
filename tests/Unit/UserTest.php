@@ -22,7 +22,6 @@ class UserTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        // (new \DatabaseSeeder)->run();
 
         $this->user = create(User::class);
     }
@@ -32,7 +31,7 @@ class UserTest extends TestCase
      */
     public function a_user_may_have_contestants()
     {
-        factory(Contestant::class, 4)->create(['representant_id' => $this->user->id]);
+        factory(User::class, 4)->create(['representant_id' => 1]);
         $this->assertInstanceOf(Collection::class, $this->user->contestants);
     }
 

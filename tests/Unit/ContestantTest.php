@@ -21,7 +21,7 @@ class ContestantTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->contestant = create(Contestant::class);
+        $this->contestant = create(User::class, ['representant_id'=>1]);
     }
 
     /**
