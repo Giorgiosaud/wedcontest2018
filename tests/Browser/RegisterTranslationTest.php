@@ -2,9 +2,8 @@
 
 namespace Tests\Browser;
 
-use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\DuskTestCase;
 
 class RegisterTranslationTest extends DuskTestCase
 {
@@ -22,7 +21,7 @@ class RegisterTranslationTest extends DuskTestCase
                 ->assertSee('Phone')
                 ->assertSee('E-Mail Address')
                 ->assertSee('Country')
-                ->assertSelectHasOptions('country', ['Brazil','Antigua And Barbuda']);
+                ->assertSelectHasOptions('country', ['Brazil', 'Antigua And Barbuda']);
         });
     }
 }
