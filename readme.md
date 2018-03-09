@@ -1,4 +1,4 @@
-# Contest [![Build Status](https://travis-ci.org/giorgiosaud/wedcontest2018.svg?branch=master)](https://travis-ci.org/giorgiosaud/wedcontest2018)
+# Contest [![Build Status](https://travis-ci.org/giorgiosaud/wedcontest2018.svg?branch=master)](https://travis-ci.org/giorgiosaud/wedcontest2018) [![StyleCI](https://styleci.io/repos/123292448/shield?branch=master)](https://styleci.io/repos/123292448)
 ## Parts 
 
 1. Contest is 
