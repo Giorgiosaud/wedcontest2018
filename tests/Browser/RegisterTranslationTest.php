@@ -22,8 +22,7 @@ class RegisterTranslationTest extends DuskTestCase
                 ->assertSee('Phone')
                 ->assertSee('E-Mail Address')
                 ->assertSee('Country')
-                ->assertSelectHasOptions('country',['Brazil','Antigua And Barbuda'])
-            ->;
+                ->assertSelectHasOptions('country', ['Brazil','Antigua And Barbuda']);
         });
     }
 }
