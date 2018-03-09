@@ -6,6 +6,7 @@ use App\Contest;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
+use App\Role;
 
 class CreateContestTest extends TestCase
 {
@@ -16,8 +17,9 @@ class CreateContestTest extends TestCase
      */
     public function an_administrator_user_can_create_new_contest()
     {
-        $this->markTestIncomplete('the section is not ready');
-        $user = factory(User::class)->create(['email'=>'jorgelsaud@gmail.com']);
+        $role=Role::whereName('Administrator')->first();
+        $user = factory(User::class)->create();
+        $user->roles()->attach($role->id);
         $this->signIn($user);
         $contest = make(Contest::class);
         $response = $this->post('/contests', $contest->toArray());

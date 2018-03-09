@@ -85,7 +85,6 @@ class ContestTest extends TestCase
     }
 
     /**
-     * @test
      */
     public function a_default_contest_image_can_change()
     {

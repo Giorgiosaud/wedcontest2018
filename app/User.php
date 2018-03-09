@@ -64,7 +64,7 @@ class User extends Authenticatable
      */
     public function isAdmin()
     {
-        return in_array($this->email, $this->administratorsEmails);
+        return $this->roles()->whereName('Administrator')->exists();
     }
 
     /**
@@ -72,7 +72,8 @@ class User extends Authenticatable
      */
     public function isJudge()
     {
-        return in_array($this->email, $this->administratorsEmails);
+        return $this->roles()->whereName('Judge')->exists();
+
     }
 
     /**
@@ -80,6 +81,7 @@ class User extends Authenticatable
      */
     public function representant()
     {
+
         return $this->belongsTo(User::class, 'representant_id');
     }
 
