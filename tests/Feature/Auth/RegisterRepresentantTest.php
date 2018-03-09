@@ -17,30 +17,30 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Spatie\Newsletter\NewsletterFacade;
 
 /**
- * Class CreateRepresentantTest
- * @package Tests\Feature
- */
+* Class CreateRepresentantTest
+* @package Tests\Feature
+*/
 class RegisterRepresentantTest extends TestCase
 {
     use DatabaseMigrations;
     
     protected $userInitialCount;
-
+    
     /**
-     *
-     */
+    *
+    */
     public function setUp()
     {
         parent::setUp();
-
+        
         
         Mail::fake();
         $this->userInitialCount=User::all()->count();
     }
     /**
-     * @param array $overrides
-     * @return array
-     */
+    * @param array $overrides
+    * @return array
+    */
     private function validParams($overrides = [])
     {
         return array_merge([
@@ -56,10 +56,10 @@ class RegisterRepresentantTest extends TestCase
             'password_confirmation' => 'secret',
         ], $overrides);
     }
-
+    
     /**
-     * @test
-     */
+    * @test
+    */
     public function a_guest_can_register_as_representant_and_appears_as_unconfirmed()
     {
         NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
@@ -69,7 +69,7 @@ class RegisterRepresentantTest extends TestCase
         $this->withExceptionHandling();
         $response = $this->post(route('register'), $this->validParams());
         
-
+        
         $response->assertRedirect('/the_contest');
         $this->assertTrue(Auth::check());
         $userCount++;
@@ -91,76 +91,71 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function user_can_fully_confirm_their_email_addresses()
     {
-        $this->withExceptionHandling();
         NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
-        Newsletter::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
-
-        $this->post(route('register'), $this->validParams());
-         tap(auth()->user(),function($user){
-             $this->assertFalse($user->confirmed);
-            $this->assertNotNull($user->confirmation_token);
-            $this->get(route('register.confirm', ['token' => $user->confirmation_token]))
-            ->assertRedirect(route('the_contest'));
-
-         });
-        // $user = User::whereEmail('john@example.com')->first();
-       
+        
+        $userCount=User::all()->count();
+        
+        $this->withExceptionHandling();
+        $response = $this->post(route('register'), $this->validParams(['confirmed'=>false]));
+        $response->assertRedirect('/the_contest');
+        $this->assertTrue(Auth::check());
+        $user=User::whereEmail('ppres@zon.com')->first();
+        $this->assertFalse($user->confirmed);
+        $this->assertNotNull($user->confirmation_token);
+        $this->get(route('register.confirm', ['token' => $user->confirmation_token]))
+        ->assertRedirect(route('the_contest'));
+        
+        
         tap($user->fresh(), function ($user) {
             $this->assertTrue($user->confirmed);
             $this->assertNull($user->confirmation_token);
         });
     }
-
+    
     /** @test */
     public function confirming_an_invalid_token()
     {
         $this->get(route('register.confirm', ['token' => 'invalid']))
-            ->assertRedirect(route('the_contest'))
-            ->assertSessionHas('flash', 'Unknown token.');
+        ->assertRedirect(route('the_contest'))
+        ->assertSessionHas('flash', 'Unknown token.');
     }
-
+    
     /** @test */
     public function name_cannot_exceed_255_chars()
     {
-        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
-
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
             'name' => str_repeat('a', 256),
-        ]));
+            ]));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('name');
         $this->assertFalse(Auth::check());
         $this->assertCount($this->userInitialCount, User::all());
     }
-
+        
     /** @test */
     public function email_is_required()
     {
-        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
-
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
-            'email' => '',
-        ]));
+                'email' => '',
+                ]));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('email');
         $this->assertFalse(Auth::check());
         $this->assertCount($this->userInitialCount, User::all());
     }
-
+            
     /** @test */
     public function email_is_valid()
     {
-        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
-
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
-            'email' => 'not-an-email-address',
-        ]));
+                    'email' => 'not-an-email-address',
+                    ]));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('email');
         $this->assertFalse(Auth::check());
@@ -169,13 +164,11 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function email_cannot_exceed_255_chars()
     {
-        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
-
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
-            'email' => substr(str_repeat('a', 256) . '@example.com', -256),
-        ]));
+                        'email' => substr(str_repeat('a', 256) . '@example.com', -256),
+                        ]));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('email');
         $this->assertFalse(Auth::check());
@@ -184,14 +177,12 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function email_is_unique()
     {
-        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
-
         create(\App\User::class, ['email' => 'johndoe@example.com']);
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
-            'email' => 'johndoe@example.com',
-        ]));
+                            'email' => 'johndoe@example.com',
+                            ]));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('email');
         $this->assertFalse(Auth::check());
@@ -201,13 +192,11 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function password_is_required()
     {
-        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
-
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
-            'password' => '',
-        ]));
+                                'password' => '',
+                                ]));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('password');
         $this->assertFalse(Auth::check());
@@ -216,14 +205,12 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function password_must_be_confirmed()
     {
-        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
-
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
-            'password' => 'foo',
-            'password_confirmation' => 'bar'
-        ]));
+                                    'password' => 'foo',
+                                    'password_confirmation' => 'bar'
+                                    ]));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('password');
         $this->assertFalse(Auth::check());
@@ -232,14 +219,12 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function password_must_be_6_chars()
     {
-        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
-
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
-            'password' => 'foo',
-            'password_confirmation' => 'foo',
-        ]));
+                                        'password' => 'foo',
+                                        'password_confirmation' => 'foo',
+                                        ]));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('password');
         $this->assertFalse(Auth::check());
