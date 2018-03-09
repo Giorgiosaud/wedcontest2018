@@ -1,4 +1,4 @@
-#Contest
+#Contest [![Build Status](https://travis-ci.org/giorgiosaud/wedcontest2018.svg?branch=master)](https://travis-ci.org/giorgiosaud/wedcontest2018)
 1. Contest is 
     1. id
     2. user_id
