@@ -14,6 +14,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Spatie\Newsletter\NewsletterFacade;
 
 /**
  * Class CreateRepresentantTest
@@ -21,8 +22,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
  */
 class RegisterRepresentantTest extends TestCase
 {
-    use DatabaseMigrations,
-        DatabaseTransactions;
+    use DatabaseMigrations;
     
     protected $userInitialCount;
 
@@ -62,9 +62,14 @@ class RegisterRepresentantTest extends TestCase
      */
     public function a_guest_can_register_as_representant_and_appears_as_unconfirmed()
     {
+        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
+        
         $userCount=User::all()->count();
+        
         $this->withExceptionHandling();
         $response = $this->post(route('register'), $this->validParams());
+        
+
         $response->assertRedirect('/the_contest');
         $this->assertTrue(Auth::check());
         $userCount++;
@@ -86,14 +91,19 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function user_can_fully_confirm_their_email_addresses()
     {
-        $this->post(route('register'), $this->validParams([
-            'email' => 'john@example.com',
-        ]));
-        $user = User::whereEmail('john@example.com')->first();
-        $this->assertFalse($user->confirmed);
-        $this->assertNotNull($user->confirmation_token);
-        $this->get(route('register.confirm', ['token' => $user->confirmation_token]))
+        $this->withExceptionHandling();
+        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
+
+        $this->post(route('register'), $this->validParams());
+         tap(auth()->user(),function($user){
+             $this->assertFalse($user->confirmed);
+            $this->assertNotNull($user->confirmation_token);
+            $this->get(route('register.confirm', ['token' => $user->confirmation_token]))
             ->assertRedirect(route('the_contest'));
+
+         });
+        // $user = User::whereEmail('john@example.com')->first();
+       
         tap($user->fresh(), function ($user) {
             $this->assertTrue($user->confirmed);
             $this->assertNull($user->confirmation_token);
@@ -111,6 +121,8 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function name_cannot_exceed_255_chars()
     {
+        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
+
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
@@ -125,6 +137,8 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function email_is_required()
     {
+        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
+
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
@@ -139,6 +153,8 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function email_is_valid()
     {
+        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
+
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
@@ -152,6 +168,8 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function email_cannot_exceed_255_chars()
     {
+        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
+
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
@@ -165,6 +183,8 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function email_is_unique()
     {
+        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
+
         create(\App\User::class, ['email' => 'johndoe@example.com']);
         $this->withExceptionHandling();
         $this->from(route('register'));
@@ -180,6 +200,8 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function password_is_required()
     {
+        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
+
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
@@ -193,6 +215,8 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function password_must_be_confirmed()
     {
+        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
+
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
@@ -207,6 +231,8 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function password_must_be_6_chars()
     {
+        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
+
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([

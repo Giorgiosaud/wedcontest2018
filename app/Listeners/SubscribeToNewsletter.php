@@ -28,6 +28,5 @@ class SubscribeToNewsletter
     public function handle(RegisterRepresentant $event)
     {
         Newsletter::subscribe($event->user->email);
-
     }
 }
