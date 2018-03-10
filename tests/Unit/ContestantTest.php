@@ -2,7 +2,6 @@
 
 namespace Tests\Unit;
 
-use App\Contestant;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
@@ -21,7 +20,7 @@ class ContestantTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $user=create(User::class);
+        $user = create(User::class);
         $this->contestant = create(User::class, ['representant_id'=>$user->id]);
     }
 

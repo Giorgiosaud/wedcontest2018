@@ -73,7 +73,6 @@ class User extends Authenticatable
     public function isJudge()
     {
         return $this->roles()->whereName('Judge')->exists();
-
     }
 
     /**
@@ -81,14 +80,14 @@ class User extends Authenticatable
      */
     public function representant()
     {
-
-        return $this->belongsTo(User::class, 'representant_id');
+        return $this->belongsTo(self::class, 'representant_id');
     }
 
     public function contestants()
     {
-        return $this->hasMany(User::class, 'representant_id');
+        return $this->hasMany(self::class, 'representant_id');
     }
+
     /**
      * Get the path to the user's avatar.
      *
