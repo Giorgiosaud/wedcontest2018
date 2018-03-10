@@ -3,11 +3,9 @@
 namespace Tests\Unit;
 
 use App\Contestant;
-use App\User;
-use Illuminate\Database\Eloquent\Collection;
+use App\Role;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
-use App\Role;
 
 /**
  * Class UserTest.
@@ -20,6 +18,7 @@ class RoleTest extends TestCase
     {
         parent::setUp();
     }
+
     /**
      * @test
      */
@@ -27,6 +26,7 @@ class RoleTest extends TestCase
     {
         $this->assertCount(1, Role::whereName('Administrator')->get());
     }
+
     /**
      * @test
      */
@@ -34,6 +34,7 @@ class RoleTest extends TestCase
     {
         $this->assertCount(1, Role::whereName('Representant')->get());
     }
+
     /**
      * @test
      */
@@ -41,6 +42,7 @@ class RoleTest extends TestCase
     {
         $this->assertCount(1, Role::whereName('Judge')->get());
     }
+
     /**
      * @test
      */

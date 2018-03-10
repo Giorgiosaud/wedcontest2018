@@ -3,10 +3,10 @@
 namespace Tests\Feature;
 
 use App\Contest;
+use App\Role;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
-use App\Role;
 
 class CreateContestTest extends TestCase
 {
@@ -17,7 +17,7 @@ class CreateContestTest extends TestCase
      */
     public function an_administrator_user_can_create_new_contest()
     {
-        $role=Role::whereName('Administrator')->first();
+        $role = Role::whereName('Administrator')->first();
         $user = factory(User::class)->create();
         $user->roles()->attach($role->id);
         $this->signIn($user);
