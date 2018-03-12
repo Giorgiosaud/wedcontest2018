@@ -18,7 +18,9 @@ require('./bootstrap');
 Vue.component("Flash", require("./components/Flash.vue"));
 Vue.component("Login", require("./components/Login.vue"));
 Vue.component("Register", require("./components/Register.vue"));
-
+Vue.component("LogoutButton", require("./components/LogoutButton.vue"));
+Vue.component("UserNotifications", require("./components/UserNotifications.vue"));
+Vue.component("Dropdown", require("./components/Dropdown.vue"));
 const app = new Vue({
     el: '#app',
     data: {
@@ -26,12 +28,12 @@ const app = new Vue({
     },
 
     methods: {
-        search() {
-            this.searching = true;
+        // search() {
+            // this.searching = true;
 
-            this.$nextTick(() => {
-                this.$refs.search.focus();
-            });
-        }
+            // this.$nextTick(() => {
+                //this.$refs.search.focus();
+            // });
+        // }
     }
 });

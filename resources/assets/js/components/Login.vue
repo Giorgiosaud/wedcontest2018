@@ -12,8 +12,7 @@
             login() {
                 this.loading = true;
 
-                axios
-                    .post("/login", this.form)
+                axios.post("/login", this.form)
                     .then(() => location.reload())
             .catch(error => {
                     this.feedback =

@@ -18,6 +18,4 @@ mix.js('resources/assets/js/app.js', 'public/js')
         processCssUrls: false,
         postCss: [ tailwindcss('./tailwind.js') ],
     })
-    .browserSync({
-        proxy:'concurso.zonapro'
-    });
+    .browserSync('concurso.zonapro');

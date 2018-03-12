@@ -17,6 +17,7 @@
                     subscribed: false
                 },
                 country:"",
+                referred:"",
                 feedback: "",
                 loading: false,
                 errors: {}
@@ -44,7 +45,14 @@
                     return this.form.country='';
                 }
                 this.form.country=newCountry.code;
-                this.form.phone='+'+newCountry.calling_code;}
+                this.form.phone='+'+newCountry.calling_code;
+            },
+            referred(newReferred,oldReferred){
+                if(typeof newReferred!="object"){
+                    return this.form.referred='';
+                }
+                this.form.referred=newReferred.value;
+            }
         }
     };
 </script>

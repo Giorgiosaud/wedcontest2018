@@ -67,7 +67,7 @@
 
             <div class="mb-6">
                 <label for="referred" class="block uppercase ubscribedtracking-wide text-grey-darker text-xs font-bold mb-2">@lang('registration.referred.label')</label>
-                <v-select v-model="form.referred" :options="[{label:'@lang("registration.referred.options.1")',value:'invited'},{label:'@lang('registration.referred.options.2')',value:'contact'},{label:'@lang('registration.referred.options.3')',value:'other'}]"></v-select>
+                <v-select v-model="referred" :options="[{label:'@lang("registration.referred.options.1")',value:'invited'},{label:'@lang('registration.referred.options.2')',value:'contact'},{label:'@lang('registration.referred.options.3')',value:'other'}]"></v-select>
                 <div v-if="errors.referred" v-text="errors.referred[0]" class="text-xs text-red mt-2"></div>
             </div>
             <div class="flex items-center -mx-4">
