@@ -84,8 +84,6 @@ class ContestTest extends TestCase
         ->assertJsonFragment($data);
     }
 
-    /**
-     */
     public function a_default_contest_image_can_change()
     {
         $this->markTestSkipped('Working.');
