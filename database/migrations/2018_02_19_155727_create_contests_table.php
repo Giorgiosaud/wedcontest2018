@@ -16,11 +16,11 @@ class CreateContestsTable extends Migration
         Schema::create('contests', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('topic');
             $table->string('slug');
             $table->string('year');
+            $table->string('intro_image')->nullable();
             $table->boolean('active')->default(false);
-            $table->text('description')->nullable();
+            
             $table->foreign('user_id')
                 ->references('id')->on('users');
             $table->timestamps();

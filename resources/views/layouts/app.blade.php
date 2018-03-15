@@ -31,7 +31,13 @@
 <body class="font-sans">
 <div id="app">
     @include ('layouts.assets.nav')
-    @yield('intro')
+    @header
+        @slot('image')
+            @yield('mainImage',asset('/images/Home/ContestIntro.jpg'))
+        @endslot
+        @yield('mainTitle','Wedcontest 2018')
+
+    @endheader
     <div class="container mx-auto">
         <div class="flex">
             @section('sidebar')

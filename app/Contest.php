@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -9,13 +10,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Contest extends Model
 {
+    use Translatable;
+    public $translatedAttributes = ['topic','description',];
+    
+
     /**
      * @var array
      */
     protected $fillable = [
         'user_id',
-        'topic',
-        'description',
+        
         'slug',
         'year',
     ];

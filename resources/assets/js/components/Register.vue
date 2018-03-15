@@ -1,5 +1,4 @@
 <script>
-    import Hub from '../events/Hub.js';
 
     export default {
         data() {

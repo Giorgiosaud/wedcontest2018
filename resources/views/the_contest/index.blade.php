@@ -1,8 +1,15 @@
 @extends('layouts.app')
-@include('the_contest.assets._header')
+@section('mainImage')
+{{$contest->intro_image}}
+@endsection
+@section('mainTitle')
+{{ $contest->topic }}
+@endsection
+
+
 @section('content')
 <div class="pt-6">
-    @include ('the_contest.assets._header')
+    
 </div>
     @if (auth()->check())
         @if(auth()->user()->confirmed)

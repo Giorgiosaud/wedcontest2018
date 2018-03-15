@@ -16,9 +16,17 @@ $factory->define(\App\Contest::class, function (Faker $faker) {
             return $user->id;
         },
         'active'     => false,
-        'topic'      => $title,
+        'en'=>[
+            'topic'      => $title,
+            'description'=> $faker->paragraph(50, true),
+        ],
+        'es'=>[
+            'topic'      => $title.'-es',
+            'description'=> $faker->paragraph(50, true).'-es',
+        ],
+        
         'slug'       => str_slug($title),
-        'description'=> $faker->paragraph(50, true),
+        
         'year'       => $yearOfContest--,
 
     ];
