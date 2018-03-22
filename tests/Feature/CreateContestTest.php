@@ -20,24 +20,23 @@ class CreateContestTest extends TestCase
         $user = factory(User::class)->create();
         $user->roles()->attach($role->id);
         $this->signIn($user);
-        $contest=[
-            'en'=>[
-                'topic'=>'Ocean',
-                'description'=>'Ocean Description'
+        $contest = [
+            'en'=> [
+                'topic'      => 'Ocean',
+                'description'=> 'Ocean Description',
             ],
-            'es'=>[
-                'topic'=>'Oceano',
-                'description'=>'Descripcion Oceano'
+            'es'=> [
+                'topic'      => 'Oceano',
+                'description'=> 'Descripcion Oceano',
             ],
-            'year'=>'2000',
-            'normalCategories'=>true
+            'year'            => '2000',
+            'normalCategories'=> true,
         ];
         $response = $this->post('/contests', $contest);
         $this->get($response->headers->get('Location'))
         ->assertSee($contest['en']['topic'])
         ->assertSee($contest['en']['description'])
         ->assertSee((string) $contest['year']);
-
 
         // $this->get($response->headers->get('Location'))
     }
