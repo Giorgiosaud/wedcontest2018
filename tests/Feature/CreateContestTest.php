@@ -10,23 +10,37 @@ use Tests\TestCase;
 
 class CreateContestTest extends TestCase
 {
-    use DatabaseMigrations;
+	use DatabaseMigrations;
 
     /**
      * @test
      */
     public function an_administrator_user_can_create_new_contest()
     {
-        $role = Role::whereName('Administrator')->first();
-        $user = factory(User::class)->create();
-        $user->roles()->attach($role->id);
-        $this->signIn($user);
-        $contest = make(Contest::class);
-        $response = $this->post('/contests', $contest->toArray());
-        $this->get($response->headers->get('Location'))
-            ->assertSee($contest->topic)
-            ->assertSee((string) $contest->year)
-            ->assertSee($contest->description);
+    	$role = Role::whereName('Administrator')->first();
+    	$user = factory(User::class)->create();
+    	$user->roles()->attach($role->id);
+    	$this->signIn($user);
+    	$contest=[
+    		'en'=>[
+    			'topic'=>'Ocean',
+    			'description'=>'Ocean Description'
+    		],
+    		'es'=>[
+    			'topic'=>'Oceano',
+    			'description'=>'Descripcion Oceano'	
+    		],
+    		'year'=>'2000'
+    	];
+    	$response = $this->post('/contests', $contest);
+    	$this->get($response->headers->get('Location'))
+    	->assertSee($contest['en']['topic'])
+    	->assertSee($contest['en']['description'])
+    	->assertSee((string) $contest['year']);
+
+
+        // $this->get($response->headers->get('Location'))
+
     }
 
     /**
@@ -34,10 +48,10 @@ class CreateContestTest extends TestCase
      */
     public function guest_may_not_create_a_contest()
     {
-        $this->withExceptionHandling();
-        $this->get('/contests/create')
-            ->assertRedirect('/login');
-        $this->post('/contests')
-            ->assertRedirect('/login');
+    	$this->withExceptionHandling();
+    	$this->get('/contests/create')
+    	->assertRedirect('/login');
+    	$this->post('/contests')
+    	->assertRedirect('/login');
     }
 }

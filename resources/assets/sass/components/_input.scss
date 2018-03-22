@@ -1,0 +1,25 @@
+input[type="text"] {
+  @apply .border-t-0 .border-l-0 .border-r-0 .border-b .rounded .appearance-none .bg-transparent .w-full .text-grey-darker;
+  transition: 3s all;
+  &:focus{
+  	outline:0;
+  	@apply .border-b-2;
+  }
+}
+textarea {
+  @apply .border .border-teal .rounded;
+  transition: 3s all;
+  &:focus{
+  	outline:0;
+  	@apply .border-b-2;
+  }
+}
+label{
+	@apply .block .text-grey-darker .text-sm .font-bold .mb-2;
+}
+button{
+	@apply .bg-teal .text-white .font-bold .py-2 .px-4 .rounded;
+	&:hover{
+		@apply .bg-teal-dark;
+	}
+} 

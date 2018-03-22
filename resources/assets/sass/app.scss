@@ -5,14 +5,17 @@
 @import '~select2/src/scss/core.scss';
 //@import '~select2-bootstrap-theme/src/select2-bootstrap.scss';
 @tailwind preflight;
+@tailwind components;
 
 @import "components/btn";
 @import "components/widget";
+
 
 @import "sections/search";
 @import "sections/trix";
 
 @tailwind utilities;
+@import "components/input";
 a {
   @apply .text-grey-darkest;
   text-decoration: none;

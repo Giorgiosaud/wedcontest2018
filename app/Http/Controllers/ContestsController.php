@@ -9,8 +9,8 @@ class ContestsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->only(['store', 'update', 'create', 'edit', 'destroy']);
-        $this->middleware('auth')->except(['index', 'show']);
+        // $this->middleware('admin')->only(['store', 'update', 'create', 'edit', 'destroy']);
+        // $this->middleware('auth')->except(['index', 'show']);
     }
 
     /**
@@ -48,16 +48,24 @@ class ContestsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
+
         request()->validate([
-                'topic'       => 'required',
-                'slug'        => 'required',
-                'description' => 'required',
-                'year'        => 'required',
+                'year'       => 'required|numeric',
+                'en.topic'        => 'required|string',
+                'en.description'        => 'required|string',
+                'es.topic' => 'required|string',
+                'es.description' => 'required|string',
+                'normalCategories'=>'required|boolean'
                 ]);
-        request()->offsetSet('user_id', auth()->id());
-        $contest = Contest::create($request->all());
+        $contest = Contest::create([
+            'user_id' => auth()->id(),
+            'year' => request('year'),
+            'en' => request('en'),
+            'es' => request('es')
+        ]);
+
         if (request()->wantsJson()) {
             return response($contest, 201);
         }

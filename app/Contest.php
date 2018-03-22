@@ -37,7 +37,27 @@ class Contest extends Model
     {
         return 'slug';
     }
+    /**
+     * Boot the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
 
+        // static::deleting(function ($contest) {
+        //     $contest->replies->each->delete();
+
+        //     $contest->creator->loseReputation('contest_published');
+        // });
+
+        static::created(function ($contest) {
+            $contest->update(['slug' => $contest->topic]);
+
+            // event(new contestWasPublished($contest));
+
+            // $contest->creator->gainReputation('contest_published');
+        });
+    }
     /**
      * @return string
      */

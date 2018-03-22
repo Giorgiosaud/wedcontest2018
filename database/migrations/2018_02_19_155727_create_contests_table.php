@@ -16,7 +16,7 @@ class CreateContestsTable extends Migration
         Schema::create('contests', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('slug');
+            $table->string('slug')->unique()->nullable();
             $table->string('year');
             $table->string('intro_image')->nullable();
             $table->boolean('active')->default(false);

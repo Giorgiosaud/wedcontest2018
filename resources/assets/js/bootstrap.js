@@ -3,6 +3,10 @@ window._ = require('lodash');
 
 import VModal from 'vue-js-modal';
 import VueSelect from 'vue-select';
+import VueInternalization from 'vue-i18n';
+
+
+
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -23,6 +27,12 @@ require('select2');
  */
 
 window.Vue = require('vue');
+Vue.use(VueInternalization);
+// Vue.config.lang = 'en';
+
+// Object.keys(Locales).forEach(function (lang) {
+//     Vue.locale(lang, Locales[lang])
+// });
 
 Vue.use(VModal);
 Vue.component('v-select', VueSelect);
