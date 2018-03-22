@@ -39,8 +39,13 @@ class ContestsController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
        return view('contests.create');
    }
+=======
+        return view('contests.create');
+    }
+>>>>>>> 8037ea1b34ab0218a6728aab466b4c89ab550fc3
 
     /**
      * Store a newly created resource in storage.
@@ -51,8 +56,8 @@ class ContestsController extends Controller
      */
     public function store()
     {
-
         request()->validate([
+<<<<<<< HEAD
             'year'       => 'required|numeric',
             'en.topic'        => 'required|string',
             'en.description'        => 'required|string',
@@ -60,11 +65,20 @@ class ContestsController extends Controller
             'es.description' => 'required|string',
             'normalCategories'=>'required|boolean'
         ]);
+=======
+                'year'                  => 'required|numeric',
+                'en.topic'              => 'required|string',
+                'en.description'        => 'required|string',
+                'es.topic'              => 'required|string',
+                'es.description'        => 'required|string',
+                'normalCategories'      => 'required|boolean',
+                ]);
+>>>>>>> 8037ea1b34ab0218a6728aab466b4c89ab550fc3
         $contest = Contest::create([
             'user_id' => auth()->id(),
-            'year' => request('year'),
-            'en' => request('en'),
-            'es' => request('es')
+            'year'    => request('year'),
+            'en'      => request('en'),
+            'es'      => request('es'),
         ]);
         if(request('normalCategories')){
             $categories=[
