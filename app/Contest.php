@@ -11,15 +11,14 @@ use Illuminate\Database\Eloquent\Model;
 class Contest extends Model
 {
     use Translatable;
-    public $translatedAttributes = ['topic','description',];
-    
+    public $translatedAttributes = ['topic', 'description'];
 
     /**
      * @var array
      */
     protected $fillable = [
         'user_id',
-        
+
         'slug',
         'year',
     ];
@@ -37,6 +36,7 @@ class Contest extends Model
     {
         return 'slug';
     }
+
     /**
      * Boot the model.
      */
@@ -58,6 +58,7 @@ class Contest extends Model
             // $contest->creator->gainReputation('contest_published');
         });
     }
+
     /**
      * @return string
      */

@@ -12,14 +12,15 @@ $factory->define(\App\Contest::class, function (Faker $faker) {
             $user = factory(\App\User::class)->create();
             $roles_id = Role::whereName('Administrator')->pluck('id');
             $user->roles()->sync($roles_id);
+
             return $user->id;
         },
         'active'     => false,
-        'en'=>[
+        'en'         => [
             'topic'      => $title,
             'description'=> $faker->paragraph(50, true),
         ],
-        'es'=>[
+        'es'=> [
             'topic'      => $title.'-es',
             'description'=> $faker->paragraph(50, true).'-es',
         ],
