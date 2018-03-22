@@ -23,3 +23,22 @@ button{
 		@apply .bg-teal-dark;
 	}
 } 
+
+.vue-switcher-theme--custom {
+    &.vue-switcher-color--blue {
+        div {
+            background-color: lighten(#4dc0b5, 10%);
+            &:after {
+                background-color: darken(#4dc0b5, 5%);
+            }
+        }
+        &.vue-switcher--unchecked {
+            div {
+                background-color: lighten(#4dc0b5, 30%);
+                &:after {
+                    background-color: lighten(#4dc0b5, 10%);
+                }
+            }
+        }
+    }
+}

@@ -5515,6 +5515,22 @@ button:hover {
   background-color: #38a89d;
 }
 
+.vue-switcher-theme--custom.vue-switcher-color--blue div {
+  background-color: #73cdc5;
+}
+
+.vue-switcher-theme--custom.vue-switcher-color--blue div:after {
+  background-color: #40b4a9;
+}
+
+.vue-switcher-theme--custom.vue-switcher-color--blue.vue-switcher--unchecked div {
+  background-color: #bee8e4;
+}
+
+.vue-switcher-theme--custom.vue-switcher-color--blue.vue-switcher--unchecked div:after {
+  background-color: #73cdc5;
+}
+
 a {
   color: #3d4852;
   text-decoration: none;

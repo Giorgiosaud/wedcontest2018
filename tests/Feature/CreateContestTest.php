@@ -17,6 +17,7 @@ class CreateContestTest extends TestCase
      */
     public function an_administrator_user_can_create_new_contest()
     {
+        $this->withExceptionHandling();
     	$role = Role::whereName('Administrator')->first();
     	$user = factory(User::class)->create();
     	$user->roles()->attach($role->id);
@@ -30,7 +31,8 @@ class CreateContestTest extends TestCase
     			'topic'=>'Oceano',
     			'description'=>'Descripcion Oceano'	
     		],
-    		'year'=>'2000'
+    		'year'=>'2000',
+            'normalCategories'=>true
     	];
     	$response = $this->post('/contests', $contest);
     	$this->get($response->headers->get('Location'))

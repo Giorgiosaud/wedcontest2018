@@ -22,7 +22,7 @@
         </div>
 
         <div class="pt-4">
-            {{$contest->description}}
+            {!!$contest->description!!}
         </div>
 
 

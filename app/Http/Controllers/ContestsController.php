@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Contest;
 use Illuminate\Http\Request;
 
@@ -9,8 +10,8 @@ class ContestsController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('admin')->only(['store', 'update', 'create', 'edit', 'destroy']);
-        // $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('admin')->only(['store', 'update', 'create', 'edit', 'destroy']);
+        $this->middleware('auth')->except(['index', 'show']);
     }
 
     /**
@@ -28,7 +29,7 @@ class ContestsController extends Controller
 
         return view('contests.index', [
             'contests' => $contests,
-            ]);
+        ]);
     }
 
     /**
@@ -39,7 +40,7 @@ class ContestsController extends Controller
     public function create()
     {
        return view('contests.create');
-    }
+   }
 
     /**
      * Store a newly created resource in storage.
@@ -52,26 +53,37 @@ class ContestsController extends Controller
     {
 
         request()->validate([
-                'year'       => 'required|numeric',
-                'en.topic'        => 'required|string',
-                'en.description'        => 'required|string',
-                'es.topic' => 'required|string',
-                'es.description' => 'required|string',
-                'normalCategories'=>'required|boolean'
-                ]);
+            'year'       => 'required|numeric',
+            'en.topic'        => 'required|string',
+            'en.description'        => 'required|string',
+            'es.topic' => 'required|string',
+            'es.description' => 'required|string',
+            'normalCategories'=>'required|boolean'
+        ]);
         $contest = Contest::create([
             'user_id' => auth()->id(),
             'year' => request('year'),
             'en' => request('en'),
             'es' => request('es')
         ]);
-
+        if(request('normalCategories')){
+            $categories=[
+                ['name'=>'Seeds','max_age'=>3,'contest_id'=>$contest->id],
+                ['name'=>'Sprouts','max_age'=>7,'contest_id'=>$contest->id],
+                ['name'=>'Thinkers','max_age'=>10,'contest_id'=>$contest->id],
+                ['name'=>'Game Changers','max_age'=>15,'contest_id'=>$contest->id]
+            ];
+            foreach($categories as $category){
+                Category::create($category);
+            }    
+        }
+        
         if (request()->wantsJson()) {
             return response($contest, 201);
         }
 
         return redirect($contest->path())
-                ->with('flash', 'Your thread has been published!');
+        ->with('flash', 'Your thread has been published!');
     }
 
     /**

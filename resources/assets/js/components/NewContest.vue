@@ -23,6 +23,19 @@
       </label>
       <wysiwyg name="desctiption.es" id="description" v-model="form.es.description"></wysiwyg>
     </div>
+    <div class="py-2"> 
+      <label  for="description">
+        Create Normal Categories
+      </label>
+      <div class="flex">
+      <div class="px-2">No</div>
+      <switches v-model="form.normalCategories" theme="custom" color="blue"></switches>
+      <div class="px-2">Yes</div>
+      </div>
+    </div>
+    <div class="py-2">
+      <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions">
+    </div>
     <div class="py-2">
       <button type="button" @click="createContest">Create</button>
     </div>
@@ -31,11 +44,18 @@
 </template>
 
 <script>
+import Switches from 'vue-switches';
+import vueDropzone from 'vue-dropzone';
+import 'vue2-dropzone/dist/vue2Dropzone.css'
+
+
 export default {
 	props: ['contest'],
-
-	data() {
-		return {
+  components: {
+    Switches,vueDropzone
+  },
+  data() {
+    return {
       form:{
         en:{
           topic:'',
@@ -45,7 +65,8 @@ export default {
           topic:'',
           description:''
         },
-        year:''
+        year:'',
+        normalCategories:true
       }
     }
   },

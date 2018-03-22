@@ -23,7 +23,7 @@ class UsersSeed extends Seeder
                 'subscribed'     => true,
                 'confirmed'      => true,
                 'email'          => 'jorgelsaud@gmail.com',
-                'password'       => bcrypt('W3dc0nt3st'),
+                'password'       => bcrypt('wedcontest'),
                 'remember_token' => str_random(10),
             ]
         );
