@@ -16,7 +16,6 @@ class CreateContestTest extends TestCase
      */
     public function an_administrator_user_can_create_new_contest()
     {
-        $this->withExceptionHandling();
         $role = Role::whereName('Administrator')->first();
         $user = factory(User::class)->create();
         $user->roles()->attach($role->id);
