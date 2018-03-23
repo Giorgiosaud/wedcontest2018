@@ -45070,8 +45070,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         autoProcessQueue: false,
         url: "/images/upload",
         thumbnailWidth: 150,
-        maxFilesize: 0.5,
-        headers: { "My-Awesome-Header": "header value" }
+        maxFilesize: 5,
+        method: "POST",
+        // chunking: true,
+        // chunkSize: 0.1,
+        headers: {
+          "X-CSRF-TOKEN": document.head.querySelector('meta[name="csrf-token"]').content
+        }
       }
     };
   },
@@ -45484,7 +45489,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       cropper: {},
       cropperOptions: {
         aspectRatio: 16 / 9,
-        minContainerWidth: 850
+        movable: false
       }
     };
   },

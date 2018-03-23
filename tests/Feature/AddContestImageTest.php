@@ -10,8 +10,8 @@ class AddContestImageTest extends TestCase
     /** @test */
     public function only_members_can_add_images_to_contest()
     {
-        // $this->withExceptionHandling();
+        $this->withExceptionHandling();
         $this->json('POST', '/images/upload')
-            ->assertStatus(401);
+            ->assertStatus(403);
     }
 }

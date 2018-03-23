@@ -43,7 +43,7 @@ export default {
       cropper: {},
       cropperOptions: {
         aspectRatio: 16 / 9,
-        minContainerWidth: 850
+        movable: false
       }
     };
   },
