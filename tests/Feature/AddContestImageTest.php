@@ -1,12 +1,14 @@
 <?php
+
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
 class AddContestImageTest extends TestCase
 {
     use DatabaseMigrations;
+
     /** @test */
     public function only_members_can_add_images_to_contest()
     {
