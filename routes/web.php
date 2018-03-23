@@ -37,4 +37,5 @@ Route::group([
     Route::get('/profile', function () {
         return 'profile';
     })->name('profile');
+    Route::post('/images/upload', 'ImageController@store')->name('store.image');
 });

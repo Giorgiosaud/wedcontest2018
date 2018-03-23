@@ -19,7 +19,7 @@ try {
 
 
 } catch (e) { }
-require('select2');
+// require('select2');
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
  * using reactive data binding and reusable components. Vue's API is clean

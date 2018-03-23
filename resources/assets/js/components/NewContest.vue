@@ -24,17 +24,18 @@
       <wysiwyg name="desctiption.es" id="description" v-model="form.es.description"></wysiwyg>
     </div>
     <div class="py-2"> 
-      <label  for="description">
+      <label  for="normalCategories">
         Create Normal Categories
       </label>
       <div class="flex">
       <div class="px-2">No</div>
-      <switches v-model="form.normalCategories" theme="custom" color="blue"></switches>
+      <switches v-model="form.normalCategories" id="normalCategories" theme="custom" color="blue"></switches>
       <div class="px-2">Yes</div>
       </div>
     </div>
     <div class="py-2">
-      <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions">
+      <label for="imagenConcurso">Imagen del Concurso</label>
+      <dropzone-cropping ref="imagenConcurso" id="imagenConcurso" v-model="form.imagen"  :options="dropzoneOptions"></dropzone-cropping>
     </div>
     <div class="py-2">
       <button type="button" @click="createContest">Create</button>
@@ -44,63 +45,72 @@
 </template>
 
 <script>
-import Switches from 'vue-switches';
-import vueDropzone from 'vue-dropzone';
-import 'vue2-dropzone/dist/vue2Dropzone.css'
-
+import Switches from "vue-switches";
+import dropzoneCropping from "./dropzoneCropping.vue";
 
 export default {
-	props: ['contest'],
+  props: ["contest"],
   components: {
-    Switches,vueDropzone
+    Switches,
+    dropzoneCropping
   },
   data() {
     return {
-      form:{
-        en:{
-          topic:'',
-          description:''
+      form: {
+        en: {
+          topic: "",
+          description: ""
         },
-        es:{
-          topic:'',
-          description:''
+        es: {
+          topic: "",
+          description: ""
         },
-        year:'',
-        normalCategories:true
+        year: "",
+        imagen: "",
+        normalCategories: true
+      },
+      dropzoneOptions: {
+        autoDiscover: false,
+        autoProcessQueue: false,
+        url: "/images/upload",
+        thumbnailWidth: 150,
+        maxFilesize: 0.5,
+        headers: { "My-Awesome-Header": "header value" }
       }
-    }
+    };
   },
-  methods:{
-    resetForm(){
-      this.form.en.topic='';
-      this.form.en.description='';
-      this.form.es.topic='';
-      this.form.es.description='';
-      this.form.year='';
-      this.form.error=false;
+  methods: {
+    resetForm() {
+      this.form.en.topic = "";
+      this.form.en.description = "";
+      this.form.es.topic = "";
+      this.form.es.description = "";
+      this.form.year = "";
+      this.form.error = false;
     },
-    createContest(){
-      axios.post('/contests',this.form)
-      .catch(error => {
-        flash(error.response.data.message, "warning");
-      })
-      .then(({data})=>{
-        this.resetForm();
-        flash("El concurso fue creado exitosamente", "success");
-      })
-
+    createContest() {
+      axios
+        .post("/contests", this.form)
+        .catch(error => {
+          flash(error.response.data.message, "warning");
+        })
+        .then(({ data }) => {
+          this.resetForm();
+          flash("El concurso fue creado exitosamente", "success");
+        });
     }
   },
-  computed:{
-    classes(){
-      let defaults = ['border-teal', 'text-white'];
-      if (this.level === 'success') defaults.push('bg-green', 'border-green-dark');
-      if (this.level === 'warning') defaults.push('bg-orange', 'border-yellow-dark');
-      if (this.level === 'danger') defaults.push('bg-red', 'border-red-dark');
+  computed: {
+    classes() {
+      let defaults = ["border-teal", "text-white"];
+      if (this.level === "success")
+        defaults.push("bg-green", "border-green-dark");
+      if (this.level === "warning")
+        defaults.push("bg-orange", "border-yellow-dark");
+      if (this.level === "danger") defaults.push("bg-red", "border-red-dark");
 
       return defaults;
     }
   }
-
-}
+};
 </script>
