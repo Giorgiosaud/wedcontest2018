@@ -35,15 +35,15 @@ class RegisterRepresentantTest extends TestCase
     private function validParams($overrides = [])
     {
         return array_merge([
-            'name' => 'Pedro',
-            'last_name' => 'Perez',
-            'country' => 'CL',
-            'phone' => '+56528899982',
-            'referred' => 'invited',
-            'language' => 'Es',
-            'subscribed' => true,
-            'email' => 'ppres@zon.com',
-            'password' => 'secret',
+            'name'                  => 'Pedro',
+            'last_name'             => 'Perez',
+            'country'               => 'CL',
+            'phone'                 => '+56528899982',
+            'referred'              => 'invited',
+            'language'              => 'Es',
+            'subscribed'            => true,
+            'email'                 => 'ppres@zon.com',
+            'password'              => 'secret',
             'password_confirmation' => 'secret',
         ], $overrides);
     }
@@ -165,7 +165,7 @@ class RegisterRepresentantTest extends TestCase
         $this->withExceptionHandling();
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams([
-            'email' => substr(str_repeat('a', 256) . '@example.com', -256),
+            'email' => substr(str_repeat('a', 256).'@example.com', -256),
         ]));
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('email');
@@ -214,7 +214,7 @@ class RegisterRepresentantTest extends TestCase
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams(
             [
-                'password' => 'foo',
+                'password'              => 'foo',
                 'password_confirmation' => 'bar',
             ]
         ));
@@ -231,7 +231,7 @@ class RegisterRepresentantTest extends TestCase
         $this->from(route('register'));
         $response = $this->post(route('register'), $this->validParams(
             [
-                'password' => 'foo',
+                'password'              => 'foo',
                 'password_confirmation' => 'foo',
             ]
         ));

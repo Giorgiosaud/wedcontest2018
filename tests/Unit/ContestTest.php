@@ -42,10 +42,10 @@ class ContestTest extends TestCase
     public function a_contest_can_be_called_by_slug_from_administrator()
     {
         $this->asAdmin();
-        $this->get('contests/' . $this->contest->slug)
+        $this->get('contests/'.$this->contest->slug)
             ->assertSee($this->contest->topic)
             ->assertSee($this->contest->description)
-            ->assertSee((string)$this->contest->year);
+            ->assertSee((string) $this->contest->year);
     }
 
     /** @test */
@@ -69,7 +69,7 @@ class ContestTest extends TestCase
     public function a_contest_have_active_prop_and_can_be_viewed_as_admin()
     {
         $this->asAdmin();
-        $this->get('contests/' . $this->contest->slug)
+        $this->get('contests/'.$this->contest->slug)
             ->assertSee('Inactive');
     }
 
@@ -82,7 +82,7 @@ class ContestTest extends TestCase
         $data = [
             'intro_image' => asset('/images/Home/ContestIntro.jpg'),
         ];
-        $this->getJson('contests/' . $this->contest->slug)
+        $this->getJson('contests/'.$this->contest->slug)
             ->assertJsonStructure()
             ->assertJsonFragment($data);
     }

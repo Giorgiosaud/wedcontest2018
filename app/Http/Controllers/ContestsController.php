@@ -52,19 +52,19 @@ class ContestsController extends Controller
     public function store()
     {
         request()->validate([
-            'year' => 'required|numeric',
-            'en.topic' => 'required|string',
-            'en.description' => 'required|string',
-            'es.topic' => 'required|string',
-            'es.description' => 'required|string',
+            'year'             => 'required|numeric',
+            'en.topic'         => 'required|string',
+            'en.description'   => 'required|string',
+            'es.topic'         => 'required|string',
+            'es.description'   => 'required|string',
             'normalCategories' => 'required|boolean',
 
         ]);
         $contest = Contest::create([
             'user_id' => auth()->id(),
-            'year' => request('year'),
-            'en' => request('en'),
-            'es' => request('es'),
+            'year'    => request('year'),
+            'en'      => request('en'),
+            'es'      => request('es'),
         ]);
         if (request('normalCategories')) {
             $categories = [

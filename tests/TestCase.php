@@ -3,9 +3,9 @@
 namespace Tests;
 
 use App\Exceptions\Handler;
+use App\User;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use App\User;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -26,7 +26,7 @@ abstract class TestCase extends BaseTestCase
 
     protected function signIn($user = null)
     {
-        $user = $user ? : create('App\User');
+        $user = $user ?: create('App\User');
         $this->actingAs($user);
 
         return $this;
@@ -34,7 +34,7 @@ abstract class TestCase extends BaseTestCase
 
     protected function asAdmin($admin = null)
     {
-        $admin = $admin ? : User::whereEmail('jorgelsaud@gmail.com')->first();
+        $admin = $admin ?: User::whereEmail('jorgelsaud@gmail.com')->first();
         $this->actingAs($admin);
 
         return $this;
@@ -44,8 +44,7 @@ abstract class TestCase extends BaseTestCase
     protected function disableExceptionHandling()
     {
         $this->oldExceptionHandler = $this->app->make(ExceptionHandler::class);
-        $this->app->instance(ExceptionHandler::class, new class () extends Handler
-        {
+        $this->app->instance(ExceptionHandler::class, new class() extends Handler {
             public function __construct()
             {
             }

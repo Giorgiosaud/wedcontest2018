@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Contest;
-use App\Country;
 use Illuminate\Http\Request;
 
 class TheContestController extends Controller
@@ -19,7 +18,6 @@ class TheContestController extends Controller
         if (request()->wantsJson()) {
             return $contest;
         }
-
 
         return view('the_contest.index', [
             'contest'  => $contest,
