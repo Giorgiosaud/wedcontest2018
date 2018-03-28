@@ -23,7 +23,7 @@ class Administrator
         if ($request->wantsJson()) {
             abort(403, 'You do not have permission to perform this action.');
         }
-        return redirect()->route('login');
 
+        return redirect()->route('login');
     }
 }

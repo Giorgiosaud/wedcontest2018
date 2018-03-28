@@ -24,6 +24,7 @@ class ContestAndCategoriesSeed extends Seeder
                 foreach ($categories as $category) {
                     \App\Category::create($category);
                 }
+
                 return $categories;
             }
         );

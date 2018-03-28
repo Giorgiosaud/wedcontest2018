@@ -21,8 +21,8 @@ class Country extends Model
      */
     protected $fillable = ['code', 'flag', 'calling_code'];
 
-    protected $with=['translations'];
-    
+    protected $with = ['translations'];
+
     public function getFlagAttribute($flag)
     {
         return asset('images/flags/'.$flag);

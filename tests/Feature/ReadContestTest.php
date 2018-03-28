@@ -29,7 +29,7 @@ class ReadContestTest extends TestCase
     public function a_normal_user_can_not_see_a_single_contest()
     {
         $contest = factory(Contest::class)->create();
-        $this->get('/contests/' . $contest->slug)
+        $this->get('/contests/'.$contest->slug)
             ->assertRedirect('/login');
     }
 
@@ -40,16 +40,17 @@ class ReadContestTest extends TestCase
         $this->asAdmin();
         $contest = create(Contest::class);
         create(Category::class, ['contest_id' => $contest->id], 2);
-        $this->json('GET', $contest->path() . '/categories')
+        $this->json('GET', $contest->path().'/categories')
             ->assertStatus(200);
     }
+
     /** @test */
     public function a_normal_user_can_not_request_all_categories_for_a_given_contest()
     {
         $this->withExceptionHandling();
         $contest = create(Contest::class);
         create(Category::class, ['contest_id' => $contest->id], 2);
-        $this->json('GET', $contest->path() . '/categories')
+        $this->json('GET', $contest->path().'/categories')
             ->assertStatus(403);
     }
 }

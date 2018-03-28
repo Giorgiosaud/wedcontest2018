@@ -2,11 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\Role;
-use App\User;
+use App\Contest;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
-use App\Contest;
 
 class EditContestTest extends TestCase
 {

@@ -2,7 +2,6 @@
 
 namespace Tests\Unit;
 
-use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
