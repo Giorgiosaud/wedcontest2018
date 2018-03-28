@@ -10,15 +10,8 @@ class ContestsController extends Controller
 {
     public function __construct()
     {
-<<<<<<< HEAD
-        // $this->middleware('admin')->only(['store', 'update', 'create', 'edit', 'destroy']);
-        
-        // $this->middleware('auth')->except(['index', 'show']);
-=======
         $this->middleware('admin')->only(['store', 'update', 'create', 'edit', 'destroy']);
-
         $this->middleware('auth')->except(['index', 'show']);
->>>>>>> 30617f23f4fdea3e9a1fc61b21ae005065cb56e0
     }
 
     /**
