@@ -19,6 +19,11 @@ class Administrator
         if (auth()->check() && auth()->user()->isAdmin()) {
             return $next($request);
         }
-        abort(403, 'You do not have permission to perform this action.');
+        // redirect('/login');
+        if ($request->wantsJson()) {
+            abort(403, 'You do not have permission to perform this action.');
+        }
+        return redirect()->route('login');
+
     }
 }

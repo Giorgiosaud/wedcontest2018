@@ -24,7 +24,7 @@ class RegisterController extends Controller
     | validation and creation. By default this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
-    */
+     */
 
     use RegistersUsers;
 
@@ -65,14 +65,14 @@ class RegisterController extends Controller
 //        dd('he');
         return Validator::make($data, [
             'subscribed' => 'boolean',
-            'name'       => 'required|string|max:255',
-            'last_name'  => 'required|string|max:255',
-            'email'      => 'required|string|email|max:255|unique:users',
-            'country'    => 'required|string|max:255',
-            'phone'      => 'required|string|max:255',
-            'referred'   => 'required',
-            'language'   => 'required|string|max:255',
-            'password'   => 'required|string|min:6|confirmed',
+            'name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'country' => 'required|string|max:255',
+            'phone' => 'required|string|max:255',
+            'referred' => 'required',
+            'language' => 'required|string|max:255',
+            'password' => 'required|string|min:6|confirmed',
         ]);
     }
 
@@ -86,23 +86,25 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name'               => $data['name'],
-            'last_name'          => $data['last_name'],
-            'country'            => $data['country'],
-            'phone'              => $data['phone'],
-            'referred'           => $data['referred'],
-            'language'           => $data['language'],
-            'subscribed'         => $data['subscribed'],
-            'confirmed'          => false,
-            'email'              => $data['email'],
-            'password'           => Hash::make($data['password']),
-            'confirmation_token' => str_limit(md5($data['email'].str_random()), 25, ''),
+            'name' => $data['name'],
+            'last_name' => $data['last_name'],
+            'country' => $data['country'],
+            'phone' => $data['phone'],
+            'referred' => $data['referred'],
+            'language' => $data['language'],
+            'subscribed' => $data['subscribed'],
+            'confirmed' => false,
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'confirmation_token' => str_limit(md5($data['email'] . str_random()), 25, ''),
         ]);
     }
 
     protected function registered(Request $request, $user)
     {
+        // if(auth()){
+            // if( auth()->isRepresentant()) ->event(new RegisterParticipant($user));
+        // } 
         event(new RegisterRepresentant($user));
-//
     }
 }

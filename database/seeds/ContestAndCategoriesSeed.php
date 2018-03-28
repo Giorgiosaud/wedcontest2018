@@ -15,17 +15,15 @@ class ContestAndCategoriesSeed extends Seeder
         factory(\App\Category::class, 3)->create(['contest_id'=>$cont->id]);
         factory(App\Contest::class, 3)->create()->each(
             function ($contest) {
-                $categories = factory(App\Category::class, 3)->make(['contest_id' => $contest->id]);
+                $categories = [
+                    ['name' => 'Seeds', 'max_age' => 3, 'contest_id' => $contest->id],
+                    ['name' => 'Sprouts', 'max_age' => 7, 'contest_id' => $contest->id],
+                    ['name' => 'Thinkers', 'max_age' => 10, 'contest_id' => $contest->id],
+                    ['name' => 'Game Changers', 'max_age' => 15, 'contest_id' => $contest->id],
+                ];
                 foreach ($categories as $category) {
-                    repeat:
-                    try {
-                        $category->save();
-                    } catch (\Illuminate\Database\QueryException $e) {
-                        $category = factory(App\Category::class)->make(['contest_id' => $contest->id]);
-                        goto repeat;
-                    }
+                    \App\Category::create($category);
                 }
-
                 return $categories;
             }
         );

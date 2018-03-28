@@ -39,12 +39,13 @@ class ContestTest extends TestCase
     /**
      * @test
      */
-    public function a_contest_can_be_called_by_slug()
+    public function a_contest_can_be_called_by_slug_from_administrator()
     {
-        $this->get('contests/'.$this->contest->slug)
+        $this->asAdmin();
+        $this->get('contests/' . $this->contest->slug)
             ->assertSee($this->contest->topic)
             ->assertSee($this->contest->description)
-            ->assertSee((string) $this->contest->year);
+            ->assertSee((string)$this->contest->year);
     }
 
     /** @test */
@@ -65,9 +66,10 @@ class ContestTest extends TestCase
     /**
      * @test
      */
-    public function a_contest_have_active_prop()
+    public function a_contest_have_active_prop_and_can_be_viewed_as_admin()
     {
-        $this->get('contests/'.$this->contest->slug)
+        $this->asAdmin();
+        $this->get('contests/' . $this->contest->slug)
             ->assertSee('Inactive');
     }
 
@@ -76,12 +78,13 @@ class ContestTest extends TestCase
      */
     public function a_contest_could_have_a_intro_image()
     {
+        $this->asAdmin();
         $data = [
-            'intro_image'=> asset('/images/Home/ContestIntro.jpg'),
+            'intro_image' => asset('/images/Home/ContestIntro.jpg'),
         ];
-        $this->getJson('contests/'.$this->contest->slug)
-        ->assertJsonStructure()
-        ->assertJsonFragment($data);
+        $this->getJson('contests/' . $this->contest->slug)
+            ->assertJsonStructure()
+            ->assertJsonFragment($data);
     }
 
     public function a_default_contest_image_can_change()

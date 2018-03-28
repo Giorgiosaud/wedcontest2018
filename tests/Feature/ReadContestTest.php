@@ -17,32 +17,39 @@ class ReadContestTest extends TestCase
     /**
      * @test
      */
-    public function a_user_can_see_all_tests()
+    public function a_normal_user_can_not_see_all_contests()
     {
         $contest = factory(Contest::class)->create();
-        $this->get('/contests')
-            ->assertSee($contest->topic)
-            ->assertSee((string) $contest->year);
+        $this->get('/contests')->assertRedirect('/login');
     }
 
     /**
      * @test
      */
-    public function a_can_see_a_single_test()
+    public function a_normal_user_can_not_see_a_single_contest()
     {
         $contest = factory(Contest::class)->create();
-        $this->get('/contests/'.$contest->slug)
-            ->assertSee($contest->topic)
-            ->assertSee($contest->description)
-            ->assertSee((string) $contest->year);
+        $this->get('/contests/' . $contest->slug)
+            ->assertRedirect('/login');
     }
 
     /** @test */
-    public function a_user_can_request_all_categories_for_a_given_contest()
+    public function an_admin_user_can_not_request_all_categories_for_a_given_contest()
     {
+        $this->withExceptionHandling();
+        $this->asAdmin();
         $contest = create(Contest::class);
         create(Category::class, ['contest_id' => $contest->id], 2);
-        $response = $this->getJson($contest->path().'/categories')->json();
-        $this->assertCount(2, $response);
+        $this->json('GET', $contest->path() . '/categories')
+            ->assertStatus(200);
+    }
+    /** @test */
+    public function a_normal_user_can_not_request_all_categories_for_a_given_contest()
+    {
+        $this->withExceptionHandling();
+        $contest = create(Contest::class);
+        create(Category::class, ['contest_id' => $contest->id], 2);
+        $this->json('GET', $contest->path() . '/categories')
+            ->assertStatus(403);
     }
 }

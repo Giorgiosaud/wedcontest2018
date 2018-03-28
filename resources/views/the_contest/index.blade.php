@@ -5,7 +5,9 @@
 @section('mainTitle')
 {{ $contest->topic }}
 @endsection
-
+@section('year')
+2017
+@endsection
 
 @section('content')
 <div class="pt-6">

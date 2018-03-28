@@ -1,5 +1,5 @@
 <template>
-	<form class="w-full max-w-sm">
+	<form class="w-full">
     <div class="py-2">
       <input type="text" :class="classes"
       placeholder="Year/Año" aria-label="Year/Año" v-model="form.year">
@@ -34,8 +34,8 @@
       </div>
     </div>
     <div class="py-2">
-      <label for="imagenConcurso">Imagen del Concurso</label>
-      <dropzone-cropping ref="imagenConcurso" id="imagenConcurso" v-model="form.imagen"  :options="dropzoneOptions"></dropzone-cropping>
+      <label for="intro_image">Imagen del Concurso</label>
+      <image-uploader name="intro_image" class="mr-1" v-model="form.intro_image" :cropperOptions="cropperOptions"></image-uploader> 
     </div>
     <div class="py-2">
       <button type="button" @click="createContest">Create</button>
@@ -46,44 +46,63 @@
 
 <script>
 import Switches from "vue-switches";
-import dropzoneCropping from "./dropzoneCropping.vue";
+import ImageUploader from "./ImageUploader.vue";
 
 export default {
-  props: ["contest"],
+  props: {
+    contest: {
+      type: Object,
+      default() {
+        return {
+          description: "",
+          intro_image: "",
+          slug: "",
+          topic: "",
+          translations: [
+            {
+              description: "",
+              seo_message: "",
+              topic: ""
+            },
+            {
+              description: "",
+              seo_message: "",
+              topic: ""
+            }
+          ],
+          year: ""
+        };
+      }
+    }
+  },
   components: {
     Switches,
-    dropzoneCropping
+    ImageUploader
   },
   data() {
     return {
       form: {
         en: {
-          topic: "",
-          description: ""
+          topic: this.contest.translations[1].topic || "",
+          description: this.contest.translations[1].description || ""
         },
         es: {
-          topic: "",
-          description: ""
+          topic: this.contest.translations[0].topic || "",
+          description: this.contest.translations[0].description || ""
         },
-        year: "",
-        imagen: "",
+        year: this.contest.year || "",
+        intro_image: this.contest.intro_image || "",
+        intro_image2: "",
         normalCategories: true
       },
-      dropzoneOptions: {
-        autoDiscover: false,
-        autoProcessQueue: false,
-        url: "/images/upload",
-        thumbnailWidth: 150,
-        maxFilesize: 5,
-        method: "POST",
-        // chunking: true,
-        // chunkSize: 0.1,
-        headers: {
-          "X-CSRF-TOKEN": document.head.querySelector('meta[name="csrf-token"]')
-            .content
-        }
-      }
+      cropperOptions: {}
     };
+  },
+  mounted() {
+    if (this.contest !== null) {
+      return console.log("fullfy content");
+    }
+    console.log("empty return content");
   },
   methods: {
     resetForm() {

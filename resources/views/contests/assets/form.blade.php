@@ -1,1 +1,1 @@
-<new-contest></new-contest>
+<contest @if(isset($contest)) :contest="{{$contest}}" @endif></contest>

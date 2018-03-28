@@ -37,18 +37,21 @@
         @endslot
         @yield('mainTitle','Wedcontest 2018')
 
+        @slot('year')
+            @yield('year','')
+        @endslot
     @endheader
     <div class="container mx-auto">
         <div class="flex">
-            @section('sidebar')
-                @include('layouts.sidebar')
-            @show
+            {{-- @section('sidebar') --}}
+                {{-- @include('layouts.sidebar') --}}
+            {{-- @show --}}
 
             <div class="px-10 bg-white flex-1">
                 @yield('content')
             </div>
 
-            @include('channels-sidebar')
+            {{-- @include('channels-sidebar') --}}
         </div>
     </div>
 

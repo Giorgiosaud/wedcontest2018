@@ -12,6 +12,6 @@ class AddContestImageTest extends TestCase
     {
         $this->withExceptionHandling();
         $this->json('POST', '/images/upload')
-            ->assertStatus(403);
+        ->assertStatus(403);
     }
 }

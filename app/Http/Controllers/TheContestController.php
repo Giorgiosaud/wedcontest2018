@@ -19,11 +19,10 @@ class TheContestController extends Controller
         if (request()->wantsJson()) {
             return $contest;
         }
-        $countries = Country::all();
+
 
         return view('the_contest.index', [
             'contest'  => $contest,
-            'countries'=> $countries,
         ]);
     }
 

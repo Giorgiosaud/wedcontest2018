@@ -18,7 +18,9 @@ class CreateContestTranslationsTable extends Migration
             $table->unsignedInteger('contest_id');
 
             $table->string('topic');
+            $table->text('seo_message')->nullable();
             $table->text('description')->nullable();
+            
 
             $table->string('locale')->index();
             $table->unique(['contest_id', 'locale']);

@@ -22,17 +22,23 @@
                     {{--  @endif  --}}
                 </a>
             </h3>
+            @if($contest->active)
+            <div class="bg-blue hover:bg-blue-dark text-white font-light py-2 px-4 rounded-full">
+                Active
+            </div>
+            @else
+            <div class="bg-red hover:bg-red-dark text-white font-bold py-2 px-4 rounded-full">
+                Inactive
+            </div>
+            @endif
 
             <p class="text-2xs text-grey-darkest mb-4">
                 Posted By: <a href="{{ route('profile', $contest->creator) }}" class="text-blue">{{ $contest->creator->username }}</a>
             </p>
 
-            <contest-view :contest="{{ $contest }}" inline-template class="mb-6 text-grey-darkest leading-loose pr-8">
-                <highlight :content="body"></highlight>
-            </contest-view>
 
             <div class="flex items-center text-xs mb-6">
-                {{--  <a class="btn bg-grey-light text-grey-darkest py-2 px-3 mr-4 text-2xs flex items-center" href="/contests/{{ $contest->channel->slug }}">  --}}
+                 {{-- <a class="btn bg-grey-light text-grey-darkest py-2 px-3 mr-4 text-2xs flex items-center" href="/contests/{{ $contest->channel->slug }}">  --}}
                     {{--  <span class="rounded-full h-2 w-2 mr-2" style="background: {{ $contest->channel->color }}"></span>  --}}
 
                     {{--  {{ ucwords($contest->channel->name) }}  --}}
