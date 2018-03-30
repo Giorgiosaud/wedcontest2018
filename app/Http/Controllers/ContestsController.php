@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Contest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ContestsController extends Controller
 {
@@ -58,19 +59,22 @@ class ContestsController extends Controller
             'es.topic' => 'required|string',
             'es.description' => 'required|string',
             'normalCategories' => 'required|boolean',
-            'intro_image_file' => 'file'
         ]);
-
-        $request->request->add(['intro_image', 'value']);
-
         $contest = Contest::create([
             'user_id' => auth()->id(),
             'year' => request('year'),
             'en' => request('en'),
             'es' => request('es'),
         ]);
-        $intro_image = request()->file('intro_image_file')->store($contest->slug, 'public');
-        $contest->update(['intro_image' => $intro_image]);
+        if (request()->has('intro_image')) {
+            $file = 'public/contest/' . $contest->slug . '.jpg';
+            if (Storage::exists($file)) {
+                Storage::delete($file);
+            }
+            Storage::move('public/' . request('intro_image'), $file);
+            $contest->intro_image = 'contest/' . $contest->slug . '.jpg';
+            $contest->save();
+        }
 
         if (request('normalCategories')) {
             $categories = [
@@ -118,7 +122,8 @@ class ContestsController extends Controller
     public function edit(Contest $contest)
     {
         // return 'editing';
-        // dd($contest);
+        // dd($contest->intro_image);
+
         return view('contests.edit', compact('contest'));
     }
 
@@ -132,12 +137,17 @@ class ContestsController extends Controller
      */
     public function update(Request $request, Contest $contest)
     {
-        dd('hola');
-        dd($request->file('intro_image_file'));
-        dd(request()->file(' intro_image_file ')->store($contest->slug, ' public '));
-        $request()->add([' intro_image ' => request()->file(' intro_image_file ')->store($contest->slug, ' public ')]);
-        dd($request->all);
-        $contest->update(request()->toArray());
+
+        $contest->update($request->toArray());
+        if ($request->has('intro_image')) {
+            $file = 'public/contest/' . $contest->slug . '.jpg';
+            if (Storage::exists($file)) {
+                Storage::delete($file);
+            }
+            Storage::move('public/' . request('intro_image'), $file);
+            $contest->intro_image = 'contest/' . $contest->slug . '.jpg';
+            $contest->save();
+        }
         if (request()->wantsJson()) {
             return response($contest, 201);
         }

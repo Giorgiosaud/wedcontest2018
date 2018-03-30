@@ -6,7 +6,7 @@
 {{ $contest->topic }}
 @endsection
 @section('year')
-2017
+{{ $contest->year }}
 @endsection
 
 @section('content')

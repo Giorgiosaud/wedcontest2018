@@ -37,8 +37,6 @@ Route::group([
     Route::get('contests/{contest}/categories', 'CategoriesController@index')->middleware('admin')->name('categories');
 
     Route::get('/register/confirm', 'Auth\RegisterConfirmationController@index')->name('register.confirm');
-    Route::get('/profile', function () {
-        return 'profile';
-    })->name('profile');
+    Route::get('/profile', 'ProfileController@index')->name('profile');
     Route::post('/images/upload', 'ImageController@store')->middleware('admin')->name('store.image');
 });

@@ -25,6 +25,7 @@ class Contest extends Model
     protected $appends = [
         'path',
         'intro_image',
+        'introimg',
     ];
     protected $with = ['translations'];
 
@@ -65,7 +66,7 @@ class Contest extends Model
      */
     public function path()
     {
-        return '/contests/'.$this->slug;
+        return '/contests/' . $this->slug;
     }
 
     public function getPathAttribute()
@@ -109,6 +110,10 @@ class Contest extends Model
      */
     public function getIntroImageAttribute($intro_image)
     {
-        return asset($intro_image ?: 'images/Home/ContestIntro.jpg');
+        return asset($intro_image ? : 'images/Home/ContestIntro.jpg');
+    }
+    public function getIntroimgAttribute()
+    {
+        return $this->intro_image;
     }
 }

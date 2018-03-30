@@ -1,5 +1,13 @@
 @extends('layouts.app')
-
+@section('mainImage')
+{{$contest->intro_image}}
+@endsection
+@section('mainTitle')
+{{ $contest->topic }}
+@endsection
+@section('year')
+{{ $contest->year }}
+@endsection
 @section('content')
 
 <article>

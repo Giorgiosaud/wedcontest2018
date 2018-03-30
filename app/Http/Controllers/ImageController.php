@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
     public function store()
     {
         request()->validate([
-            'avatar' => ['required'],
+            'image' => ['required'],
         ]);
-        $filename = request()->file('avatar')->store('contests', 'public');
+        $data = request()->file('image')->store('temp', 'public');
+        return response(compact('data'), 201);
 
-        dd($filename)
-            return response(['data' => $filename], 204);
     }
 }
 // 

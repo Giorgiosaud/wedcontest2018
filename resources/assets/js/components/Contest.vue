@@ -48,6 +48,7 @@
 <script>
 import Switches from "vue-switches";
 import ImageUploader from "./ImageUploader.vue";
+import ImageUpload from "./ImageUpload.vue";
 
 export default {
   props: {
@@ -79,24 +80,24 @@ export default {
   },
   components: {
     Switches,
-    ImageUploader
+    ImageUploader,
+    ImageUpload
   },
   data() {
     return {
       form: {
-        id: this.contest.id || "",
+        id: _.clone(this.contest.id),
         en: {
-          topic: this.contest.translations[1].topic || "",
-          description: this.contest.translations[1].description || ""
+          topic: _.clone(this.contest.translations[1].topic),
+          description: _.clone(this.contest.translations[1].description)
         },
         es: {
-          topic: this.contest.translations[0].topic || "",
-          description: this.contest.translations[0].description || ""
+          topic: _.clone(this.contest.translations[0].topic),
+          description: _.clone(this.contest.translations[0].description)
         },
-        year: this.contest.year || "",
-        intro_image: this.contest.intro_image || "",
-        intro_image_file: this.contest.intro_image_file || "",
-        intro_image_file2: "",
+        year: _.clone(this.contest.year),
+        intro_image: _.clone(this.contest.introimg),
+        file: _.clone(this.contest.intro_image_file),
         normalCategories: true
       },
       cropperOptions: {}
@@ -129,6 +130,14 @@ export default {
         });
     },
     editContest() {
+      // var formData = new FormData();
+      // formData.append("image", this.form.intro_image_file);
+      // axios
+      //   .post("/images/upload", formData)
+      //   .catch(e => flash(e.response.data.message, "warning"))
+      //   .then(({ data }) =>
+      //     flash("El concurso fue editado exitosamente", "success")
+      // //   );
       axios
         .put(`/contests/${this.contest.slug}`, this.form)
         .catch(error => {
@@ -139,7 +148,7 @@ export default {
         });
     },
     saveImage(imagen) {
-      this.form.intro_image_file = imagen.file;
+      this.form.intro_image = imagen.data;
     }
   },
   computed: {
