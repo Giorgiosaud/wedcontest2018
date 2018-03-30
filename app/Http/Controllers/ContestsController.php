@@ -52,20 +52,26 @@ class ContestsController extends Controller
     public function store()
     {
         request()->validate([
-            'year'             => 'required|numeric',
-            'en.topic'         => 'required|string',
-            'en.description'   => 'required|string',
-            'es.topic'         => 'required|string',
-            'es.description'   => 'required|string',
+            'year' => 'required|numeric',
+            'en.topic' => 'required|string',
+            'en.description' => 'required|string',
+            'es.topic' => 'required|string',
+            'es.description' => 'required|string',
             'normalCategories' => 'required|boolean',
-
+            'intro_image_file' => 'file'
         ]);
+
+        $request->request->add(['intro_image', 'value']);
+
         $contest = Contest::create([
             'user_id' => auth()->id(),
-            'year'    => request('year'),
-            'en'      => request('en'),
-            'es'      => request('es'),
+            'year' => request('year'),
+            'en' => request('en'),
+            'es' => request('es'),
         ]);
+        $intro_image = request()->file('intro_image_file')->store($contest->slug, 'public');
+        $contest->update(['intro_image' => $intro_image]);
+
         if (request('normalCategories')) {
             $categories = [
                 ['name' => 'Seeds', 'max_age' => 3, 'contest_id' => $contest->id],
@@ -126,6 +132,18 @@ class ContestsController extends Controller
      */
     public function update(Request $request, Contest $contest)
     {
+        dd('hola');
+        dd($request->file('intro_image_file'));
+        dd(request()->file(' intro_image_file ')->store($contest->slug, ' public '));
+        $request()->add([' intro_image ' => request()->file(' intro_image_file ')->store($contest->slug, ' public ')]);
+        dd($request->all);
+        $contest->update(request()->toArray());
+        if (request()->wantsJson()) {
+            return response($contest, 201);
+        }
+
+        return redirect($contest->path())
+            ->with(' flash ', ' Your thread has been published!');
         //
     }
 
@@ -148,3 +166,4 @@ class ContestsController extends Controller
         return $threads->paginate(25);
     }
 }
+ 

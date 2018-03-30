@@ -12,7 +12,7 @@
  */
 
 Route::group([
-    'prefix'     => LaravelLocalization::setLocale(),
+    'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'localize'], // Route translate middleware
 
 ], function () {
@@ -31,7 +31,7 @@ Route::group([
     Route::post('contests', 'ContestsController@store')->middleware('admin')->name('contests.store');
     Route::get('contests/{contest}', 'ContestsController@show')->middleware('admin')->name('contests.show');
     Route::get('contests/{contest}/edit', 'ContestsController@edit')->middleware('admin')->name('contests.edit');
-    Route::put('contests/{contest}', 'ContestsController@edit')->middleware('admin')->name('contests.update');
+    Route::put('contests/{contest}', 'ContestsController@update')->middleware('admin')->name('contests.update');
     // Route::resource('contests', 'ContestsController');
 
     Route::get('contests/{contest}/categories', 'CategoriesController@index')->middleware('admin')->name('categories');

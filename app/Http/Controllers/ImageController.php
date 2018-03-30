@@ -9,10 +9,12 @@ class ImageController extends Controller
     public function store()
     {
         request()->validate([
-            'file' => ['required', 'image', 'max:5000'],
+            'avatar' => ['required'],
         ]);
-        $filename = request()->file('file')->store('contests', 'public');
+        $filename = request()->file('avatar')->store('contests', 'public');
 
-        return response(['data' => $filename], 204);
+        dd($filename)
+            return response(['data' => $filename], 204);
     }
 }
+// 

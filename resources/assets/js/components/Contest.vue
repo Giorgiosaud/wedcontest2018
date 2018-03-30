@@ -1,5 +1,5 @@
 <template>
-	<form class="w-full">
+	<form class="w-full" method="POST" enctype="multipart/form-data">
     <div class="py-2">
       <input type="text" :class="classes"
       placeholder="Year/Año" aria-label="Year/Año" v-model="form.year">
@@ -35,10 +35,11 @@
     </div>
     <div class="py-2">
       <label for="intro_image">Imagen del Concurso</label>
-      <image-uploader name="intro_image" class="mr-1" v-model="form.intro_image" :cropperOptions="cropperOptions"></image-uploader> 
+      <image-uploader name="intro_image" class="mr-1" v-model="form.intro_image" :cropperOptions="cropperOptions" @cropped="saveImage"></image-uploader> 
     </div>
     <div class="py-2">
-      <button type="button" @click="createContest">Create</button>
+      <button v-if="!contest.id" type="button" @click="createContest">Create</button>
+      <button v-if="contest.id" type="button" @click="editContest">Edit</button>
     </div>
   </form>
 
@@ -58,6 +59,7 @@ export default {
           intro_image: "",
           slug: "",
           topic: "",
+          id: "",
           translations: [
             {
               description: "",
@@ -82,6 +84,7 @@ export default {
   data() {
     return {
       form: {
+        id: this.contest.id || "",
         en: {
           topic: this.contest.translations[1].topic || "",
           description: this.contest.translations[1].description || ""
@@ -92,7 +95,8 @@ export default {
         },
         year: this.contest.year || "",
         intro_image: this.contest.intro_image || "",
-        intro_image2: "",
+        intro_image_file: this.contest.intro_image_file || "",
+        intro_image_file2: "",
         normalCategories: true
       },
       cropperOptions: {}
@@ -123,6 +127,19 @@ export default {
           this.resetForm();
           flash("El concurso fue creado exitosamente", "success");
         });
+    },
+    editContest() {
+      axios
+        .put(`/contests/${this.contest.slug}`, this.form)
+        .catch(error => {
+          flash(error.response.data.message, "warning");
+        })
+        .then(({ data }) => {
+          flash("El concurso fue editado exitosamente", "success");
+        });
+    },
+    saveImage(imagen) {
+      this.form.intro_image_file = imagen.file;
     }
   },
   computed: {

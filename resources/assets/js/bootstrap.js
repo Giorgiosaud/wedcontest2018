@@ -1,12 +1,8 @@
+window._ = require("lodash");
 
-window._ = require('lodash');
-
-import VModal from 'vue-js-modal';
-import VueSelect from 'vue-select';
-import VueInternalization from 'vue-i18n';
-
-
-
+import VModal from "vue-js-modal";
+import VueSelect from "vue-select";
+import VueInternalization from "vue-i18n";
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -15,10 +11,8 @@ import VueInternalization from 'vue-i18n';
  */
 
 try {
-    window.$ = window.jQuery = require('jquery');
-
-
-} catch (e) { }
+  window.$ = window.jQuery = require("jquery");
+} catch (e) {}
 // require('select2');
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -26,7 +20,9 @@ try {
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = require('vue');
+window.Vue = require("vue");
+import VueFeather from "vue-feather";
+Vue.component(VueFeather.name, VueFeather);
 Vue.use(VueInternalization);
 // Vue.config.lang = 'en';
 
@@ -35,7 +31,7 @@ Vue.use(VueInternalization);
 // });
 
 Vue.use(VModal);
-Vue.component('v-select', VueSelect);
+Vue.component("v-select", VueSelect);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -43,9 +39,9 @@ Vue.component('v-select', VueSelect);
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = require('axios');
+window.axios = require("axios");
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -56,23 +52,18 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 let token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  window.axios.defaults.headers.common["X-CSRF-TOKEN"] = token.content;
 } else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+  console.error(
+    "CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token"
+  );
 }
-
-
-
-
-
 
 window.events = new Vue();
 
-window.flash = function (message, level = 'success') {
-    window.events.$emit('flash', { message, level });
+window.flash = function(message, level = "success") {
+  window.events.$emit("flash", { message, level });
 };
-
-
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
