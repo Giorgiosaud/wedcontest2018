@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -13,8 +12,8 @@ class ImageController extends Controller
             'image' => ['required'],
         ]);
         $data = request()->file('image')->store('temp', 'public');
-        return response(compact('data'), 201);
 
+        return response(compact('data'), 201);
     }
 }
-// 
+//

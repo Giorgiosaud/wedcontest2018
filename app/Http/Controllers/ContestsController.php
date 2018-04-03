@@ -53,26 +53,26 @@ class ContestsController extends Controller
     public function store()
     {
         request()->validate([
-            'year' => 'required|numeric',
-            'en.topic' => 'required|string',
-            'en.description' => 'required|string',
-            'es.topic' => 'required|string',
-            'es.description' => 'required|string',
+            'year'             => 'required|numeric',
+            'en.topic'         => 'required|string',
+            'en.description'   => 'required|string',
+            'es.topic'         => 'required|string',
+            'es.description'   => 'required|string',
             'normalCategories' => 'required|boolean',
         ]);
         $contest = Contest::create([
             'user_id' => auth()->id(),
-            'year' => request('year'),
-            'en' => request('en'),
-            'es' => request('es'),
+            'year'    => request('year'),
+            'en'      => request('en'),
+            'es'      => request('es'),
         ]);
         if (request()->has('intro_image')) {
-            $file = 'public/contest/' . $contest->slug . '.jpg';
+            $file = 'public/contest/'.$contest->slug.'.jpg';
             if (Storage::exists($file)) {
                 Storage::delete($file);
             }
-            Storage::move('public/' . request('intro_image'), $file);
-            $contest->intro_image = 'contest/' . $contest->slug . '.jpg';
+            Storage::move('public/'.request('intro_image'), $file);
+            $contest->intro_image = 'contest/'.$contest->slug.'.jpg';
             $contest->save();
         }
 
@@ -137,15 +137,14 @@ class ContestsController extends Controller
      */
     public function update(Request $request, Contest $contest)
     {
-
         $contest->update($request->toArray());
         if ($request->has('intro_image')) {
-            $file = 'public/contest/' . $contest->slug . '.jpg';
+            $file = 'public/contest/'.$contest->slug.'.jpg';
             if (Storage::exists($file)) {
                 Storage::delete($file);
             }
-            Storage::move('public/' . request('intro_image'), $file);
-            $contest->intro_image = 'contest/' . $contest->slug . '.jpg';
+            Storage::move('public/'.request('intro_image'), $file);
+            $contest->intro_image = 'contest/'.$contest->slug.'.jpg';
             $contest->save();
         }
         if (request()->wantsJson()) {
@@ -176,4 +175,3 @@ class ContestsController extends Controller
         return $threads->paginate(25);
     }
 }
- 
