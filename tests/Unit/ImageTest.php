@@ -20,4 +20,10 @@ class ImageTest extends TestCase
     {
         parent::setUp();
     }
+    /**
+     * @test
+     */
+    public function assertTrueTest(){
+    $this->assertTrue(true);
+    }
 }
