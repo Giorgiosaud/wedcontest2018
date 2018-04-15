@@ -1,6 +1,7 @@
 window._ = require("lodash");
 
 import VModal from "vue-js-modal";
+import Vuelidate from 'vuelidate'
 import VueSelect from "vue-select";
 import VueInternalization from "vue-i18n";
 
@@ -24,6 +25,8 @@ window.Vue = require("vue");
 import VueFeather from "vue-feather";
 Vue.component(VueFeather.name, VueFeather);
 Vue.use(VueInternalization);
+Vue.use(Vuelidate);
+
 // Vue.config.lang = 'en';
 
 // Object.keys(Locales).forEach(function (lang) {

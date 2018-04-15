@@ -5,6 +5,7 @@ export default {
             "throttle": "Too many login attempts. Please try again in {seconds} seconds."
         },
         "contests": {
+            "edit": "Edit",
             "read_more": "Read More",
             "confirm_email": "Please confirm your email address to participate.",
             "register_button": "Register as Representant",
@@ -23,6 +24,9 @@ export default {
             "sent": "We have e-mailed your password reset link!",
             "token": "This password reset token is invalid.",
             "user": "We can't find a user with that e-mail address."
+        },
+        "profile": {
+            "my_profile": "My Profile"
         },
         "registration": {
             "name": "Name",
@@ -47,7 +51,9 @@ export default {
             "subscribed": "Subscribe to email newsletter",
             "email": "E-Mail Address",
             "password": "Password",
+            "change_password": "Change Password",
             "password_confirmation": "Confirm Password",
+            "change_password_confirmation": "Confirm Changed Password",
             "countryselect": "Select Your Country",
             "mail": {
                 "subject": "Please Confirm Your Email"
@@ -146,6 +152,7 @@ export default {
             "throttle": "Muchos Intentos. Porfavor espere {seconds} segundos para intentarlo nuevamente."
         },
         "contests": {
+            "edit": "Editar",
             "read_more": "Leer Más",
             "confirm_email": "Por Favor Confirma el email para poder concursar.",
             "register_button": "Registrese Como Representante",
@@ -164,6 +171,9 @@ export default {
             "sent": "¡Te hemos enviado el link de reinicio de tu password!",
             "token": "Esta clave de reinicio es invalida.",
             "user": "No tenemos un usuario con ese email en el sistema"
+        },
+        "profile": {
+            "my_profile": "Mi Perfil"
         },
         "registration": {
             "name": "Nombre(s)",
@@ -189,6 +199,8 @@ export default {
             "email": "Email",
             "password": "Contraseña",
             "password_confirmation": "Confirmacion de Contraseña",
+            "change_password": "Cambia tu Contraseña",
+            "change_password_confirmation": "Confirma tu Contraseña Cambiada",
             "countryselect": "Select Your Country",
             "mail": {
                 "subject": "Porfavor Confirma tu Correo"

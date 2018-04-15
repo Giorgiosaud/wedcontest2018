@@ -36,6 +36,8 @@ return [
     'email'                 => 'Email',
     'password'              => 'Contraseña',
     'password_confirmation' => 'Confirmacion de Contraseña',
+    'change_password'              => 'Cambia tu Contraseña',
+    'change_password_confirmation' => 'Confirma tu Contraseña Cambiada',
     'countryselect'         => 'Select Your Country',
      'mail'                 => [
         'subject'=> 'Porfavor Confirma tu Correo',

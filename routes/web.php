@@ -38,5 +38,8 @@ Route::group([
 
     Route::get('/register/confirm', 'Auth\RegisterConfirmationController@index')->name('register.confirm');
     Route::get('/profile', 'ProfileController@index')->name('profile');
+    Route::get('/my-participants','MyParticipants@index')->name('participants'):
+    
     Route::post('/images/upload', 'ImageController@store')->middleware('admin')->name('store.image');
+
 });

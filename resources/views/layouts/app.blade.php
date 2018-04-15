@@ -35,10 +35,12 @@
         @slot('image')
             @yield('mainImage',asset('/images/Home/ContestIntro.jpg'))
         @endslot
-        @yield('mainTitle','Wedcontest 2018')
-
+        @yield('mainTitle','Wedcontest')
+        @slot('height')
+        @yield('height','h-64')
+        @endslot
         @slot('year')
-            @yield('year','')
+            @yield('year','2018')
         @endslot
     @endheader
     <div class="container mx-auto">

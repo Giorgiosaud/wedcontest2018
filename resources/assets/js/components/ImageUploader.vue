@@ -1,9 +1,10 @@
 <template>
     <div>
       <div>
-      <label class="label" data-toggle="tooltip" title="Change your avatar"></label>
+      <label class="label" data-toggle="tooltip" title="Change your avatar">
         <img class="rounded" id="avatar" :src="src" alt="avatar">
         <input type="file" class="sr-only" ref="input" id="input" name="image" accept="image/*" @change="onChange" >
+      </label>
       </div>
       <div>
         <button type="button" @click="editImage" >Edit Rotate or Crop Image</button>

@@ -35,10 +35,13 @@ return [
     'subscribed'            => 'Subscribe to email newsletter',
     'email'                 => 'E-Mail Address',
     'password'              => 'Password',
+    'change_password'              => 'Change Password',
     'password_confirmation' => 'Confirm Password',
+    'change_password_confirmation' => 'Confirm Changed Password',
     'countryselect'         => 'Select Your Country',
     'mail'                  => [
         'subject' => 'Please Confirm Your Email',
     ],
+    'edit'=>'Edit your Profile'
     'register'=> 'Register',
 ];
