@@ -12,7 +12,7 @@
  */
 
 Route::group([
-    'prefix'     => LaravelLocalization::setLocale(),
+    'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'localize'], // Route translate middleware
 
 ], function () {
@@ -37,9 +37,10 @@ Route::group([
     Route::get('contests/{contest}/categories', 'CategoriesController@index')->middleware('admin')->name('categories');
 
     Route::get('/register/confirm', 'Auth\RegisterConfirmationController@index')->name('register.confirm');
-    Route::get('/profile', 'ProfileController@index')->name('profile');
-    Route::get('/my-participants','MyParticipants@index')->name('participants'):
-    
+    Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
+    Route::post('/profile', 'ProfileController@update')->name('profile.update');
+    Route::get('/my-contestants', 'MyContestants@index')->name('contestants.index');
+
     Route::post('/images/upload', 'ImageController@store')->middleware('admin')->name('store.image');
 
 });

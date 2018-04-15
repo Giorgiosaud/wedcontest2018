@@ -8,8 +8,8 @@ class ProfileController extends Controller
 		$this->middleware('auth');
 	}
     //
-    public function index()
+    public function edit()
     {
-        return view('profile.index');
+        return view('profile.edit');
     }
 }

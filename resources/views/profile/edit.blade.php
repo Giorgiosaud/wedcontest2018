@@ -6,7 +6,7 @@
 	</div>
 	<div class="w-3/4"><h1>@lang('profile.my_profile')</h1>
 		@if(auth())
-		<my-profile :profile="{{ auth()->user()}}"></my-profile>
+		<edit-my-profile :profile="{{ auth()->user()}}"></edit-my-profile>
 		@endif
 	</div>
 </div>

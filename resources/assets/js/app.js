@@ -21,7 +21,7 @@ Vue.component("Flash", require("./components/Flash.vue"));
 Vue.component("Login", require("./components/Login.vue"));
 Vue.component("Register", require("./components/Register.vue"));
 Vue.component("LogoutButton", require("./components/LogoutButton.vue"));
-Vue.component("MyProfile", require("./components/MyProfile.vue"));
+Vue.component("EditMyProfile", require("./components/EditMyProfile.vue"));
 Vue.component(
   "UserNotifications",
   require("./components/UserNotifications.vue")
