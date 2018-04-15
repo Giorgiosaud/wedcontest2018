@@ -26,6 +26,14 @@ class SubscribeToNewsletter
      */
     public function handle(RegisterRepresentant $event)
     {
-        Newsletter::subscribe($event->user->email);
+        $user = $event->user;
+        Newsletter::subscribe($user->email, [
+            'FNAME' => $user->name,
+            'LNAME' => $user->last_name,
+            'PHONE' => $user->phone,
+            'REFERRED' => $user->referred,
+            'COUNTRY' => $user->country,
+            'LANGUAGE' => $user->language,
+        ]);
     }
 }

@@ -3068,8 +3068,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __webpack_require__(16);
 
 
-console.log(__WEBPACK_IMPORTED_MODULE_1_vue_i18n__["a" /* default */]);
-console.info(__WEBPACK_IMPORTED_MODULE_0__vue_i18n_locales_generated_js__["a" /* default */]);
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_i18n__["a" /* default */]);
+// import VueInternalization from "vue-i18n";
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -3082,7 +3083,7 @@ Vue.component("Flash", __webpack_require__(49));
 Vue.component("Login", __webpack_require__(52));
 Vue.component("Register", __webpack_require__(54));
 Vue.component("LogoutButton", __webpack_require__(57));
-Vue.component("EditMyProfile", __webpack_require__(103));
+Vue.component("EditMyProfile", __webpack_require__(60));
 Vue.component("UserNotifications", __webpack_require__(63));
 Vue.component("Dropdown", __webpack_require__(66));
 Vue.component("Contest", __webpack_require__(69));
@@ -3093,7 +3094,6 @@ var i18n = new __WEBPACK_IMPORTED_MODULE_1_vue_i18n__["a" /* default */]({
   messages: __WEBPACK_IMPORTED_MODULE_0__vue_i18n_locales_generated_js__["a" /* default */] // set locale messages
 });
 var app = new Vue({
-
   el: "#app",
   data: {
     searching: false
@@ -47698,8 +47698,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -47710,15 +47708,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         phone: "",
         country: "",
         referred: "",
-        language: "",
+        language: "en",
         email: "",
         password: "",
         password_confirmation: "",
-        subscribed: false
+        subscribed: true
       },
-      countries: "",
+      countries: [],
       country: "",
       referred: "",
+      referredOptions: [{
+        label: this.$t("registration.referred.options.1"),
+        value: "invited"
+      }, {
+        label: this.$t("registration.referred.options.2"),
+        value: "contact"
+      }, {
+        label: this.$t("registration.referred.options.3"),
+        value: "other"
+      }],
       feedback: "",
       loading: false,
       errors: {}
@@ -47738,19 +47746,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         _this.loading = false;
       });
-    },
-    getCountries: function getCountries() {
-      var _this2 = this;
-
-      if (this.countries.length > 2) return;
-      axios.get("/api/countries").then(function (_ref) {
-        var data = _ref.data;
-        return _this2.countries = data;
-      }).catch(function (error) {
-        flash("Hubo un error refresca la pagina", "warning");
-      });
     }
   },
+  created: function created() {
+    var _this2 = this;
+
+    if (this.countries.length > 2) return;
+    axios.get("/api/countries").then(function (_ref) {
+      var data = _ref.data;
+      return _this2.countries = data;
+    }).catch(function (error) {
+      flash("Hubo un error refresca la pagina", "warning");
+    });
+  },
+
   computed: {
     selectedCountry: function selectedCountry() {
       this.form.country = this.country.code;
@@ -47772,589 +47781,194 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "modal",
-    {
-      attrs: { name: "register", height: "auto" },
-      on: { "before-open": _vm.getCountries }
-    },
-    [
-      _c("div", [
-        _c(
-          "form",
-          {
-            staticClass: "p-10",
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.register($event)
-              }
+  return _c("modal", { attrs: { name: "register", height: "auto" } }, [
+    _c("div", [
+      _c(
+        "form",
+        {
+          staticClass: "p-10",
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.register($event)
             }
-          },
-          [
-            _c("div", { staticClass: "mb-6" }, [
-              _c(
-                "label",
-                {
-                  staticClass:
-                    "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
-                  attrs: { for: "name" }
-                },
-                [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.$t("registration.name")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.name,
-                    expression: "form.name"
-                  }
-                ],
-                staticClass: "w-full p-2 leading-normal",
-                attrs: {
-                  type: "text",
-                  autocomplete: "name",
-                  placeholder: "John",
-                  required: ""
-                },
-                domProps: { value: _vm.form.name },
-                on: {
-                  keydown: function($event) {
-                    _vm.errors.name = false
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "name", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.name
-                ? _c("span", {
-                    staticClass: "text-xs text-red",
-                    domProps: { textContent: _vm._s(_vm.errors.name[0]) }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "mb-6" }, [
-              _c(
-                "label",
-                {
-                  staticClass:
-                    "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
-                  attrs: { for: "last_name" }
-                },
-                [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.$t("registration.last_name")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.last_name,
-                    expression: "form.last_name"
-                  }
-                ],
-                staticClass: "w-full p-2 leading-normal",
-                attrs: {
-                  type: "text",
-                  autocomplete: "last_name",
-                  placeholder: "Doe",
-                  required: ""
-                },
-                domProps: { value: _vm.form.last_name },
-                on: {
-                  keydown: function($event) {
-                    _vm.errors.last_name = false
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "last_name", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.last_name
-                ? _c("span", {
-                    staticClass: "text-xs text-red",
-                    domProps: { textContent: _vm._s(_vm.errors.last_name[0]) }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
+          }
+        },
+        [
+          _c("div", { staticClass: "mb-6" }, [
             _c(
-              "div",
-              { staticClass: "mb-6" },
+              "label",
+              {
+                staticClass:
+                  "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
+                attrs: { for: "name" }
+              },
               [
-                _c(
-                  "label",
-                  {
-                    staticClass:
-                      "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
-                    attrs: { for: "country" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                " +
-                        _vm._s(_vm.$t("registration.country")) +
-                        "\n                "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("v-select", {
-                  attrs: { label: "name", options: _vm.countries },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "option",
-                      fn: function(option) {
-                        return [
-                          _c("span", { staticClass: "flag" }, [
-                            _c("img", {
-                              attrs: { src: option.flag, alt: option.name }
-                            })
-                          ]),
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(option.name) +
-                              "\n                    "
-                          )
-                        ]
-                      }
-                    }
-                  ]),
-                  model: {
-                    value: _vm.country,
-                    callback: function($$v) {
-                      _vm.country = $$v
-                    },
-                    expression: "country"
-                  }
-                }),
-                _vm._v(" "),
-                _vm.errors.country
-                  ? _c("span", {
-                      staticClass: "text-xs text-red",
-                      domProps: { textContent: _vm._s(_vm.errors.country[0]) }
-                    })
-                  : _vm._e()
-              ],
-              1
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.$t("registration.name")) +
+                    "\n                "
+                )
+              ]
             ),
             _vm._v(" "),
-            _c("div", { staticClass: "mb-6" }, [
-              _c("div", { staticClass: "flex" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.language,
-                      expression: "form.language"
-                    }
-                  ],
-                  staticClass: "p-2 leading-normal",
-                  attrs: {
-                    type: "radio",
-                    value: "en",
-                    id: "en",
-                    autocomplete: "language",
-                    required: ""
-                  },
-                  domProps: { checked: _vm._q(_vm.form.language, "en") },
-                  on: {
-                    keydown: function($event) {
-                      _vm.errors.language = false
-                    },
-                    change: function($event) {
-                      _vm.$set(_vm.form, "language", "en")
-                    }
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.name,
+                  expression: "form.name"
+                }
+              ],
+              staticClass: "w-full p-2 leading-normal",
+              attrs: {
+                type: "text",
+                autocomplete: "name",
+                placeholder: "John",
+                required: ""
+              },
+              domProps: { value: _vm.form.name },
+              on: {
+                keydown: function($event) {
+                  _vm.errors.name = false
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
                   }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass:
-                      "uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 px-2",
-                    attrs: { for: "en" }
-                  },
-                  [
-                    _vm._v(
-                      _vm._s(_vm.$t("registration.language.options.en")) +
-                        "\n                "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.language,
-                      expression: "form.language"
-                    }
-                  ],
-                  staticClass: "p-2 leading-normal",
-                  attrs: {
-                    type: "radio",
-                    value: "es",
-                    autocomplete: "language",
-                    required: "",
-                    id: "es"
-                  },
-                  domProps: { checked: _vm._q(_vm.form.language, "es") },
-                  on: {
-                    keydown: function($event) {
-                      _vm.errors.language = false
-                    },
-                    change: function($event) {
-                      _vm.$set(_vm.form, "language", "es")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass:
-                      " uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 px-2",
-                    attrs: { for: "es" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                " +
-                        _vm._s(_vm.$t("registration.language.options.es")) +
-                        "\n                "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _vm.errors.language
-                ? _c("span", {
-                    staticClass: "text-xs text-red",
-                    domProps: { textContent: _vm._s(_vm.errors.language[0]) }
-                  })
-                : _vm._e()
-            ]),
+                  _vm.$set(_vm.form, "name", $event.target.value)
+                }
+              }
+            }),
             _vm._v(" "),
-            _c("div", { staticClass: "mb-6" }, [
+            _vm.errors.name
+              ? _c("span", {
+                  staticClass: "text-xs text-red",
+                  domProps: { textContent: _vm._s(_vm.errors.name[0]) }
+                })
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-6" }, [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
+                attrs: { for: "last_name" }
+              },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.$t("registration.last_name")) +
+                    "\n                "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.last_name,
+                  expression: "form.last_name"
+                }
+              ],
+              staticClass: "w-full p-2 leading-normal",
+              attrs: {
+                type: "text",
+                autocomplete: "last_name",
+                placeholder: "Doe",
+                required: ""
+              },
+              domProps: { value: _vm.form.last_name },
+              on: {
+                keydown: function($event) {
+                  _vm.errors.last_name = false
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "last_name", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors.last_name
+              ? _c("span", {
+                  staticClass: "text-xs text-red",
+                  domProps: { textContent: _vm._s(_vm.errors.last_name[0]) }
+                })
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mb-6" },
+            [
               _c(
                 "label",
                 {
                   staticClass:
                     "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
-                  attrs: { for: "phone" }
+                  attrs: { for: "country" }
                 },
                 [
                   _vm._v(
                     "\n                " +
-                      _vm._s(_vm.$t("registration.phone")) +
+                      _vm._s(_vm.$t("registration.country")) +
                       "\n                "
                   )
                 ]
               ),
               _vm._v(" "),
-              _c("input", {
-                directives: [
+              _c("v-select", {
+                attrs: { label: "name", options: _vm.countries },
+                scopedSlots: _vm._u([
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.phone,
-                    expression: "form.phone"
-                  }
-                ],
-                staticClass: "w-full p-2 leading-normal",
-                attrs: {
-                  type: "text",
-                  id: "phone",
-                  autocomplete: "phone",
-                  placeholder: "+56(414) 897-9056",
-                  required: ""
-                },
-                domProps: { value: _vm.form.phone },
-                on: {
-                  keydown: function($event) {
-                    _vm.errors.phone = false
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                    key: "option",
+                    fn: function(option) {
+                      return [
+                        _c("span", { staticClass: "flag" }, [
+                          _c("img", {
+                            attrs: { src: option.flag, alt: option.name }
+                          })
+                        ]),
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(option.name) +
+                            "\n                    "
+                        )
+                      ]
                     }
-                    _vm.$set(_vm.form, "phone", $event.target.value)
                   }
+                ]),
+                model: {
+                  value: _vm.country,
+                  callback: function($$v) {
+                    _vm.country = $$v
+                  },
+                  expression: "country"
                 }
               }),
               _vm._v(" "),
-              _vm.errors.phone
+              _vm.errors.country
                 ? _c("span", {
                     staticClass: "text-xs text-red",
-                    domProps: { textContent: _vm._s(_vm.errors.phone[0]) }
+                    domProps: { textContent: _vm._s(_vm.errors.country[0]) }
                   })
                 : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "mb-6" }, [
-              _c(
-                "label",
-                {
-                  staticClass:
-                    "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
-                  attrs: { for: "email" }
-                },
-                [
-                  _vm._v(
-                    _vm._s(_vm.$t("registration.email")) + "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.email,
-                    expression: "form.email"
-                  }
-                ],
-                staticClass: "w-full p-2 leading-normal",
-                attrs: {
-                  type: "text",
-                  id: "email",
-                  autocomplete: "email",
-                  placeholder: "joe@example.com",
-                  required: ""
-                },
-                domProps: { value: _vm.form.email },
-                on: {
-                  keydown: function($event) {
-                    _vm.errors.email = false
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "email", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.email
-                ? _c("div", {
-                    staticClass: "text-xs text-red mt-2",
-                    domProps: { textContent: _vm._s(_vm.errors.email[0]) }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "mb-6" }, [
-              _c(
-                "label",
-                {
-                  staticClass:
-                    "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
-                  attrs: { for: "password" }
-                },
-                [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.$t("registration.password")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.password,
-                    expression: "form.password"
-                  }
-                ],
-                staticClass: "w-full p-2 leading-normal",
-                attrs: {
-                  type: "password",
-                  id: "password",
-                  autocomplete: "password",
-                  name: "password"
-                },
-                domProps: { value: _vm.form.password },
-                on: {
-                  keydown: function($event) {
-                    _vm.errors.password = false
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "password", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.password
-                ? _c("div", {
-                    staticClass: "text-xs text-red mt-2",
-                    domProps: { textContent: _vm._s(_vm.errors.password[0]) }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "mb-6" }, [
-              _c(
-                "label",
-                {
-                  staticClass:
-                    "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
-                  attrs: { for: "password_confirmation" }
-                },
-                [
-                  _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.$t("registration.password_confirmation")) +
-                      "\n            "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.password_confirmation,
-                    expression: "form.password_confirmation"
-                  }
-                ],
-                staticClass: "w-full p-2 leading-normal",
-                attrs: {
-                  type: "password",
-                  id: "password_confirmation",
-                  autocomplete: "password_confirmation",
-                  name: "password_confirmation",
-                  required: ""
-                },
-                domProps: { value: _vm.form.password_confirmation },
-                on: {
-                  keydown: function($event) {
-                    _vm.errors.password = false
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(
-                      _vm.form,
-                      "password_confirmation",
-                      $event.target.value
-                    )
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "mb-6" }, [
-              _c(
-                "label",
-                {
-                  staticClass:
-                    "block uppercase ubscribedtracking-wide text-grey-darker text-xs font-bold mb-2",
-                  attrs: { for: "subscribed" }
-                },
-                [
-                  _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.$t("registration.subscribed")) +
-                      "\n            "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.subscribed,
-                    expression: "form.subscribed"
-                  }
-                ],
-                staticClass: "w-full p-2 leading-normal",
-                attrs: {
-                  type: "checkbox",
-                  value: "1",
-                  id: "subscribed",
-                  autocomplete: "subscribed",
-                  name: "subscribed"
-                },
-                domProps: {
-                  checked: Array.isArray(_vm.form.subscribed)
-                    ? _vm._i(_vm.form.subscribed, "1") > -1
-                    : _vm.form.subscribed
-                },
-                on: {
-                  keydown: function($event) {
-                    _vm.errors.subscribed = false
-                  },
-                  change: function($event) {
-                    var $$a = _vm.form.subscribed,
-                      $$el = $event.target,
-                      $$c = $$el.checked ? true : false
-                    if (Array.isArray($$a)) {
-                      var $$v = "1",
-                        $$i = _vm._i($$a, $$v)
-                      if ($$el.checked) {
-                        $$i < 0 &&
-                          _vm.$set(_vm.form, "subscribed", $$a.concat([$$v]))
-                      } else {
-                        $$i > -1 &&
-                          _vm.$set(
-                            _vm.form,
-                            "subscribed",
-                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                          )
-                      }
-                    } else {
-                      _vm.$set(_vm.form, "subscribed", $$c)
-                    }
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.subscribed
-                ? _c("div", {
-                    staticClass: "text-xs text-red mt-2",
-                    domProps: { textContent: _vm._s(_vm.errors.subscribed[0]) }
-                  })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "mb-6" }, [
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mb-6" },
+            [
               _c(
                 "label",
                 {
@@ -48364,20 +47978,23 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                " +
+                    "\n                        " +
                       _vm._s(_vm.$t("registration.referred.label")) +
-                      "\n\n            "
+                      "\n\n                "
                   )
                 ]
               ),
               _vm._v(" "),
-              _vm._v(
-                "\")}}',value:'invited'},{label:'" +
-                  _vm._s(_vm.$t("registration.referred.options.2")) +
-                  "',value:'contact'},{label:'" +
-                  _vm._s(_vm.$t("registration.referred.options.3")) +
-                  "',value:'other'}]\">\n            "
-              ),
+              _c("v-select", {
+                attrs: { options: _vm.referredOptions },
+                model: {
+                  value: _vm.referred,
+                  callback: function($$v) {
+                    _vm.referred = $$v
+                  },
+                  expression: "referred"
+                }
+              }),
               _vm._v(" "),
               _vm.errors.referred
                 ? _c("div", {
@@ -48385,33 +48002,420 @@ var render = function() {
                     domProps: { textContent: _vm._s(_vm.errors.referred[0]) }
                   })
                 : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex items-center -mx-4" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn is-green flex-1 mx-4",
-                  class: _vm.loading ? "loader" : "",
-                  attrs: { type: "submit", disabled: _vm.loading }
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-6" }, [
+            _c("div", { staticClass: "flex" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.language,
+                    expression: "form.language"
+                  }
+                ],
+                staticClass: "p-2 leading-normal",
+                attrs: {
+                  type: "radio",
+                  value: "en",
+                  name: "language",
+                  checked: "checked",
+                  required: ""
                 },
-                [_vm._v(_vm._s(_vm.$t("registration.register")))]
+                domProps: { checked: _vm._q(_vm.form.language, "en") },
+                on: {
+                  change: function($event) {
+                    _vm.$set(_vm.form, "language", "en")
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 px-2",
+                  attrs: { for: "en" }
+                },
+                [
+                  _vm._v(
+                    _vm._s(_vm.$t("registration.language.options.en")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.language,
+                    expression: "form.language"
+                  }
+                ],
+                staticClass: "p-2 leading-normal",
+                attrs: {
+                  type: "radio",
+                  value: "es",
+                  name: "language",
+                  required: ""
+                },
+                domProps: { checked: _vm._q(_vm.form.language, "es") },
+                on: {
+                  change: function($event) {
+                    _vm.$set(_vm.form, "language", "es")
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass:
+                    " uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 px-2",
+                  attrs: { for: "es" }
+                },
+                [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(_vm.$t("registration.language.options.es")) +
+                      "\n                "
+                  )
+                ]
               )
             ]),
             _vm._v(" "),
-            _vm.feedback
-              ? _c("div", { staticClass: "mt-6" }, [
-                  _c("div", {
-                    staticClass: "text-xs text-red mt-2",
-                    domProps: { textContent: _vm._s(_vm.feedback) }
-                  })
-                ])
+            _vm.errors.language
+              ? _c("span", {
+                  staticClass: "text-xs text-red",
+                  domProps: { textContent: _vm._s(_vm.errors.language[0]) }
+                })
               : _vm._e()
-          ]
-        )
-      ])
-    ]
-  )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-6" }, [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
+                attrs: { for: "phone" }
+              },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.$t("registration.phone")) +
+                    "\n                "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.phone,
+                  expression: "form.phone"
+                }
+              ],
+              staticClass: "w-full p-2 leading-normal",
+              attrs: {
+                type: "text",
+                id: "phone",
+                autocomplete: "phone",
+                placeholder: "+56(414) 897-9056",
+                required: ""
+              },
+              domProps: { value: _vm.form.phone },
+              on: {
+                keydown: function($event) {
+                  _vm.errors.phone = false
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "phone", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors.phone
+              ? _c("span", {
+                  staticClass: "text-xs text-red",
+                  domProps: { textContent: _vm._s(_vm.errors.phone[0]) }
+                })
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-6" }, [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
+                attrs: { for: "email" }
+              },
+              [
+                _vm._v(
+                  _vm._s(_vm.$t("registration.email")) + "\n                "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.email,
+                  expression: "form.email"
+                }
+              ],
+              staticClass: "w-full p-2 leading-normal",
+              attrs: {
+                type: "text",
+                id: "email",
+                autocomplete: "email",
+                placeholder: "joe@example.com",
+                required: ""
+              },
+              domProps: { value: _vm.form.email },
+              on: {
+                keydown: function($event) {
+                  _vm.errors.email = false
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "email", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors.email
+              ? _c("div", {
+                  staticClass: "text-xs text-red mt-2",
+                  domProps: { textContent: _vm._s(_vm.errors.email[0]) }
+                })
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-6" }, [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
+                attrs: { for: "password" }
+              },
+              [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(_vm.$t("registration.password")) +
+                    "\n                "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.password,
+                  expression: "form.password"
+                }
+              ],
+              staticClass: "w-full p-2 leading-normal",
+              attrs: {
+                type: "password",
+                id: "password",
+                autocomplete: "password",
+                name: "password"
+              },
+              domProps: { value: _vm.form.password },
+              on: {
+                keydown: function($event) {
+                  _vm.errors.password = false
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "password", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors.password
+              ? _c("div", {
+                  staticClass: "text-xs text-red mt-2",
+                  domProps: { textContent: _vm._s(_vm.errors.password[0]) }
+                })
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-6" }, [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
+                attrs: { for: "password_confirmation" }
+              },
+              [
+                _vm._v(
+                  "\n            " +
+                    _vm._s(_vm.$t("registration.password_confirmation")) +
+                    "\n            "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.password_confirmation,
+                  expression: "form.password_confirmation"
+                }
+              ],
+              staticClass: "w-full p-2 leading-normal",
+              attrs: {
+                type: "password",
+                id: "password_confirmation",
+                autocomplete: "password_confirmation",
+                name: "password_confirmation",
+                required: ""
+              },
+              domProps: { value: _vm.form.password_confirmation },
+              on: {
+                keydown: function($event) {
+                  _vm.errors.password = false
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.form,
+                    "password_confirmation",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-6" }, [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "block uppercase ubscribedtracking-wide text-grey-darker text-xs font-bold mb-2",
+                attrs: { for: "subscribed" }
+              },
+              [
+                _vm._v(
+                  "\n            " +
+                    _vm._s(_vm.$t("registration.subscribed")) +
+                    "\n            "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.subscribed,
+                  expression: "form.subscribed"
+                }
+              ],
+              staticClass: "w-full p-2 leading-normal",
+              attrs: {
+                type: "checkbox",
+                value: "1",
+                id: "subscribed",
+                autocomplete: "subscribed",
+                name: "subscribed",
+                required: ""
+              },
+              domProps: {
+                checked: Array.isArray(_vm.form.subscribed)
+                  ? _vm._i(_vm.form.subscribed, "1") > -1
+                  : _vm.form.subscribed
+              },
+              on: {
+                keydown: function($event) {
+                  _vm.errors.subscribed = false
+                },
+                change: function($event) {
+                  var $$a = _vm.form.subscribed,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "1",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 &&
+                        _vm.$set(_vm.form, "subscribed", $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        _vm.$set(
+                          _vm.form,
+                          "subscribed",
+                          $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                        )
+                    }
+                  } else {
+                    _vm.$set(_vm.form, "subscribed", $$c)
+                  }
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors.subscribed
+              ? _c("div", {
+                  staticClass: "text-xs text-red mt-2",
+                  domProps: { textContent: _vm._s(_vm.errors.subscribed[0]) }
+                })
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex items-center -mx-4" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn is-green flex-1 mx-4",
+                class: _vm.loading ? "loader" : "",
+                attrs: { type: "submit", disabled: _vm.loading }
+              },
+              [_vm._v(_vm._s(_vm.$t("registration.register")))]
+            )
+          ]),
+          _vm._v(" "),
+          _vm.feedback
+            ? _c("div", { staticClass: "mt-6" }, [
+                _c("div", {
+                  staticClass: "text-xs text-red mt-2",
+                  domProps: { textContent: _vm._s(_vm.feedback) }
+                })
+              ])
+            : _vm._e()
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -48533,9 +48537,773 @@ if (false) {
 }
 
 /***/ }),
-/* 60 */,
-/* 61 */,
-/* 62 */,
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(61)
+/* template */
+var __vue_template__ = __webpack_require__(62)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/EditMyProfile.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a7948568", Component.options)
+  } else {
+    hotAPI.reload("data-v-a7948568", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['profile'],
+	data: function data() {
+		return {
+			errors: {},
+			country: '',
+			countries: ''
+		};
+	},
+
+	methods: {
+		getCountries: function getCountries() {
+			var _this = this;
+
+			if (this.countries.length > 2) return;
+			axios.get("/api/countries").then(function (_ref) {
+				var data = _ref.data;
+				return _this.countries = data;
+			}).catch(function (error) {
+				flash("Hubo un error refresca la pagina", "warning");
+			});
+		},
+		editProfile: function editProfile() {
+			axios.put("profile/edit", this.profile).then(function (_ref2) {
+				var data = _ref2.data;
+			}).catch(function (error) {
+				flash("Hubo un error refresca la pagina", "warning");
+			});
+		}
+	},
+	created: function created() {
+		this.getCountries();
+	}
+});
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("form", [
+      _c("div", { staticClass: "mb-6" }, [
+        _c(
+          "label",
+          {
+            staticClass:
+              "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
+            attrs: { for: "name" }
+          },
+          [_vm._v(_vm._s(_vm.$t("registration.name")))]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.profile.name,
+              expression: "profile.name"
+            }
+          ],
+          staticClass: "w-full p-2 leading-normal",
+          attrs: { type: "text", required: "" },
+          domProps: { value: _vm.profile.name },
+          on: {
+            keydown: function($event) {
+              _vm.errors.name = false
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.profile, "name", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _vm.errors.name
+          ? _c("span", {
+              staticClass: "text-xs text-red",
+              domProps: { textContent: _vm._s(_vm.errors.name[0]) }
+            })
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mb-6" }, [
+        _c(
+          "label",
+          {
+            staticClass:
+              "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
+            attrs: { for: "last_name" }
+          },
+          [_vm._v(_vm._s(_vm.$t("registration.last_name")))]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.profile.last_name,
+              expression: "profile.last_name"
+            }
+          ],
+          staticClass: "w-full p-2 leading-normal",
+          attrs: {
+            type: "text",
+            autocomplete: "last_name",
+            placeholder: "Doe",
+            required: ""
+          },
+          domProps: { value: _vm.profile.last_name },
+          on: {
+            keydown: function($event) {
+              _vm.errors.last_name = false
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.profile, "last_name", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _vm.errors.last_name
+          ? _c("span", {
+              staticClass: "text-xs text-red",
+              domProps: { textContent: _vm._s(_vm.errors.last_name[0]) }
+            })
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "mb-6" },
+        [
+          _c(
+            "label",
+            {
+              staticClass:
+                "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
+              attrs: { for: "country" }
+            },
+            [_vm._v(_vm._s(_vm.$t("registration.country")))]
+          ),
+          _vm._v(" "),
+          _c("v-select", {
+            attrs: { label: "name", options: _vm.countries },
+            scopedSlots: _vm._u([
+              {
+                key: "option",
+                fn: function(option) {
+                  return [
+                    _c("span", { staticClass: "flag" }, [
+                      _c("img", {
+                        attrs: { src: option.flag, alt: option.name }
+                      })
+                    ]),
+                    _vm._v(
+                      "\n\t\t\t\t\t\t" + _vm._s(option.name) + "\n\t\t\t\t\t"
+                    )
+                  ]
+                }
+              }
+            ]),
+            model: {
+              value: _vm.profile.country,
+              callback: function($$v) {
+                _vm.$set(_vm.profile, "country", $$v)
+              },
+              expression: "profile.country"
+            }
+          }),
+          _vm._v(" "),
+          _vm.errors.country
+            ? _c("span", {
+                staticClass: "text-xs text-red",
+                domProps: { textContent: _vm._s(_vm.errors.country[0]) }
+              })
+            : _vm._e()
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "mb-6" }, [
+        _c("div", { staticClass: "flex" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.profile.language,
+                expression: "profile.language"
+              }
+            ],
+            staticClass: "p-2 leading-normal",
+            attrs: {
+              type: "radio",
+              value: "en",
+              id: "en",
+              autocomplete: "language",
+              required: ""
+            },
+            domProps: { checked: _vm._q(_vm.profile.language, "en") },
+            on: {
+              keydown: function($event) {
+                _vm.errors.language = false
+              },
+              change: function($event) {
+                _vm.$set(_vm.profile, "language", "en")
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 px-2",
+              attrs: { for: "en" }
+            },
+            [_vm._v(_vm._s(_vm.$t("registration.language.options.en")))]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.profile.language,
+                expression: "profile.language"
+              }
+            ],
+            staticClass: "p-2 leading-normal",
+            attrs: {
+              type: "radio",
+              value: "es",
+              autocomplete: "language",
+              required: "",
+              id: "es"
+            },
+            domProps: { checked: _vm._q(_vm.profile.language, "es") },
+            on: {
+              keydown: function($event) {
+                _vm.errors.language = false
+              },
+              change: function($event) {
+                _vm.$set(_vm.profile, "language", "es")
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                " uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 px-2",
+              attrs: { for: "es" }
+            },
+            [_vm._v(_vm._s(_vm.$t("registration.language.options.es")))]
+          )
+        ]),
+        _vm._v(" "),
+        _vm.errors.language
+          ? _c("span", {
+              staticClass: "text-xs text-red",
+              domProps: { textContent: _vm._s(_vm.errors.language[0]) }
+            })
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mb-6" }, [
+        _c(
+          "label",
+          {
+            staticClass:
+              "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
+            attrs: { for: "phone" }
+          },
+          [_vm._v(_vm._s(_vm.$t("registration.phone")))]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.profile.phone,
+              expression: "profile.phone"
+            }
+          ],
+          staticClass: "w-full p-2 leading-normal",
+          attrs: {
+            type: "text",
+            id: "phone",
+            autocomplete: "phone",
+            placeholder: "+56(414) 897-9056",
+            required: ""
+          },
+          domProps: { value: _vm.profile.phone },
+          on: {
+            keydown: function($event) {
+              _vm.errors.phone = false
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.profile, "phone", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _vm.errors.phone
+          ? _c("span", {
+              staticClass: "text-xs text-red",
+              domProps: { textContent: _vm._s(_vm.errors.phone[0]) }
+            })
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mb-6" }, [
+        _c(
+          "label",
+          {
+            staticClass:
+              "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
+            attrs: { for: "email" }
+          },
+          [_vm._v(_vm._s(_vm.$t("registration.email")))]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.profile.email,
+              expression: "profile.email"
+            }
+          ],
+          staticClass: "w-full p-2 leading-normal",
+          attrs: {
+            type: "text",
+            id: "email",
+            autocomplete: "email",
+            placeholder: "joe@example.com",
+            required: ""
+          },
+          domProps: { value: _vm.profile.email },
+          on: {
+            keydown: function($event) {
+              _vm.errors.email = false
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.profile, "email", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _vm.errors.email
+          ? _c("div", {
+              staticClass: "text-xs text-red mt-2",
+              domProps: { textContent: _vm._s(_vm.errors.email[0]) }
+            })
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mb-6" }, [
+        _c(
+          "label",
+          {
+            staticClass:
+              "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
+            attrs: { for: "password" }
+          },
+          [_vm._v(_vm._s(_vm.$t("registration.change_password")))]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.profile.password,
+              expression: "profile.password"
+            }
+          ],
+          staticClass: "w-full p-2 leading-normal",
+          attrs: {
+            type: "password",
+            id: "password",
+            autocomplete: "password",
+            name: "password"
+          },
+          domProps: { value: _vm.profile.password },
+          on: {
+            keydown: function($event) {
+              _vm.errors.password = false
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.profile, "password", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _vm.errors.password
+          ? _c("div", {
+              staticClass: "text-xs text-red mt-2",
+              domProps: { textContent: _vm._s(_vm.errors.password[0]) }
+            })
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mb-6" }, [
+        _c(
+          "label",
+          {
+            staticClass:
+              "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
+            attrs: { for: "password_confirmation" }
+          },
+          [_vm._v(_vm._s(_vm.$t("registration.change_password_confirmation")))]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.profile.password_confirmation,
+              expression: "profile.password_confirmation"
+            }
+          ],
+          staticClass: "w-full p-2 leading-normal",
+          attrs: {
+            type: "password",
+            id: "password_confirmation",
+            autocomplete: "password_confirmation",
+            name: "password_confirmation",
+            required: ""
+          },
+          domProps: { value: _vm.profile.password_confirmation },
+          on: {
+            keydown: function($event) {
+              _vm.errors.password = false
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(
+                _vm.profile,
+                "password_confirmation",
+                $event.target.value
+              )
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mb-6" }, [
+        _c(
+          "label",
+          {
+            staticClass:
+              "block uppercase ubscribedtracking-wide text-grey-darker text-xs font-bold mb-2",
+            attrs: { for: "subscribed" }
+          },
+          [_vm._v(_vm._s(_vm.$t("registration.subscribed")))]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.profile.subscribed,
+              expression: "profile.subscribed"
+            }
+          ],
+          staticClass: "w-full p-2 leading-normal",
+          attrs: {
+            type: "checkbox",
+            value: "1",
+            id: "subscribed",
+            autocomplete: "subscribed",
+            name: "subscribed"
+          },
+          domProps: {
+            checked: Array.isArray(_vm.profile.subscribed)
+              ? _vm._i(_vm.profile.subscribed, "1") > -1
+              : _vm.profile.subscribed
+          },
+          on: {
+            keydown: function($event) {
+              _vm.errors.subscribed = false
+            },
+            change: function($event) {
+              var $$a = _vm.profile.subscribed,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = "1",
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 &&
+                    _vm.$set(_vm.profile, "subscribed", $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    _vm.$set(
+                      _vm.profile,
+                      "subscribed",
+                      $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                    )
+                }
+              } else {
+                _vm.$set(_vm.profile, "subscribed", $$c)
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _vm.errors.subscribed
+          ? _c("div", {
+              staticClass: "text-xs text-red mt-2",
+              domProps: { textContent: _vm._s(_vm.errors.subscribed[0]) }
+            })
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex items-center -mx-4" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn is-green flex-1 mx-4",
+            attrs: { type: "submit" }
+          },
+          [_vm._v(_vm._s(_vm.$t("registration.register")))]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a7948568", module.exports)
+  }
+}
+
+/***/ }),
 /* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -54728,774 +55496,6 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 102 */,
-/* 103 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(104)
-/* template */
-var __vue_template__ = __webpack_require__(105)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/EditMyProfile.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a7948568", Component.options)
-  } else {
-    hotAPI.reload("data-v-a7948568", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 104 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['profile'],
-	data: function data() {
-		return {
-			errors: {},
-			country: '',
-			countries: ''
-		};
-	},
-
-	methods: {
-		getCountries: function getCountries() {
-			var _this = this;
-
-			if (this.countries.length > 2) return;
-			axios.get("/api/countries").then(function (_ref) {
-				var data = _ref.data;
-				return _this.countries = data;
-			}).catch(function (error) {
-				flash("Hubo un error refresca la pagina", "warning");
-			});
-		},
-		editProfile: function editProfile() {
-			axios.put("profile/edit", this.profile).then(function (_ref2) {
-				var data = _ref2.data;
-			}).catch(function (error) {
-				flash("Hubo un error refresca la pagina", "warning");
-			});
-		}
-	},
-	created: function created() {
-		this.getCountries();
-	}
-});
-
-/***/ }),
-/* 105 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("form", [
-      _c("div", { staticClass: "mb-6" }, [
-        _c(
-          "label",
-          {
-            staticClass:
-              "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
-            attrs: { for: "name" }
-          },
-          [_vm._v(_vm._s(_vm.$t("registration.name")))]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.profile.name,
-              expression: "profile.name"
-            }
-          ],
-          staticClass: "w-full p-2 leading-normal",
-          attrs: { type: "text", required: "" },
-          domProps: { value: _vm.profile.name },
-          on: {
-            keydown: function($event) {
-              _vm.errors.name = false
-            },
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.profile, "name", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _vm.errors.name
-          ? _c("span", {
-              staticClass: "text-xs text-red",
-              domProps: { textContent: _vm._s(_vm.errors.name[0]) }
-            })
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mb-6" }, [
-        _c(
-          "label",
-          {
-            staticClass:
-              "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
-            attrs: { for: "last_name" }
-          },
-          [_vm._v(_vm._s(_vm.$t("registration.last_name")))]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.profile.last_name,
-              expression: "profile.last_name"
-            }
-          ],
-          staticClass: "w-full p-2 leading-normal",
-          attrs: {
-            type: "text",
-            autocomplete: "last_name",
-            placeholder: "Doe",
-            required: ""
-          },
-          domProps: { value: _vm.profile.last_name },
-          on: {
-            keydown: function($event) {
-              _vm.errors.last_name = false
-            },
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.profile, "last_name", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _vm.errors.last_name
-          ? _c("span", {
-              staticClass: "text-xs text-red",
-              domProps: { textContent: _vm._s(_vm.errors.last_name[0]) }
-            })
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "mb-6" },
-        [
-          _c(
-            "label",
-            {
-              staticClass:
-                "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
-              attrs: { for: "country" }
-            },
-            [_vm._v(_vm._s(_vm.$t("registration.country")))]
-          ),
-          _vm._v(" "),
-          _c("v-select", {
-            attrs: { label: "name", options: _vm.countries },
-            scopedSlots: _vm._u([
-              {
-                key: "option",
-                fn: function(option) {
-                  return [
-                    _c("span", { staticClass: "flag" }, [
-                      _c("img", {
-                        attrs: { src: option.flag, alt: option.name }
-                      })
-                    ]),
-                    _vm._v(
-                      "\n\t\t\t\t\t\t" + _vm._s(option.name) + "\n\t\t\t\t\t"
-                    )
-                  ]
-                }
-              }
-            ]),
-            model: {
-              value: _vm.profile.country,
-              callback: function($$v) {
-                _vm.$set(_vm.profile, "country", $$v)
-              },
-              expression: "profile.country"
-            }
-          }),
-          _vm._v(" "),
-          _vm.errors.country
-            ? _c("span", {
-                staticClass: "text-xs text-red",
-                domProps: { textContent: _vm._s(_vm.errors.country[0]) }
-              })
-            : _vm._e()
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "mb-6" }, [
-        _c("div", { staticClass: "flex" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.profile.language,
-                expression: "profile.language"
-              }
-            ],
-            staticClass: "p-2 leading-normal",
-            attrs: {
-              type: "radio",
-              value: "en",
-              id: "en",
-              autocomplete: "language",
-              required: ""
-            },
-            domProps: { checked: _vm._q(_vm.profile.language, "en") },
-            on: {
-              keydown: function($event) {
-                _vm.errors.language = false
-              },
-              change: function($event) {
-                _vm.$set(_vm.profile, "language", "en")
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass:
-                "uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 px-2",
-              attrs: { for: "en" }
-            },
-            [_vm._v(_vm._s(_vm.$t("registration.language.options.en")))]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.profile.language,
-                expression: "profile.language"
-              }
-            ],
-            staticClass: "p-2 leading-normal",
-            attrs: {
-              type: "radio",
-              value: "es",
-              autocomplete: "language",
-              required: "",
-              id: "es"
-            },
-            domProps: { checked: _vm._q(_vm.profile.language, "es") },
-            on: {
-              keydown: function($event) {
-                _vm.errors.language = false
-              },
-              change: function($event) {
-                _vm.$set(_vm.profile, "language", "es")
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass:
-                " uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 px-2",
-              attrs: { for: "es" }
-            },
-            [_vm._v(_vm._s(_vm.$t("registration.language.options.es")))]
-          )
-        ]),
-        _vm._v(" "),
-        _vm.errors.language
-          ? _c("span", {
-              staticClass: "text-xs text-red",
-              domProps: { textContent: _vm._s(_vm.errors.language[0]) }
-            })
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mb-6" }, [
-        _c(
-          "label",
-          {
-            staticClass:
-              "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
-            attrs: { for: "phone" }
-          },
-          [_vm._v(_vm._s(_vm.$t("registration.phone")))]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.profile.phone,
-              expression: "profile.phone"
-            }
-          ],
-          staticClass: "w-full p-2 leading-normal",
-          attrs: {
-            type: "text",
-            id: "phone",
-            autocomplete: "phone",
-            placeholder: "+56(414) 897-9056",
-            required: ""
-          },
-          domProps: { value: _vm.profile.phone },
-          on: {
-            keydown: function($event) {
-              _vm.errors.phone = false
-            },
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.profile, "phone", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _vm.errors.phone
-          ? _c("span", {
-              staticClass: "text-xs text-red",
-              domProps: { textContent: _vm._s(_vm.errors.phone[0]) }
-            })
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mb-6" }, [
-        _c(
-          "label",
-          {
-            staticClass:
-              "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
-            attrs: { for: "email" }
-          },
-          [_vm._v(_vm._s(_vm.$t("registration.email")))]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.profile.email,
-              expression: "profile.email"
-            }
-          ],
-          staticClass: "w-full p-2 leading-normal",
-          attrs: {
-            type: "text",
-            id: "email",
-            autocomplete: "email",
-            placeholder: "joe@example.com",
-            required: ""
-          },
-          domProps: { value: _vm.profile.email },
-          on: {
-            keydown: function($event) {
-              _vm.errors.email = false
-            },
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.profile, "email", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _vm.errors.email
-          ? _c("div", {
-              staticClass: "text-xs text-red mt-2",
-              domProps: { textContent: _vm._s(_vm.errors.email[0]) }
-            })
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mb-6" }, [
-        _c(
-          "label",
-          {
-            staticClass:
-              "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
-            attrs: { for: "password" }
-          },
-          [_vm._v(_vm._s(_vm.$t("registration.change_password")))]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.profile.password,
-              expression: "profile.password"
-            }
-          ],
-          staticClass: "w-full p-2 leading-normal",
-          attrs: {
-            type: "password",
-            id: "password",
-            autocomplete: "password",
-            name: "password"
-          },
-          domProps: { value: _vm.profile.password },
-          on: {
-            keydown: function($event) {
-              _vm.errors.password = false
-            },
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.profile, "password", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _vm.errors.password
-          ? _c("div", {
-              staticClass: "text-xs text-red mt-2",
-              domProps: { textContent: _vm._s(_vm.errors.password[0]) }
-            })
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mb-6" }, [
-        _c(
-          "label",
-          {
-            staticClass:
-              "block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2",
-            attrs: { for: "password_confirmation" }
-          },
-          [_vm._v(_vm._s(_vm.$t("registration.change_password_confirmation")))]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.profile.password_confirmation,
-              expression: "profile.password_confirmation"
-            }
-          ],
-          staticClass: "w-full p-2 leading-normal",
-          attrs: {
-            type: "password",
-            id: "password_confirmation",
-            autocomplete: "password_confirmation",
-            name: "password_confirmation",
-            required: ""
-          },
-          domProps: { value: _vm.profile.password_confirmation },
-          on: {
-            keydown: function($event) {
-              _vm.errors.password = false
-            },
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(
-                _vm.profile,
-                "password_confirmation",
-                $event.target.value
-              )
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mb-6" }, [
-        _c(
-          "label",
-          {
-            staticClass:
-              "block uppercase ubscribedtracking-wide text-grey-darker text-xs font-bold mb-2",
-            attrs: { for: "subscribed" }
-          },
-          [_vm._v(_vm._s(_vm.$t("registration.subscribed")))]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.profile.subscribed,
-              expression: "profile.subscribed"
-            }
-          ],
-          staticClass: "w-full p-2 leading-normal",
-          attrs: {
-            type: "checkbox",
-            value: "1",
-            id: "subscribed",
-            autocomplete: "subscribed",
-            name: "subscribed"
-          },
-          domProps: {
-            checked: Array.isArray(_vm.profile.subscribed)
-              ? _vm._i(_vm.profile.subscribed, "1") > -1
-              : _vm.profile.subscribed
-          },
-          on: {
-            keydown: function($event) {
-              _vm.errors.subscribed = false
-            },
-            change: function($event) {
-              var $$a = _vm.profile.subscribed,
-                $$el = $event.target,
-                $$c = $$el.checked ? true : false
-              if (Array.isArray($$a)) {
-                var $$v = "1",
-                  $$i = _vm._i($$a, $$v)
-                if ($$el.checked) {
-                  $$i < 0 &&
-                    _vm.$set(_vm.profile, "subscribed", $$a.concat([$$v]))
-                } else {
-                  $$i > -1 &&
-                    _vm.$set(
-                      _vm.profile,
-                      "subscribed",
-                      $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                    )
-                }
-              } else {
-                _vm.$set(_vm.profile, "subscribed", $$c)
-              }
-            }
-          }
-        }),
-        _vm._v(" "),
-        _vm.errors.subscribed
-          ? _c("div", {
-              staticClass: "text-xs text-red mt-2",
-              domProps: { textContent: _vm._s(_vm.errors.subscribed[0]) }
-            })
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "flex items-center -mx-4" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn is-green flex-1 mx-4",
-            attrs: { type: "submit" }
-          },
-          [_vm._v(_vm._s(_vm.$t("registration.register")))]
-        )
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-a7948568", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

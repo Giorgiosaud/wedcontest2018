@@ -6,9 +6,10 @@
 
 require("./bootstrap");
 import Locales from "./vue-i18n-locales.generated.js";
-import VueInternalization from "vue-i18n";
-console.log(VueInternalization);
-console.info(Locales);
+import VueI18n from "vue-i18n";
+
+Vue.use(VueI18n);
+// import VueInternalization from "vue-i18n";
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,15 +31,14 @@ Vue.component("Dropdown", require("./components/Dropdown.vue"));
 Vue.component("Contest", require("./components/Contest.vue"));
 Vue.component("wysiwyg", require("./components/wysiwyg.vue"));
 
-const i18n = new VueInternalization({
+const i18n = new VueI18n({
   locale: window.App.locale, // set locale
   messages: Locales // set locale messages
 });
 const app = new Vue({
-
   el: "#app",
   data: {
     searching: false
   },
-  i18n,
-})
+  i18n
+});

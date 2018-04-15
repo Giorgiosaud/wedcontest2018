@@ -1,6 +1,6 @@
 <template>
 
-    <modal name="register" height="auto" @before-open="getCountries">
+    <modal name="register" height="auto" >
         <div>
             <form class="p-10" @submit.prevent="register">
                 <div class="mb-6">
@@ -49,15 +49,23 @@
                     <span v-if="errors.country" v-text="errors.country[0]" class="text-xs text-red"></span>
                 </div>
                 <div class="mb-6">
+                    <label for="referred" 
+                            class="block uppercase ubscribedtracking-wide text-grey-darker text-xs font-bold mb-2">
+                            {{$t('registration.referred.label')}}
+
+                    </label>
+                    <v-select v-model="referred" :options="referredOptions"></v-select>
+                    <div v-if="errors.referred" v-text="errors.referred[0]" class="text-xs text-red mt-2"></div>
+                </div>
+                <div class="mb-6">
                     <div class="flex">
                         <input type="radio"
                                 class="p-2 leading-normal" 
                                 value="en"
-                                id="en"
-                                autocomplete="language"
+                                name="language"
+                                checked="checked"
                                 required 
                                 v-model="form.language"
-                                @keydown="errors.language = false"
                         >
                     <label for="en" 
                            class="uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 px-2"
@@ -65,11 +73,10 @@
                     </label>
                     <input  type="radio" 
                             class="p-2 leading-normal" 
-                            value="es" autocomplete="language"
+                            value="es" 
+                            name="language"
                             required 
-                            id="es"
                             v-model="form.language"
-                            @keydown="errors.language = false"
                     >
                     <label  for="es" 
                             class=" uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 px-2"
@@ -154,22 +161,13 @@
                 id="subscribed" 
                 autocomplete="subscribed" 
                 name="subscribed" 
+                required
                 v-model="form.subscribed" 
                 @keydown="errors.subscribed = false">
                 <div v-if="errors.subscribed" v-text="errors.subscribed[0]" class="text-xs text-red mt-2"></div>
             </div>
 
-            <div class="mb-6">
-                <label for="referred" 
-                class="block uppercase ubscribedtracking-wide text-grey-darker text-xs font-bold mb-2">
-                    {{$t('registration.referred.label')}}
-
-                </label>
-                <v-select v-model="referred" :
-                            options="[{label:'{{$t("registration.referred.options.1")}}',value:'invited'},{label:'{{$t('registration.referred.options.2')}}',value:'contact'},{label:'{{$t('registration.referred.options.3')}}',value:'other'}]">
-                </v-select>
-                <div v-if="errors.referred" v-text="errors.referred[0]" class="text-xs text-red mt-2"></div>
-            </div>
+            
             <div class="flex items-center -mx-4">
                 <button type="submit" class="btn is-green flex-1 mx-4" :class="loading ? 'loader' : ''" :disabled="loading">{{$t('registration.register')}}</button>
             </div>
@@ -192,15 +190,29 @@ export default {
         phone: "",
         country: "",
         referred: "",
-        language: "",
+        language: "en",
         email: "",
         password: "",
         password_confirmation: "",
-        subscribed: false
+        subscribed: true
       },
-      countries: "",
+      countries: [],
       country: "",
       referred: "",
+      referredOptions: [
+        {
+          label: this.$t("registration.referred.options.1"),
+          value: "invited"
+        },
+        {
+          label: this.$t("registration.referred.options.2"),
+          value: "contact"
+        },
+        {
+          label: this.$t("registration.referred.options.3"),
+          value: "other"
+        }
+      ],
       feedback: "",
       loading: false,
       errors: {}
@@ -220,16 +232,16 @@ export default {
 
           this.loading = false;
         });
-    },
-    getCountries() {
-      if (this.countries.length > 2) return;
-      axios
-        .get("/api/countries")
-        .then(({ data }) => (this.countries = data))
-        .catch(error => {
-          flash("Hubo un error refresca la pagina", "warning");
-        });
     }
+  },
+  created() {
+    if (this.countries.length > 2) return;
+    axios
+      .get("/api/countries")
+      .then(({ data }) => (this.countries = data))
+      .catch(error => {
+        flash("Hubo un error refresca la pagina", "warning");
+      });
   },
   computed: {
     selectedCountry() {

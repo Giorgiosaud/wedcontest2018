@@ -17,6 +17,6 @@ class RegisterConfirmationController extends Controller
         $user->confirm();
 
         return redirect(route('the_contest'))
-            ->with('flash', 'Your account is now confirmed! You may post to the forum.');
+            ->with('flash', 'Your account is now confirmed! Now you can register the participants.');
     }
 }
