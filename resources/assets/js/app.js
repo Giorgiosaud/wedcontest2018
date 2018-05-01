@@ -21,6 +21,14 @@ Vue.use(VueI18n);
 Vue.component("Flash", require("./components/Flash.vue"));
 Vue.component("Login", require("./components/Login.vue"));
 Vue.component("Register", require("./components/Register.vue"));
+Vue.component(
+  "RepresentantRegistrationForm",
+  require("./components/RepresentantRegistrationForm.vue")
+);
+Vue.component(
+  "ContestantRegistrationForm",
+  require("./components/ContestantRegistrationForm.vue")
+);
 Vue.component("LogoutButton", require("./components/LogoutButton.vue"));
 Vue.component("EditMyProfile", require("./components/EditMyProfile.vue"));
 Vue.component(

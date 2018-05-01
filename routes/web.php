@@ -41,6 +41,7 @@ Route::group([
     Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
     Route::post('/profile', 'ProfileController@update')->name('profile.update');
     Route::get('/my-contestants', 'MyContestants@index')->name('contestants.index');
+    Route::get('/my-contestants/create', 'MyContestants@create')->name('contestants.create');
 
     Route::post('/images/upload', 'ImageController@store')->middleware('admin')->name('store.image');
 

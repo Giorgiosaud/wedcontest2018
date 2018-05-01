@@ -58,7 +58,9 @@ export default {
             "mail": {
                 "subject": "Please Confirm Your Email"
             },
-            "register": "Register"
+            "edit": "Edit your Profile",
+            "register": "Register",
+            "registerContestants": "Contestant Registration"
         },
         "routes": {
             "the_contest": "the_contest"
@@ -205,7 +207,8 @@ export default {
             "mail": {
                 "subject": "Porfavor Confirma tu Correo"
             },
-            "register": "Registrate"
+            "register": "Registrate",
+            "registerContestants": "Registro de Concursantes"
         },
         "routes": {
             "the_contest": "el_concurso"

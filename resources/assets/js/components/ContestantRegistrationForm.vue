@@ -1,8 +1,16 @@
 <template>
-
-    <modal name="register" height="auto" >
-        <div>
-            <form class="p-10" @submit.prevent="register">
+<!-- nombre, 
+apellido, 
+fecha de nacimiento, 
+categoria, 
+ha participado en años anteriores(si,no ),
+comentarios, 
+agregar otro, 
+aceptar, 
+cancelar -->
+        <div class="py-6">
+          <h1>{{$t("registration.registerContestants")}}</h1>
+            <form class="py-6" @submit.prevent="register">
                 <div class="mb-6">
                     <label  for="name" 
                             class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
@@ -177,7 +185,6 @@
             </div> 
             </form>        
         </div>
-    </modal>
 </template>
 
 <script>
@@ -225,7 +232,8 @@ export default {
       axios
         .post("/register", this.form)
         .then(response => {
-          location.reload();
+          console.log(response);
+          window.location.href = response.request.responseURL;
         })
         .catch(error => {
           this.errors = error.response.data.errors;
@@ -243,15 +251,23 @@ export default {
         flash("Hubo un error refresca la pagina", "warning");
       });
   },
-  computed: {
-    selectedCountry() {
-      this.form.country = this.country.code;
-      return this.form.country;
+  watch: {
+    country(value) {
+      this.form.country = value.code;
     },
-    selectedReferred() {
-      this.form.referred = this.referred.value;
-      return this.form.referred;
+    referred(value) {
+      this.form.country = value.value;
     }
+  },
+  computed: {
+    // selectedCountry() {
+    //   this.form.country = this.country.code;
+    //   return this.form.country;
+    // },
+    // selectedReferred() {
+    //   this.form.referred = this.referred.value;
+    //   return this.form.referred;
+    // }
   }
 };
 </script>

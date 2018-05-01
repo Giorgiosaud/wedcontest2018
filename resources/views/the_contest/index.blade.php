@@ -20,8 +20,8 @@
             <p class="text-xs text-grey-dark font-bold border border-dashed border-grey-dark p-3">@lang('contests.confirm_email')</p>
         @endif
     @else
-        <button class="btn is-green w-full tracking-wide" @click="$modal.show('login')">@lang('contests.login_button')</button>
-        <button class="btn is-green w-full tracking-wide mt-4" @click="$modal.show('register')">@lang('contests.register_button')</button>
+<a class="btn is-green w-full tracking-wide" href="{{route("login")}}">@lang('contests.login_button')</a>
+        <a class="btn is-green w-full tracking-wide mt-4" href="{{route("register")}}" >@lang('contests.register_button')</a>
     @endif
 
     <div v-cloak>
