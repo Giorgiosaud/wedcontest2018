@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 class RegisterConfirmationController extends Controller
 {
+    protected $redirectTo = '/the_contest';
+
     public function index()
     {
         $user = User::where('confirmation_token', request('token'))->first();

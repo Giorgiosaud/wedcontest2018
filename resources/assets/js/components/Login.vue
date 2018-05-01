@@ -11,10 +11,15 @@
                 <label for="password" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">Password</label>
                 <input type="password" class="w-full p-2 leading-normal" id="password" name="password" autocomplete="current-password" required v-model="form.password">
             </div>
-
             <div class="flex justify-end items-center">
-                <button type="submit" class="btn is-green mr-4" :class="loading ? 'loader' : ''" :disabled="loading">Log In</button>
-                <a href="#" class="text-xs text-grey-dark link" @click="register">or register</a>
+                <button type="button" 
+                @click="login" 
+                class="btn is-green mr-4" 
+                :class="loading ? 'loader' : ''" 
+                :disabled="loading">Log In</button>
+                <a href="/register" 
+                class="text-xs text-grey-dark link" 
+                >or register</a>
             </div>
 
             <div class="mt-6" v-if="feedback">
@@ -42,17 +47,12 @@ export default {
 
       axios
         .post("/login", this.form)
-        .then(() => location.reload())
+        .then(response => (window.location.href = response.request.responseURL))
         .catch(error => {
           this.feedback =
             "The given credentials are incorrect. Please try again.";
           this.loading = false;
         });
-    },
-
-    register() {
-      this.$modal.hide("login");
-      this.$modal.show("register");
     }
   }
 };

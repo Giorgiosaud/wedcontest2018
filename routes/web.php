@@ -21,12 +21,12 @@ Route::group([
 //        return 'hola';
 //    });
     /* ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-    Route::redirect('/', 'the_contest');
-    Route::get(LaravelLocalization::transRoute('routes.the_contest'), 'TheContestController@index')
-        ->name('the_contest');
 
     Auth::routes();
 
+    Route::redirect('/', 'the_contest');
+    Route::get(LaravelLocalization::transRoute('routes.the_contest'), 'TheContestController@index')
+        ->name('the_contest');
     Route::get('contests', 'ContestsController@index')->middleware('admin')->name('contests.index');
     Route::get('contests/create', 'ContestsController@create')->middleware('admin')->name('contests.create');
     Route::post('contests', 'ContestsController@store')->middleware('admin')->name('contests.store');
