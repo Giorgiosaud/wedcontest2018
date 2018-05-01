@@ -130,14 +130,6 @@ export default {
         });
     },
     editContest() {
-      // var formData = new FormData();
-      // formData.append("image", this.form.intro_image_file);
-      // axios
-      //   .post("/images/upload", formData)
-      //   .catch(e => flash(e.response.data.message, "warning"))
-      //   .then(({ data }) =>
-      //     flash("El concurso fue editado exitosamente", "success")
-      // //   );
       axios
         .put(`/contests/${this.contest.slug}`, this.form)
         .catch(error => {

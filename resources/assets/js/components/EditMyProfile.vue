@@ -146,38 +146,36 @@
 
 </template>
 <script>
-export default{
-	props:['profile'],
-	data(){
-		return{
-			errors:{},
-			country:'',
-			countries:''
-		}
-	},
-	methods:{
-		getCountries() {
-			if (this.countries.length > 2) return;
-			axios
-			.get("/api/countries")
-			.then(({ data }) => (this.countries = data))
-			.catch(error => {
-				flash("Hubo un error refresca la pagina", "warning");
-			});
-		},
-		editProfile(){
-			axios
-			.put("profile/edit",this.profile)
-			.then(({data})=>{
-			})
-			.catch(error=>{
-				flash("Hubo un error refresca la pagina", "warning");
-			})
-		}
-	},
-	created(){
-		this.getCountries();
-	}
-
-}
+export default {
+  props: ["profile"],
+  data() {
+    return {
+      errors: {},
+      country: "",
+      countries: ""
+    };
+  },
+  methods: {
+    getCountries() {
+      if (this.countries.length > 2) return;
+      axios
+        .get("/api/countries")
+        .then(({ data }) => (this.countries = data))
+        .catch(error => {
+          flash("Hubo un error refresca la pagina", "warning");
+        });
+    },
+    editProfile() {
+      axios
+        .put("profile/edit", this.profile)
+        .then(({ data }) => {})
+        .catch(error => {
+          flash("Hubo un error refresca la pagina", "warning");
+        });
+    }
+  },
+  created() {
+    this.getCountries();
+  }
+};
 </script>

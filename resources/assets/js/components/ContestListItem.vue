@@ -35,10 +35,10 @@
 </template>
 
 <script>
-    export default {
-        props: ["contest", "creator"],
-        mounted() {
-            console.log('Component mounted.')
-        }
-    }
+export default {
+  props: ["contest", "creator"],
+  mounted() {
+    console.log("Component mounted.");
+  }
+};
 </script>

@@ -258,16 +258,6 @@ export default {
     referred(value) {
       this.form.country = value.value;
     }
-  },
-  computed: {
-    // selectedCountry() {
-    //   this.form.country = this.country.code;
-    //   return this.form.country;
-    // },
-    // selectedReferred() {
-    //   this.form.referred = this.referred.value;
-    //   return this.form.referred;
-    // }
   }
 };
 </script>

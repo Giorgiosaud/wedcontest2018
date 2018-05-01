@@ -47,36 +47,35 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return { notifications: false, active: false }
-        },
+export default {
+  data() {
+    return { notifications: false, active: false };
+  },
 
-        created() {
-            // this.fetchNotifications();
-        },
+  created() {
+    // this.fetchNotifications();
+  },
 
-        computed: {
-            endpoint() {
-                return `/profiles/${window.App.user.name}/notifications`;
-            }
-
-        },
-
-        methods: {
-            fetchNotifications() {
-                axios.get(this.endpoint)
-                    .then(response => this.notifications = response.data);
-            },
-
-            markAsRead(notification) {
-                axios.delete(`${this.endpoint}/${notification.id}`)
-                    .then(({data}) => {
-                        this.fetchNotifications();
-
-                        document.location.replace(data.link);
-                    });
-            }
-        }
+  computed: {
+    endpoint() {
+      return `/profiles/${window.App.user.name}/notifications`;
     }
+  },
+
+  methods: {
+    fetchNotifications() {
+      axios
+        .get(this.endpoint)
+        .then(response => (this.notifications = response.data));
+    },
+
+    markAsRead(notification) {
+      axios.delete(`${this.endpoint}/${notification.id}`).then(({ data }) => {
+        this.fetchNotifications();
+
+        document.location.replace(data.link);
+      });
+    }
+  }
+};
 </script>

@@ -19,11 +19,11 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                active: false
-            };
-        }
-    }
+export default {
+  data() {
+    return {
+      active: false
+    };
+  }
+};
 </script>
