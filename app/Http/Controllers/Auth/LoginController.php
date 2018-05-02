@@ -26,7 +26,6 @@ class LoginController extends Controller
      * @var string
      */
 
-    protected $redirectPath = '/dashboard';
     protected $redirectTo = '/the_contest';
 
     /**
