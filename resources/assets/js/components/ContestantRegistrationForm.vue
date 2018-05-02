@@ -188,6 +188,10 @@ cancelar -->
 </template>
 
 <script>
+// import component and stylesheet
+import AirbnbStyleDatepicker from "vue-airbnb-style-datepicker";
+import "vue-airbnb-style-datepicker/dist/styles.css";
+
 export default {
   data() {
     return {
