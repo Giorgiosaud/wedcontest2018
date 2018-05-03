@@ -20,6 +20,7 @@ class ImageTest extends TestCase
     {
         parent::setUp();
     }
+
     /**
      * @test
      */

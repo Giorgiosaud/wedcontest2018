@@ -28,11 +28,11 @@ class SubscribeToNewsletter
     {
         $user = $event->user;
         Newsletter::subscribe($user->email, [
-            'FNAME' => $user->name,
-            'LNAME' => $user->last_name,
-            'PHONE' => $user->phone,
+            'FNAME'    => $user->name,
+            'LNAME'    => $user->last_name,
+            'PHONE'    => $user->phone,
             'REFERRED' => $user->referred,
-            'COUNTRY' => $user->country,
+            'COUNTRY'  => $user->country,
             'LANGUAGE' => $user->language,
         ]);
     }

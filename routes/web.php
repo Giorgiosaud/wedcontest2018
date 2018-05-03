@@ -13,11 +13,10 @@
 Route::get('test', 'TestController@test');
 
 Route::group([
-    'prefix' => LaravelLocalization::setLocale(),
+    'prefix'     => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'localize'], // Route translate middleware
 
 ], function () {
-
     Auth::routes();
 
     Route::redirect('/', 'the_contest');
@@ -40,5 +39,4 @@ Route::group([
     Route::get('/my-contestants/create', 'MyContestants@create')->name('contestants.create');
 
     Route::post('/images/upload', 'ImageController@store')->middleware('admin')->name('store.image');
-
 });
