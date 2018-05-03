@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 return [
-"my_profile"=>"My Profile"
+'my_profile'=> 'My Profile',
 ];

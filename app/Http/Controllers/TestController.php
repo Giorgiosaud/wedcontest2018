@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Spatie\Newsletter\NewsletterFacade;
 
 class TestController extends Controller
@@ -11,5 +10,6 @@ class TestController extends Controller
     {
         // dd(NewsletterFacade::subscribe("giorgiosuad@gmail.com"));
     }
+
     //
 }

@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
-class AddContestImageTest extends TestCase
+class AddContestant extends TestCase
 {
     use DatabaseMigrations;
 
