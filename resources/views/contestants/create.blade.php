@@ -9,7 +9,7 @@ Register Contestant
 @section('content')
 <div class="pt-6">
    <div class="content">
-      <contestant-registration-form></contestant-registration-form>
+   <contestant-registration-form :categories="{{$categories}}"></contestant-registration-form>
    </div>
 </div>
 @endsection

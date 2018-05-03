@@ -17,10 +17,6 @@ Route::group([
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'localize'], // Route translate middleware
 
 ], function () {
-//    Route::get('/',function(){
-//        return 'hola';
-//    });
-    /* ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
 
     Auth::routes();
 

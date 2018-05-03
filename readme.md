@@ -87,3 +87,11 @@ s\Unit\User
 [x] A user may have contestants
 [x] A user can be an administrator
 [x] All users have at least one role
+
+##TODO:
+
+* TODO: crear get area para mostrar formulario de upload de
+* TODO: respuesta de creacion my-contestants tipo Post que responda a MyContestants@store name contestants.store
+* TODO: Revisar handle de manejo de imagenes
+* TODO: area de participantes donde se vean las fichas de cada uno y un color basado en su status
+* TODO: Separar a api.php las respuestaas de los axios de Vuejs

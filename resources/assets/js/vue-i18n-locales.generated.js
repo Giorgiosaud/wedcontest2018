@@ -29,6 +29,7 @@ export default {
             "my_profile": "My Profile"
         },
         "registration": {
+            "birthday": "BirthDay",
             "name": "Name",
             "last_name": "Last Name",
             "country": "Country",
@@ -178,6 +179,7 @@ export default {
             "my_profile": "Mi Perfil"
         },
         "registration": {
+            "birthday": "Cumpleaños",
             "name": "Nombre(s)",
             "last_name": "Apellido(s)",
             "country": "País",
