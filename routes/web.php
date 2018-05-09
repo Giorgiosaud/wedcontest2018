@@ -11,6 +11,7 @@
 |
  */
 Route::get('test', 'TestController@test');
+Route::get('lang/{route}/{language}', 'LanguageController@switchLang')->name('lang.switch');
 
 Route::group([
     'prefix'     => LaravelLocalization::setLocale(),
@@ -18,7 +19,7 @@ Route::group([
 
 ], function () {
     Auth::routes();
-
+    
     Route::redirect('/', 'the_contest');
     Route::get(LaravelLocalization::transRoute('routes.the_contest'), 'TheContestController@index')
         ->name('the_contest');
@@ -37,6 +38,7 @@ Route::group([
     Route::post('/profile', 'ProfileController@update')->name('profile.update');
     Route::get('/my-contestants', 'MyContestants@index')->name('contestants.index');
     Route::get('/my-contestants/create', 'MyContestants@create')->name('contestants.create');
+    
 
     Route::post('/images/upload', 'ImageController@store')->middleware('admin')->name('store.image');
 });

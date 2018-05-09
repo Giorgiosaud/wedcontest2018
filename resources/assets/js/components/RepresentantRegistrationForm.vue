@@ -248,7 +248,7 @@ export default {
       this.form.country = value.code;
     },
     referred(value) {
-      this.form.country = value.value;
+      this.form.referred = value.value;
     }
   },
   computed: {
