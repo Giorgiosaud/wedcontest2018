@@ -21,16 +21,7 @@
                     
                     {{--@include('svgs.icons.search')--}}
                     {{--</div>--}}
-                    <ul class="list-reset">
-                        <li class="text-sm text-white">
-                            <a href="{{ route('register') }}" class="link">Register</a>
-                        </li>
-                        <li>
-                            <a href="{{route('lang.switch',[\Request::route()->getName(),app()->getLocale()])}}">
-                                @lang('contests.otherLang')
-                            </a>
-                        </li>
-                    </ul>
+                    
                     @if (auth()->check())
                     <user-notifications></user-notifications>
                     
@@ -63,9 +54,22 @@
                                 <logout-button route="{{ route('logout') }}" class="link">Logout</logout-button>
                             </li>
                         </template>
+                        
                     </dropdown>
                 </div>
                 @endif
+                <div>
+                    <ul class="list-reset">
+                        <li class="text-sm text-white">
+                            <a href="{{ route('register') }}" class="link">Register</a>
+                        </li>
+                        <li>
+                            <a href="{{route('lang.switch',[\Request::route()->getName(),app()->getLocale()])}}">
+                                @lang('contests.otherLang')
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
