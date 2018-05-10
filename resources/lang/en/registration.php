@@ -45,5 +45,7 @@ return [
     'edit' => 'Edit your Profile',
     'register' => 'Register',
     'registerContestants' => 'Contestant Registration',
-    'newParticipant' => "Add new Participant"
+    'newParticipant' => "Add new Participant",
+    "category" => "Category",
+    "motivo" => "Explain why did you change the default category"
 ];

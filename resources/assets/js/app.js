@@ -8,6 +8,9 @@ require("./bootstrap");
 import Locales from "./vue-i18n-locales.generated.js";
 import VueI18n from "vue-i18n";
 import Datepicker from "vuejs-datepicker";
+import Multiselect from "vue-multiselect";
+Vue.component("multiselect", Multiselect);
+
 Vue.component("Datepicker", Datepicker);
 
 Vue.use(VueI18n);

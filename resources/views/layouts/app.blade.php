@@ -11,7 +11,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="//fonts.googleapis.com/css?family=Nixie+One|PT+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+    
 
     <!-- Scripts -->
     <script>

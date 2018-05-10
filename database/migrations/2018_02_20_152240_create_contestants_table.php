@@ -18,7 +18,9 @@ class CreateContestantsTable extends Migration
             $table->unsignedInteger('representant_id');
             $table->string('name');
             $table->string('last_name');
+            $table->string('status')->default('pending');
             $table->date('dob');
+            $table->text('motivo');
             $table->timestamps();
         });
     }

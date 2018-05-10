@@ -45,7 +45,9 @@ return [
     ],
     'register' => 'Registrate',
     'registerContestants' => 'Registro de Concursantes',
-    'newParticipant' => "Añadir Nuevo Participante"
+    'newParticipant' => "Añadir Nuevo Participante",
+    "category" => "Categoria",
+    "motivo" => "Explique porque cambio la categoria que corresponde"
 
 
 ];

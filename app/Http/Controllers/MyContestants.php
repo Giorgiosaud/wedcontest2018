@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contest;
+use Illuminate\Http\Request;
 
 class MyContestants extends Controller
 {
@@ -20,6 +21,17 @@ class MyContestants extends Controller
         return view('contestants.create', [
             'categories' => $categories,
         ]);
+    }
+    public function store(Request $request)
+    {
+        $contestant = [
+            'representant_id' => auth()->user()->id,
+            'name' => $request->name,
+            'last_name' => $request->last_name,
+            'dob' => $request->dob
+        ];
+        Contestant::create($contestant);
+
     }
 
     //

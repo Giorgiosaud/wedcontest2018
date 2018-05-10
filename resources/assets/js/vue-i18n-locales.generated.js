@@ -12,7 +12,8 @@ export default {
             "login_button": "Login to Contest",
             "topic": "Topic",
             "new_contest": "New Contest",
-            "topicPlaceholder": "Ocean is Our Home"
+            "topicPlaceholder": "Ocean is Our Home",
+            "otherLang": "Español"
         },
         "pagination": {
             "previous": "&laquo; Previous",
@@ -61,7 +62,10 @@ export default {
             },
             "edit": "Edit your Profile",
             "register": "Register",
-            "registerContestants": "Contestant Registration"
+            "registerContestants": "Contestant Registration",
+            "newParticipant": "Add new Participant",
+            "category": "Category",
+            "motivo": "Explain why did you change the default category"
         },
         "routes": {
             "the_contest": "the_contest"
@@ -162,7 +166,8 @@ export default {
             "login_button": "Logueese en el Concurso",
             "topic": "Tema",
             "new_contest": "Crear Concurso",
-            "topicPlaceholder": "El Oceano es tu hogar"
+            "topicPlaceholder": "El Oceano es tu hogar",
+            "otherLang": "Ingles"
         },
         "pagination": {
             "previous": "&laquo; Anterior",
@@ -210,7 +215,10 @@ export default {
                 "subject": "Porfavor Confirma tu Correo"
             },
             "register": "Registrate",
-            "registerContestants": "Registro de Concursantes"
+            "registerContestants": "Registro de Concursantes",
+            "newParticipant": "Añadir Nuevo Participante",
+            "category": "Categoria",
+            "motivo": "Explique porque cambio la categoria que corresponde"
         },
         "routes": {
             "the_contest": "el_concurso"

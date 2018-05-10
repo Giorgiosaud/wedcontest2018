@@ -39,7 +39,7 @@
                   <label for="datepicker-trigger" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 ">
                     {{ $t("registration.birthday")}}
                   </label>
-                <datepicker v-model="form.dob" name="dob"></datepicker>
+                <datepicker v-model="form.dob" name="dob" @input="setDefaultCategory"></datepicker>
 
                 </div>
                 <div class="mb-6">
@@ -47,15 +47,28 @@
                             class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
                     {{$t('registration.category')}}
                     </label>
-                    <v-select label="name" :options="categories" v-model="form.category">
-                     <template slot="option" slot-scope="option">
-                        {{option.name}}
-                        <span class="age">{{$t("register.until")}} {{option.max_age}}</span>
-                        
-                        </template> 
-                    </v-select>
+                    <multiselect 
+                    label="name"
+                    track-by="name" 
+                    :options="categories"
+                    :searchable="false" 
+                    :allow-empty="false" 
+                    :custom-label="categoryLabel"
+                    v-model="category">
+                    <template slot="option" slot-scope="props">
+										<span>{{props.option.name}} – <small>{{props.option.max_age}}</small></span>
+									</template> 
+                    </multiselect>
                     <span v-if="errors.categories" v-text="errors.categories[0]" class="text-xs text-red"></span>
-                </div>            
+                </div>    
+                <div class="mb-6 w-full ">
+                    <textarea name="motivo" 
+                    id="motivo" 
+                    v-model="form.motivo" 
+                    class="appearance-none block w-full  text-grey-darker border rounded py-3 px-4 mb-3" 
+                    rows="10" 
+                    :placeholder="$t('registration.motivo')"></textarea>
+                  </div>        
             <div class="flex items-center -mx-4">
                 <button type="submit" class="btn is-green flex-1 mx-4" :class="loading ? 'loader' : ''" :disabled="loading">{{$t('registration.register')}}</button>
             </div>
@@ -84,15 +97,9 @@ export default {
         name: "",
         dob: "",
         last_name: "",
-        phone: "",
-        country: "",
-        referred: "",
-        language: "",
-        email: "",
-        password: "",
-        password_confirmation: "",
-        subscribed: true
+        categoryId: ""
       },
+      category: "",
       dateFormat: "D MMMM YYYY",
       dateOne: "",
       feedback: "",
@@ -115,16 +122,29 @@ export default {
 
           this.loading = false;
         });
+    },
+    setDefaultCategory() {
+      console.log(this.categories.find(cat => this.age < cat.max_age));
+      this.category = this.categories.find(cat => this.age < cat.max_age);
+    },
+    categoryLabel: function(account) {
+      return `${account.name} – ${account.max_age}`;
     }
   },
   computed: {
     age() {
       return differenceInYears(new Date(), this.form.dob);
+    },
+    categoryCorrespondent() {
+      return this.categories.find(cat => this.age < cat.max_age);
+    },
+    contestantCorrespondToSelectedCategory() {
+      return this.categoryCorrespondent === this.category;
     }
   },
   watch: {
-    "form.dob": function() {
-      this.form.category = this.categories.find(cat => this.age < cat.max_age);
+    category: function(value) {
+      this.form.categoryId = value.id;
     }
   }
 };
