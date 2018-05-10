@@ -9,6 +9,10 @@ class Contestant extends Model
     //
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class);
+    }
+    public function contest()
+    {
+        return $this->hasManyThrough(\App\Contest::class, \App\Category::class);
     }
 }
