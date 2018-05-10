@@ -31,6 +31,7 @@ Vue.component(
   "ContestantRegistrationForm",
   require("./components/ContestantRegistrationForm.vue")
 );
+Vue.component("ContestantsList", require("./components/ContestantsList.vue"));
 Vue.component("LogoutButton", require("./components/LogoutButton.vue"));
 Vue.component("EditMyProfile", require("./components/EditMyProfile.vue"));
 Vue.component(

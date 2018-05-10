@@ -6,6 +6,13 @@ use App\Contest;
 
 class MyContestants extends Controller
 {
+    public function index()
+    {
+        $contestants = auth()->user()->contestants;
+        return view('contestants.index', [
+            'contestants' => $contestants,
+        ]);
+    }
     public function create()
     {
         $categories = Contest::whereActive('1')->get()->first()->categories()->get();

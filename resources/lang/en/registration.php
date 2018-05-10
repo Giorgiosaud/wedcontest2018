@@ -12,13 +12,13 @@ return [
     | these language lines according to your application's requirements.
     |
  */
-    'birthday'  => 'BirthDay',
-    'name'      => 'Name',
+    'birthday' => 'BirthDay',
+    'name' => 'Name',
     'last_name' => 'Last Name',
-    'country'   => 'Country',
-    'phone'     => 'Phone',
-    'referred'  => [
-        'label'   => 'Referred',
+    'country' => 'Country',
+    'phone' => 'Phone',
+    'referred' => [
+        'label' => 'Referred',
         'options' => [
             '1' => 'Invited of Dirpoinduca',
             '2' => 'Invited by Family or Diproinduca Contact',
@@ -26,23 +26,24 @@ return [
         ],
     ],
     'language' => [
-        'label'   => 'Language',
+        'label' => 'Language',
         'options' => [
             'en' => 'English',
             'es' => 'Spanish',
         ],
     ],
-    'subscribed'                   => 'Subscribe to email newsletter',
-    'email'                        => 'E-Mail Address',
-    'password'                     => 'Password',
-    'change_password'              => 'Change Password',
-    'password_confirmation'        => 'Confirm Password',
+    'subscribed' => 'Subscribe to email newsletter',
+    'email' => 'E-Mail Address',
+    'password' => 'Password',
+    'change_password' => 'Change Password',
+    'password_confirmation' => 'Confirm Password',
     'change_password_confirmation' => 'Confirm Changed Password',
-    'countryselect'                => 'Select Your Country',
-    'mail'                         => [
+    'countryselect' => 'Select Your Country',
+    'mail' => [
         'subject' => 'Please Confirm Your Email',
     ],
-    'edit'                => 'Edit your Profile',
-    'register'            => 'Register',
+    'edit' => 'Edit your Profile',
+    'register' => 'Register',
     'registerContestants' => 'Contestant Registration',
+    'newParticipant' => "Add new Participant"
 ];

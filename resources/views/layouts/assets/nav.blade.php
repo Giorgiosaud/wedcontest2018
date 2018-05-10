@@ -29,11 +29,11 @@
                     <div>
                         <dropdown>
                             <div slot="heading"
-                            class="rounded-full bg-blue-darkest w-10 h-10 flex items-center justify-center cursor-pointer relative z-10"
+                            class="rounded-full bg-blue-darkest mr-4  w-10 h-10 flex items-center justify-center cursor-pointer relative z-10"
                             >
-                            {{--                            <img src="{{ auth()->user()->avatar_path }}"--}}
-                            {{--                                 alt="{{ auth()->user()->username }}"--}}
-                            {{--class="relative z-10 w-4 rounded-full">--}}
+                            <img src="{{ auth()->user()->avatar_path }}"
+                            alt="{{ auth()->user()->username }}"
+                            class="relative z-10 w-4 rounded-full">
                         </div>
                         
                         <template slot="links">
@@ -46,7 +46,9 @@
                                 {{--<a class="link" href="{{ route('admin.dashboard.index') }}">Admin</a>--}}
                             </li>
                             @endif
-                            
+                            <li class="text-sm">
+                                <a href="{{route('contestants.index')}}">My Participants</a>
+                            </li>                            
                             <li class="text-sm">
                                 <a href="{{ route('contestants.create') }}" class="link">Add Participant</a>                                
                             </li>
@@ -59,17 +61,49 @@
                 </div>
                 @endif
                 <div>
-                    <ul class="list-reset">
+                    <dropdown>
+                        <div slot="heading"
+                        class="rounded-full bg-blue-darkest w-10 h-10 flex items-center justify-center cursor-pointer relative z-10"
+                        >
+                        <img src="{{ auth()->user()->avatar_path }}"
+                        alt="{{ auth()->user()->username }}"
+                        class="relative z-10 w-4 rounded-full">
+                    </div>
+                    
+                    <template slot="links">
                         <li class="text-sm text-white">
                             <a href="{{ route('register') }}" class="link">Register</a>
                         </li>
-                        <li>
-                            <a href="{{route('lang.switch',[\Request::route()->getName(),app()->getLocale()])}}">
-                                @lang('contests.otherLang')
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                        
+                    </template>
+                    
+                </dropdown>
             </div>
+            <div>
+                <dropdown>
+                    <div slot="heading"
+                    class="rounded-full bg-blue-darkest w-10 h-10 flex items-center justify-center cursor-pointer relative z-10"
+                    >
+                    @include('svgs.icons.star')
+                    
+                </div>
+                
+                     <h4 slot="title" class="mb-4">Languages</h4>
+                <template slot="links">
+                    <li class="text-sm text-white">
+                        <a href="{{route('lang.switch',[\Request::route()->getName(),app()->getLocale()])}}">
+                            @if(__('contests.otherLang')=="Español")
+                            <img src="/images/flags/ES.png" alt="@lang('contests.otherLang')">
+                            @else
+                            <img src="/images/flags/US.png" alt="@lang('contests.otherLang')">
+                            @endif
+                        </a>
+                    </li>
+                    
+                </template>
+                
+            </dropdown>
         </div>
-    </nav>
+    </div>
+</div>
+</nav>
