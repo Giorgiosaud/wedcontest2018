@@ -2,7 +2,7 @@
         <div class="py-6">
           
           <h1>{{$t("registration.registerContestants")}}</h1>
-            <form class="py-6" @submit.prevent="register" method="POST">
+            <form class="py-6" @submit.prevent="register">
                 <div class="mb-6">
                     <label  for="name" 
                             class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
@@ -139,6 +139,9 @@ export default {
     setDefaultCategory() {
       console.log(this.categories.find(cat => this.age < cat.max_age));
       this.category = this.categories.find(cat => this.age < cat.max_age);
+    },
+    categoryLabel: function(object) {
+      return `${object.name} – ${object.max_age}`;
     }
   },
   computed: {

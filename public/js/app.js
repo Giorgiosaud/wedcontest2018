@@ -53652,6 +53652,10 @@ var locales = {
       this.category = this.categories.find(function (cat) {
         return _this2.age < cat.max_age;
       });
+    },
+
+    categoryLabel: function categoryLabel(object) {
+      return object.name + " \u2013 " + object.max_age;
     }
   },
   computed: {
@@ -58078,7 +58082,6 @@ var render = function() {
       "form",
       {
         staticClass: "py-6",
-        attrs: { method: "POST" },
         on: {
           submit: function($event) {
             $event.preventDefault()
