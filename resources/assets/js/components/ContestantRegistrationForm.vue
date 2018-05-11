@@ -2,7 +2,7 @@
         <div class="py-6">
           
           <h1>{{$t("registration.registerContestants")}}</h1>
-            <form class="py-6" @submit.prevent="register">
+            <form class="py-6" @submit.prevent="register" method="POST">
                 <div class="mb-6">
                     <label  for="name" 
                             class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"

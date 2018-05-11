@@ -58078,6 +58078,7 @@ var render = function() {
       "form",
       {
         staticClass: "py-6",
+        attrs: { method: "POST" },
         on: {
           submit: function($event) {
             $event.preventDefault()
