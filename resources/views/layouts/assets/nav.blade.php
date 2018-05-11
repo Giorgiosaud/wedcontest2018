@@ -63,11 +63,9 @@
                 <div>
                     <dropdown>
                         <div slot="heading"
-                        class="rounded-full bg-blue-darkest w-10 h-10 flex items-center justify-center cursor-pointer relative z-10"
+                        class="rounded-full bg-blue-darkest mx-4 w-10 h-10 flex items-center justify-center cursor-pointer relative z-10"
                         >
-                        <img src="{{ auth()->user()->avatar_path }}"
-                        alt="{{ auth()->user()->username }}"
-                        class="relative z-10 w-4 rounded-full">
+                        @include('svgs.icons.eye')
                     </div>
                     
                     <template slot="links">
