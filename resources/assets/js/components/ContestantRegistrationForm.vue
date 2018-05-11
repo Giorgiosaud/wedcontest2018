@@ -139,9 +139,6 @@ export default {
     setDefaultCategory() {
       console.log(this.categories.find(cat => this.age < cat.max_age));
       this.category = this.categories.find(cat => this.age < cat.max_age);
-    },
-    categoryLabel: function(account) {
-      return `${account.name} – ${account.max_age}`;
     }
   },
   computed: {

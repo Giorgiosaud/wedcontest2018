@@ -53638,8 +53638,9 @@ var locales = {
         console.log(response);
         // window.location.href = response.request.responseURL;
       }).catch(function (error) {
-        _this.errors = error.response.data.errors;
+        _this.errors = error.response.errors;
         _this.loading = false;
+        return;
       });
     },
     setDefaultCategory: function setDefaultCategory() {
@@ -53651,10 +53652,6 @@ var locales = {
       this.category = this.categories.find(function (cat) {
         return _this2.age < cat.max_age;
       });
-    },
-
-    categoryLabel: function categoryLabel(account) {
-      return account.name + " \u2013 " + account.max_age;
     }
   },
   computed: {
