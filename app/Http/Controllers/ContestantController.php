@@ -11,7 +11,6 @@ class ContestantController extends Controller
     public function index()
     {
         $contestants = auth()->user()->contestants;
-        dd(auth()->user()->contestants);
         return view('contestants.index', [
             'contestants' => $contestants,
         ]);
@@ -34,6 +33,7 @@ class ContestantController extends Controller
             'motivo' => $request->motivo
         ];
         $contestant=Contestant::create($contestant);
+        return $contestant;
         $contestant->category()->attach($request->categoryId);
         return redirect()->route('contestants.index');
     }
