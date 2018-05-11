@@ -11,6 +11,7 @@ class ContestantController extends Controller
     public function index()
     {
         $contestants = auth()->user()->contestants;
+        dd(auth()->user());
         return view('contestants.index', [
             'contestants' => $contestants,
         ]);
@@ -34,8 +35,6 @@ class ContestantController extends Controller
         ];
         $contestant=Contestant::create($contestant);
         $contestant->category()->attach($request->categoryId);
-        return redirect()->route('contestants.index');
-
         return redirect()->route('contestants.index');
     }
 }
