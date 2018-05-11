@@ -9,5 +9,5 @@ return [
     'topic'           => 'Topic',
     'new_contest'     => 'New Contest',
     'topicPlaceholder'=> 'Ocean is Our Home',
-    'otherLang'=>'Español'
+    'otherLang'       => 'Español',
 ];

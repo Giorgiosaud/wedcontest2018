@@ -14,12 +14,12 @@ return [
  */
 
     'birthdate' => 'Fecha de Cumpleaños',
-    'name' => 'Nombre(s)',
+    'name'      => 'Nombre(s)',
     'last_name' => 'Apellido(s)',
-    'country' => 'País',
-    'phone' => 'Telefono',
-    'referred' => [
-        'label' => 'Referred',
+    'country'   => 'País',
+    'phone'     => 'Telefono',
+    'referred'  => [
+        'label'   => 'Referred',
         'options' => [
             '1' => 'Invitado de Dirpoinduca',
             '2' => 'Invitado por un Familiar o Contacto de Diproinduca',
@@ -27,27 +27,26 @@ return [
         ],
     ],
     'language' => [
-        'label' => 'Idioma',
+        'label'   => 'Idioma',
         'options' => [
             'en' => 'Ingles',
             'es' => 'Español',
         ],
     ],
-    'subscribed' => 'Subscribirse a newsletter',
-    'email' => 'Email',
-    'password' => 'Contraseña',
-    'password_confirmation' => 'Confirmacion de Contraseña',
-    'change_password' => 'Cambia tu Contraseña',
+    'subscribed'                   => 'Subscribirse a newsletter',
+    'email'                        => 'Email',
+    'password'                     => 'Contraseña',
+    'password_confirmation'        => 'Confirmacion de Contraseña',
+    'change_password'              => 'Cambia tu Contraseña',
     'change_password_confirmation' => 'Confirma tu Contraseña Cambiada',
-    'countryselect' => 'Select Your Country',
-    'mail' => [
+    'countryselect'                => 'Select Your Country',
+    'mail'                         => [
         'subject' => 'Porfavor Confirma tu Correo',
     ],
-    'register' => 'Registrate',
+    'register'            => 'Registrate',
     'registerContestants' => 'Registro de Concursantes',
-    'newParticipant' => "Añadir Nuevo Participante",
-    "category" => "Categoria",
-    "motivo" => "Explique porque cambio la categoria que corresponde"
-
+    'newParticipant'      => 'Añadir Nuevo Participante',
+    'category'            => 'Categoria',
+    'motivo'              => 'Explique porque cambio la categoria que corresponde',
 
 ];
