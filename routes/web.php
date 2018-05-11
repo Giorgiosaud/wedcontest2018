@@ -38,7 +38,7 @@ Route::group([
     Route::post('/profile', 'ProfileController@update')->name('profile.update');
     Route::get('/contestants', 'ContestantController@index')->name('contestants.index');
     Route::get('/contestants/create', 'ContestantController@create')->name('contestant.create');
-    Route::post('/contestants', 'ContestantController@store')->name('contestant.store');
+    Route::post('/contestant', 'ContestantController@store')->name('contestant.store');
 
 
     Route::post('/images/upload', 'ImageController@store')->middleware('admin')->name('store.image');

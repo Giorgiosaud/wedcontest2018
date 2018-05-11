@@ -53634,7 +53634,7 @@ var locales = {
 
       this.loading = true;
 
-      axios.post("/contestants", this.form).then(function (response) {
+      axios.post("/contestant", this.form).then(function (response) {
         console.log(response);
         // window.location.href = response.request.responseURL;
       }).catch(function (error) {

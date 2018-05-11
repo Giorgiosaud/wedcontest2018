@@ -125,7 +125,7 @@ export default {
       this.loading = true;
 
       axios
-        .post("/contestants", this.form)
+        .post("/contestant", this.form)
         .then(response => {
           console.log(response);
           // window.location.href = response.request.responseURL;
