@@ -131,8 +131,9 @@ export default {
           // window.location.href = response.request.responseURL;
         })
         .catch(error => {
-          this.errors = error.response.data.errors;
+          this.errors = error.response.errors;
           this.loading = false;
+          return;
         });
     },
     setDefaultCategory() {
