@@ -37,7 +37,7 @@ Route::group([
     Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
     Route::post('/profile', 'ProfileController@update')->name('profile.update');
     Route::get('/contestants', 'ContestantController@index')->name('contestants.index');
-    Route::get('/contestants/create', 'ContestantController@create')->name('contestant.create');
+    Route::get('/contestant/create', 'ContestantController@create')->name('contestant.create');
     Route::post('/contestant', 'ContestantController@store')->name('contestant.store');
 
 
