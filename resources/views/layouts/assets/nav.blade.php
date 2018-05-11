@@ -47,6 +47,9 @@
                             </li>
                             @endif
                             <li class="text-sm">
+                                {{ Auth::user()->name }} {{ Auth::user()->last_name }}
+                            </li>      
+                            <li class="text-sm">
                                 <a href="{{route('contestants.index')}}">My Participants</a>
                             </li>                            
                             <li class="text-sm">
