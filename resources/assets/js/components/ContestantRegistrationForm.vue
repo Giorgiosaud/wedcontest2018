@@ -128,14 +128,9 @@ export default {
         .post("/contestant", this.form)
         .then(response => {
           console.log(response);
-          // window.location.href = response.request.responseURL;
-        });
-        return false;
-        // .catch(error => {
-          // this.errors = error.response.errors;
-          // this.loading = false;
-          // return;
-        // });
+          window.location.href = response.request.responseURL;
+        })
+        .catch(error => console.error(error));
     },
     setDefaultCategory() {
       console.log(this.categories.find(cat => this.age < cat.max_age));

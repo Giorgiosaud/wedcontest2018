@@ -53634,14 +53634,10 @@ var locales = {
 
       axios.post("/contestant", this.form).then(function (response) {
         console.log(response);
-        // window.location.href = response.request.responseURL;
+        window.location.href = response.request.responseURL;
+      }).catch(function (error) {
+        return console.error(error);
       });
-      return false;
-      // .catch(error => {
-      // this.errors = error.response.errors;
-      // this.loading = false;
-      // return;
-      // });
     },
     setDefaultCategory: function setDefaultCategory() {
       var _this = this;
