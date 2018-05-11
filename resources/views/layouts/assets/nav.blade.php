@@ -50,7 +50,7 @@
                                 <a href="{{route('contestants.index')}}">My Participants</a>
                             </li>                            
                             <li class="text-sm">
-                                <a href="{{ route('contestants.create') }}" class="link">Add Participant</a>                                
+                                <a href="{{ route('contestant.create') }}" class="link">Add Participant</a>                                
                             </li>
                             <li class="text-sm">
                                 <logout-button route="{{ route('logout') }}" class="link">Logout</logout-button>

@@ -20,7 +20,7 @@ class CreateContestantsTable extends Migration
             $table->string('last_name');
             $table->string('status')->default('pending');
             $table->date('dob');
-            $table->text('motivo');
+            $table->text('motivo')->nullable();
             $table->timestamps();
         });
     }

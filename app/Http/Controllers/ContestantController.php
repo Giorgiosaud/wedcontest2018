@@ -3,88 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Contestant;
+use App\Contest;
 use Illuminate\Http\Request;
 
 class ContestantController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $contestants = auth()->user()->contestants;
+        return view('contestants.index', [
+            'contestants' => $contestants,
+        ]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
-    }
+        $categories = Contest::whereActive('1')->get()->first()->categories()->get();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
+        return view('contestants.create', [
+            'categories' => $categories,
+        ]);
+    }
     public function store(Request $request)
     {
-        //
-    }
+        $contestant = [
+            'representant_id' => auth()->user()->id,
+            'name' => $request->name,
+            'last_name' => $request->last_name,
+            'dob' => $request->dob,
+            'motivo' => $request->motivo
+        ];
+        $contestant=Contestant::create($contestant);
+        $contestant->category()->attach($request->categoryId);
+        return redirect()->route('contestants.index');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Contestant $contestant
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Contestant $contestant)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Contestant $contestant
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Contestant $contestant)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Contestant          $contestant
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Contestant $contestant)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Contestant $contestant
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Contestant $contestant)
-    {
-        //
+        return redirect()->route('contestants.index');
     }
 }

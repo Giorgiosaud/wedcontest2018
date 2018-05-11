@@ -2,7 +2,9 @@
 <div>
   <h1>Concursantes</h1>
   <ul>
-    <li v-for="contestant in contestants"></li>
+    <li v-for="contestant in contestants">
+    	{{ contestant.name }} {{ contestant.last_name }} {{ contestant.status }}
+    </li>
   </ul>
   </div>
 </template>

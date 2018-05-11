@@ -13,7 +13,7 @@ return [
     |
  */
 
-    'birthday' => 'Cumpleaños',
+    'birthdate' => 'Fecha de Cumpleaños',
     'name' => 'Nombre(s)',
     'last_name' => 'Apellido(s)',
     'country' => 'País',

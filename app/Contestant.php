@@ -3,10 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Contest;
 
 class Contestant extends Model
 {
-    //
+    protected $fillable=[
+        'representant_id',
+        'name',
+        'last_name',
+        'dob',
+        'motivo'
+    ];
+
     public function category()
     {
         return $this->belongsToMany(Category::class);
@@ -15,4 +23,5 @@ class Contestant extends Model
     {
         return $this->hasManyThrough(\App\Contest::class, \App\Category::class);
     }
+    
 }

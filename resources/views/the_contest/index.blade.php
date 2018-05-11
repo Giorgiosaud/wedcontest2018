@@ -15,7 +15,7 @@
 </div>
     @if (auth()->check())
         @if(auth()->user()->confirmed)
-            <a class="btn btn-block is-green w-full" href="{{route('contestants.create')}}">Add New Participant</a>
+            <a class="btn btn-block is-green w-full" href="{{route('contestant.create')}}">Add New Participant</a>
 
         @else
             <p class="text-xs text-grey-dark font-bold border border-dashed border-grey-dark p-3">@lang('contests.confirm_email')</p>

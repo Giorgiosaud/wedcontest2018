@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use App\Contestant;
 /**
  * Class User.
  */
@@ -85,7 +85,7 @@ class User extends Authenticatable
 
     public function contestants()
     {
-        return $this->hasMany(self::class, 'representant_id');
+        return $this->hasMany(Contestant::class, 'representant_id');
     }
 
     /**

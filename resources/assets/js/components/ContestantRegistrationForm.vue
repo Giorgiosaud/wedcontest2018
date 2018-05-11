@@ -36,11 +36,18 @@
                     <span v-if="errors.last_name" v-text="errors.last_name[0]" class="text-xs text-red"></span>
                 </div>
                 <div class="datepicker-trigger mb-6">
-                  <label for="datepicker-trigger" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 ">
-                    {{ $t("registration.birthday")}}
+                  <label for="datepicker-trigger"class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 ">
+                    {{ $t("registration.birthdate")}}
                   </label>
-                <datepicker v-model="form.dob" name="dob" @input="setDefaultCategory"></datepicker>
+                <datepicker 
+                v-model="dob" 
+                name="dob"  
+                @input="setDefaultCategory" 
+                :typeable="false"
+                initial-view="year"
 
+                ></datepicker>
+                
                 </div>
                 <div class="mb-6">
                     <label for="category" 
@@ -61,7 +68,7 @@
                     </multiselect>
                     <span v-if="errors.categories" v-text="errors.categories[0]" class="text-xs text-red"></span>
                 </div>    
-                <div class="mb-6 w-full ">
+                <div class="mb-6 w-full" v-if="!contestantCorrespondToSelectedCategory && form.dob">
                     <textarea name="motivo" 
                     id="motivo" 
                     v-model="form.motivo" 
@@ -82,8 +89,8 @@
 
 <script>
 // import component and stylesheet
-import format from "date-fns/format";
-import differenceInYears from "date-fns/difference_in_years";
+
+import {format,differenceInYears} from "date-fns";
 let locales = {
   es: require("date-fns/locale/es"),
   en: require("date-fns/locale/en")
@@ -97,8 +104,11 @@ export default {
         name: "",
         dob: "",
         last_name: "",
-        categoryId: ""
+        categoryId: "",
+        motivo:""
       },
+      dob:"",
+      locale:window.App.locale,
       category: "",
       dateFormat: "D MMMM YYYY",
       dateOne: "",
@@ -108,18 +118,20 @@ export default {
     };
   },
   methods: {
+     customFormatter(date) {
+      return format(date, 'YYYY-MM-DD')
+    },
     register() {
       this.loading = true;
 
       axios
-        .post("/my-contestants", this.form)
+        .post("/contestants", this.form)
         .then(response => {
           console.log(response);
           window.location.href = response.request.responseURL;
         })
         .catch(error => {
           this.errors = error.response.data.errors;
-
           this.loading = false;
         });
     },
@@ -133,9 +145,11 @@ export default {
   },
   computed: {
     age() {
-      return differenceInYears(new Date(), this.form.dob);
+      if(this.dob) this.form.dob=format(this.dob, 'YYYY-MM-DD');
+      return differenceInYears(new Date(), this.dob);
     },
     categoryCorrespondent() {
+
       return this.categories.find(cat => this.age < cat.max_age);
     },
     contestantCorrespondToSelectedCategory() {

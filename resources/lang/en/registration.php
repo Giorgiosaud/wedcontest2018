@@ -12,7 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
  */
-    'birthday' => 'BirthDay',
+    'birthdate' => 'Birth Date',
     'name' => 'Name',
     'last_name' => 'Last Name',
     'country' => 'Country',

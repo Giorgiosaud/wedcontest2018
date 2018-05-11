@@ -5,7 +5,7 @@
     <contestants-list :contestants="{{$contestants}}"></contestant-registration-form>
     </div>
     <div class="pt-6">
-        <a class="btn btn-block is-green w-full" href="{{route('contestants.create')}}">@lang('registration.newParticipant')</a>
+        <a class="btn btn-block is-green w-full" href="{{route('contestant.create')}}">@lang('registration.newParticipant')</a>
     </div>
 @endsection
     
