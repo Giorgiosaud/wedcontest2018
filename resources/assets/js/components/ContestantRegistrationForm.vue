@@ -77,7 +77,7 @@
                     :placeholder="$t('registration.motivo')"></textarea>
                   </div>        
             <div class="flex items-center -mx-4">
-                <button type="submit" class="btn is-green flex-1 mx-4" :class="loading ? 'loader' : ''" :disabled="loading">{{$t('registration.register')}}</button>
+                <button type="button" @click="register" class="btn is-green flex-1 mx-4" :class="loading ? 'loader' : ''" :disabled="loading">{{$t('registration.register')}}</button>
             </div>
 
             <div class="mt-6" v-if="feedback">
@@ -129,12 +129,13 @@ export default {
         .then(response => {
           console.log(response);
           // window.location.href = response.request.responseURL;
-        })
-        .catch(error => {
-          this.errors = error.response.errors;
-          this.loading = false;
-          return;
         });
+        return false;
+        // .catch(error => {
+          // this.errors = error.response.errors;
+          // this.loading = false;
+          // return;
+        // });
     },
     setDefaultCategory() {
       console.log(this.categories.find(cat => this.age < cat.max_age));

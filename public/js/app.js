@@ -53630,27 +53630,27 @@ var locales = {
       return Object(__WEBPACK_IMPORTED_MODULE_0_date_fns__["format"])(date, 'YYYY-MM-DD');
     },
     register: function register() {
-      var _this = this;
-
       this.loading = true;
 
       axios.post("/contestant", this.form).then(function (response) {
         console.log(response);
         // window.location.href = response.request.responseURL;
-      }).catch(function (error) {
-        _this.errors = error.response.errors;
-        _this.loading = false;
-        return;
       });
+      return false;
+      // .catch(error => {
+      // this.errors = error.response.errors;
+      // this.loading = false;
+      // return;
+      // });
     },
     setDefaultCategory: function setDefaultCategory() {
-      var _this2 = this;
+      var _this = this;
 
       console.log(this.categories.find(function (cat) {
-        return _this2.age < cat.max_age;
+        return _this.age < cat.max_age;
       }));
       this.category = this.categories.find(function (cat) {
-        return _this2.age < cat.max_age;
+        return _this.age < cat.max_age;
       });
     },
 
@@ -53664,10 +53664,10 @@ var locales = {
       return Object(__WEBPACK_IMPORTED_MODULE_0_date_fns__["differenceInYears"])(new Date(), this.dob);
     },
     categoryCorrespondent: function categoryCorrespondent() {
-      var _this3 = this;
+      var _this2 = this;
 
       return this.categories.find(function (cat) {
-        return _this3.age < cat.max_age;
+        return _this2.age < cat.max_age;
       });
     },
     contestantCorrespondToSelectedCategory: function contestantCorrespondToSelectedCategory() {
@@ -58334,7 +58334,8 @@ var render = function() {
             {
               staticClass: "btn is-green flex-1 mx-4",
               class: _vm.loading ? "loader" : "",
-              attrs: { type: "submit", disabled: _vm.loading }
+              attrs: { type: "button", disabled: _vm.loading },
+              on: { click: _vm.register }
             },
             [_vm._v(_vm._s(_vm.$t("registration.register")))]
           )
