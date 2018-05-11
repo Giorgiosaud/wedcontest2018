@@ -11,7 +11,7 @@ class ContestantController extends Controller
     public function index()
     {
         $contestants = auth()->user()->contestants;
-        dd(auth()->user());
+        dd(auth()->user()->contestants);
         return view('contestants.index', [
             'contestants' => $contestants,
         ]);
