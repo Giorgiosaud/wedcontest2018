@@ -12,4 +12,3 @@
 |
  */
 Route::middleware('api')->get('countries', 'CountriesController@index')->name('api.countries.index');
-
