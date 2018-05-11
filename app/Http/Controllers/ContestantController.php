@@ -25,6 +25,7 @@ class ContestantController extends Controller
     }
     public function store(Request $request)
     {
+        dd($request);
         $contestant = [
             'representant_id' => auth()->user()->id,
             'name' => $request->name,
