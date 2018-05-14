@@ -13,7 +13,7 @@ class Contestant extends Model
         'dob',
         'motivo',
     ];
-    protected $with=['category'];
+    protected $with = ['category'];
 
     public function category()
     {
