@@ -37,7 +37,7 @@ class ContestantController extends Controller
         ];
         $contestant = Contestant::create($contestant);
 
-        return $contestant;
+        // return $contestant;
         $contestant->category()->attach($request->categoryId);
 
         return redirect()->route('contestants.index');

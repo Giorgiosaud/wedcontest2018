@@ -123,6 +123,7 @@ export default {
     },
     register() {
       this.loading = true;
+          console.log(this.form);
 
       axios
         .post("/contestant", this.form)
@@ -130,7 +131,7 @@ export default {
           console.log(response);
           window.location.href = response.request.responseURL;
         })
-        .catch(error => console.error(error));
+        // .catch(error => console.error(error));
     },
     setDefaultCategory() {
       console.log(this.categories.find(cat => this.age < cat.max_age));
