@@ -53594,6 +53594,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 // import component and stylesheet
 
@@ -53652,6 +53653,12 @@ var locales = {
 
     categoryLabel: function categoryLabel(object) {
       return object.name + " \u2013 " + object.max_age;
+    },
+    classBgCat: function classBgCat(cat) {
+      return cat + " bg-red";
+    },
+    groupHighlight: function groupHighlight(index, selectedGroup) {
+      return 'hola';
     }
   },
   computed: {

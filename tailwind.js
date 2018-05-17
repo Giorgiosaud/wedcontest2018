@@ -127,7 +127,15 @@ let colors = {
     'pink-light': '#fa7ea8',
     'pink-lighter': '#ffbbca',
     'pink-lightest': '#ffebef',
-}
+    'bg-seeds-the-ocean-is-your-home':'#78d748',
+    'bg-sprouts-the-ocean-is-your-home':'#ffa200',
+    'bg-thinkers-the-ocean-is-your-home':'#009cff',
+    'bg-game-changers-the-ocean-is-your-home':'#f12735',
+    'bg-seeds-rethinking-plastic':'#aaf5e2',
+    'bg-sprouts-rethinking-plastic':'#f6f8bb',
+    'bg-thinkers-rethinking-plastic':'#b0edfb',
+    'bg-game-changers-rethinking-plastic':'#fdc1c0'
+};
 
 module.exports = {
 

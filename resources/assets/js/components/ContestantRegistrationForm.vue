@@ -61,8 +61,9 @@
                     :searchable="false" 
                     :allow-empty="false" 
                     :custom-label="categoryLabel"
-                    v-model="category">
-                    <template slot="option" slot-scope="props">
+                    v-model="category"
+                    >
+                    <template slot="option" slot-scope="props" :class="classBgCat(props.option.name)">
 										<span>{{props.option.name}} – <small>{{props.option.max_age}}</small></span>
 									</template> 
                     </multiselect>
@@ -139,7 +140,14 @@ export default {
     },
     categoryLabel: function(object) {
       return `${object.name} – ${object.max_age}`;
-    }
+    },
+    classBgCat(cat){
+      return `${cat} bg-red`;
+    },
+
+    groupHighlight (index, selectedGroup) {
+      return 'hola';
+    },
   },
   computed: {
     age() {
