@@ -14,7 +14,7 @@
     <div class="flex items-center justify-left">
         <h2>{{$contest->topic}}</h2>
         <div class="flex items-center justify-end flex-1 mt-4 px-4 text-xs">
-            <a href="{{route('contests.edit',$contest->slug)}}">
+            <a href="{{route('contest.edit',$contest->slug)}}">
                 <div class="bg-green-lighter hover:bg-green text-white font-light mr-2 py-2 px-4 rounded-full">
                     @lang('contests.edit')
                 </div>

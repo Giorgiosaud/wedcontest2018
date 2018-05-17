@@ -3,8 +3,8 @@
         <div>
             <h1 class="font-normal text-2xl">
                 <a href="/" class="text-blue-lightest flex items-center">
-                    @include ('svgs.logo', ['class' => 'mr-2'])
-                    {{ config('app.name', 'Council') }}
+                    
+                    <img src="/images/logo.png" alt="">
                 </a>
             </h1>
         </div>

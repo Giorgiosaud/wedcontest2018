@@ -33,7 +33,7 @@
             @endif
 
             <p class="text-2xs text-grey-darkest mb-4">
-                Posted By: <a href="{{ route('profile', $contest->creator) }}" class="text-blue">{{ $contest->creator->username }}</a>
+                Posted By: <a href="{{ route('profile.index', $contest->creator) }}" class="text-blue">{{ $contest->creator->username }}</a>
             </p>
 
 

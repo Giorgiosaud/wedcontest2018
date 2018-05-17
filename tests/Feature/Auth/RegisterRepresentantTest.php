@@ -40,7 +40,7 @@ class RegisterRepresentantTest extends TestCase
             'country'               => 'CL',
             'phone'                 => '+56528899982',
             'referred'              => 'invited',
-            'language'              => 'Es',
+            'language'              => 'es',
             'subscribed'            => true,
             'email'                 => 'ppres@zon.com',
             'password'              => 'secret',
@@ -57,13 +57,13 @@ class RegisterRepresentantTest extends TestCase
         NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
 
         $userCount = User::all()->count();
-
         $this->withExceptionHandling();
         $response = $this->post(route('register'), $this->validParams());
 
         $response->assertRedirect('/the_contest');
         $this->assertTrue(Auth::check());
         $userCount++;
+
         $this->assertCount($userCount, User::all());
 
         tap(auth()->user(), function ($user) {

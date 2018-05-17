@@ -19,8 +19,8 @@ class CreateContestsTable extends Migration
             $table->string('slug')->unique()->nullable();
             $table->string('year');
             $table->string('intro_image')->nullable();
+            $table->string('logo_image')->nullable();
             $table->boolean('active')->default(false);
-
             $table->foreign('user_id')
                 ->references('id')->on('users');
             $table->timestamps();

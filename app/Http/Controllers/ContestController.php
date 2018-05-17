@@ -7,7 +7,7 @@ use App\Contest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class ContestsController extends Controller
+class ContestController extends Controller
 {
     public function __construct()
     {
@@ -27,7 +27,6 @@ class ContestsController extends Controller
         if (request()->wantsJson()) {
             return $contests;
         }
-
         return view('contests.index', [
             'contests' => $contests,
         ]);

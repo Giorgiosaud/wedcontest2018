@@ -95,3 +95,12 @@ s\Unit\User
 * TODO: Revisar handle de manejo de imagenes
 * TODO: area de participantes donde se vean las fichas de cada uno y un color basado en su status
 * TODO: Separar a api.php las respuestaas de los axios de Vuejs
+
+
+
+
+Agregar correos a los niños que quieran recibir informacion
+
+
+
+Agregar terminos y condiciones de servicio a newsletter

@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->unsignedInteger('max_age');
             $table->unique(['max_age', 'contest_id'])->index();
+            $table->string('color')->default('bg-green');
             $table->timestamps();
         });
     }

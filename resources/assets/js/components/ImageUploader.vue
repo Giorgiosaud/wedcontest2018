@@ -1,37 +1,37 @@
 <template>
+  <div>
     <div>
-      <div>
       <label class="label" data-toggle="tooltip" title="Change your avatar">
         <img class="rounded" id="avatar" :src="src" alt="avatar">
         <input type="file" class="sr-only" ref="input" id="input" name="image" accept="image/*" @change="onChange" >
       </label>
-      </div>
-      <div>
-        <button type="button" @click="editImage" >Edit Rotate or Crop Image</button>
-        <button type="button" @click="$refs.input.click()" >Upload another Image</button>
-        </div>
-      </label>
-        <modal name="cropperModal" width="80%" :clickToClose="false" :adaptive="true" :resizable="true" height="auto" @opened="createCropper" @closed="destroyCropper">
-          <div class="header">
-          <h2>Crop The Uploaded Image</h2> 
-          </div>
-          <div class="body">
-              <img id="image" ref="imagen" :src="src">
-          </div>
-          <div class="footer flex justify-between">
-            <div class="edition">
-              <button type="button" @click="rotateRight"><feather type="rotate-cw" animation="spin" animation-speed="fast"></feather></button>
-              <button type="button" @click="rotateRightSlow"><feather type="rotate-cw" animation="spin" animation-speed="slow"></feather></button>
-              <button type="button" @click="rotateLeft"><feather type="rotate-ccw" animation="unspin" animation-speed="fast"></feather></button>
-              <button type="button" @click="rotateLeftSlow"><feather type="rotate-ccw" animation="unspin" animation-speed="slow"></feather></button>
-              <button type="button" @click="resetRotation"><feather type="repeat"></feather></button>
-            </div>
-            <div class="finish">
-              <button type="button" @click="endEdition"><feather type="check"></feather></button>
-            </div>
-          </div>
-        </modal>
     </div>
+    <div>
+      <button type="button" @click="editImage" >Edit Rotate or Crop Image</button>
+      <button type="button" @click="$refs.input.click()" >Upload another Image</button>
+    </div>
+  </label>
+  <modal name="cropperModal" width="80%" :clickToClose="false" :adaptive="true" :resizable="true" height="auto" @opened="createCropper" @closed="destroyCropper">
+    <div class="header">
+      <h2>Crop The Uploaded Image</h2> 
+    </div>
+    <div class="body">
+      <img id="image" ref="imagen" :src="src">
+    </div>
+    <div class="footer flex justify-between">
+      <div class="edition">
+        <button type="button" @click="rotateRight"><feather type="rotate-cw" animation="spin" animation-speed="fast"></feather></button>
+        <button type="button" @click="rotateRightSlow"><feather type="rotate-cw" animation="spin" animation-speed="slow"></feather></button>
+        <button type="button" @click="rotateLeft"><feather type="rotate-ccw" animation="unspin" animation-speed="fast"></feather></button>
+        <button type="button" @click="rotateLeftSlow"><feather type="rotate-ccw" animation="unspin" animation-speed="slow"></feather></button>
+        <button type="button" @click="resetRotation"><feather type="repeat"></feather></button>
+      </div>
+      <div class="finish">
+        <button type="button" @click="endEdition"><feather type="check"></feather></button>
+      </div>
+    </div>
+  </modal>
+</div>
 </template>
 <style>
 
@@ -67,20 +67,20 @@ export default {
       croppedImage: "",
       cropper: "",
       cropperOptionsMerged: Object.assign(
-        {
-          aspectRatio: 16 / 9,
-          movable: false,
-          zoomOnWheel: false
+      {
+        aspectRatio: 16 / 9,
+        movable: false,
+        zoomOnWheel: false
           // minContainerWidth: 800,
           // minCropBoxWidth: 800
         },
         _.clone(this.cropperOptions)
-      ),
+        ),
       croppedCanvasOptionsMerged: Object.assign(
-        {
-          fillColor: "#fff"
-        },
-        _.clone(this.croppedCanvasOptions)
+      {
+        fillColor: "#fff"
+      },
+      _.clone(this.croppedCanvasOptions)
       )
     };
   },
@@ -127,35 +127,25 @@ export default {
     endEdition() {
       let that = this;
       let b64Image = this.cropper
-        .getCroppedCanvas(this.croppedCanvasOptionsMerged)
-        .toBlob(
-          function(file) {
-            that.file = file;
-            var formData = new FormData();
-            formData.append("image", that.file);
-            axios
-              .post("/images/upload", formData)
-              .catch(e => flash(e.response.data.message, "warning"))
-              .then(({ data }) => {
-                console.log(data.data);
-                that.src = "/" + data.data;
-                that.$emit("cropped", data);
-                flash("Imagen Guardada Temporalmente", "success");
-              });
-          },
-          "image/jpeg",
-          0.75
+      .getCroppedCanvas(this.croppedCanvasOptionsMerged)
+      .toBlob(
+        function(file) {
+          that.file = file;
+          var formData = new FormData();
+          formData.append("image", that.file);
+          axios
+          .post("/images/upload", formData)
+          .catch(e => flash(e.response.data.message, "warning"))
+          .then(({ data }) => {
+            console.log(data.data);
+            that.src = "/" + data.data;
+            that.$emit("cropped", data);
+            flash("Imagen Guardada Temporalmente", "success");
+          });
+        },
+        "image/jpeg",
+        0.75
         );
-
-      // var u8Image = this.b64ToUint8Array(b64Image);
-      // let file = this.src;
-      // this.$emit("cropped", { file });
-      // this.$modal.hide("cropperModal");
-      // this.src = this.cropper
-      // .getCroppedCanvas(this.croppedCanvasOptionsMerged)
-      // .toDataURL("image/jpeg");
-      // let file = this.src;
-      // this.$emit("cropped", { file });
       this.$modal.hide("cropperModal");
     },
     rotateRight() {
