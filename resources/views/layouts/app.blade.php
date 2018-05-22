@@ -24,49 +24,22 @@
             'user' => Auth::user(),
             'signedIn' => Auth::check(),
             'locale'=> LaravelLocalization::getCurrentLocale()
-        ]) !!};
-    </script>
+            ]) !!};
+        </script>
 
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
 
-    @yield('head')
-</head>
+        @yield('head')
+    </head>
 
-<body class="font-sans">
-<div id="app">
-    @include ('layouts.assets.nav')
-    @header
-        @slot('image')
-            @yield('mainImage',asset('/images/Home/ContestIntro.jpg'))
-        @endslot
-        @yield('mainTitle','Wedcontest')
-        @slot('height')
-        @yield('height','h-64')
-        @endslot
-        @slot('year')
-            @yield('year','2018')
-        @endslot
-    @endheader
-    <div class="container mx-auto">
-        <div class="flex">
-            {{-- @section('sidebar') --}}
-                {{-- @include('layouts.sidebar') --}}
-            {{-- @show --}}
-
-            <div class="px-10 bg-white flex-1">
-                @yield('content')
-            </div>
-
-            {{-- @include('channels-sidebar') --}}
+    <body>
+        <div id="app">
+            @include ('layouts.assets.nav')
+            @yield('content')
+            <flash message="{{ session('flash') }}"></flash>
         </div>
-    </div>
-
-    <flash message="{{ session('flash') }}"></flash>
-
-</div>
-
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
-@yield('scripts')
-</body>
-</html>
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}"></script>
+        @yield('scripts')
+    </body>
+    </html>

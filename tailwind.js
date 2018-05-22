@@ -202,6 +202,7 @@ module.exports = {
 
     fonts: {
         'sans': [
+            'Open Sans',
             'PT Sans',
             'Droid Sans',
             'Ubuntu',

@@ -1,19 +1,18 @@
 @extends('layouts.app')
-@section('intro')
-<div id="IntroSection" style="background-image:url('{{$contest->intro_image}}')"
-    class="flex-col flex font-serif h-screen items-center justify-center text-white bg-cover"
-    >
-    <div class="font-hairline text-5xl" data-depth="0.2">{{$contest->year}} World Enviroment Day</div>
-    <div class="font-hairline text-3xl" data-depth="0.6">Drawing Contest</div>
-</div>
-@endsection
 @section('content')
+<div class="d-flex flex-column h-mid align-items-center justify-content-center text-light" style="background-image:url({{$contest->intro_image}})">
+    <div class="text-2xl" data-depth="0.6">Drawing Contest {{$contest->year}}</div>
+    <div class="text-5xl mb-4" data-depth="0.2">{{ $contest->topic }}</div>
+    <div class="d-flex flex-column">
+    </div>
+
+</div>
 @if ($errors)
 @foreach($errors as $error)
 {{$error->first}}
 @endforeach
 @endif
-<div class="container">
+<div class="container my-4">
     <representant-registration-form></representant-registration-form>
 </div>
 @endsection

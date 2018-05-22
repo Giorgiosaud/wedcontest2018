@@ -5,6 +5,7 @@
  */
 
 require("./bootstrap");
+require("./jQuery_ready");
 import Locales from "./vue-i18n-locales.generated.js";
 import VueI18n from "vue-i18n";
 import Datepicker from "vuejs-datepicker";

@@ -1,110 +1,72 @@
-<nav id="main-menu-container" class="fixed w-full pin-t py-4">
-    <div class="container mx-auto flex justify-between items-center text-blue-lightest pl-6">
-        <div>
-            <h1 class="font-normal text-2xl">
-                <a href="/" class="text-blue-lightest flex items-center">
-                    
-                    <img src="/images/logo.png" alt="">
+<nav class="navbar navbar-expand-md navbar-dark bg-wedcontest fixed-top">
+    <a class="navbar-brand" href="/">
+        <img src="/images/logo.png" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="http://wedcontest2018.diproinduca.com/en/">
+                Tema 2018
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="LearningCenterDD" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learning Center</a>
+            <div class="dropdown-menu" aria-labelledby="LearningCenterDD">
+                <a href="http://wedcontest2018.diproinduca.com/en/centro-de-aprendizaje/#Categories" class="dropdown-item">
+                    Categorias
                 </a>
-            </h1>
-        </div>
-        
-        <div class="flex" v-cloak>
-            {{--<div class="search-wrap rounded-full bg-blue-darkest w-10 cursor-pointer h-10 flex items-center justify-center mr-4 relative" @mouseover="search" @mouseout="searching = false">--}}
-                {{--<form method="GET" action="/threads/search" v-show="searching">--}}
-                    {{--<input type="text"--}}
-                    {{--placeholder="Search for something..."--}}
-                    {{--name="q"--}}
-                    {{--ref="search"--}}
-                    {{--class="search-input absolute pin-r pin-t h-full rounded bg-blue-darkest border-none pl-6 pr-10 text-white">--}}
-                    {{--</form>--}}
-                    
-                    {{--@include('svgs.icons.search')--}}
-                    {{--</div>--}}
-                    
-                    @if (auth()->check())
-                    <user-notifications></user-notifications>
-                    
-                    {{-- User dropdown. --}}
-                    <div>
-                        <dropdown>
-                            <div slot="heading"
-                            class="rounded-full bg-blue-darkest mr-4  w-10 h-10 flex items-center justify-center cursor-pointer relative z-10"
-                            >
-                            <img src="{{ auth()->user()->avatar_path }}"
-                            alt="{{ auth()->user()->username }}"
-                            class="relative z-10 w-4 rounded-full">
-                        </div>
-                        
-                        <template slot="links">
-                            <li class="text-sm pb-3">
-                                {{--<a class="link" href="{{ route('profile', Auth::user()) }}">My Profile</a>--}}
-                            </li>
-                            
-                            @if (Auth::user()->isAdmin())
-                            <li class="text-sm pb-3">
-                                {{--<a class="link" href="{{ route('admin.dashboard.index') }}">Admin</a>--}}
-                            </li>
-                            @endif
-                            <li class="text-sm">
-                                {{ Auth::user()->name }} {{ Auth::user()->last_name }}
-                            </li>      
-                            <li class="text-sm">
-                                <a href="{{route('contestants.index')}}">My Participants</a>
-                            </li>                            
-                            <li class="text-sm">
-                                <a href="{{ route('contestant.create') }}" class="link">Add Participant</a>                                
-                            </li>
-                            <li class="text-sm">
-                                <logout-button route="{{ route('logout') }}" class="link">Logout</logout-button>
-                            </li>
-                        </template>
-                        
-                    </dropdown>
-                </div>
-                @endif
-                <div>
-                    <dropdown>
-                        <div slot="heading"
-                        class="rounded-full bg-blue-darkest mx-4 w-10 h-10 flex items-center justify-center cursor-pointer relative z-10"
-                        >
-                        @include('svgs.icons.eye')
-                    </div>
-                    
-                    <template slot="links">
-                        <li class="text-sm text-white">
-                            <a href="{{ route('register') }}" class="link">Register</a>
-                        </li>
-                        
-                    </template>
-                    
-                </dropdown>
+                <a href="http://wedcontest2018.diproinduca.com/en/centro-de-aprendizaje/#Articles" class="dropdown-item">
+                    Artículos
+                </a>
+                <a href="http://wedcontest2018.diproinduca.com/en/centro-de-aprendizaje/#Links" class="dropdown-item">
+                    Enlaces
+                </a>
             </div>
-            <div>
-                <dropdown>
-                    <div slot="heading"
-                    class="rounded-full bg-blue-darkest w-10 h-10 flex items-center justify-center cursor-pointer relative z-10"
-                    >
-                    @include('svgs.icons.star')
-                    
-                </div>
-                
-                     <h4 slot="title" class="mb-4">Languages</h4>
-                <template slot="links">
-                    <li class="text-sm text-white">
-                        <a href="{{route('lang.switch',[\Request::route()->getName(),app()->getLocale()])}}">
-                            @if(__('contests.otherLang')=="Español")
-                            <img src="/images/flags/ES.png" alt="@lang('contests.otherLang')">
-                            @else
-                            <img src="/images/flags/US.png" alt="@lang('contests.otherLang')">
-                            @endif
-                        </a>
-                    </li>
-                    
-                </template>
-                
-            </dropdown>
-        </div>
-    </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="aboutTheContestDD" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About The Contest</a>
+            <div class="dropdown-menu" aria-labelledby="aboutTheContestDD">
+                <a href="http://wedcontest2018.diproinduca.com/en/inicio/" class="dropdown-item"> 
+                    History
+                </a>
+                <a href="http://wedcontest2018.diproinduca.com/en/reglas-2/" class="dropdown-item">
+                    Rules
+                </a>
+                <a href="http://wedcontest2018.diproinduca.com/en/winners/" class="dropdown-item">
+                    Winners 2017
+                </a>
+                <a href="http://wedcontest2018.diproinduca.com/en/winners/" class="dropdown-item">
+                    Judges
+                </a>
+
+            </div>
+        </li>
+
+        @if (auth()->check())
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ Auth::user()->name }} {{ Auth::user()->last_name }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="{{route('contestants.index')}}">My Participants</a>
+                <a class="dropdown-item" href="{{ route('contestant.create') }}" class="link">Add Participant</a><logout-button route="{{ route('logout') }}" class="dropdown-item">Logout</logout-button>
+            </div>
+        </li>
+        @endif
+        <li class="nav-item d-flex align-items-center">
+
+            <a class="n-link" href="{{route('lang.switch',[\Request::route()->getName(),app()->getLocale()])}}">
+                @if(__('contests.otherLang')=="Español")
+                <img src="/images/flags/ES.png" alt="@lang('contests.otherLang')">
+                @else
+                <img src="/images/flags/US.png" alt="@lang('contests.otherLang')">
+                @endif
+            </a>
+        </li>
+    </ul>
 </div>
 </nav>

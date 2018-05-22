@@ -1,72 +1,166 @@
 // Variables
 //@import "variables";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800');
 
 // Bootstrap
 @import "~select2/src/scss/core.scss";
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+.navbar-dark{
+    transition:all 1s;
+}
+.navbar-dark.scrolled{
+  background:rgba(0,0,0,.59);
+}
+.h-100vh{
+	min-height: 100vh;
+    padding: 1em;
+}
+.h-prof{
+    height: 50px;
+}
+.w-prof{
+    width: 50px;
+}
+.rounded-full{
+    border-radius:50%;
+}
+
+.h-mid{
+    min-height: 50vh;
+    padding: 1em;
+}
+.text-2xl{
+	font-size:rem;
+}
+.text-5xl{
+	font-size:3rem;
+}
+.border-dashed{
+    border:1px dashed !important
+}
+.btn-wedcontest {
+    color: #fff;
+    background-color: #1e73be;
+    background-image: -webkit-gradient( linear, left bottom, left top, from( #23bbdd ), to( #1e73be ) );
+    background-image: -webkit-linear-gradient( bottom, #23bbdd, #1e73be );
+    background-image: -moz-linear-gradient( bottom, #23bbdd, #1e73be );
+    background-image: -o-linear-gradient( bottom, #23bbdd, #1e73be );
+    background-image: linear-gradient( to top, #23bbdd, #1e73be );
+    border:none;
+}
+.bg-pending-rethinking-plastic{
+    background-color:#ffc107
+}
+.bg-seeds-the-ocean-is-your-home{
+    background-color:#78d748;
+}
+.bg-sprouts-the-ocean-is-your-home{
+    background-color:#ffa200;
+}
+.bg-thinkers-the-ocean-is-your-home{
+    background-color:#009cff;
+}
+.bg-game-changers-the-ocean-is-your-home{
+    background-color:#f12735;
+}
+.bg-seeds-rethinking-plastic{
+    background-color:#aaf5e2;
+}
+.bg-sprouts-rethinking-plastic{
+    background-color:#f6f8bb;
+}
+.bg-thinkers-rethinking-plastic{
+    background-color:#b0edfb;
+}
+.bg-game-changers-rethinking-plastic{
+    background-color:#fdc1c0;
+}
+
+.bg-wedcontest{
+        background-color:rgba(0,0,0,0.59);
+}
+@media (min-width: 768px){
+    .bg-wedcontest{
+        background-color:transparent;
+    }
+}
+
 //@import '~select2-bootstrap-theme/src/select2-bootstrap.scss';
-@tailwind preflight;
-@tailwind components;
+// @tailwind preflight;
+// @tailwind components;
 
-@import "components/btn";
-@import "components/widget";
+// @import "components/btn";
+// @import "components/widget";
 
-@import "sections/search";
-@import "sections/trix";
+// @import "sections/search";
+// @import "sections/trix";
 
-@tailwind utilities;
-@import "components/input";
-a {
-  @apply .text-grey-darkest;
-  text-decoration: none;
+// @tailwind utilities;
+// @import "components/input";
+// a {
+    //   color:inherit;
+    //   text-decoration: none;
 
-  &.link:hover {
-    text-decoration: underline;
-  }
-}
+    //   &.link:hover {
+        //     text-decoration: underline;
+        //   }
+        // }
 
-input {
-  @apply .border .border-grey-light;
-}
+        // input {
+            //   @apply .border .border-grey-light;
+            // }
 
-pre {
-  @apply .whitespace-pre-wrap;
-}
-nav#main-menu-container {
-  transition: 1s all;
-}
-[v-cloak] {
-  display: none;
-}
+            // pre {
+                //   @apply .whitespace-pre-wrap;
+                // }
+                // nav#main-menu-container {
+                    //   transition: 1s all;
+                    // }
+                    // [v-cloak] {
+                        //   display: none;
+                        // }
 
-.ais-highlight > em {
-  font-weight: bold;
-  @apply .text-black;
-}
-.v--modal-overlay {
-  overflow: scroll;
-}
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  border: 0;
-}
-@keyframes feather--unspin {
-  from {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-  to {
-    -webkit-transform: rotate(0);
-    transform: rotate(0);
-  }
-}
-.feather--unspin {
-  animation: feather--unspin 2s linear infinite;
-}
+                        // .ais-highlight > em {
+                            //   font-weight: bold;
+                            //   @apply .text-black;
+                            // }
+                            // .v--modal-overlay {
+                                //   overflow: scroll;
+                                // }
+                                // .sr-only {
+                                    //   position: absolute;
+                                    //   width: 1px;
+                                    //   height: 1px;
+                                    //   padding: 0;
+                                    //   overflow: hidden;
+                                    //   clip: rect(0, 0, 0, 0);
+                                    //   white-space: nowrap;
+                                    //   -webkit-clip-path: inset(50%);
+                                    //   clip-path: inset(50%);
+                                    //   border: 0;
+                                    // }
+                                    // @keyframes feather--unspin {
+                                        //   from {
+                                            //     -webkit-transform: rotate(360deg);
+                                            //     transform: rotate(360deg);
+                                            //   }
+                                            //   to {
+                                                //     -webkit-transform: rotate(0);
+                                                //     transform: rotate(0);
+                                                //   }
+                                                // }
+                                                // .feather--unspin {
+                                                    //   animation: feather--unspin 2s linear infinite;
+                                                    // }
+
+                                                    // .bg-opaque-black{
+                                                        //   background-color:rgba(0,0,0,0.59)
+                                                        // }
+                                                        // .border-top-white{
+                                                            //   border-top:solid white 3px
+// }

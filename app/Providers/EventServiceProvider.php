@@ -21,6 +21,10 @@ class EventServiceProvider extends ServiceProvider
             SendEmail::class,
             SubscribeToNewsletter::class,
         ],
+        'App\Events\RegisterContestant' => [
+            'App\Listeners\RegisterAsContestant',
+            'App\Listeners\SubscribeToContestantNewsletter'
+        ],
     ];
 
     /**

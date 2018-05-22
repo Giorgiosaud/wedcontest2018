@@ -1,6 +1,6 @@
 <template>
-	<div class="flex items-center">
-		<div class="w-10 h-10 rounded-full mr-4 flex items-center justify-center" :class="statusColor">
+	<div class="d-flex align-items-center ml-4">
+		<div class="w-prof h-prof rounded-full mr-4 d-flex align-items-center justify-content-center" :class="statusColor">
 			{{ shortCat }}
 		</div>
 		<div class="text-sm">
@@ -17,8 +17,8 @@ export default {
 	props:["contestant"],
 	computed:{
 		statusColor(){
-			if(this.contestant.status==='pending'){
-				return 'bg-orange-lighter';
+			if(this.contestant.category[0].pivot.status==='pending'){
+				return 'bg-pending-rethinking-plastic';
 			}
 			else{
 				return this.contestant.category[0].color;

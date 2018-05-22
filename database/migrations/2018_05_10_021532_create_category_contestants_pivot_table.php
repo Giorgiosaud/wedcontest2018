@@ -15,6 +15,7 @@ class CreateCategoryContestantsPivotTable extends Migration
     {
         Schema::create('category_contestant', function (Blueprint $table) {
             $table->integer('category_id')->unsigned()->index();
+            $table->string('status')->default('pending');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->integer('contestant_id')->unsigned()->index();
             $table->foreign('contestant_id')->references('id')->on('contestants')->onDelete('cascade');
