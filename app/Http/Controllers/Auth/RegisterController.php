@@ -101,10 +101,7 @@ class RegisterController extends Controller
     }
 
     protected function registered(Request $request, $user)
-    {
-        // if(auth()){
-        // if( auth()->isRepresentant()) ->event(new RegisterParticipant($user));
-        // }
+    {   
         event(new RegisterRepresentant($user));
     }
 }

@@ -33,6 +33,8 @@ Route::group([
     Route::get(LaravelLocalization::transRoute('routes.the_contest'), 'TheContestController@index')
     ->name('the_contest');
     Route::get('contests', 'ContestController@index')->middleware('admin')->name('contests.index');
+    Route::get('contest', 'ContestController@create')->middleware('admin')->name('contests.index');
+    Route::post('contest', 'ContestController@store')->middleware('admin')->name('contests.index');
     // Route::resource('contests', 'ContestsController');
 
     Route::get('contests/{contest}/categories', 'CategoriesController@index')->middleware('admin')->name('categories');

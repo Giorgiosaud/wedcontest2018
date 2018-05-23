@@ -53,8 +53,16 @@ class RegisterRepresentantTest extends TestCase
      */
     public function a_guest_can_register_as_representant_and_appears_as_unconfirmed()
     {
+        $this->disableExceptionHandling();
         // $this->markTestSkipped('ss');
-        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
+        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com', [
+            'FNAME'    => 'Pedro',
+            'LNAME'    => 'Perez',
+            'PHONE'    => '+56528899982',
+            'REFERRED' => 'invited',
+            'COUNTRY'  => 'CL',
+            'LANGUAGE' => 'es',
+        ])->andReturn(true);
 
         $userCount = User::all()->count();
         $this->withExceptionHandling();
@@ -83,7 +91,14 @@ class RegisterRepresentantTest extends TestCase
     /** @test */
     public function user_can_fully_confirm_their_email_addresses()
     {
-        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com')->andReturn(true);
+        NewsletterFacade::shouldReceive('subscribe')->once()->with('ppres@zon.com', [
+            'FNAME'    => 'Pedro',
+            'LNAME'    => 'Perez',
+            'PHONE'    => '+56528899982',
+            'REFERRED' => 'invited',
+            'COUNTRY'  => 'CL',
+            'LANGUAGE' => 'es',
+        ])->andReturn(true);
 
         $userCount = User::all()->count();
 
