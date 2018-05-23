@@ -57837,6 +57837,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -57957,7 +57958,7 @@ var render = function() {
           {
             staticClass: "btn btn-wedcontest mr-2",
             class: _vm.loading ? "loader" : "",
-            attrs: { type: "button", disabled: _vm.loading },
+            attrs: { type: "submit", disabled: _vm.loading },
             on: { click: _vm.login }
           },
           [_vm._v("Log In")]

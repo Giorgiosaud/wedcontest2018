@@ -23,7 +23,7 @@ class ContestController extends Controller
     public function index()
     {
         $contests = $this->getContests();
-        $contest=$contests->where('active', 1);
+        $contest = Contest::whereActive('1')->get()->first();
         if (request()->wantsJson()) {
             return $contests;
         }

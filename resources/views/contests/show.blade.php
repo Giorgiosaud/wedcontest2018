@@ -1,55 +1,51 @@
 @extends('layouts.app')
-@section('mainImage')
-{{$contest->intro_image}}
-@endsection
-@section('mainTitle')
-{{ $contest->topic }}
-@endsection
-@section('year')
-{{ $contest->year }}
-@endsection
 @section('content')
+<div class="d-flex flex-column h-100vh align-items-center justify-content-center text-light" style="background-image:url({{$contest->intro_image}})">
+    <div class="text-2xl" data-depth="0.6">Drawing Contest {{$contest->year}}</div>
+    <div class="text-5xl mb-4" data-depth="0.2">{{ $contest->topic }}</div>
+</div>
 
-<article>
-    <div class="flex items-center justify-left">
+<article class="container">
+    <div class="d-flex align-items-center justify-left py-4">
         <h2>{{$contest->topic}}</h2>
-        <div class="flex items-center justify-end flex-1 mt-4 px-4 text-xs">
+        <div class="d-flex align-items-center ml-auto justify-center">
             <a href="{{route('contest.edit',$contest->slug)}}">
-                <div class="bg-green-lighter hover:bg-green text-white font-light mr-2 py-2 px-4 rounded-full">
+                <div class="badge badge-pill badge-warning mx-1">
                     @lang('contests.edit')
                 </div>
             </a>
             
-            <div class="bg-blue-lighter hover:bg-blue-light text-white font-light mr-2 py-2 px-4 rounded-full">
+            <div class="badge badge-pill badge-primary mx-1">
                 {{$contest->year}}
             </div>
             
             @if($contest->active)
-            <div class="bg-blue hover:bg-blue-dark text-white font-light py-2 px-4 rounded-full">
+            <div class="badge badge-pill badge-primary mx-1">
                 Active
             </div>
             @else
-            <div class="bg-red hover:bg-red-dark text-white font-bold py-2 px-4 rounded-full">
+            <div class="badge badge-pill badge-warning mx-1">
                 Inactive
             </div>
             @endif
         </div>
     </div>
     
-    <div class="pt-4">
+    <div class="py-4">
         {!!$contest->description!!}
     </div>
     
     
-</article>
-<ul>
+<ul class="list-group">
     @foreach($contest->categories as $category)
-    <li class="list-group-item d-flex justify-content-between align-items-center">{{$category->name}}
+    <li class="list-group-item">{{$category->name}}
         <span class="badge badge-primary badge-pill">
-            {{$category->max_age}}
+            Max Age {{$category->max_age}}
         </span>
     </li>
     @endforeach
 </ul>
+</article>
+
 
 @endsection

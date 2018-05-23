@@ -25,7 +25,8 @@
       </div>
 
 
-        <button type="button" 
+        <button
+        type="submit"
         @click="login" 
         class="btn btn-wedcontest mr-2" 
         :class="loading ? 'loader' : ''" 

@@ -14,11 +14,9 @@ Route::get('test', 'TestController@test');
 Route::get('lang/{route}/{language}', 'LanguageController@switchLang')->name('lang.switch');
 Route::post('/contestant', 'ContestantController@store')->name('contestant.store');
 Route::post('/images/upload', 'ImageController@store')->middleware('admin')->name('store.image');
-// Route::post('contest', 'ContestController@store')->middleware('admin')->name('contest.store');
-// Route::get('contest/create', 'ContestController@create')->middleware('admin')->name('contest.create');
-// Route::get('contest/{contest}', 'ContestsController@show')->middleware('admin')->name('contest.show');
-// Route::get('contest/{contest}/edit', 'ContestsController@edit')->middleware('admin')->name('contest.edit');
-// Route::put('contest/{contest}', 'ContestsController@update')->middleware('admin')->name('contest.update');
+Route::post('contest', 'ContestController@store')->middleware('admin')->name('contest.store');
+Route::put('contest/{contest}', 'ContestsController@update')->middleware('admin')->name('contest.update');
+
 
 Route::group([
     'prefix'     => LaravelLocalization::setLocale(),
@@ -35,6 +33,12 @@ Route::group([
     Route::get('contests', 'ContestController@index')->middleware('admin')->name('contests.index');
     Route::get('contest', 'ContestController@create')->middleware('admin')->name('contests.index');
     Route::post('contest', 'ContestController@store')->middleware('admin')->name('contests.index');
+    Route::get('contest/{contest}', 'ContestController@show')->middleware('admin')->name('contest.show');
+    Route::get('contest/create', 'ContestController@create')->middleware('admin')->name('contest.create');
+    Route::get('contest/{contest}/edit', 'ContestController@edit')->middleware('admin')->name('contest.edit');
+
+
+
     // Route::resource('contests', 'ContestsController');
 
     Route::get('contests/{contest}/categories', 'CategoriesController@index')->middleware('admin')->name('categories');

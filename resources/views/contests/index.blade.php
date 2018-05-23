@@ -4,7 +4,7 @@
 	<div class="text-2xl" data-depth="0.6">Drawing Contest {{$contest->year}}</div>
 	<div class="text-5xl mb-4" data-depth="0.2">{{ $contest->topic }}</div>
 </div>
-<div class="pt-6">
+<div class="py-4 d-flex flex-wrap">
 	@include ('contests._list')
 </div>
 
