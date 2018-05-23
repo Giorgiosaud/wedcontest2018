@@ -14,7 +14,6 @@ Route::get('test', 'TestController@test');
 Route::get('lang/{route}/{language}', 'LanguageController@switchLang')->name('lang.switch');
 Route::post('/contestant', 'ContestantController@store')->name('contestant.store');
 Route::post('/images/upload', 'ImageController@store')->middleware('admin')->name('store.image');
-Route::resource('contest','ContestController');
 // Route::post('contest', 'ContestController@store')->middleware('admin')->name('contest.store');
 // Route::get('contest/create', 'ContestController@create')->middleware('admin')->name('contest.create');
 // Route::get('contest/{contest}', 'ContestsController@show')->middleware('admin')->name('contest.show');
@@ -27,11 +26,13 @@ Route::group([
 
 ], function () {
     Auth::routes();
+    // Route::resource('contest', 'ContestController');
+
 
     Route::redirect('/', 'the_contest');
     Route::get(LaravelLocalization::transRoute('routes.the_contest'), 'TheContestController@index')
     ->name('the_contest');
-    // Route::get('contests', 'ContestsController@index')->middleware('admin')->name('contests.index');
+    Route::get('contests', 'ContestController@index')->middleware('admin')->name('contests.index');
     // Route::resource('contests', 'ContestsController');
 
     Route::get('contests/{contest}/categories', 'CategoriesController@index')->middleware('admin')->name('categories');
@@ -42,5 +43,4 @@ Route::group([
     Route::post('/profile', 'ProfileController@index')->name('profile.index');
     Route::get('/contestants', 'ContestantController@index')->name('contestants.index');
     Route::get('/contestant/create', 'ContestantController@create')->name('contestant.create');
-
 });
