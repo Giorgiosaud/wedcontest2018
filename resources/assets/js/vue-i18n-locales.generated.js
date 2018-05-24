@@ -13,7 +13,8 @@ export default {
             "topic": "Topic",
             "new_contest": "New Contest",
             "topicPlaceholder": "Ocean is Our Home",
-            "otherLang": "Español"
+            "otherLang": "Español",
+            "FAQ": "Frequently Asked Questions"
         },
         "pagination": {
             "previous": "&laquo; Previous",
@@ -30,6 +31,8 @@ export default {
             "my_profile": "My Profile"
         },
         "registration": {
+            "contestname": "WED Contest 2018 del World Enviroment Day",
+            "registration": "Register",
             "birthdate": "Birth Date",
             "name": "Name",
             "last_name": "Last Name",
@@ -65,7 +68,8 @@ export default {
             "registerContestants": "Contestant Registration",
             "newParticipant": "Add new Participant",
             "category": "Category",
-            "motivo": "Explain why did you change the default category"
+            "motivo": "Explain why did you change the default category",
+            "sendInformationtoContestantemail": "I Authorize to Send info to my Contestant Email"
         },
         "routes": {
             "the_contest": "the_contest"
@@ -167,7 +171,8 @@ export default {
             "topic": "Tema",
             "new_contest": "Crear Concurso",
             "topicPlaceholder": "El Oceano es tu hogar",
-            "otherLang": "Ingles"
+            "otherLang": "Ingles",
+            "FAQ": "Preguntas Frecuentes"
         },
         "pagination": {
             "previous": "&laquo; Anterior",
@@ -184,6 +189,8 @@ export default {
             "my_profile": "Mi Perfil"
         },
         "registration": {
+            "contestname": "Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente",
+            "registration": "Registro",
             "birthdate": "Fecha de Cumpleaños",
             "name": "Nombre(s)",
             "last_name": "Apellido(s)",
@@ -218,7 +225,8 @@ export default {
             "registerContestants": "Registro de Concursantes",
             "newParticipant": "Añadir Nuevo Participante",
             "category": "Categoria",
-            "motivo": "Explique porque cambio la categoria que corresponde"
+            "motivo": "Explique porque cambio la categoria que corresponde",
+            "sendInformationtoContestantemail": "Autorizo Tambien enviar informacion relevante a correo de Concursante"
         },
         "routes": {
             "the_contest": "el_concurso"

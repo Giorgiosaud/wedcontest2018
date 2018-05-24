@@ -56003,7 +56003,8 @@ $(window).scroll(function () {
             "topic": "Topic",
             "new_contest": "New Contest",
             "topicPlaceholder": "Ocean is Our Home",
-            "otherLang": "Español"
+            "otherLang": "Español",
+            "FAQ": "Frequently Asked Questions"
         },
         "pagination": {
             "previous": "&laquo; Previous",
@@ -56020,6 +56021,8 @@ $(window).scroll(function () {
             "my_profile": "My Profile"
         },
         "registration": {
+            "contestname": "WED Contest 2018 del World Enviroment Day",
+            "registration": "Register",
             "birthdate": "Birth Date",
             "name": "Name",
             "last_name": "Last Name",
@@ -56055,7 +56058,8 @@ $(window).scroll(function () {
             "registerContestants": "Contestant Registration",
             "newParticipant": "Add new Participant",
             "category": "Category",
-            "motivo": "Explain why did you change the default category"
+            "motivo": "Explain why did you change the default category",
+            "sendInformationtoContestantemail": "I Authorize to Send info to my Contestant Email"
         },
         "routes": {
             "the_contest": "the_contest"
@@ -56157,7 +56161,8 @@ $(window).scroll(function () {
             "topic": "Tema",
             "new_contest": "Crear Concurso",
             "topicPlaceholder": "El Oceano es tu hogar",
-            "otherLang": "Ingles"
+            "otherLang": "Ingles",
+            "FAQ": "Preguntas Frecuentes"
         },
         "pagination": {
             "previous": "&laquo; Anterior",
@@ -56174,6 +56179,8 @@ $(window).scroll(function () {
             "my_profile": "Mi Perfil"
         },
         "registration": {
+            "contestname": "Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente",
+            "registration": "Registro",
             "birthdate": "Fecha de Cumpleaños",
             "name": "Nombre(s)",
             "last_name": "Apellido(s)",
@@ -56208,7 +56215,8 @@ $(window).scroll(function () {
             "registerContestants": "Registro de Concursantes",
             "newParticipant": "Añadir Nuevo Participante",
             "category": "Categoria",
-            "motivo": "Explique porque cambio la categoria que corresponde"
+            "motivo": "Explique porque cambio la categoria que corresponde",
+            "sendInformationtoContestantemail": "Autorizo Tambien enviar informacion relevante a correo de Concursante"
         },
         "routes": {
             "the_contest": "el_concurso"
@@ -59976,6 +59984,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 // import component and stylesheet
 
@@ -59994,7 +60019,8 @@ var locales = {
         dob: "",
         last_name: "",
         categoryId: "",
-        motivo: ""
+        motivo: "",
+        email: ""
       },
       dob: "",
       locale: window.App.locale,
@@ -60003,6 +60029,7 @@ var locales = {
       dateOne: "",
       feedback: "",
       loading: false,
+      authorizedEmail: false,
       errors: {}
     };
   },
@@ -64691,7 +64718,106 @@ var render = function() {
             ])
           : _vm._e(),
         _vm._v(" "),
-        _c("div", { staticClass: "flex items-center -mx-4" }, [
+        _c("div", { staticClass: "form-check form-group" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.authorizedEmail,
+                expression: "authorizedEmail"
+              }
+            ],
+            staticClass: "form-check-input",
+            attrs: { type: "checkbox", id: "authorizedEmail" },
+            domProps: {
+              checked: Array.isArray(_vm.authorizedEmail)
+                ? _vm._i(_vm.authorizedEmail, null) > -1
+                : _vm.authorizedEmail
+            },
+            on: {
+              change: function($event) {
+                var $$a = _vm.authorizedEmail,
+                  $$el = $event.target,
+                  $$c = $$el.checked ? true : false
+                if (Array.isArray($$a)) {
+                  var $$v = null,
+                    $$i = _vm._i($$a, $$v)
+                  if ($$el.checked) {
+                    $$i < 0 && (_vm.authorizedEmail = $$a.concat([$$v]))
+                  } else {
+                    $$i > -1 &&
+                      (_vm.authorizedEmail = $$a
+                        .slice(0, $$i)
+                        .concat($$a.slice($$i + 1)))
+                  }
+                } else {
+                  _vm.authorizedEmail = $$c
+                }
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "form-check-label",
+              attrs: { for: "authorizedEmail" }
+            },
+            [
+              _vm._v(
+                _vm._s(_vm.$t("registration.sendInformationtoContestantemail"))
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _vm.authorizedEmail
+          ? _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "email" } }, [
+                _vm._v(_vm._s(_vm.$t("registration.email")))
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.email,
+                    expression: "form.email"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "email",
+                  "aria-describedby": "email",
+                  required: ""
+                },
+                domProps: { value: _vm.form.email },
+                on: {
+                  keydown: function($event) {
+                    _vm.errors.email = false
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "email", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors.email
+                ? _c("div", {
+                    staticClass: "invalid-feedback",
+                    domProps: { textContent: _vm._s(_vm.errors.email[0]) }
+                  })
+                : _vm._e()
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
           _c(
             "button",
             {

@@ -6,6 +6,8 @@ use App\Category;
 use App\Contest;
 use App\Contestant;
 use Illuminate\Http\Request;
+use Spatie\Newsletter\NewsletterFacade as Newsletter;
+
 
 class ContestantController extends Controller
 {
@@ -46,6 +48,9 @@ class ContestantController extends Controller
             'motivo'          => $request->motivo,
         ];
         $contestant = Contestant::create($contestant);
+        if($request->email!==""){
+            Newsletter::subscribe($request->email, ['firstName'=>$request->name, 'lastName'=>$request->lastName], 'contestants');
+        }
         $status=$this->verifyStatus($contestant->dob,$request->categoryId);
         // return $contestant;
         // dd($status);

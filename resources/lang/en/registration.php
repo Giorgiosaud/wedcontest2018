@@ -12,6 +12,8 @@ return [
     | these language lines according to your application's requirements.
     |
  */
+'contestname'=>'WED Contest 2018 del World Enviroment Day',
+'registration'=>'Register',
     'birthdate' => 'Birth Date',
     'name'      => 'Name',
     'last_name' => 'Last Name',
@@ -48,4 +50,5 @@ return [
     'newParticipant'      => 'Add new Participant',
     'category'            => 'Category',
     'motivo'              => 'Explain why did you change the default category',
+    'sendInformationtoContestantemail'=>'I Authorize to Send info to my Contestant Email'
 ];

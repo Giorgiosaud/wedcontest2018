@@ -72,8 +72,25 @@
     class="form-control" 
     rows="10" 
     :placeholder="$t('registration.motivo')"></textarea>
-  </div>        
-  <div class="flex items-center -mx-4">
+  </div>
+  <div class="form-check form-group">
+    <input type="checkbox" class="form-check-input" id="authorizedEmail" v-model="authorizedEmail">
+    <label class="form-check-label" for="authorizedEmail">{{$t('registration.sendInformationtoContestantemail')}}</label>
+  </div>
+  <div class="form-group" v-if="authorizedEmail">
+            <label for="email">{{ $t("registration.email")}}</label>
+            <input 
+            type="text" 
+            class="form-control" 
+            id="email" 
+            aria-describedby="email"
+            v-model="form.email"
+            @keydown="errors.email = false"
+            required >
+            <div v-if="errors.email" v-text="errors.email[0]" class="invalid-feedback">
+            </div>
+        </div>
+  <div class="form-group">
     <button type="button" @click="register" class="btn btn-wedcontest" :class="loading ? 'loader' : ''" :disabled="loading">{{$t('registration.register')}}</button>
   </div>
 
@@ -102,7 +119,8 @@ export default {
         dob: "",
         last_name: "",
         categoryId: "",
-        motivo:""
+        motivo:"",
+        email:""
       },
       dob:"",
       locale:window.App.locale,
@@ -111,6 +129,7 @@ export default {
       dateOne: "",
       feedback: "",
       loading: false,
+      authorizedEmail:false,
       errors: {}
     };
   },

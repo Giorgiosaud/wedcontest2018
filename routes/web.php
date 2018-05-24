@@ -33,8 +33,8 @@ Route::group([
     Route::get('contests', 'ContestController@index')->middleware('admin')->name('contests.index');
     Route::get('contest', 'ContestController@create')->middleware('admin')->name('contests.index');
     Route::post('contest', 'ContestController@store')->middleware('admin')->name('contests.index');
-    Route::get('contest/{contest}', 'ContestController@show')->middleware('admin')->name('contest.show');
     Route::get('contest/create', 'ContestController@create')->middleware('admin')->name('contest.create');
+    Route::get('contest/{contest}', 'ContestController@show')->middleware('admin')->name('contest.show');
     Route::get('contest/{contest}/edit', 'ContestController@edit')->middleware('admin')->name('contest.edit');
 
 
