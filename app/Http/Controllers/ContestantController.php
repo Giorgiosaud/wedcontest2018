@@ -35,6 +35,7 @@ class ContestantController extends Controller
 
     public function store(Request $request)
     {
+        dd($request->email);
         $request->validate([
             'name' => 'required',
             'last_name' => 'required',
@@ -46,8 +47,10 @@ class ContestantController extends Controller
             'last_name'       => $request->last_name,
             'dob'             => $request->dob,
             'motivo'          => $request->motivo,
+            'email'          => $request->email,
         ];
         $contestant = Contestant::create($contestant);
+
         if($request->email!==""){
             Newsletter::subscribe($request->email, ['firstName'=>$request->name, 'lastName'=>$request->lastName], 'contestants');
         }
