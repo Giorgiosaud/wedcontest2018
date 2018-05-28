@@ -31,13 +31,13 @@ class ContestAndCategoriesSeed extends Seeder
             'en'         => [
                 'topic'      => 'Rethinking Plastic',
                 'description'=> '<div>Welcome to our World Environment Day Drawing Contest 2018</div>',
-                'logo_image'=>'contest/rethinking-plastic/esLogo.jpg'
+                'logo_image'=>'contest/rethinking-plastic/enLogo.jpg'
 
             ],
             'es'=> [
                 'topic'      => 'Reinventando el Plástico',
                 'description'=> '<div>Concurso de Dibujo 2018 del Día mundial del Medio Ambiente</div>',
-                'logo_image'=>'contest/rethinking-plastic/enLogo.jpg'
+                'logo_image'=>'contest/rethinking-plastic/esLogo.jpg'
             ],
             'slug'       => 'rethinking-plastic',
             'year'       => 2018,
