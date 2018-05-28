@@ -2,7 +2,7 @@
 @section('content')
 <div class="d-flex flex-column h-mid align-items-center justify-content-center text-light" style="background-image:url({{$contest->background_image}})">
 	<div class="container text-center">
-        <img src="images/plastico.jpg" width="200" alt="Reinventando el Plástico">
+        <img src="/storage/{{$contest->logo_image}}" width="200" alt="Reinventando el Plástico">
         <div class="separator-wedcontest"></div>
         <h1>@lang('registration.register')</h1>
         <p>@lang('registration.contestname')</p>
