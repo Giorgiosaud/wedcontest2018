@@ -3,6 +3,7 @@
         <input id="trix" type="hidden" :name="name" :value="value">
 
         <trix-editor
+        class="bg-light"
                 ref="trix"
                 input="trix"
                 @trix-change="change"

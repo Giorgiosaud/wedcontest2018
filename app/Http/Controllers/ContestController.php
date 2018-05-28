@@ -54,28 +54,41 @@ class ContestController extends Controller
     {
         request()->validate([
             'year'             => 'required|numeric',
+            'slug'             => 'required|string',
             'en.topic'         => 'required|string',
+            'en.logo_image'    => 'required|string',
             'en.description'   => 'required|string',
             'es.topic'         => 'required|string',
             'es.description'   => 'required|string',
+            'es.logo_image'    => 'required|string',
+            'background_image' => 'required|string',
             'normalCategories' => 'required|boolean',
         ]);
+        
         $contest = Contest::create([
             'user_id' => auth()->id(),
+            'slug'=>request('slug'),
             'year'    => request('year'),
             'en'      => request('en'),
             'es'      => request('es'),
         ]);
-        if (request()->has('intro_image')) {
-            $file = 'public/contest/'.$contest->slug.'.jpg';
+        $files=[
+            'public/contest/'.$contest->slug.'/backgroundImage.jpg',
+            'public/contest/'.$contest->slug.'/esLogo.jpg',
+            'public/contest/'.$contest->slug.'/enLogo.jpg'
+        ];
+        foreach($files as $file){
             if (Storage::exists($file)) {
                 Storage::delete($file);
             }
-            Storage::move('public/'.request('intro_image'), $file);
-            $contest->intro_image = 'contest/'.$contest->slug.'.jpg';
-            $contest->save();
         }
-
+        Storage::move('public/'.request('background_image'), $files[0]);
+        Storage::move('public/'.request('es')['logo_image'], $files[1]);
+        Storage::move('public/'.request('en')['logo_image'], $files[2]);
+        $contest->background_image = 'contest/'.$contest->slug.'/backgroundImage.jpg';
+        $contest->translate('es')->logo_image = 'contest/'.$contest->slug.'/esLogo.jpg';
+        $contest->translate('en')->logo_image = 'contest/'.$contest->slug.'/enLogo.jpg';
+        $contest->save();
         if (request('normalCategories')) {
             $categories = [
                 ['name' => 'Seeds', 'max_age' => 3, 'contest_id' => $contest->id],
@@ -93,7 +106,7 @@ class ContestController extends Controller
         }
 
         return redirect($contest->path())
-            ->with('flash', 'Your thread has been published!');
+        ->with('flash', 'Your thread has been published!');
     }
 
     /**
@@ -152,7 +165,7 @@ class ContestController extends Controller
         }
 
         return redirect($contest->path())
-            ->with(' flash ', ' Your thread has been published!');
+        ->with(' flash ', ' Your thread has been published!');
         //
     }
 

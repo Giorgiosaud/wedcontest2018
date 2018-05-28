@@ -7,9 +7,24 @@
 
 // Variables
 @import "variables";
+// @import "fusionHeader";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@font-face{
+    font-family: IcoMoon;
+    src: url('fonts/icomoon.woff');
+}
+.dropdown-item:hover, .dropdown-item:focus{
+    background: rgba(0,0,0,0.59);    
+}
+.navbar-nav .dropdown-menu{
+    background: rgba(0,0,0,0.59);    
+    border-top: 3px solid #fff;
+}
+.dropdown-item:hover, .dropdown-item:focus,a.dropdown-item {
+    color: #fff;
+}
 .navbar-dark{
     transition:all 1s;
 }
@@ -87,7 +102,7 @@
 }
 
 .bg-wedcontest{
-        background-color:rgba(0,0,0,0.59);
+    background-color:rgba(0,0,0,0.59);
 }
 .separator-wedcontest {
     display: block;
@@ -96,13 +111,33 @@
     width: 100%;
     background: rgba(255, 255, 255, 0.3);
 }
+#navbarSupportedContent .nav-item{
+    padding-right: 1.5rem;
+}
+@keyframes feather--unspin {
+  from {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    }
+to {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+}
+}
+.feather--unspin {
+  animation: feather--unspin 2s linear infinite;
+}
+[v-cloak] {
+  display: none;
+}
+
 @media (min-width: 768px){
     .bg-wedcontest{
         background-color:transparent;
     }
 }
 
-//@import '~select2-bootstrap-theme/src/select2-bootstrap.scss';
+// @import '~select2-bootstrap-theme/src/select2-bootstrap.scss';
 // @tailwind preflight;
 // @tailwind components;
 
@@ -110,69 +145,6 @@
 // @import "components/widget";
 
 // @import "sections/search";
-// @import "sections/trix";
+@import "sections/trix";
 
-// @tailwind utilities;
 // @import "components/input";
-// a {
-    //   color:inherit;
-    //   text-decoration: none;
-
-    //   &.link:hover {
-        //     text-decoration: underline;
-        //   }
-        // }
-
-        // input {
-            //   @apply .border .border-grey-light;
-            // }
-
-            // pre {
-                //   @apply .whitespace-pre-wrap;
-                // }
-                // nav#main-menu-container {
-                    //   transition: 1s all;
-                    // }
-                    // [v-cloak] {
-                        //   display: none;
-                        // }
-
-                        // .ais-highlight > em {
-                            //   font-weight: bold;
-                            //   @apply .text-black;
-                            // }
-                            // .v--modal-overlay {
-                                //   overflow: scroll;
-                                // }
-                                // .sr-only {
-                                    //   position: absolute;
-                                    //   width: 1px;
-                                    //   height: 1px;
-                                    //   padding: 0;
-                                    //   overflow: hidden;
-                                    //   clip: rect(0, 0, 0, 0);
-                                    //   white-space: nowrap;
-                                    //   -webkit-clip-path: inset(50%);
-                                    //   clip-path: inset(50%);
-                                    //   border: 0;
-                                    // }
-                                    // @keyframes feather--unspin {
-                                        //   from {
-                                            //     -webkit-transform: rotate(360deg);
-                                            //     transform: rotate(360deg);
-                                            //   }
-                                            //   to {
-                                                //     -webkit-transform: rotate(0);
-                                                //     transform: rotate(0);
-                                                //   }
-                                                // }
-                                                // .feather--unspin {
-                                                    //   animation: feather--unspin 2s linear infinite;
-                                                    // }
-
-                                                    // .bg-opaque-black{
-                                                        //   background-color:rgba(0,0,0,0.59)
-                                                        // }
-                                                        // .border-top-white{
-                                                            //   border-top:solid white 3px
-// }

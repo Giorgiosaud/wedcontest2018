@@ -1,31 +1,53 @@
 <template>
 	<form class="w-full" method="POST" enctype="multipart/form-data">
-    <div class="py-2">
-      <input type="text" :class="classes"
-      placeholder="slug" aria-label="slug" v-model="form.slug">
+    <div class="form-group">
+      <label for="slug">Slug</label>
+      <input type="text"
+      id="slug"
+      class="form-control"
+      placeholder="slug"
+      aria-label="slug"
+      v-model="form.slug">
+      <small
+      id="slugHelpInline"
+      class="text-muted">
+        Must be in lowercase and not spaces between words ex(hello-world)
+      </small>
     </div>
-    <div class="py-2">
-      <input type="text" :class="classes"
-      placeholder="Year/Año" aria-label="Year/Año" v-model="form.year">
+    <div class="form-group">
+      <label for="slug">Year/Año</label>
+      <input type="text"
+      id="year"
+      class="form-control"
+      placeholder="Year/Año"
+      aria-label="Year/Año"
+      v-model="form.year">
     </div>
-    <div class="py-2">
-      <input type="text" class="border-teal" placeholder="Topic" aria-label="Topic" v-model="form.en.topic">
+    <div class="form-group">
+      <label for="topic">Topic</label>
+      <input type="text"
+      id="topic"
+      class="form-control"
+      placeholder="Topic"
+      aria-label="Topic"
+      v-model="form.en.topic">
     </div>
-    
-    <div class="py-2">
-      <label for="descripcion">
-        Description
-      </label>
+    <div class="form-group">
+      <label for="description">Description</label>
       <wysiwyg name="desctiption.en" id="descripcion" v-model="form.en.description"></wysiwyg>
     </div>
-    <div class="py-2">
-      <input  type="text" class="border-teal" placeholder="Tema" aria-label="Tema" v-model="form.es.topic">
-    </div>
-    <div class="py-2">
-      <label  for="description">
-        Descripción
-      </label>
-      <wysiwyg name="desctiption.es" id="description" v-model="form.es.description"></wysiwyg>
+    <div class="form-group">
+      <label for="tema">Tema</label>
+      <input type="text"
+      id="tema"
+      class="form-control"
+      placeholder="Tema"
+      aria-label="Tema"
+      v-model="form.es.topic">
+    </div>   
+    <div class="form-group">
+      <label for="description">Descripción</label>
+      <wysiwyg name="desctiption.en" id="descripcion" v-model="form.es.description"></wysiwyg>
     </div>
     <div class="py-2" v-if="!contest"> 
       <label  for="normalCategories">

@@ -11,21 +11,19 @@ use Illuminate\Database\Eloquent\Model;
 class Contest extends Model
 {
     use Translatable;
-    public $translatedAttributes = ['topic', 'description'];
+    public $translatedAttributes = ['topic', 'description','seo_message','logo_image'];
 
     /**
      * @var array
      */
     protected $fillable = [
         'user_id',
-
         'slug',
         'year',
     ];
     protected $appends = [
         'path',
-        'intro_image',
-        'introimg',
+        'background_image',
     ];
     protected $with = ['translations'];
 
@@ -38,29 +36,6 @@ class Contest extends Model
     {
         return 'slug';
     }
-
-    /**
-     * Boot the model.
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        // static::deleting(function ($contest) {
-        //     $contest->replies->each->delete();
-
-        //     $contest->creator->loseReputation('contest_published');
-        // });
-
-        static::created(function ($contest) {
-            $contest->update(['slug' => $contest->topic]);
-
-            // event(new contestWasPublished($contest));
-
-            // $contest->creator->gainReputation('contest_published');
-        });
-    }
-
     /**
      * @return string
      */
@@ -73,20 +48,6 @@ class Contest extends Model
     {
         return $this->path();
     }
-
-    /**
-     * Set the proper slug attribute.
-     *
-     * @param string $value
-     */
-    public function setSlugAttribute($value)
-    {
-        if (static::whereSlug($slug = str_slug($value))->exists()) {
-            $slug = "{$slug}-{$this->id}";
-        }
-        $this->attributes['slug'] = $slug;
-    }
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -108,13 +69,8 @@ class Contest extends Model
      *
      * @return string
      */
-    public function getIntroImageAttribute($intro_image)
+    public function getBackgroundImageAttribute($background_image)
     {
-        return asset($intro_image ?: 'images/Home/ContestIntro.jpg');
-    }
-
-    public function getIntroimgAttribute()
-    {
-        return $this->intro_image;
+        return asset($background_image ?: 'images/Home/ContestIntro.jpg');
     }
 }

@@ -35,7 +35,6 @@ class ContestantController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->email);
         $request->validate([
             'name' => 'required',
             'last_name' => 'required',
@@ -49,14 +48,12 @@ class ContestantController extends Controller
             'motivo'          => $request->motivo,
             'email'          => $request->email,
         ];
-        $contestant = Contestant::create($contestant);
 
-        if($request->email!==""){
+        $contestant = Contestant::create($contestant);
+        if(request('email')!==""){
             Newsletter::subscribe($request->email, ['firstName'=>$request->name, 'lastName'=>$request->lastName], 'contestants');
         }
         $status=$this->verifyStatus($contestant->dob,$request->categoryId);
-        // return $contestant;
-        // dd($status);
         $contestant->category()->attach($request->categoryId,['status'=>$status]);
 
         return redirect()->route('contestants.index');

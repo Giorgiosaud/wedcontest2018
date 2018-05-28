@@ -21,14 +21,13 @@ export default {
 
   computed: {
     classes() {
-      let defaults = ["fixed", "p-4", "border", "text-white"];
+      let defaults = ["alert", "fixed-bottom"];
 
       if (this.level === "success")
-        defaults.push("bg-green", "border-green-dark");
+        defaults.push("alert-success");
       if (this.level === "warning")
-        defaults.push("bg-orange", "border-yellow-dark");
-      if (this.level === "danger") defaults.push("bg-red", "border-red-dark");
-
+        defaults.push("alert-warning");
+      if (this.level === "danger") defaults.push("alert-danger");
       return defaults;
     }
   },

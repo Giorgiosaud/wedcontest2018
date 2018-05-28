@@ -10,6 +10,7 @@ return [
     'new_contest'     => 'Crear Concurso',
     'topicPlaceholder'=> 'El Oceano es tu hogar',
     'otherLang'       => 'Ingles',
-    'FAQ'=>'Preguntas Frecuentes'
+    'FAQ'=>'Preguntas Frecuentes',
+    'list'=>'Lista de Concursos',
 
 ];

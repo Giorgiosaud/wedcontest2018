@@ -24,21 +24,27 @@ class ContestAndCategoriesSeed extends Seeder
             'slug'       => 'ocean-is-your-home',
             'year'       => 2017,
 
-        ],[
+        ],
+        [
             'user_id' => 1,
             'active'     => true,
             'en'         => [
                 'topic'      => 'Rethinking Plastic',
-                'description'=> 'Rethinking Plastic',
+                'description'=> '<div>Welcome to our World Environment Day Drawing Contest 2018</div>',
+                'logo_image'=>'contest/rethinking-plastic/esLogo.jpg'
+
             ],
             'es'=> [
                 'topic'      => 'Reinventando el Plástico',
-                'description'=> 'Reinventando el Plástico',
+                'description'=> '<div>Concurso de Dibujo 2018 del Día mundial del Medio Ambiente</div>',
+                'logo_image'=>'contest/rethinking-plastic/enLogo.jpg'
             ],
             'slug'       => 'rethinking-plastic',
             'year'       => 2018,
+            'background_image'=>'contest/rethinking-plastic/backgroundImage.jpg'
 
-        ]];
+        ]
+    ];
         foreach($contests as $contest){
             $cont=factory(App\Contest::class)->create($contest);
             $categories = [

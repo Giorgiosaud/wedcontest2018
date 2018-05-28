@@ -9,6 +9,7 @@
         type="text" 
         class="form-control" 
         id="name" 
+        autocomplete="name" 
         aria-describedby="name"
         v-model="form.name"
         @keydown="errors.name = false"
@@ -22,6 +23,7 @@
         type="text" 
         class="form-control" 
         id="last_name" 
+        autocomplete="last_name" 
         aria-describedby="last_name"
         v-model="form.last_name"
         @keydown="errors.last_name = false"
@@ -35,11 +37,11 @@
           {{ $t("registration.birthdate")}}
         </label>
         <datepicker 
-        input-class="form-control"
+        :bootstrapStyling="true"
         v-model="dob" 
         name="dob"  
         @input="setDefaultCategory" 
-        :typeable="false"
+        :typeable="true"
         initial-view="year"
 
         ></datepicker>
@@ -78,18 +80,19 @@
     <label class="form-check-label" for="authorizedEmail">{{$t('registration.sendInformationtoContestantemail')}}</label>
   </div>
   <div class="form-group" v-if="authorizedEmail">
-            <label for="email">{{ $t("registration.email")}}</label>
-            <input 
-            type="text" 
-            class="form-control" 
-            id="email" 
-            aria-describedby="email"
-            v-model="form.email"
-            @keydown="errors.email = false"
-            required >
-            <div v-if="errors.email" v-text="errors.email[0]" class="invalid-feedback">
-            </div>
-        </div>
+    <label for="email">{{ $t("registration.email")}}</label>
+    <input 
+    type="text" 
+    class="form-control" 
+    id="email" 
+    aria-describedby="email"
+    autocomplete="email" 
+    v-model="form.email"
+    @keydown="errors.email = false"
+    required >
+    <div v-if="errors.email" v-text="errors.email[0]" class="invalid-feedback">
+    </div>
+  </div>
   <div class="form-group">
     <button type="button" @click="register" class="btn btn-wedcontest" :class="loading ? 'loader' : ''" :disabled="loading">{{$t('registration.register')}}</button>
   </div>
@@ -147,7 +150,7 @@ export default {
       console.log(response);
       window.location.href = response.request.responseURL;
     })
-        // .catch(error => console.error(error));
+        .catch(error => console.error(error));
       },
       setDefaultCategory() {
         console.log(this.categories.find(cat => this.age < cat.max_age));

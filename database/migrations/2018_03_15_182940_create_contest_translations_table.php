@@ -16,11 +16,10 @@ class CreateContestTranslationsTable extends Migration
         Schema::create('contest_translations', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('contest_id');
-
             $table->string('topic');
             $table->text('seo_message')->nullable();
             $table->text('description')->nullable();
-
+            $table->string('logo_image')->nullable();
             $table->string('locale')->index();
             $table->unique(['contest_id', 'locale']);
             $table->foreign('contest_id')->references('id')->on('contests')->onDelete('cascade');

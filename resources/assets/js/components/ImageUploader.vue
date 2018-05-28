@@ -2,35 +2,68 @@
   <div>
     <div>
       <label class="label" data-toggle="tooltip" title="Change your avatar">
-        <img class="rounded" id="avatar" :src="src" alt="avatar">
-        <input type="file" class="sr-only" ref="input" id="input" name="image" accept="image/*" @change="onChange" >
+        <img class="img-fluid" :src="src" v-if="value">
+        <div v-else>
+          <p class="border-dashed border-light text-muted p-3">insert an Image</p>
+        </div>
+        <input type="file" class="sr-only" ref="imageFile" id="input" name="image" accept="image/*" @change="onChange" >
       </label>
     </div>
     <div>
-      <button type="button" @click="editImage" >Edit Rotate or Crop Image</button>
-      <button type="button" @click="$refs.input.click()" >Upload another Image</button>
+      <button type="button" class="btn btn-wedcontest" v-if="src" @click="editImage" >Edit Rotate or Crop Image</button>
+      <button type="button" class="btn btn-wedcontest" @click="$refs.imageFile.click()" >Upload Image</button>
     </div>
   </label>
-  <modal name="cropperModal" width="80%" :clickToClose="false" :adaptive="true" :resizable="true" height="auto" @opened="createCropper" @closed="destroyCropper">
-    <div class="header">
-      <h2>Crop The Uploaded Image</h2> 
-    </div>
-    <div class="body">
-      <img id="image" ref="imagen" :src="src">
-    </div>
-    <div class="footer flex justify-between">
-      <div class="edition">
-        <button type="button" @click="rotateRight"><feather type="rotate-cw" animation="spin" animation-speed="fast"></feather></button>
-        <button type="button" @click="rotateRightSlow"><feather type="rotate-cw" animation="spin" animation-speed="slow"></feather></button>
-        <button type="button" @click="rotateLeft"><feather type="rotate-ccw" animation="unspin" animation-speed="fast"></feather></button>
-        <button type="button" @click="rotateLeftSlow"><feather type="rotate-ccw" animation="unspin" animation-speed="slow"></feather></button>
-        <button type="button" @click="resetRotation"><feather type="repeat"></feather></button>
+  <div
+  class="modal
+  fade"
+  :id="name"
+  tabindex="-1"
+  role="dialog"
+  :aria-labelledby="name"
+  aria-hidden="true"
+  @show.bs.modal="createCropper"
+  @hide.bs.modal  ="destroyCropper">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Crop The Uploaded Image</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <div class="finish">
-        <button type="button" @click="endEdition"><feather type="check"></feather></button>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <img id="image" ref="imagen" :src="src">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" @click="rotateRight" class="btn btn-primary">
+            <feather type="rotate-cw" animation="spin" animation-speed="fast"></feather>
+          </button>
+          <button class="btn btn-primary" type="button" @click="rotateRightSlow">
+            <feather type="rotate-cw" animation="spin" animation-speed="slow"></feather>
+          </button>
+          <button class="btn btn-primary" type="button" @click="rotateLeft">
+            <feather type="rotate-ccw" animation="unspin" animation-speed="fast"></feather>
+          </button>
+          <button class="btn btn-primary" type="button" @click="rotateLeftSlow">
+            <feather type="rotate-ccw" animation="unspin" animation-speed="slow"></feather>
+          </button>
+          <button class="btn btn-primary" type="button" @click="resetRotation">
+            <feather type="repeat"></feather>
+          </button>
+        </div>
+        <button type="button" class="btn btn-primary" @click="endEdition"><feather type="check"></feather></button>
       </div>
     </div>
-  </modal>
+  </div>
+</div>
 </div>
 </template>
 <style>
@@ -46,6 +79,11 @@ export default {
       type: String,
       default: ""
     },
+    name: {
+      type: String,
+      default: ""
+    },
+
     cropperOptions: {
       type: Object,
       default: function() {
@@ -61,14 +99,14 @@ export default {
   },
   data() {
     return {
-      src: _.clone(this.value),
+      src: this.value,
       editing: false,
       file: "",
       croppedImage: "",
       cropper: "",
       cropperOptionsMerged: Object.assign(
       {
-        aspectRatio: 16 / 9,
+        // aspectRatio: 16 / 9,
         movable: false,
         zoomOnWheel: false
           // minContainerWidth: 800,
@@ -99,10 +137,13 @@ export default {
           this.src = e.target.result;
         };
       }
-      this.$modal.show("cropperModal");
+      $('#'+this.name).modal('show');
+
+      // this.$modal.show(this.name);
     },
     editImage() {
-      this.$modal.show("cropperModal");
+      $('#'+this.name).modal('show');
+      // this.$modal.show(this.name);
     },
     createCropper() {
       this.editing = true;
@@ -139,14 +180,16 @@ export default {
           .then(({ data }) => {
             console.log(data.data);
             that.src = "/" + data.data;
-            that.$emit("cropped", data);
+            // that.$emit("cropped", data);
+            that.$emit("input", that.src);
             flash("Imagen Guardada Temporalmente", "success");
           });
         },
         "image/jpeg",
         0.75
         );
-      this.$modal.hide("cropperModal");
+      $('#'+this.name).modal('hide');
+      // this.$modal.hide(this.name);
     },
     rotateRight() {
       this.cropper.rotate(90);
@@ -164,6 +207,9 @@ export default {
       this.cropper.rotateTo(0);
     }
   },
-  mounted() {}
+  mounted() {
+    $('#'+this.name).on("shown.bs.modal",(e)=>this.createCropper())
+    $('#'+this.name).on("hidden.bs.modal",(e)=>this.destroyCropper())
+  }
 };
 </script>

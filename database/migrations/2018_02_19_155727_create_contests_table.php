@@ -18,8 +18,7 @@ class CreateContestsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('slug')->unique()->nullable();
             $table->string('year');
-            $table->string('intro_image')->nullable();
-            $table->string('logo_image')->nullable();
+            $table->string('background_image')->nullable();
             $table->boolean('active')->default(false);
             $table->foreign('user_id')
                 ->references('id')->on('users');
