@@ -41,7 +41,7 @@ Route::group([
 
     // Route::resource('contests', 'ContestsController');
 
-    Route::get('contests/{contest}/categories', 'CategoriesController@index')->middleware('admin')->name('categories');
+    Route::get('contest/{contest}/categories', 'CategoriesController@index')->middleware('admin')->name('categories');
 
     Route::get('/register/confirm', 'Auth\RegisterConfirmationController@index')->name('register.confirm');
     Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');

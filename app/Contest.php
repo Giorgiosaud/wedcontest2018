@@ -71,6 +71,9 @@ class Contest extends Model
      */
     public function getBackgroundImageAttribute($background_image)
     {
-        return asset("/storage/".$background_image ?: 'images/Home/ContestIntro.jpg');
-    }
+        if($background_image){
+           return asset("/storage/".$background_image);
+       }
+       return asset('images/Home/ContestIntro.jpg');
+   }
 }

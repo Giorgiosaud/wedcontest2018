@@ -29,7 +29,7 @@ class ReadContestTest extends TestCase
     public function a_normal_user_can_not_see_a_single_contest()
     {
         $contest = factory(Contest::class)->create();
-        $this->get('/contests/'.$contest->slug)
+        $this->get('/contest/'.$contest->slug)
             ->assertRedirect('/login');
     }
 

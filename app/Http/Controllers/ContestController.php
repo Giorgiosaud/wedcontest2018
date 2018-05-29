@@ -64,7 +64,7 @@ class ContestController extends Controller
             'background_image' => 'required|string',
             'normalCategories' => 'required|boolean',
         ]);
-        
+        // dd($contest);
         $contest = Contest::create([
             'user_id' => auth()->id(),
             'slug'=>request('slug'),
@@ -72,6 +72,7 @@ class ContestController extends Controller
             'en'      => request('en'),
             'es'      => request('es'),
         ]);
+
         $files=[
             'public/contest/'.$contest->slug.'/backgroundImage.jpg',
             'public/contest/'.$contest->slug.'/esLogo.jpg',
@@ -104,7 +105,6 @@ class ContestController extends Controller
         if (request()->wantsJson()) {
             return response($contest, 201);
         }
-
         return redirect($contest->path())
         ->with('flash', 'Your thread has been published!');
     }
