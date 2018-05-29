@@ -56,6 +56,7 @@ class ContestantController extends Controller
         }
         $status = $this->verifyStatus($contestant->dob, $request->categoryId);
         $contestant->category()->attach($request->categoryId, ['status'=>$status]);
+
         return redirect()->route('contestants.index');
     }
 
