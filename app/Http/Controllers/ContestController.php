@@ -27,8 +27,9 @@ class ContestController extends Controller
         if (request()->wantsJson()) {
             return $contests;
         }
+
         return view('contests.index', [
-            'contest'=>$contest,
+            'contest'  => $contest,
             'contests' => $contests,
         ]);
     }
@@ -67,18 +68,18 @@ class ContestController extends Controller
         // dd($contest);
         $contest = Contest::create([
             'user_id' => auth()->id(),
-            'slug'=>request('slug'),
+            'slug'    => request('slug'),
             'year'    => request('year'),
             'en'      => request('en'),
             'es'      => request('es'),
         ]);
 
-        $files=[
+        $files = [
             'public/contest/'.$contest->slug.'/backgroundImage.jpg',
             'public/contest/'.$contest->slug.'/esLogo.jpg',
-            'public/contest/'.$contest->slug.'/enLogo.jpg'
+            'public/contest/'.$contest->slug.'/enLogo.jpg',
         ];
-        foreach($files as $file){
+        foreach ($files as $file) {
             if (Storage::exists($file)) {
                 Storage::delete($file);
             }
@@ -105,6 +106,7 @@ class ContestController extends Controller
         if (request()->wantsJson()) {
             return response($contest, 201);
         }
+
         return redirect($contest->path())
         ->with('flash', 'Your thread has been published!');
     }

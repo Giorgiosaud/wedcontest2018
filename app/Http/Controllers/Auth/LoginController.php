@@ -37,6 +37,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
     /**
      * Show the application's login form.
      *
@@ -46,6 +47,6 @@ class LoginController extends Controller
     {
         $contest = Contest::whereActive(true)->first();
 
-        return view('auth.login',compact('contest'));
+        return view('auth.login', compact('contest'));
     }
 }

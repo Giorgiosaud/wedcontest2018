@@ -23,7 +23,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\RegisterContestant' => [
             'App\Listeners\RegisterAsContestant',
-            'App\Listeners\SubscribeToContestantNewsletter'
+            'App\Listeners\SubscribeToContestantNewsletter',
         ],
     ];
 

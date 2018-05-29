@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Contest extends Model
 {
     use Translatable;
-    public $translatedAttributes = ['topic', 'description','seo_message','logo_image'];
+    public $translatedAttributes = ['topic', 'description', 'seo_message', 'logo_image'];
 
     /**
      * @var array
@@ -36,6 +36,7 @@ class Contest extends Model
     {
         return 'slug';
     }
+
     /**
      * @return string
      */
@@ -48,6 +49,7 @@ class Contest extends Model
     {
         return $this->path();
     }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -71,9 +73,10 @@ class Contest extends Model
      */
     public function getBackgroundImageAttribute($background_image)
     {
-        if($background_image){
-           return asset("/storage/".$background_image);
-       }
-       return asset('images/Home/ContestIntro.jpg');
-   }
+        if ($background_image) {
+            return asset('/storage/'.$background_image);
+        }
+
+        return asset('images/Home/ContestIntro.jpg');
+    }
 }
