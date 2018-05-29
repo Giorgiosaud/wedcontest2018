@@ -10,6 +10,6 @@ return [
     'new_contest'     => 'New Contest',
     'topicPlaceholder'=> 'Ocean is Our Home',
     'otherLang'       => 'Español',
-    'FAQ'=>'Frequently Asked Questions',
-    'list'=>'Contest List',
+    'FAQ'             => 'Frequently Asked Questions',
+    'list'            => 'Contest List',
 ];

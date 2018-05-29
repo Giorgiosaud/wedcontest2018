@@ -17,7 +17,6 @@ Route::post('/images/upload', 'ImageController@store')->middleware('admin')->nam
 Route::post('contest', 'ContestController@store')->middleware('admin')->name('contest.store');
 Route::put('contest/{contest}', 'ContestsController@update')->middleware('admin')->name('contest.update');
 
-
 Route::group([
     'prefix'     => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'localize'], // Route translate middleware
@@ -25,7 +24,6 @@ Route::group([
 ], function () {
     Auth::routes();
     // Route::resource('contest', 'ContestController');
-
 
     Route::redirect('/', 'the_contest');
     Route::get(LaravelLocalization::transRoute('routes.the_contest'), 'TheContestController@index')
@@ -36,8 +34,6 @@ Route::group([
     Route::get('contest/create', 'ContestController@create')->middleware('admin')->name('contest.create');
     Route::get('contest/{contest}', 'ContestController@show')->middleware('admin')->name('contest.show');
     Route::get('contest/{contest}/edit', 'ContestController@edit')->middleware('admin')->name('contest.edit');
-
-
 
     // Route::resource('contests', 'ContestsController');
 

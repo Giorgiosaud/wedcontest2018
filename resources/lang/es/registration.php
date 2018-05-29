@@ -11,15 +11,15 @@ return [
     | messages that we need to display to the user. You are free to modify
     | these language lines according to your application's requirements.
     |
- */ 
-    'contestname'=>'Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente',
-    'registration'=>'Registro',
-    'birthdate' => 'Fecha de Cumpleaños',
-    'name'      => 'Nombre(s)',
-    'last_name' => 'Apellido(s)',
-    'country'   => 'País',
-    'phone'     => 'Telefono',
-    'referred'  => [
+ */
+    'contestname' => 'Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente',
+    'registration'=> 'Registro',
+    'birthdate'   => 'Fecha de Cumpleaños',
+    'name'        => 'Nombre(s)',
+    'last_name'   => 'Apellido(s)',
+    'country'     => 'País',
+    'phone'       => 'Telefono',
+    'referred'    => [
         'label'   => 'Referred',
         'options' => [
             '1' => 'Invitado de Dirpoinduca',
@@ -44,11 +44,11 @@ return [
     'mail'                         => [
         'subject' => 'Porfavor Confirma tu Correo',
     ],
-    'register'            => 'Registrate',
-    'registerContestants' => 'Registro de Concursantes',
-    'newParticipant'      => 'Añadir Nuevo Participante',
-    'category'            => 'Categoria',
-    'motivo'              => 'Explique porque cambio la categoria que corresponde',
-    'sendInformationtoContestantemail'=>'Autorizo Tambien enviar informacion relevante a correo de Concursante'
+    'register'                        => 'Registrate',
+    'registerContestants'             => 'Registro de Concursantes',
+    'newParticipant'                  => 'Añadir Nuevo Participante',
+    'category'                        => 'Categoria',
+    'motivo'                          => 'Explique porque cambio la categoria que corresponde',
+    'sendInformationtoContestantemail'=> 'Autorizo Tambien enviar informacion relevante a correo de Concursante',
 
 ];

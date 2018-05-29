@@ -22,21 +22,21 @@ class CreateContestTest extends TestCase
         $user->roles()->attach($role->id);
         $this->signIn($user);
         $contest = ['user_id' => 1,
-            'active'     => true,
-            'en'         => [
+            'active'          => true,
+            'en'              => [
                 'topic'      => 'Rethinkiddng Plastic',
                 'description'=> '<div>Welcome to our World Environment Day Drawing Contest 2018</div>',
-                'logo_image'=>'contest/rethinking-plastic/enLogo.jpg'
+                'logo_image' => 'contest/rethinking-plastic/enLogo.jpg',
 
             ],
             'es'=> [
                 'topic'      => 'Reinventando eld Plástico',
                 'description'=> '<div>Concurso de Dibujo 2018 del Día mundial del Medio Ambiente</div>',
-                'logo_image'=>'contest/rethinking-plastic/esLogo.jpg'
+                'logo_image' => 'contest/rethinking-plastic/esLogo.jpg',
             ],
-            'slug'       => 'rethinkinddg-plastic',
-            'year'       => 2018,
-            'background_image'=>'contest/rethinking-plastic/backgroundImage.jpg'
+            'slug'            => 'rethinkinddg-plastic',
+            'year'            => 2018,
+            'background_image'=> 'contest/rethinking-plastic/backgroundImage.jpg',
         ];
         // dd($this->get($response->headers->get('Location')));
         $response = $this->post('/contest', $contest)

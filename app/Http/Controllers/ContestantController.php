@@ -8,7 +8,6 @@ use App\Contestant;
 use Illuminate\Http\Request;
 use Spatie\Newsletter\NewsletterFacade as Newsletter;
 
-
 class ContestantController extends Controller
 {
     public function index()
@@ -18,7 +17,7 @@ class ContestantController extends Controller
 
         return view('contestants.index', [
             'contestants' => $contestants,
-            'contest' => $contest,
+            'contest'     => $contest,
         ]);
     }
 
@@ -29,16 +28,16 @@ class ContestantController extends Controller
 
         return view('contestants.create', [
             'categories' => $categories,
-            'contest' => $contest,
+            'contest'    => $contest,
         ]);
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name'      => 'required',
             'last_name' => 'required',
-            'dob'=>'required'
+            'dob'       => 'required',
         ]);
         $contestant = [
             'representant_id' => auth()->user()->id,
@@ -46,51 +45,54 @@ class ContestantController extends Controller
             'last_name'       => $request->last_name,
             'dob'             => $request->dob,
             'motivo'          => $request->motivo,
-            'email'          => $request->email,
+            'email'           => $request->email,
         ];
 
         $contestant = Contestant::create($contestant);
-        if(request('email')!==""){
+        if (request('email') !== '') {
             Newsletter::subscribe($request->email, ['firstName'=>$request->name, 'lastName'=>$request->lastName], 'contestants');
         }
-        $status=$this->verifyStatus($contestant->dob,$request->categoryId);
-        $contestant->category()->attach($request->categoryId,['status'=>$status]);
+        $status = $this->verifyStatus($contestant->dob, $request->categoryId);
+        $contestant->category()->attach($request->categoryId, ['status'=>$status]);
 
         return redirect()->route('contestants.index');
     }
-    public function verifyStatus($dob,$categoryId){
-        $cat=Category::find($categoryId);
-        
-        $age= \Carbon\Carbon::now()->diffInYears($dob);
-        $response="";
-        switch($cat->name){
+
+    public function verifyStatus($dob, $categoryId)
+    {
+        $cat = Category::find($categoryId);
+
+        $age = \Carbon\Carbon::now()->diffInYears($dob);
+        $response = '';
+        switch ($cat->name) {
             case 'Seeds':
-            if($age>=0 && $age<=$cat->max_age){
-                $response= 'approved';
+            if ($age >= 0 && $age <= $cat->max_age) {
+                $response = 'approved';
             }
             break;
             case 'Sprouts':
-            if($age>=4 && $age<=$cat->max_age){
-                $response= 'approved';
+            if ($age >= 4 && $age <= $cat->max_age) {
+                $response = 'approved';
             }
             break;
             case 'Thinkers':
-            if($age>=8 && $age<=$cat->max_age){
-                $response= 'approved';
+            if ($age >= 8 && $age <= $cat->max_age) {
+                $response = 'approved';
             }
             break;
             case 'Game Changers':
-            if($age>=11 && $age<=$cat->max_age){
-                $response= 'approved';
+            if ($age >= 11 && $age <= $cat->max_age) {
+                $response = 'approved';
             }
             break;
             default:
-            $response= 'pending';
+            $response = 'pending';
             break;
         }
-        if($response===""){
+        if ($response === '') {
             return 'pending';
         }
+
         return $response;
     }
 }
