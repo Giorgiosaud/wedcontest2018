@@ -148,13 +148,13 @@ export default {
     .post("/contestant", this.form)
     .then(response => {
       console.log(response);
-      window.location.href = response.request.responseURL;
+      // window.location.href = response.request.responseURL;
     })
         .catch(error => console.error(error));
       },
       setDefaultCategory() {
         console.log(this.categories.find(cat => this.age < cat.max_age));
-        this.category = this.categories.find(cat => this.age < cat.max_age);
+        this.category = this.categories.find(cat => this.age <= cat.max_age);
       },
       categoryLabel: function(object) {
         return `${object.name} – ${object.max_age}`;
@@ -174,7 +174,7 @@ export default {
       },
       categoryCorrespondent() {
 
-        return this.categories.find(cat => this.age < cat.max_age);
+        return this.categories.find(cat => this.age <= cat.max_age);
       },
       contestantCorrespondToSelectedCategory() {
         return this.categoryCorrespondent === this.category;

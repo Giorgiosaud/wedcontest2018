@@ -38,7 +38,10 @@ class ContestantController extends Controller
             'name'      => 'required',
             'last_name' => 'required',
             'dob'       => 'required',
+            // 'email'     => 'email',
+            // 'motivo'    =>'string'
         ]);
+
         $contestant = [
             'representant_id' => auth()->user()->id,
             'name'            => $request->name,
@@ -47,14 +50,12 @@ class ContestantController extends Controller
             'motivo'          => $request->motivo,
             'email'           => $request->email,
         ];
-
         $contestant = Contestant::create($contestant);
-        if (request('email') !== '') {
+        if (request('email')) {
             Newsletter::subscribe($request->email, ['firstName'=>$request->name, 'lastName'=>$request->lastName], 'contestants');
         }
         $status = $this->verifyStatus($contestant->dob, $request->categoryId);
         $contestant->category()->attach($request->categoryId, ['status'=>$status]);
-
         return redirect()->route('contestants.index');
     }
 

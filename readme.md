@@ -93,14 +93,9 @@ s\Unit\User
 * TODO: crear get area para mostrar formulario de upload de
 * TODO: respuesta de creacion my-contestants tipo Post que responda a MyContestants@store name contestants.store
 * TODO: Revisar handle de manejo de imagenes
-* TODO: area de participantes donde se vean las fichas de cada uno y un color basado en su status
 * TODO: Separar a api.php las respuestaas de los axios de Vuejs
+* TODO: Crear area interna con filtrado para participantes que permita aprobar o rechazar participantes
 
-
-
-
-Agregar correos a los niños que quieran recibir informacion
-
-
+//Agregar correos a los niños que quieran recibir informacion TEST
 
 Agregar terminos y condiciones de servicio a newsletter
