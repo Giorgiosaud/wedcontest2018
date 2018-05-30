@@ -17,5 +17,6 @@ return [
 	'winners'=>'Winners 2017',
 	'winners_link'=>'http://wedcontest2018.diproinduca.com/en/winners/',
 	'judges'=>'Judges',
-	'judges_link'=>'http://wedcontest2018.diproinduca.com/en/winners/'
-]
+	'judges_link'=>'http://wedcontest2018.diproinduca.com/en/winners/',
+	'my_participants'=>'My Participants'
+];

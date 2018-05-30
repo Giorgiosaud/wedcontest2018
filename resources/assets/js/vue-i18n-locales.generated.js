@@ -14,7 +14,28 @@ export default {
             "new_contest": "New Contest",
             "topicPlaceholder": "Ocean is Our Home",
             "otherLang": "Español",
-            "FAQ": "Frequently Asked Questions"
+            "FAQ": "Frequently Asked Questions",
+            "list": "Contest List"
+        },
+        "navbar": {
+            "topic": "Topic 2018",
+            "topic_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/",
+            "categories": "Categories",
+            "categories_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/centro-de-aprendizaje\/#Categories",
+            "articles": "Articles",
+            "articles_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/centro-de-aprendizaje\/#Articles",
+            "links": "Links",
+            "link_links": "http:\/\/wedcontest2018.diproinduca.com\/en\/centro-de-aprendizaje\/#Links",
+            "about": "About The Contest",
+            "history": "History",
+            "history_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/inicio\/",
+            "rules": "Rules",
+            "rules_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/reglas-2\/",
+            "winners": "Winners 2017",
+            "winners_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/winners\/",
+            "judges": "Judges",
+            "judges_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/winners\/",
+            "my_participants": "My Participants"
         },
         "pagination": {
             "previous": "&laquo; Previous",
@@ -172,7 +193,28 @@ export default {
             "new_contest": "Crear Concurso",
             "topicPlaceholder": "El Oceano es tu hogar",
             "otherLang": "Ingles",
-            "FAQ": "Preguntas Frecuentes"
+            "FAQ": "Preguntas Frecuentes",
+            "list": "Lista de Concursos"
+        },
+        "navbar": {
+            "topic": "Tema 2018",
+            "topic_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/",
+            "categories": "Categorías",
+            "categories_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/centro-de-aprendizaje\/#Categories",
+            "articles": "Articulos",
+            "articles_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/centro-de-aprendizaje\/#Articles",
+            "links": "Enlaces",
+            "link_links": "http:\/\/wedcontest2018.diproinduca.com\/es\/centro-de-aprendizaje\/#Links",
+            "about": "Acerca del Concurso",
+            "history": "Historia",
+            "history_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/inicio\/",
+            "rules": "Reglas",
+            "rules_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/reglas-2\/",
+            "winners": "Ganadores 2017",
+            "winners_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/winners\/",
+            "judges": "Jueces",
+            "judges_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/winners\/",
+            "my_participants": "Mis Participantes"
         },
         "pagination": {
             "previous": "&laquo; Anterior",
