@@ -148,7 +148,7 @@ export default {
     .post("/contestant", this.form)
     .then(response => {
       console.log(response);
-      // window.location.href = response.request.responseURL;
+      window.location.href = response.request.responseURL;
     })
         .catch(error => console.error(error));
       },
