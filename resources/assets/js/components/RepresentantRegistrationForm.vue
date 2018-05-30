@@ -212,12 +212,13 @@ methods: {
       .post(this.postTo, this.form)
       .then(response => {
           console.log(response);
+          this.loading = false;
           window.location.href = response.request.responseURL;
       })
       .catch(error => {
-          this.errors = error.response.data.errors;
-
+          this.errors = error.response.data;
           this.loading = false;
+
       });
   }
 },
