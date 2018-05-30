@@ -14,6 +14,6 @@
 @endforeach
 @endif
 <div class="container my-4">
-    <representant-registration-form></representant-registration-form>
+    <representant-registration-form :postTo="{{ route('register') }}"></representant-registration-form>
 </div>
 @endsection

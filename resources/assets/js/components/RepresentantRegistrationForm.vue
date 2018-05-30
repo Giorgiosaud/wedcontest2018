@@ -167,6 +167,7 @@
 
 <script>
 export default {
+    props:['postTo'],
   data() {
     return {
       form: {
@@ -208,7 +209,7 @@ methods: {
       this.loading = true;
 
       axios
-      .post("/register", this.form)
+      .post(this.postTo, this.form)
       .then(response => {
           console.log(response);
           window.location.href = response.request.responseURL;
