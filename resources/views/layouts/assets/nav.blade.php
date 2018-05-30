@@ -29,13 +29,13 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="aboutTheContestDD" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About The Contest</a>
+                <a class="nav-link dropdown-toggle" href="#" id="aboutTheContestDD" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@lang('about')</a>
                 <div class="dropdown-menu" aria-labelledby="aboutTheContestDD">
-                    <a href="http://wedcontest2018.diproinduca.com/en/inicio/" class="dropdown-item"> 
-                        History
+                    <a href="@lang('history_link')" class="dropdown-item"> 
+                        @lang('history')
                     </a>
-                    <a href="http://wedcontest2018.diproinduca.com/en/reglas-2/" class="dropdown-item">
-                        Rules
+                    <a href="@lang('rules_link')" class="dropdown-item">
+                        @lang('rules')
                     </a>
                     <a href="http://wedcontest2018.diproinduca.com/en/winners/" class="dropdown-item">
                         Winners 2017

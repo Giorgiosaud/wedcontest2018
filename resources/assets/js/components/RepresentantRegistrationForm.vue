@@ -168,41 +168,41 @@
 <script>
 export default {
     props:['postTo'],
-  data() {
-    return {
-      form: {
-        name: "",
-        last_name: "",
-        phone: "",
+    data() {
+        return {
+          form: {
+            name: "",
+            last_name: "",
+            phone: "",
+            country: "",
+            referred: "",
+            language: "en",
+            email: "",
+            password: "",
+            password_confirmation: "",
+            subscribed: true
+        },
+        countries: [],
         country: "",
         referred: "",
-        language: "en",
-        email: "",
-        password: "",
-        password_confirmation: "",
-        subscribed: true
-    },
-    countries: [],
-    country: "",
-    referred: "",
-    referredOptions: [
-    {
-      label: this.$t("registration.referred.options.1"),
-      value: "invited"
-  },
-  {
-      label: this.$t("registration.referred.options.2"),
-      value: "contact"
-  },
-  {
-      label: this.$t("registration.referred.options.3"),
-      value: "other"
-  }
-  ],
-  feedback: "",
-  loading: false,
-  errors: {}
-};
+        referredOptions: [
+        {
+          label: this.$t("registration.referred.options.1"),
+          value: "invited"
+      },
+      {
+          label: this.$t("registration.referred.options.2"),
+          value: "contact"
+      },
+      {
+          label: this.$t("registration.referred.options.3"),
+          value: "other"
+      }
+      ],
+      feedback: "",
+      loading: false,
+      errors: {}
+  };
 },
 methods: {
     register() {

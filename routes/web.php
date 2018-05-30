@@ -22,9 +22,8 @@ Route::group([
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'localize'], // Route translate middleware
 
 ], function () {
-    Auth::routes();
     // Route::resource('contest', 'ContestController');
-
+    Auth::routes();
     Route::redirect('/', 'the_contest');
     Route::get(LaravelLocalization::transRoute('routes.the_contest'), 'TheContestController@index')
     ->name('the_contest');
