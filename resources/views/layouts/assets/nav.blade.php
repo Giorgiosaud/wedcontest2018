@@ -10,38 +10,38 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="@lang('topic_link')">
-                    @lang('topic')
+                <a class="nav-link" href="@lang('navbar.topic_link')">
+                    @lang('navbar.topic')
                 </a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="LearningCenterDD" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learning Center</a>
                 <div class="dropdown-menu" aria-labelledby="LearningCenterDD">
-                    <a href="@lang('categories_link')"" class="dropdown-item">
-                        @lang('categories')
+                    <a href="@lang('navbar.categories_link')"" class="dropdown-item">
+                        @lang('navbar.categories')
                     </a>
-                    <a href="@lang('articles_link')" class="dropdown-item">
-                        @lang('articles')
+                    <a href="@lang('navbar.articles_link')" class="dropdown-item">
+                        @lang('navbar.articles')
                     </a>
-                    <a href="@lang('link_links')" class="dropdown-item">
-                        @lang('links')
+                    <a href="@lang('navbar.link_links')" class="dropdown-item">
+                        @lang('navbar.links')
                     </a>
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="aboutTheContestDD" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@lang('about')</a>
+                <a class="nav-link dropdown-toggle" href="#" id="aboutTheContestDD" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@lang('navbar.about')</a>
                 <div class="dropdown-menu" aria-labelledby="aboutTheContestDD">
-                    <a href="@lang('history_link')" class="dropdown-item"> 
-                        @lang('history')
+                    <a href="@lang('navbar.history_link')" class="dropdown-item"> 
+                        @lang('navbar.history')
                     </a>
-                    <a href="@lang('rules_link')" class="dropdown-item">
-                        @lang('rules')
+                    <a href="@lang('navbar.rules_link')" class="dropdown-item">
+                        @lang('navbar.rules')
                     </a>
-                    <a href="http://wedcontest2018.diproinduca.com/en/winners/" class="dropdown-item">
-                        Winners 2017
+                    <a href="@lang('navbar.winners_link') class="dropdown-item">
+                        @lang('navbar.winners')
                     </a>
-                    <a href="http://wedcontest2018.diproinduca.com/en/winners/" class="dropdown-item">
-                        Judges
+                    <a href="@lang('navbar.judges_link')" class="dropdown-item">
+                        @lang('navbar.judges')
                     </a>
 
                 </div>
@@ -71,9 +71,9 @@
 
                 <a class="n-link" href="{{route('lang.switch',[\Request::route()->getName(),app()->getLocale()])}}">
                     @if(__('contests.otherLang')=="Español")
-                    <img src="/images/flags/ES.png" alt="@lang('contests.otherLang')">
+                    <img src="/images/flags/ES.png" alt="@lang('navbar.contests.otherLang')">
                     @else
-                    <img src="/images/flags/US.png" alt="@lang('contests.otherLang')">
+                    <img src="/images/flags/US.png" alt="@lang('navbar.contests.otherLang')">
                     @endif
                 </a>
             </li>

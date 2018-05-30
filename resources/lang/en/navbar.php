@@ -15,5 +15,7 @@ return [
 	'rules'=>'Rules',
 	'rules_link'=>'http://wedcontest2018.diproinduca.com/en/reglas-2/',
 	'winners'=>'Winners 2017',
-	'winners_link'=>'http://wedcontest2018.diproinduca.com/en/winners/'
+	'winners_link'=>'http://wedcontest2018.diproinduca.com/en/winners/',
+	'judges'=>'Judges',
+	'judges_link'=>'http://wedcontest2018.diproinduca.com/en/winners/'
 ]
