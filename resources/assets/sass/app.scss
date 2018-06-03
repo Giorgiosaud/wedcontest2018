@@ -46,7 +46,7 @@
 }
 
 .h-mid{
-    min-height: 50vh;
+    min-height: 480px;
     padding: 1em;
 }
 .text-2xl{
@@ -110,6 +110,10 @@
     margin: 1em 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.3);
+}
+.cabecera {
+    font-size: 2em;
+    margin-top: 2em;
 }
 #navbarSupportedContent .nav-item{
     padding-right: 1.5rem;

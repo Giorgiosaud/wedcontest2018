@@ -21,4 +21,5 @@ return [
 	'judges'=>'Jueces',
 	'judges_link'=>'http://wedcontest2018.diproinduca.com/es/winners/',
 	'my_participants'=>'Mis Participantes',
+	'header'=>'Registro al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente'
 ];

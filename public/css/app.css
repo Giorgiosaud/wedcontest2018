@@ -11108,7 +11108,7 @@ a.dropdown-item {
 }
 
 .h-mid {
-  min-height: 50vh;
+  min-height: 480px;
   padding: 1em;
 }
 
@@ -11184,6 +11184,11 @@ a.dropdown-item {
   margin: 1em 0;
   width: 100%;
   background: rgba(255, 255, 255, .3);
+}
+
+.cabecera {
+  font-size: 2em;
+  margin-top: 2em;
 }
 
 #navbarSupportedContent .nav-item {

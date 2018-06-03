@@ -17,7 +17,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="LearningCenterDD" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@lang('navbar.learning_center')</a>
                 <div class="dropdown-menu" aria-labelledby="LearningCenterDD">
-                    <a href="@lang('navbar.categories_link')"" class="dropdown-item">
+                    <a href="@lang('navbar.categories_link')" class="dropdown-item">
                         @lang('navbar.categories')
                     </a>
                     <a href="@lang('navbar.articles_link')" class="dropdown-item">
@@ -37,7 +37,7 @@
                     <a href="@lang('navbar.rules_link')" class="dropdown-item">
                         @lang('navbar.rules')
                     </a>
-                    <a href="@lang('navbar.winners_link') class="dropdown-item">
+                    <a href="@lang('navbar.winners_link')" class="dropdown-item">
                         @lang('navbar.winners')
                     </a>
                     <a href="@lang('navbar.judges_link')" class="dropdown-item">
