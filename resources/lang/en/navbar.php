@@ -20,5 +20,9 @@ return [
 	'judges'=>'Judges',
 	'judges_link'=>'http://wedcontest2018.diproinduca.com/en/winners/',
 	'my_participants'=>'My Participants',
-	'header'=>'Registration to the World Environment Day Drawing Contest 2018'
+	'header'=>'Registration to the World Environment Day Drawing Contest 2018',
+	'header_confirmed'=>'Welcome to the World Environment Day Drawing Contest 2018',
+	'unconfirmed_1'     =>  'You are almost there!',
+	'unconfirmed_2'     =>  'Just a few more steps to complete your registration to the 2018 World Environment Day Drawing Contest',
+
 ];

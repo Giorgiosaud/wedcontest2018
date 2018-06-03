@@ -24,6 +24,7 @@ class User extends Authenticatable
         'phone',
         'avatar_path',
         'referred',
+        'referred_specify',
         'subscribed',
         'language',
         'email',

@@ -19,12 +19,13 @@ return [
     'last_name' => 'Last Name',
     'country'   => 'Country',
     'phone'     => 'Phone',
+    'specify'=>'Specify',
     'referred'  => [
         'label'   => 'Referred',
         'options' => [
-            '1' => 'Invited of Dirpoinduca',
-            '2' => 'Invited by Family or Diproinduca Contact',
-            '3' => 'Other',
+            '1' => 'I am a Diproinduca employee',
+            '2' => 'I was invited by',
+            '3' => 'I learned about the contest through. Twitter, facebook, Instagram, google search, contest website, Other, please specify',
         ],
     ],
     'language' => [

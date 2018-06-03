@@ -71,6 +71,7 @@ class RegisterController extends Controller
             'country'    => 'required|string|max:255',
             'phone'      => 'required|string|max:255',
             'referred'   => 'required',
+            // 'referred_specify'   => 'string',
             'language'   => 'required|string|max:255',
             'password'   => 'required|string|min:6|confirmed',
         ]);
@@ -85,12 +86,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
         return User::create([
             'name'               => $data['name'],
             'last_name'          => $data['last_name'],
             'country'            => $data['country'],
             'phone'              => $data['phone'],
             'referred'           => $data['referred'],
+            'referred_specify'    => $data['referred_specify'],
             'language'           => $data['language'],
             'subscribed'         => $data['subscribed'],
             'confirmed'          => false,

@@ -19,12 +19,13 @@ return [
     'last_name'   => 'Apellido(s)',
     'country'     => 'País',
     'phone'       => 'Telefono',
+    'specify'=>'Especifique',
     'referred'    => [
         'label'   => 'Referred',
         'options' => [
-            '1' => 'Invitado de Dirpoinduca',
-            '2' => 'Invitado por un Familiar o Contacto de Diproinduca',
-            '3' => 'Other',
+            '1' => 'Soy Un Empleado de Dirpoinduca',
+            '2' => 'Fui Invitado Por:',
+            '3' => 'Vi el concurso por Twitter, Facebook, Instagram, Google Search, el sitio del concurso, u otro, porfavor especifique',
         ],
     ],
     'language' => [

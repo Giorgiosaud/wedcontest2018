@@ -8,6 +8,7 @@ export default {
             "edit": "Edit",
             "read_more": "Read More",
             "confirm_email": "Please confirm your email address to participate.",
+            "unconfirmed": "You are almost there!<br\\>Just a few more steps to complete your registration to the 2018 World Environment Day Drawing Contest.",
             "register_button": "Register as Representant",
             "login_button": "Login to Contest",
             "topic": "Topic",
@@ -20,6 +21,7 @@ export default {
         "navbar": {
             "topic": "Topic 2018",
             "topic_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/",
+            "learning_center": "Learning Center",
             "categories": "Categories",
             "categories_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/centro-de-aprendizaje\/#Categories",
             "articles": "Articles",
@@ -35,7 +37,8 @@ export default {
             "winners_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/winners\/",
             "judges": "Judges",
             "judges_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/winners\/",
-            "my_participants": "My Participants"
+            "my_participants": "My Participants",
+            "header": "Registration to the World Environment Day Drawing Contest 2018"
         },
         "pagination": {
             "previous": "&laquo; Previous",
@@ -59,12 +62,13 @@ export default {
             "last_name": "Last Name",
             "country": "Country",
             "phone": "Phone",
+            "specify": "Specify",
             "referred": {
                 "label": "Referred",
                 "options": {
-                    "1": "Invited of Dirpoinduca",
-                    "2": "Invited by Family or Diproinduca Contact",
-                    "3": "Other"
+                    "1": "I am a Diproinduca employee",
+                    "2": "I was invited by",
+                    "3": "I learned about the contest through. Twitter, facebook, Instagram, google search, contest website, Other, please specify"
                 }
             },
             "language": {
@@ -187,6 +191,7 @@ export default {
             "edit": "Editar",
             "read_more": "Leer Más",
             "confirm_email": "Por Favor Confirma el email para poder concursar.",
+            "unconfirmed": "¡Ya Casi Estamos Listos!<br\\>Solo faltan pocos pasos para confirmar tu registro en el concurso del dia del medio ambiente 2018",
             "register_button": "Registrese Como Representante",
             "login_button": "Logueese en el Concurso",
             "topic": "Tema",
@@ -199,6 +204,7 @@ export default {
         "navbar": {
             "topic": "Tema 2018",
             "topic_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/",
+            "learning_center": "Centro de Aprendizaje",
             "categories": "Categorías",
             "categories_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/centro-de-aprendizaje\/#Categories",
             "articles": "Articulos",
@@ -214,7 +220,8 @@ export default {
             "winners_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/winners\/",
             "judges": "Jueces",
             "judges_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/winners\/",
-            "my_participants": "Mis Participantes"
+            "my_participants": "Mis Participantes",
+            "header": "Registro al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente"
         },
         "pagination": {
             "previous": "&laquo; Anterior",
@@ -238,12 +245,13 @@ export default {
             "last_name": "Apellido(s)",
             "country": "País",
             "phone": "Telefono",
+            "specify": "Especifique",
             "referred": {
                 "label": "Referred",
                 "options": {
-                    "1": "Invitado de Dirpoinduca",
-                    "2": "Invitado por un Familiar o Contacto de Diproinduca",
-                    "3": "Other"
+                    "1": "Soy Un Empleado de Dirpoinduca",
+                    "2": "Fui Invitado Por:",
+                    "3": "Vi el concurso por Twitter, Facebook, Instagram, Google Search, el sitio del concurso, u otro, porfavor especifique"
                 }
             },
             "language": {

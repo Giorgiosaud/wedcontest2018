@@ -4,12 +4,14 @@
       <form @submit.prevent="register">
         <div class="form-group">
             <label for="name">{{ $t("registration.name")}}</label>
-            <input 
-            type="text" 
-            class="form-control" 
-            id="name" 
+            <input
+            type="text"
+            class="form-control"
+            id="name"
             aria-describedby="name"
+            autocomplete='name'
             v-model="form.name"
+            :class="{'is-invalid':errors.length>0 && errors.name}"
             @keydown="errors.name = false"
             required >
             <div v-if="errors.name" v-text="errors.name[0]" class="invalid-feedback">
@@ -17,10 +19,11 @@
         </div>
         <div class="form-group">
             <label for="last_name">{{ $t("registration.last_name")}}</label>
-            <input 
-            type="text" 
-            class="form-control" 
-            id="last_name" 
+            <input
+            type="text"
+            class="form-control"
+            :class="{'is-invalid':errors.last_name}"
+            id="last_name"
             aria-describedby="last_name"
             v-model="form.last_name"
             @keydown="errors.last_name = false"
@@ -43,34 +46,47 @@
             <v-select :options="referredOptions" v-model="referred"></v-select>
             <span v-if="errors.referred" v-text="errors.referred[0]" class="text-xs text-red"></span>
         </div>
+        <div class="form-group" v-if="form.referred!=='employee' && form.referred!==''">
+            <label for="referredBy" class="sr-only">{{$t('registration.specify')}}</label>
+            <input
+            type="text"
+            name="referred_specify"
+            autocomplete='referred_specify'
+            :class="{'is-invalid':errors.referred_specify}"
+            class="form-control"
+            v-model="form.referred_specify"
+            :placeholder="$t('registration.specify')">
+        </div>
         <div class="form-group">
             <div class="form-check form-check-inline">
-                <input 
+                <input
                 type="radio"
-                class="form-check-input" 
+                class="form-check-input"
                 value="en"
                 name="language"
+                :class="{'is-invalid':errors.language}"
                 v-model="form.language"
-                id="en" 
+                id="en"
                 checked
-                required 
+                required
                 >
-                <label 
-                class="form-check-label" 
+                <label
+                class="form-check-label"
                 for="en">{{$t('registration.language.options.en')}}</label>
             </div>
             <div class="form-check form-check-inline">
-                <input 
+                <input
                 type="radio"
-                class="form-check-input" 
+                class="form-check-input"
                 value="es"
                 name="language"
+                :class="{'is-invalid':errors.language}"
                 v-model="form.language"
-                id="es" 
-                required 
+                id="es"
+                required
                 >
-                <label 
-                class="form-check-label" 
+                <label
+                class="form-check-label"
                 for="es">{{$t('registration.language.options.es')}}</label>
             </div>
             <div v-if="errors.language" class="form-control">
@@ -79,10 +95,12 @@
         </div>
         <div class="form-group">
             <label for="phone">{{ $t("registration.phone")}}</label>
-            <input 
-            type="text" 
-            class="form-control" 
-            id="phone" 
+            <input
+            type="text"
+            class="form-control"
+            :class="{'is-invalid':errors.phone}"
+            id="phone"
+            autocomplete="tel-national"
             aria-describedby="phone"
             v-model="form.phone"
             @keydown="errors.phone = false"
@@ -92,10 +110,12 @@
         </div>
         <div class="form-group">
             <label for="email">{{ $t("registration.email")}}</label>
-            <input 
-            type="text" 
-            class="form-control" 
-            id="email" 
+            <input
+            type="text"
+            class="form-control"
+            id="email"
+            autocomplete='email'
+            :class="{'is-invalid':errors.email}"
             aria-describedby="email"
             v-model="form.email"
             @keydown="errors.email = false"
@@ -108,13 +128,14 @@
             <label for="password">
                 {{$t('registration.password')}}
             </label>
-            <input 
-            type="password" 
-            class="form-control" 
+            <input
+            type="password"
+            class="form-control"
             id="password"
-            autocomplete="password" 
-            name="password" 
-            v-model="form.password" 
+            autocomplete="password"
+            name="password"
+            :class="{'is-invalid':errors.password}"
+            v-model="form.password"
             @keydown="errors.password = false"
             >
             <div v-if="errors.password" v-text="errors.password[0]" class="invalid-feedback">
@@ -125,13 +146,14 @@
             <label for="password_confirmation">
                 {{$t('registration.password_confirmation')}}
             </label>
-            <input 
-            type="password" 
-            class="form-control" 
+            <input
+            type="password"
+            :class="{'is-invalid':errors.password}"
+            class="form-control"
             id="password_confirmation"
-            autocomplete="password_confirmation" 
-            name="password_confirmation" 
-            v-model="form.password_confirmation" 
+            autocomplete="password_confirmation"
+            name="password_confirmation"
+            v-model="form.password_confirmation"
             @keydown="errors.password = false"
             >
             <div v-if="errors.password" v-text="errors.password[0]" class="invalid-feedback">
@@ -139,26 +161,26 @@
         </div>
         <div class="form-group">
             <div class="form-check">
-                <input 
-                type="checkbox" 
-                value="1" 
-                id="subscribed" 
-                autocomplete="subscribed" 
-                name="subscribed" 
+                <input
+                type="checkbox"
+                value="1"
+                id="subscribed"
+                autocomplete="subscribed"
+                name="subscribed"
                 required
-                v-model="form.subscribed" 
+                v-model="form.subscribed"
                 @keydown="errors.subscribed = false"
-                class="form-check-input" 
+                class="form-check-input"
                 >
                 <label class="form-check-label" for="subscribed">{{$t('registration.subscribed')}}</label>
                 <div v-if="errors.subscribed" v-text="errors.subscribed[0]" class="invalid-feedback">
                 </div>
             </div>
         </div>
-        <button 
-        type="submit" 
-        class="btn btn-wedcontest" 
-        :class="loading ? 'loader' : ''" 
+        <button
+        type="submit"
+        class="btn btn-wedcontest"
+        :class="loading ? 'loader' : ''"
         :disabled="loading">{{$t('registration.register')}}</button>
     </form>
 </div>
@@ -179,6 +201,7 @@ export default {
             language: "en",
             email: "",
             password: "",
+            referred_specify: "",
             password_confirmation: "",
             subscribed: true
         },
@@ -186,19 +209,19 @@ export default {
         country: "",
         referred: "",
         referredOptions: [
-        {
-          label: this.$t("registration.referred.options.1"),
-          value: "invited"
-      },
-      {
-          label: this.$t("registration.referred.options.2"),
-          value: "contact"
-      },
-      {
-          label: this.$t("registration.referred.options.3"),
-          value: "other"
-      }
-      ],
+            {
+                label: this.$t("registration.referred.options.1"),
+                value: "employee"
+            },
+            {
+                label: this.$t("registration.referred.options.2"),
+                value: "invited"
+            },
+            {
+                label: this.$t("registration.referred.options.3"),
+                value: "other"
+            }
+        ],
       feedback: "",
       loading: false,
       errors: {}
@@ -216,7 +239,7 @@ methods: {
           window.location.href = response.request.responseURL;
       })
       .catch(error => {
-          this.errors = error.response.data;
+          this.errors = error.response.data.errors;
           this.loading = false;
 
       });
@@ -239,16 +262,6 @@ watch: {
       this.form.referred = value.value;
   }
 },
-computed: {
-    // selectedCountry() {
-    //   this.form.country = this.country.code;
-    //   return this.form.country;
-    // },
-    // selectedReferred() {
-    //   this.form.referred = this.referred.value;
-    //   return this.form.referred;
-    // }
-}
 };
 </script>
 <style>

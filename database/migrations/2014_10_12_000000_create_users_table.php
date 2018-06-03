@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('country');
             $table->string('phone');
             $table->string('referred');
+            $table->string('referred_specify')->nullable();
             $table->string('language');
             $table->text('comments')->nullable();
             $table->string('avatar_path')->nullable();

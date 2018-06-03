@@ -55664,6 +55664,7 @@ $(window).scroll(function () {
             "edit": "Edit",
             "read_more": "Read More",
             "confirm_email": "Please confirm your email address to participate.",
+            "unconfirmed": "You are almost there!<br\\>Just a few more steps to complete your registration to the 2018 World Environment Day Drawing Contest.",
             "register_button": "Register as Representant",
             "login_button": "Login to Contest",
             "topic": "Topic",
@@ -55676,6 +55677,7 @@ $(window).scroll(function () {
         "navbar": {
             "topic": "Topic 2018",
             "topic_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/",
+            "learning_center": "Learning Center",
             "categories": "Categories",
             "categories_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/centro-de-aprendizaje\/#Categories",
             "articles": "Articles",
@@ -55691,7 +55693,8 @@ $(window).scroll(function () {
             "winners_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/winners\/",
             "judges": "Judges",
             "judges_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/winners\/",
-            "my_participants": "My Participants"
+            "my_participants": "My Participants",
+            "header": "Registration to the World Environment Day Drawing Contest 2018"
         },
         "pagination": {
             "previous": "&laquo; Previous",
@@ -55715,12 +55718,13 @@ $(window).scroll(function () {
             "last_name": "Last Name",
             "country": "Country",
             "phone": "Phone",
+            "specify": "Specify",
             "referred": {
                 "label": "Referred",
                 "options": {
-                    "1": "Invited of Dirpoinduca",
-                    "2": "Invited by Family or Diproinduca Contact",
-                    "3": "Other"
+                    "1": "I am a Diproinduca employee",
+                    "2": "I was invited by",
+                    "3": "I learned about the contest through. Twitter, facebook, Instagram, google search, contest website, Other, please specify"
                 }
             },
             "language": {
@@ -55843,6 +55847,7 @@ $(window).scroll(function () {
             "edit": "Editar",
             "read_more": "Leer Más",
             "confirm_email": "Por Favor Confirma el email para poder concursar.",
+            "unconfirmed": "¡Ya Casi Estamos Listos!<br\\>Solo faltan pocos pasos para confirmar tu registro en el concurso del dia del medio ambiente 2018",
             "register_button": "Registrese Como Representante",
             "login_button": "Logueese en el Concurso",
             "topic": "Tema",
@@ -55855,6 +55860,7 @@ $(window).scroll(function () {
         "navbar": {
             "topic": "Tema 2018",
             "topic_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/",
+            "learning_center": "Centro de Aprendizaje",
             "categories": "Categorías",
             "categories_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/centro-de-aprendizaje\/#Categories",
             "articles": "Articulos",
@@ -55870,7 +55876,8 @@ $(window).scroll(function () {
             "winners_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/winners\/",
             "judges": "Jueces",
             "judges_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/winners\/",
-            "my_participants": "Mis Participantes"
+            "my_participants": "Mis Participantes",
+            "header": "Registro al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente"
         },
         "pagination": {
             "previous": "&laquo; Anterior",
@@ -55894,12 +55901,13 @@ $(window).scroll(function () {
             "last_name": "Apellido(s)",
             "country": "País",
             "phone": "Telefono",
+            "specify": "Especifique",
             "referred": {
                 "label": "Referred",
                 "options": {
-                    "1": "Invitado de Dirpoinduca",
-                    "2": "Invitado por un Familiar o Contacto de Diproinduca",
-                    "3": "Other"
+                    "1": "Soy Un Empleado de Dirpoinduca",
+                    "2": "Fui Invitado Por:",
+                    "3": "Vi el concurso por Twitter, Facebook, Instagram, Google Search, el sitio del concurso, u otro, porfavor especifique"
                 }
             },
             "language": {
@@ -58938,6 +58946,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['postTo'],
@@ -58952,6 +58982,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 language: "en",
                 email: "",
                 password: "",
+                referred_specify: "",
                 password_confirmation: "",
                 subscribed: true
             },
@@ -58960,10 +58991,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             referred: "",
             referredOptions: [{
                 label: this.$t("registration.referred.options.1"),
-                value: "invited"
+                value: "employee"
             }, {
                 label: this.$t("registration.referred.options.2"),
-                value: "contact"
+                value: "invited"
             }, {
                 label: this.$t("registration.referred.options.3"),
                 value: "other"
@@ -58985,7 +59016,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.loading = false;
                 window.location.href = response.request.responseURL;
             }).catch(function (error) {
-                _this.errors = error.response.data;
+                _this.errors = error.response.data.errors;
                 _this.loading = false;
             });
         }
@@ -59009,16 +59040,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         referred: function referred(value) {
             this.form.referred = value.value;
         }
-    },
-    computed: {
-        // selectedCountry() {
-        //   this.form.country = this.country.code;
-        //   return this.form.country;
-        // },
-        // selectedReferred() {
-        //   this.form.referred = this.referred.value;
-        //   return this.form.referred;
-        // }
     }
 });
 
@@ -59059,10 +59080,12 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            class: { "is-invalid": _vm.errors.length > 0 && _vm.errors.name },
             attrs: {
               type: "text",
               id: "name",
               "aria-describedby": "name",
+              autocomplete: "name",
               required: ""
             },
             domProps: { value: _vm.form.name },
@@ -59102,6 +59125,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            class: { "is-invalid": _vm.errors.last_name },
             attrs: {
               type: "text",
               id: "last_name",
@@ -59207,6 +59231,44 @@ var render = function() {
           1
         ),
         _vm._v(" "),
+        _vm.form.referred !== "employee" && _vm.form.referred !== ""
+          ? _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                { staticClass: "sr-only", attrs: { for: "referredBy" } },
+                [_vm._v(_vm._s(_vm.$t("registration.specify")))]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.referred_specify,
+                    expression: "form.referred_specify"
+                  }
+                ],
+                staticClass: "form-control",
+                class: { "is-invalid": _vm.errors.referred_specify },
+                attrs: {
+                  type: "text",
+                  name: "referred_specify",
+                  autocomplete: "referred_specify",
+                  placeholder: _vm.$t("registration.specify")
+                },
+                domProps: { value: _vm.form.referred_specify },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "referred_specify", $event.target.value)
+                  }
+                }
+              })
+            ])
+          : _vm._e(),
+        _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
           _c("div", { staticClass: "form-check form-check-inline" }, [
             _c("input", {
@@ -59219,6 +59281,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-check-input",
+              class: { "is-invalid": _vm.errors.language },
               attrs: {
                 type: "radio",
                 value: "en",
@@ -59253,6 +59316,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-check-input",
+              class: { "is-invalid": _vm.errors.language },
               attrs: {
                 type: "radio",
                 value: "es",
@@ -59300,9 +59364,11 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            class: { "is-invalid": _vm.errors.phone },
             attrs: {
               type: "text",
               id: "phone",
+              autocomplete: "tel-national",
               "aria-describedby": "phone",
               required: ""
             },
@@ -59343,9 +59409,11 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            class: { "is-invalid": _vm.errors.email },
             attrs: {
               type: "text",
               id: "email",
+              autocomplete: "email",
               "aria-describedby": "email",
               required: ""
             },
@@ -59390,6 +59458,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            class: { "is-invalid": _vm.errors.password },
             attrs: {
               type: "password",
               id: "password",
@@ -59437,6 +59506,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            class: { "is-invalid": _vm.errors.password },
             attrs: {
               type: "password",
               id: "password_confirmation",

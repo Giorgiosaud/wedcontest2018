@@ -2,10 +2,18 @@
 @section('content')
 <div class="d-flex flex-column h-100vh align-items-center justify-content-center text-light" style="background-image:url({{$contest->background_image}})">
     <div class="container text-center my-4">
-        <img src="/storage/{{$contest->logo_image}}" alt="{{$contest->topic}}" style="max-width:200px">
-        <div class="separator-wedcontest"></div>
-        <h1 class="my-4">@lang('registration.registration')</h1>
-        <h2 class="mb-4">{!! $contest->description !!}</h2>
+        <img src="/storage/{{$contest->logo_image}}" alt="{{$contest->topic}}" style="max-width:300px">
+        @if (auth()->check())
+            @if(auth()->user()->confirmed)
+                <h1 class="my-4">@lang('navbar.header_confirmed')</h1>
+            @else
+                <h1 class="my-4">@lang('navbar.unconfirmed_1')</br>@lang('navbar.unconfirmed_2')</h1>  
+            @endif            
+        @else
+            <h1 class="my-4">@lang('navbar.header')</h1>
+        @endif
+        
+
     </div>
     <div class="d-flex justify-content-center">
 
