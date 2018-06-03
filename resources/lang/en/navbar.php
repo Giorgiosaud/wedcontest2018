@@ -3,6 +3,7 @@
 return [
 	'topic'=>'Topic 2018',
 	'topic_link'=>'http://wedcontest2018.diproinduca.com/en/',
+	'learning_center'=>'Learning Center',
 	'categories'=>'Categories',
 	'categories_link'=>'http://wedcontest2018.diproinduca.com/en/centro-de-aprendizaje/#Categories',
 	'articles'=>'Articles',

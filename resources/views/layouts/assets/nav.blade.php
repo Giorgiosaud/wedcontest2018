@@ -15,7 +15,7 @@
                 </a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="LearningCenterDD" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learning Center</a>
+                <a class="nav-link dropdown-toggle" href="#" id="LearningCenterDD" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@lang('navbar.learning_center')</a>
                 <div class="dropdown-menu" aria-labelledby="LearningCenterDD">
                     <a href="@lang('navbar.categories_link')"" class="dropdown-item">
                         @lang('navbar.categories')
