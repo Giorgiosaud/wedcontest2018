@@ -38,10 +38,12 @@
         </label>
         <datepicker 
         :bootstrapStyling="true"
+        autocomplete="off"
         v-model="dob" 
         name="dob"  
+        input-class="disabled"
         @input="setDefaultCategory" 
-        :typeable="true"
+        :typeable="false"
         initial-view="year"
 
         ></datepicker>
@@ -182,7 +184,9 @@ export default {
     },
     watch: {
       category: function(value) {
+        if(this.form.categoryId){
         this.form.categoryId = value.id;
+      }
       }
     }
   };

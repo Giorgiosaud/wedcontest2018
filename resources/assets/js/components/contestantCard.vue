@@ -5,7 +5,7 @@
 		</div>
 		<div class="text-sm">
 			<p class="text-black leading-none">{{ contestant.name }} {{ contestant.last_name }}</p>
-			<p class="text-grey-dark">{{ contestant.dob }}</p>
+			<p class="text-grey-dark">{{ contestant.category[0].name }}</p>
 		</div>
 	</div>
 </template>
@@ -25,6 +25,9 @@ export default {
 			}
 		},
 		shortCat(){
+			if(this.contestant.category[0].name=="Game Changers"){
+				return "GC";
+			}
 			return this.contestant.category[0].name.substr(0, 2).toUpperCase();
 		}
 	}

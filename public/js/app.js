@@ -55664,7 +55664,6 @@ $(window).scroll(function () {
             "edit": "Edit",
             "read_more": "Read More",
             "confirm_email": "Please confirm your email address to participate.",
-            "unconfirmed": "You are almost there!<br\\>Just a few more steps to complete your registration to the 2018 World Environment Day Drawing Contest.",
             "register_button": "Register as Representant",
             "login_button": "Login to Contest",
             "topic": "Topic",
@@ -55694,7 +55693,10 @@ $(window).scroll(function () {
             "judges": "Judges",
             "judges_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/winners\/",
             "my_participants": "My Participants",
-            "header": "Registration to the World Environment Day Drawing Contest 2018"
+            "header": "Registration to the World Environment Day Drawing Contest 2018",
+            "header_confirmed": "It’s time to register your artist(s) participating this year",
+            "unconfirmed_1": "You are almost there!",
+            "unconfirmed_2": "Just a few more steps to complete your registration to the 2018 World Environment Day Drawing Contest"
         },
         "pagination": {
             "previous": "&laquo; Previous",
@@ -55750,7 +55752,7 @@ $(window).scroll(function () {
             "newParticipant": "Add new Participant",
             "category": "Category",
             "motivo": "Explain why did you change the default category",
-            "sendInformationtoContestantemail": "I Authorize to Send info to my Contestant Email"
+            "sendInformationtoContestantemail": "I authorize to send contest related info to my contestant email"
         },
         "routes": {
             "the_contest": "the_contest"
@@ -55847,7 +55849,6 @@ $(window).scroll(function () {
             "edit": "Editar",
             "read_more": "Leer Más",
             "confirm_email": "Por Favor Confirma el email para poder concursar.",
-            "unconfirmed": "¡Ya Casi Estamos Listos!<br\\>Solo faltan pocos pasos para confirmar tu registro en el concurso del dia del medio ambiente 2018",
             "register_button": "Registrese Como Representante",
             "login_button": "Logueese en el Concurso",
             "topic": "Tema",
@@ -55877,7 +55878,10 @@ $(window).scroll(function () {
             "judges": "Jueces",
             "judges_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/winners\/",
             "my_participants": "Mis Participantes",
-            "header": "Registro al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente"
+            "header": "Registro al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente",
+            "header_confirmed": "Es hora de registrar a tu(s) artista(s) que participaran este año",
+            "unconfirmed_1": "¡Ya Casi Estamos Listos!",
+            "unconfirmed_2": "Solo faltan pocos pasos para confirmar tu registro en el concurso del dia del medio ambiente 2018"
         },
         "pagination": {
             "previous": "&laquo; Anterior",
@@ -59788,6 +59792,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 // import component and stylesheet
 
@@ -59875,7 +59881,9 @@ var locales = {
   },
   watch: {
     category: function category(value) {
-      this.form.categoryId = value.id;
+      if (this.form.categoryId) {
+        this.form.categoryId = value.id;
+      }
     }
   }
 });
@@ -64399,8 +64407,10 @@ var render = function() {
             _c("datepicker", {
               attrs: {
                 bootstrapStyling: true,
+                autocomplete: "off",
                 name: "dob",
-                typeable: true,
+                "input-class": "disabled",
+                typeable: false,
                 "initial-view": "year"
               },
               on: { input: _vm.setDefaultCategory },
@@ -64843,6 +64853,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}
 		},
 		shortCat: function shortCat() {
+			if (this.contestant.category[0].name == "Game Changers") {
+				return "GC";
+			}
 			return this.contestant.category[0].name.substr(0, 2).toUpperCase();
 		}
 	}
@@ -64875,7 +64888,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "text-grey-dark" }, [
-        _vm._v(_vm._s(_vm.contestant.dob))
+        _vm._v(_vm._s(_vm.contestant.category[0].name))
       ])
     ])
   ])

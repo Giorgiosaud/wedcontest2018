@@ -8,7 +8,6 @@ export default {
             "edit": "Edit",
             "read_more": "Read More",
             "confirm_email": "Please confirm your email address to participate.",
-            "unconfirmed": "You are almost there!<br\\>Just a few more steps to complete your registration to the 2018 World Environment Day Drawing Contest.",
             "register_button": "Register as Representant",
             "login_button": "Login to Contest",
             "topic": "Topic",
@@ -38,7 +37,10 @@ export default {
             "judges": "Judges",
             "judges_link": "http:\/\/wedcontest2018.diproinduca.com\/en\/winners\/",
             "my_participants": "My Participants",
-            "header": "Registration to the World Environment Day Drawing Contest 2018"
+            "header": "Registration to the World Environment Day Drawing Contest 2018",
+            "header_confirmed": "It’s time to register your artist(s) participating this year",
+            "unconfirmed_1": "You are almost there!",
+            "unconfirmed_2": "Just a few more steps to complete your registration to the 2018 World Environment Day Drawing Contest"
         },
         "pagination": {
             "previous": "&laquo; Previous",
@@ -94,7 +96,7 @@ export default {
             "newParticipant": "Add new Participant",
             "category": "Category",
             "motivo": "Explain why did you change the default category",
-            "sendInformationtoContestantemail": "I Authorize to Send info to my Contestant Email"
+            "sendInformationtoContestantemail": "I authorize to send contest related info to my contestant email"
         },
         "routes": {
             "the_contest": "the_contest"
@@ -191,7 +193,6 @@ export default {
             "edit": "Editar",
             "read_more": "Leer Más",
             "confirm_email": "Por Favor Confirma el email para poder concursar.",
-            "unconfirmed": "¡Ya Casi Estamos Listos!<br\\>Solo faltan pocos pasos para confirmar tu registro en el concurso del dia del medio ambiente 2018",
             "register_button": "Registrese Como Representante",
             "login_button": "Logueese en el Concurso",
             "topic": "Tema",
@@ -221,7 +222,10 @@ export default {
             "judges": "Jueces",
             "judges_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/winners\/",
             "my_participants": "Mis Participantes",
-            "header": "Registro al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente"
+            "header": "Registro al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente",
+            "header_confirmed": "Es hora de registrar a tu(s) artista(s) que participaran este año",
+            "unconfirmed_1": "¡Ya Casi Estamos Listos!",
+            "unconfirmed_2": "Solo faltan pocos pasos para confirmar tu registro en el concurso del dia del medio ambiente 2018"
         },
         "pagination": {
             "previous": "&laquo; Anterior",
