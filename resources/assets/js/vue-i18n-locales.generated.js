@@ -209,7 +209,8 @@ export default {
             "topicPlaceholder": "El Oceano es tu hogar",
             "otherLang": "Ingles",
             "FAQ": "Preguntas Frecuentes",
-            "list": "Lista de Concursos"
+            "list": "Lista de Concursos",
+            "logout": "Desconectarme"
         },
         "navbar": {
             "topic": "Tema 2018",

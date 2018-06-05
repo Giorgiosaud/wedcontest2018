@@ -63,7 +63,7 @@
                     
                     <div class="dropdown-divider"></div>
                     @endif
-                    <logout-button route="{{ route('logout') }}" class="dropdown-item">@lang('contest.logout')</logout-button>
+                    <logout-button route="{{ route('logout') }}" class="dropdown-item">@lang('contests.logout')</logout-button>
 
                 </div>
             </li>
