@@ -64745,7 +64745,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["contestants"],
+  props: {
+    contestants: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false
+    }
+  },
   components: {
     contestantCard: __WEBPACK_IMPORTED_MODULE_0__contestantCard_vue___default.a
   },

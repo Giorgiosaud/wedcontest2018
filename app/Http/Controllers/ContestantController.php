@@ -12,7 +12,7 @@ class ContestantController extends Controller
 {
     public function index()
     {
-        $contestants = auth()->user()->contestants;
+        $contestants = Contestant::with('representant')->get();
         $contest = Contest::whereActive(true)->first();
 
         return view('contestants.index', [
@@ -56,7 +56,6 @@ class ContestantController extends Controller
         }
         $status = $this->verifyStatus($contestant->dob, $request->categoryId);
         $contestant->category()->attach($request->categoryId, ['status'=>$status]);
-
         return redirect()->route('contestants.index');
     }
 

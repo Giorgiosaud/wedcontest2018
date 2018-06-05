@@ -11,7 +11,16 @@
 import contestantCard from "./contestantCard.vue";
 
 export default {
-  props: ["contestants"],
+  props: {
+    contestants:{
+      type:Array,
+      default:()=>[]
+    },
+    isAdmin:{
+      type:Boolean,
+      default:false
+    }
+  },
   components:{
     contestantCard
   },
