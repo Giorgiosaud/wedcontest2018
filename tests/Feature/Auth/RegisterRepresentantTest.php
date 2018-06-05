@@ -40,6 +40,7 @@ class RegisterRepresentantTest extends TestCase
             'country'               => 'CL',
             'phone'                 => '+56528899982',
             'referred'              => 'invited',
+            'referred_specify'=>'' ,
             'language'              => 'es',
             'subscribed'            => true,
             'email'                 => 'ppres@zon.com',
@@ -110,7 +111,7 @@ class RegisterRepresentantTest extends TestCase
         $this->assertFalse($user->confirmed);
         $this->assertNotNull($user->confirmation_token);
         $this->get(route('register.confirm', ['token' => $user->confirmation_token]))
-            ->assertRedirect(route('the_contest'));
+        ->assertRedirect(route('the_contest'));
 
         tap($user->fresh(), function ($user) {
             $this->assertTrue($user->confirmed);
@@ -122,8 +123,8 @@ class RegisterRepresentantTest extends TestCase
     public function confirming_an_invalid_token()
     {
         $this->get(route('register.confirm', ['token' => 'invalid']))
-            ->assertRedirect(route('the_contest'))
-            ->assertSessionHas('flash', 'Unknown token.');
+        ->assertRedirect(route('the_contest'))
+        ->assertSessionHas('flash', 'Unknown token.');
     }
 
     /** @test */
