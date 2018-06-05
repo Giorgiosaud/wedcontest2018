@@ -55660,6 +55660,10 @@ $(window).scroll(function () {
             "failed": "These credentials do not match our records.",
             "throttle": "Too many login attempts. Please try again in {seconds} seconds."
         },
+        "contestants": {
+            "addNew": "Add New Artist",
+            "myParticipants": "My Artists"
+        },
         "contests": {
             "edit": "Edit",
             "read_more": "Read More",
@@ -55671,7 +55675,8 @@ $(window).scroll(function () {
             "topicPlaceholder": "Ocean is Our Home",
             "otherLang": "Español",
             "FAQ": "Frequently Asked Questions",
-            "list": "Contest List"
+            "list": "Contest List",
+            "logout": "Logout"
         },
         "navbar": {
             "topic": "Topic 2018",
@@ -55845,6 +55850,10 @@ $(window).scroll(function () {
             "failed": "Estas credenciales no coinciden con los datos del sistema.",
             "throttle": "Muchos Intentos. Porfavor espere {seconds} segundos para intentarlo nuevamente."
         },
+        "contestants": {
+            "addNew": "Añade un nuevo artista",
+            "myParticipants": "Mis Artistas"
+        },
         "contests": {
             "edit": "Editar",
             "read_more": "Leer Más",
@@ -55856,7 +55865,8 @@ $(window).scroll(function () {
             "topicPlaceholder": "El Oceano es tu hogar",
             "otherLang": "Ingles",
             "FAQ": "Preguntas Frecuentes",
-            "list": "Lista de Concursos"
+            "list": "Lista de Concursos",
+            "logout": "Desconectarme"
         },
         "navbar": {
             "topic": "Tema 2018",
@@ -59794,6 +59804,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 // import component and stylesheet
 
@@ -59877,13 +59888,22 @@ var locales = {
     },
     contestantCorrespondToSelectedCategory: function contestantCorrespondToSelectedCategory() {
       return this.categoryCorrespondent === this.category;
+    },
+    categoriesModified: function categoriesModified() {
+      return this.categories.map(function (category, index, cats) {
+        if (index === 0) {
+          category.label = "up to/hasta los " + category.max_age + " years/a\xF1os";
+          return category;
+        }
+        category.label = cats[index - 1].max_age + " to/hasta " + category.max_age + " years/a\xF1os";
+        return category;
+      });
     }
   },
   watch: {
     category: function category(value) {
-      if (this.form.categoryId) {
-        this.form.categoryId = value.id;
-      }
+      console.log(value);
+      this.form.categoryId = value.id;
     }
   }
 });
@@ -64311,6 +64331,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            class: { "is-invalid": _vm.isInvalid },
             attrs: {
               type: "text",
               id: "name",
@@ -64450,7 +64471,7 @@ var render = function() {
               attrs: {
                 label: "name",
                 "track-by": "name",
-                options: _vm.categories,
+                options: _vm.categoriesModified,
                 searchable: false,
                 "allow-empty": false,
                 "custom-label": _vm.categoryLabel
@@ -64459,12 +64480,7 @@ var render = function() {
                 {
                   key: "option",
                   fn: function(props) {
-                    return [
-                      _c("span", [
-                        _vm._v(_vm._s(props.option.name) + " – "),
-                        _c("small", [_vm._v(_vm._s(props.option.max_age))])
-                      ])
-                    ]
+                    return [_c("span", [_vm._v(_vm._s(props.option.label))])]
                   }
                 }
               ]),

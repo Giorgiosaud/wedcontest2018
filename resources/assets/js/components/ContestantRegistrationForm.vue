@@ -8,6 +8,7 @@
         <input 
         type="text" 
         class="form-control" 
+        :class="{'is-invalid':isInvalid}"
         id="name" 
         autocomplete="name" 
         aria-describedby="name"
@@ -57,14 +58,14 @@
       <multiselect 
       label="name"
       track-by="name" 
-      :options="categories"
+      :options="categoriesModified"
       :searchable="false" 
       :allow-empty="false" 
       :custom-label="categoryLabel"
       v-model="category"
       >
       <template slot="option" slot-scope="props" :class="classBgCat(props.option.name)">
-        <span>{{props.option.name}} – <small>{{props.option.max_age}}</small></span>
+        <span>{{props.option.label}}</span>
       </template> 
     </multiselect>
     <span v-if="errors.categories" v-text="errors.categories[0]" class="text-xs text-red"></span>
@@ -152,42 +153,51 @@ export default {
       console.log(response);
       window.location.href = response.request.responseURL;
     })
-        .catch(error => console.error(error));
-      },
-      setDefaultCategory() {
-        console.log(this.categories.find(cat => this.age < cat.max_age));
-        this.category = this.categories.find(cat => this.age <= cat.max_age);
-      },
-      categoryLabel: function(object) {
-        return `${object.name} – ${object.max_age}`;
-      },
-      classBgCat(cat){
-        return `${cat} bg-red`;
-      },
+    .catch(error => console.error(error));
+  },
+  setDefaultCategory() {
+    console.log(this.categories.find(cat => this.age < cat.max_age));
+    this.category = this.categories.find(cat => this.age <= cat.max_age);
+  },
+  categoryLabel: function(object) {
+    return `${object.name} – ${object.max_age}`;
+  },
+  classBgCat(cat){
+    return `${cat} bg-red`;
+  },
 
-      groupHighlight (index, selectedGroup) {
-        return 'hola';
-      },
-    },
-    computed: {
-      age() {
-        if(this.dob) this.form.dob=format(this.dob, 'YYYY-MM-DD');
-        return differenceInYears(new Date(), this.dob);
-      },
-      categoryCorrespondent() {
+  groupHighlight (index, selectedGroup) {
+    return 'hola';
+  },
+},
+computed: {
+  age() {
+    if(this.dob) this.form.dob=format(this.dob, 'YYYY-MM-DD');
+    return differenceInYears(new Date(), this.dob);
+  },
+  categoryCorrespondent() {
 
-        return this.categories.find(cat => this.age <= cat.max_age);
-      },
-      contestantCorrespondToSelectedCategory() {
-        return this.categoryCorrespondent === this.category;
+    return this.categories.find(cat => this.age <= cat.max_age);
+  },
+  contestantCorrespondToSelectedCategory() {
+    return this.categoryCorrespondent === this.category;
+  },
+  categoriesModified(){
+    return this.categories.map((category,index,cats)=>{
+      if(index===0){
+        category.label=  `up to/hasta los ${category.max_age} years/años`;
+        return category;
       }
-    },
-    watch: {
-      category: function(value) {
-        if(this.form.categoryId){
-        this.form.categoryId = value.id;
-      }
-      }
-    }
-  };
-  </script>
+      category.label=  `${cats[index-1].max_age} to/hasta ${category.max_age} years/años`;
+      return category;
+    });
+  }
+},
+watch: {
+  category: function(value) {
+    console.log(value);
+    this.form.categoryId = value.id;
+  }
+}
+};
+</script>
