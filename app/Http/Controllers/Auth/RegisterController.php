@@ -88,18 +88,18 @@ class RegisterController extends Controller
     {
         // dd($data);
         return User::create([
-            'name'               => $data['name'],
-            'last_name'          => $data['last_name'],
-            'country'            => $data['country'],
-            'phone'              => $data['phone'],
-            'referred'           => $data['referred'],
+            'name'                => $data['name'],
+            'last_name'           => $data['last_name'],
+            'country'             => $data['country'],
+            'phone'               => $data['phone'],
+            'referred'            => $data['referred'],
             'referred_specify'    => $data['referred_specify'],
-            'language'           => $data['language'],
-            'subscribed'         => $data['subscribed'],
-            'confirmed'          => false,
-            'email'              => $data['email'],
-            'password'           => Hash::make($data['password']),
-            'confirmation_token' => str_limit(md5($data['email'].str_random()), 25, ''),
+            'language'            => $data['language'],
+            'subscribed'          => $data['subscribed'],
+            'confirmed'           => false,
+            'email'               => $data['email'],
+            'password'            => Hash::make($data['password']),
+            'confirmation_token'  => str_limit(md5($data['email'].str_random()), 25, ''),
         ]);
     }
 

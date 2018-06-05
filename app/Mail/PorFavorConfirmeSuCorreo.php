@@ -31,6 +31,6 @@ class PorFavorConfirmeSuCorreo extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->markdown('emails.confirmar-email',['logo'=>asset('/contest/rethinking-plastic/esLogo.jpg')]);
+        return $this->markdown('emails.confirmar-email', ['logo'=>asset('/contest/rethinking-plastic/esLogo.jpg')]);
     }
 }

@@ -19,7 +19,7 @@ return [
     'last_name' => 'Last Name',
     'country'   => 'Country',
     'phone'     => 'Phone',
-    'specify'=>'Specify',
+    'specify'   => 'Specify',
     'referred'  => [
         'label'   => 'Referred',
         'options' => [

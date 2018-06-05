@@ -15,7 +15,7 @@ use Illuminate\Mail\Markdown;
 Route::get('mail', function () {
     $markdown = new Markdown(view(), config('mail.markdown'));
 
-    return $markdown->render('emails.confirmar-email',['user'=>App\User::first(),'logo'=>'logo']);
+    return $markdown->render('emails.confirmar-email', ['user'=>App\User::first(), 'logo'=>'logo']);
 });
 Route::get('test', 'TestController@test');
 Route::get('lang/{route}/{language}', 'LanguageController@switchLang')->name('lang.switch');
