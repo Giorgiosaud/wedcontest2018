@@ -12,5 +12,6 @@ return [
     'otherLang'       => 'Ingles',
     'FAQ'             => 'Preguntas Frecuentes',
     'list'            => 'Lista de Concursos',
+    'logout'=>'Desconectarme'
 
 ];

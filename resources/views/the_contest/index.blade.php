@@ -19,7 +19,7 @@
 
         @if (auth()->check())
         @if(auth()->user()->confirmed)
-        <a class="btn btn-wedcontest is-green w-full" href="{{route('contestant.create')}}">Add New Participant</a>
+        <a class="btn btn-wedcontest is-green w-full" href="{{route('contestant.create')}}">@lang('contestants.addNew')</a>
 
         @else
         <p class="border-dashed border-light p-3">@lang('contests.confirm_email')</p>
