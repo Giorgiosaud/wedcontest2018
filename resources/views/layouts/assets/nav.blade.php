@@ -53,12 +53,14 @@
                     {{ auth()->user()->name }} {{ auth()->user()->last_name }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="{{route('contestants.index')}}">My Participants</a>
+                    <a class="dropdown-item" href="{{route('mycontestants.index')}}">My Participants</a>
                     <a class="dropdown-item" href="{{ route('contestant.create') }}" class="link">Add Participant</a>
                     <div class="dropdown-divider"></div>
                     
                     @if(auth()->user()->isAdmin())
                     <a class="dropdown-item" href="{{ route('contest.create') }}" class="link">Add Contest</a>
+                    <a class="dropdown-item" href="{{ route('contestants.index') }}" class="link">List Contestants</a>
+                    
                     <div class="dropdown-divider"></div>
                     @endif
                     <logout-button route="{{ route('logout') }}" class="dropdown-item">Logout</logout-button>

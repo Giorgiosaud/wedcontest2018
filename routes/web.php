@@ -49,6 +49,7 @@ Route::group([
     Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
     Route::post('/profile', 'ProfileController@update')->name('profile.update');
     Route::post('/profile', 'ProfileController@index')->name('profile.index');
+    Route::get('/mycontestants', 'MyContestantController@index')->name('mycontestants.index');
     Route::get('/contestants', 'ContestantController@index')->name('contestants.index');
     Route::get('/contestant/create', 'ContestantController@create')->middleware('auth')->name('contestant.create');
 });

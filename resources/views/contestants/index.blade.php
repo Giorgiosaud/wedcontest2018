@@ -2,6 +2,11 @@
 @section('content')
 @include('layouts.assets.headerStandart')
 <div class="container">
-    <contestants-list :contestants="{{$contestants}}"></contestant-registration-form>
-    </div>
-@endsection    
+	<div class="row">
+	<contestants-list :contestants="{{$contestants}}"></contestants-list>
+</div>
+<div class="row">
+	<a class="btn btn-wedcontest is-green w-full" href="{{route('contestant.create')}}">@lang('contestants.addNew')</a>
+	</div>
+</div>
+	@endsection    

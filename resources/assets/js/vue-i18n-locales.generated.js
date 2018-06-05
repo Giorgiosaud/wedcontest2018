@@ -4,6 +4,9 @@ export default {
             "failed": "These credentials do not match our records.",
             "throttle": "Too many login attempts. Please try again in {seconds} seconds."
         },
+        "contestants": {
+            "addNew": "Add New Artist"
+        },
         "contests": {
             "edit": "Edit",
             "read_more": "Read More",
@@ -188,6 +191,9 @@ export default {
         "auth": {
             "failed": "Estas credenciales no coinciden con los datos del sistema.",
             "throttle": "Muchos Intentos. Porfavor espere {seconds} segundos para intentarlo nuevamente."
+        },
+        "contestants": {
+            "addNew": "Añade un nuevo artista"
         },
         "contests": {
             "edit": "Editar",
