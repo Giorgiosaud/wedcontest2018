@@ -40,7 +40,7 @@ class RegisterRepresentantTest extends TestCase
             'country'               => 'CL',
             'phone'                 => '+56528899982',
             'referred'              => 'invited',
-            'referred_specify'=>'' ,
+            'referred_specify'      => '',
             'language'              => 'es',
             'subscribed'            => true,
             'email'                 => 'ppres@zon.com',
