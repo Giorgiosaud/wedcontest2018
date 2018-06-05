@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'addNew'   => 'Add New Artist',
-'myParticipants'=>'My Artists'
+    'addNew'    => 'Add New Artist',
+'myParticipants'=> 'My Artists',
 ];
