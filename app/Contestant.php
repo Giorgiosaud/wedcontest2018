@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-use App\User;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Contestant extends Model
@@ -20,9 +20,12 @@ class Contestant extends Model
     {
         return $this->belongsToMany(Category::class)->withPivot('status');
     }
-    public function representant(){
-        return $this->belongsTo(User::class,'representant_id');
+
+    public function representant()
+    {
+        return $this->belongsTo(User::class, 'representant_id');
     }
+
     public function contest()
     {
         return $this->hasManyThrough(\App\Contest::class, \App\Category::class);
