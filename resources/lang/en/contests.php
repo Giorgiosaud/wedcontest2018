@@ -12,4 +12,5 @@ return [
     'otherLang'       => 'Español',
     'FAQ'             => 'Frequently Asked Questions',
     'list'            => 'Contest List',
+    'logout'=>'Logout'
 ];

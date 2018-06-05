@@ -5,7 +5,8 @@ export default {
             "throttle": "Too many login attempts. Please try again in {seconds} seconds."
         },
         "contestants": {
-            "addNew": "Add New Artist"
+            "addNew": "Add New Artist",
+            "myParticipants": "My Artists"
         },
         "contests": {
             "edit": "Edit",
@@ -18,7 +19,8 @@ export default {
             "topicPlaceholder": "Ocean is Our Home",
             "otherLang": "Español",
             "FAQ": "Frequently Asked Questions",
-            "list": "Contest List"
+            "list": "Contest List",
+            "logout": "Logout"
         },
         "navbar": {
             "topic": "Topic 2018",
@@ -193,7 +195,8 @@ export default {
             "throttle": "Muchos Intentos. Porfavor espere {seconds} segundos para intentarlo nuevamente."
         },
         "contestants": {
-            "addNew": "Añade un nuevo artista"
+            "addNew": "Añade un nuevo artista",
+            "myParticipants": "Mis Artistas"
         },
         "contests": {
             "edit": "Editar",
