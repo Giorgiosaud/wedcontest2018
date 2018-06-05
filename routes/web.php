@@ -19,7 +19,7 @@ Route::get('mail', function () {
 });
 Route::get('test', 'TestController@test');
 Route::get('lang/{route}/{language}', 'LanguageController@switchLang')->name('lang.switch');
-Route::post('/contestant', 'ContestantController@store')->name('contestant.store');
+
 Route::post('/images/upload', 'ImageController@store')->middleware('admin')->name('store.image');
 Route::post('contest', 'ContestController@store')->middleware('admin')->name('contest.store');
 Route::put('contest/{contest}', 'ContestController@update')->middleware('admin')->name('contest.update');
@@ -50,6 +50,7 @@ Route::group([
     Route::post('/profile', 'ProfileController@update')->name('profile.update');
     Route::post('/profile', 'ProfileController@index')->name('profile.index');
     Route::get('/mycontestants', 'MyContestantController@index')->name('mycontestants.index');
+    Route::post('/contestant', 'ContestantController@store')->name('contestant.store');
     Route::get('/contestants', 'ContestantController@index')->name('contestants.index');
     Route::get('/contestant/create', 'ContestantController@create')->middleware('auth')->name('contestant.create');
 });

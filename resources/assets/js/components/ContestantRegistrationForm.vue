@@ -8,7 +8,7 @@
         <input 
         type="text" 
         class="form-control" 
-        :class="{'is-invalid':isInvalid}"
+        :class="{'is-invalid':errors&&errors.name}"
         id="name" 
         autocomplete="name" 
         aria-describedby="name"
@@ -23,6 +23,7 @@
         <input 
         type="text" 
         class="form-control" 
+        :class="{'is-invalid':errors&&errors.last_name}"
         id="last_name" 
         autocomplete="last_name" 
         aria-describedby="last_name"
@@ -75,6 +76,7 @@
     id="motivo" 
     v-model="form.motivo" 
     class="form-control" 
+    :class="{'is-invalid':errors&&errors.motivo}"
     rows="10" 
     :placeholder="$t('registration.motivo')"></textarea>
   </div>
@@ -87,6 +89,7 @@
     <input 
     type="text" 
     class="form-control" 
+    :class="{'is-invalid':errors&&errors.email}"
     id="email" 
     aria-describedby="email"
     autocomplete="email" 
@@ -117,7 +120,7 @@ let locales = {
 };
 
 export default {
-  props: ["categories"],
+  props: ["categories","postTo"],
   data() {
     return {
       form: {
@@ -148,12 +151,12 @@ export default {
     console.log(this.form);
 
     axios
-    .post("/contestant", this.form)
+    .post(this.postTo, this.form)
     .then(response => {
       console.log(response);
       window.location.href = response.request.responseURL;
     })
-    .catch(error => console.error(error));
+    .catch(error => {this.errors=error.response.data.errors;this.loading=false});
   },
   setDefaultCategory() {
     console.log(this.categories.find(cat => this.age < cat.max_age));

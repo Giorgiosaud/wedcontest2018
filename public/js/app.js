@@ -59805,6 +59805,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 // import component and stylesheet
 
@@ -59815,7 +59818,7 @@ var locales = {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["categories"],
+  props: ["categories", "postTo"],
   data: function data() {
     return {
       form: {
@@ -59843,24 +59846,26 @@ var locales = {
       return Object(__WEBPACK_IMPORTED_MODULE_0_date_fns__["format"])(date, 'YYYY-MM-DD');
     },
     register: function register() {
+      var _this = this;
+
       this.loading = true;
       console.log(this.form);
 
-      axios.post("/contestant", this.form).then(function (response) {
+      axios.post(this.postTo, this.form).then(function (response) {
         console.log(response);
         window.location.href = response.request.responseURL;
       }).catch(function (error) {
-        return console.error(error);
+        _this.errors = error.response.data.errors;_this.loading = false;
       });
     },
     setDefaultCategory: function setDefaultCategory() {
-      var _this = this;
+      var _this2 = this;
 
       console.log(this.categories.find(function (cat) {
-        return _this.age < cat.max_age;
+        return _this2.age < cat.max_age;
       }));
       this.category = this.categories.find(function (cat) {
-        return _this.age <= cat.max_age;
+        return _this2.age <= cat.max_age;
       });
     },
 
@@ -59880,10 +59885,10 @@ var locales = {
       return Object(__WEBPACK_IMPORTED_MODULE_0_date_fns__["differenceInYears"])(new Date(), this.dob);
     },
     categoryCorrespondent: function categoryCorrespondent() {
-      var _this2 = this;
+      var _this3 = this;
 
       return this.categories.find(function (cat) {
-        return _this2.age <= cat.max_age;
+        return _this3.age <= cat.max_age;
       });
     },
     contestantCorrespondToSelectedCategory: function contestantCorrespondToSelectedCategory() {
@@ -64331,7 +64336,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            class: { "is-invalid": _vm.isInvalid },
+            class: { "is-invalid": _vm.errors && _vm.errors.name },
             attrs: {
               type: "text",
               id: "name",
@@ -64376,6 +64381,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            class: { "is-invalid": _vm.errors && _vm.errors.last_name },
             attrs: {
               type: "text",
               id: "last_name",
@@ -64515,6 +64521,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
+                class: { "is-invalid": _vm.errors && _vm.errors.motivo },
                 attrs: {
                   name: "motivo",
                   id: "motivo",
@@ -64604,6 +64611,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
+                class: { "is-invalid": _vm.errors && _vm.errors.email },
                 attrs: {
                   type: "text",
                   id: "email",

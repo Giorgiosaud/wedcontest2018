@@ -9,6 +9,7 @@ class Contestant extends Model
     protected $fillable = [
         'representant_id',
         'name',
+        'email',
         'last_name',
         'dob',
         'motivo',
