@@ -23,7 +23,7 @@ return [
     'judges_link'     => 'http://wedcontest2018.diproinduca.com/es/jurado/',
     'my_participants' => 'Mis Participantes',
     'header'          => 'Registro al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente',
-    'header_confirmed'=> 'Es hora de registrar a tu(s) artista(s) que participaran este año',
-    'unconfirmed_1'   => '¡Ya Casi Estamos Listos!',
-    'unconfirmed_2'   => 'Solo faltan pocos pasos para confirmar tu registro en el concurso del dia del medio ambiente 2018',
+    'header_confirmed'=> 'Es hora de registrar a tus artistas participando este año.',
+    'unconfirmed_1'   => '¡Ya casi estamos listos!',
+    'unconfirmed_2'   => ' Solo faltan pocos pasos para confirmar tu registro en el Concurso del Día Mundial del Medio Ambiente 2018',
 ];

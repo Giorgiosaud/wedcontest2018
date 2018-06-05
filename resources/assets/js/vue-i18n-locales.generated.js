@@ -5,6 +5,7 @@ export default {
             "throttle": "Too many login attempts. Please try again in {seconds} seconds."
         },
         "contestants": {
+            "contestants": "Contestants",
             "addNew": "Add New Artist",
             "myParticipants": "My Artists"
         },
@@ -101,7 +102,7 @@ export default {
             "newParticipant": "Add new Participant",
             "category": "Category",
             "motivo": "Explain why did you change the default category",
-            "sendInformationtoContestantemail": "I authorize to send contest related info to my contestant email"
+            "sendInformationtoContestantemail": "I authorize to send notifications about the contest to this contestant."
         },
         "routes": {
             "the_contest": "the_contest"
@@ -195,6 +196,7 @@ export default {
             "throttle": "Muchos Intentos. Porfavor espere {seconds} segundos para intentarlo nuevamente."
         },
         "contestants": {
+            "contestants": "Concursantes",
             "addNew": "Añade un nuevo artista",
             "myParticipants": "Mis Artistas"
         },
@@ -233,9 +235,9 @@ export default {
             "judges_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/jurado\/",
             "my_participants": "Mis Participantes",
             "header": "Registro al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente",
-            "header_confirmed": "Es hora de registrar a tu(s) artista(s) que participaran este año",
-            "unconfirmed_1": "¡Ya Casi Estamos Listos!",
-            "unconfirmed_2": "Solo faltan pocos pasos para confirmar tu registro en el concurso del dia del medio ambiente 2018"
+            "header_confirmed": "Es hora de registrar a tus artistas participando este año.",
+            "unconfirmed_1": "¡Ya casi estamos listos!",
+            "unconfirmed_2": " Solo faltan pocos pasos para confirmar tu registro en el Concurso del Día Mundial del Medio Ambiente 2018"
         },
         "pagination": {
             "previous": "&laquo; Anterior",
@@ -261,7 +263,7 @@ export default {
             "phone": "Telefono",
             "specify": "Especifique",
             "referred": {
-                "label": "Referred",
+                "label": "Referido Por",
                 "options": {
                     "1": "Soy Un Empleado de Dirpoinduca",
                     "2": "Fui Invitado Por:",
@@ -275,7 +277,7 @@ export default {
                     "es": "Español"
                 }
             },
-            "subscribed": "Subscribirse a newsletter",
+            "subscribed": "Recibir notificaciones",
             "email": "Email",
             "password": "Contraseña",
             "password_confirmation": "Confirmacion de Contraseña",
@@ -285,12 +287,12 @@ export default {
             "mail": {
                 "subject": "Porfavor Confirma tu Correo"
             },
-            "register": "Registrate",
+            "register": "Registar",
             "registerContestants": "Registro de Concursantes",
             "newParticipant": "Añadir Nuevo Participante",
             "category": "Categoria",
             "motivo": "Explique porque cambio la categoria que corresponde",
-            "sendInformationtoContestantemail": "Autorizo Tambien enviar informacion relevante a correo de Concursante"
+            "sendInformationtoContestantemail": "Autorizo el envío de información relevante al correo del Concursante"
         },
         "routes": {
             "the_contest": "el_concurso"
@@ -351,13 +353,13 @@ export default {
             "numeric": "{attribute} debe ser un numero.",
             "present": "{attribute} debe existir.",
             "regex": "{attribute} formato invalido.",
-            "required": "{attribute} archivo es requerido.",
-            "required_if": "{attribute} archivo es requerido cuando {other} este {value}.",
-            "required_unless": "{attribute} archivo es requerido amenos {other} este en {values}.",
-            "required_with": "{attribute} archivo es requerido cuando {values} este presente.",
-            "required_with_all": "{attribute} archivo es requerido cuando {values} este presente.",
-            "required_without": "{attribute} archivo es requerido cuando {values} no este presente.",
-            "required_without_all": "{attribute} archivo es requerido cuando ninguno de los {values} este presente.",
+            "required": "{attribute} es requerido.",
+            "required_if": "{attribute} es requerido cuando {other} este {value}.",
+            "required_unless": "{attribute} es requerido amenos {other} este en {values}.",
+            "required_with": "{attribute} es requerido cuando {values} este presente.",
+            "required_with_all": "{attribute} es requerido cuando {values} este presente.",
+            "required_without": "{attribute} es requerido cuando {values} no este presente.",
+            "required_without_all": "{attribute} es requerido cuando ninguno de los {values} este presente.",
             "same": "{attribute} y {other} deben coincidir.",
             "size": {
                 "numeric": "{attribute} debe ser {size}.",

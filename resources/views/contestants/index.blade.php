@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.assets.headerStandart')
-<div class="container">
+<div class="container py-4">
 	<div class="row">
 	<contestants-list :is-admin="{{ auth()->user()->isAdmin() }}" :contestants="{{$contestants}}"></contestants-list>
 </div>

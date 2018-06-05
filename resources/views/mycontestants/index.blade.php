@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.assets.headerStandart')
-<div class="container">
+<div class="container py-4">
 	<div class="row">
+		<h1>@lang('contestants.contestants')</h1>
 	<contestants-list :contestants="{{$contestants}}"></contestants-list>
 </div>
 <div class="row">

@@ -21,7 +21,7 @@ return [
     'phone'       => 'Telefono',
     'specify'     => 'Especifique',
     'referred'    => [
-        'label'   => 'Referred',
+        'label'   => 'Referido Por',
         'options' => [
             '1' => 'Soy Un Empleado de Dirpoinduca',
             '2' => 'Fui Invitado Por:',
@@ -35,7 +35,7 @@ return [
             'es' => 'Español',
         ],
     ],
-    'subscribed'                   => 'Subscribirse a newsletter',
+    'subscribed'                   => 'Recibir notificaciones',
     'email'                        => 'Email',
     'password'                     => 'Contraseña',
     'password_confirmation'        => 'Confirmacion de Contraseña',
@@ -45,11 +45,11 @@ return [
     'mail'                         => [
         'subject' => 'Porfavor Confirma tu Correo',
     ],
-    'register'                        => 'Registrate',
+    'register'                        => 'Registar',
     'registerContestants'             => 'Registro de Concursantes',
     'newParticipant'                  => 'Añadir Nuevo Participante',
     'category'                        => 'Categoria',
     'motivo'                          => 'Explique porque cambio la categoria que corresponde',
-    'sendInformationtoContestantemail'=> 'Autorizo Tambien enviar informacion relevante a correo de Concursante',
+    'sendInformationtoContestantemail'=> 'Autorizo el envío de información relevante al correo del Concursante',
 
 ];

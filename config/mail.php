@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'wedcontest@diproinduca.com'),
-        'name'    => env('MAIL_FROM_NAME', 'Wedcontes'),
+        'address' => env('MAIL_FROM_ADDRESS', 'weddrawingcontest@diproinduca.com'),
+        'name'    => env('MAIL_FROM_NAME', 'WED Drawing Contest'),
     ],
 
     /*

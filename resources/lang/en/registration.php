@@ -51,5 +51,5 @@ return [
     'newParticipant'                  => 'Add new Participant',
     'category'                        => 'Category',
     'motivo'                          => 'Explain why did you change the default category',
-    'sendInformationtoContestantemail'=> 'I authorize to send contest related info to my contestant email',
+    'sendInformationtoContestantemail'=> 'I authorize to send notifications about the contest to this contestant.',
 ];
