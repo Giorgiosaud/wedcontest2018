@@ -31,7 +31,33 @@ class MyContestantController extends Controller
             'contest'    => $contest,
         ]);
     }
+    public function edit(Contestant $contestant)
+    {
+        $contest = Contest::whereActive(true)->first();
+        $categories = $contest->categories;
 
+        return view('mycontestants.edit', [
+            'contestant' => $contestant,
+            'contest'    => $contest,
+            'categories' => $categories
+        ]);
+    }
+    public function update(Contestant $contestant){
+        $contestant->update(request()->validate([
+            'name'      => 'required',
+            'last_name' => 'required',
+            'dob'       => 'required',
+            // 'email'     => 'email',
+            // 'motivo'    =>'string'
+        ]));
+        if (request('email')) {
+            Newsletter::subscribe(request('email'), ['firstName'=>request('name'), 'lastName'=>request('last_Name')], 'contestants');
+        }
+        $status = $this->verifyStatus($contestant->dob, request('categoryId'));
+        $contestant->category()->attach($request->categoryId, ['status'=>$status]);
+
+        return redirect()->route('mycontestants.index');
+    }
     public function store(Request $request)
     {
         $request->validate([
@@ -54,18 +80,21 @@ class MyContestantController extends Controller
         if (request('email')) {
             Newsletter::subscribe($request->email, ['firstName'=>$request->name, 'lastName'=>$request->lastName], 'contestants');
         }
-        $status = $this->verifyStatus($contestant->dob, $request->categoryId);
+        $status = $this->verifyStatus($contestant->dob, request('category'));
         $contestant->category()->attach($request->categoryId, ['status'=>$status]);
 
         return redirect()->route('mycontestants.index');
     }
 
-    public function verifyStatus($dob, $categoryId)
+    public function verifyStatus($dob,$cat)
     {
-        $cat = Category::find($categoryId);
+        dd($cat);
+        $cat = Category::find($categoryId)->get();
+        dd($cat);
 
         $age = \Carbon\Carbon::now()->diffInYears($dob);
         $response = '';
+
         switch ($cat->name) {
             case 'Seeds':
             if ($age >= 0 && $age <= $cat->max_age) {

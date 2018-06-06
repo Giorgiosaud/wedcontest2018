@@ -31,7 +31,26 @@ class ContestantController extends Controller
             'contest'    => $contest,
         ]);
     }
+    public function edit(Contestant $contestant)
+    {
+        $contest = Contest::whereActive(true)->first();
+        $categories = $contest->categories;
 
+        return view('contestants.edit', [
+            'categories' => $categories,
+            'contestant' => $contestant,
+            'contest'    => $contest,
+        ]);
+    }
+    public function update(Contestant $contestant){
+        $contestant->update(request()->validate([
+            'name'      => 'required',
+            'last_name' => 'required',
+            'dob'       => 'required',
+            // 'email'     => 'email',
+            // 'motivo'    =>'string'
+        ]));
+    }
     public function store(Request $request)
     {
         $request->validate([

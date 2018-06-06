@@ -7,7 +7,14 @@ export default {
         "contestants": {
             "contestants": "Contestants",
             "addNew": "Add New Artist",
-            "myParticipants": "My Artists"
+            "myParticipants": "My Artists",
+            "yearsOld": "Years Old",
+            "edit": "Edit",
+            "upload": "Upload Artwork",
+            "upto3": "Children up to 3",
+            "upto7": "Children Between 4 and 7",
+            "upto10": "Children Between 8 and 10",
+            "upto15": "Between 11 and 15"
         },
         "contests": {
             "edit": "Edit",
@@ -96,6 +103,7 @@ export default {
             "mail": {
                 "subject": "Please Confirm Your Email"
             },
+            "editContestants": "Edit Artist",
             "edit": "Edit your Profile",
             "register": "Register",
             "registerContestants": "Contestant Registration",
@@ -198,7 +206,14 @@ export default {
         "contestants": {
             "contestants": "Concursantes",
             "addNew": "Añade un nuevo artista",
-            "myParticipants": "Mis Artistas"
+            "myParticipants": "Mis Artistas",
+            "yearsOld": "Años",
+            "edit": "Editar",
+            "upload": "Subir Dibujos",
+            "upto3": "Niños hasta los 3",
+            "upto7": "Niños entre 4 y 7",
+            "upto10": "Niños entre 8 y 10",
+            "upto15": "Entre 11 y 15"
         },
         "contests": {
             "edit": "Editar",
@@ -288,6 +303,7 @@ export default {
                 "subject": "Porfavor Confirma tu Correo"
             },
             "register": "Registar",
+            "editContestants": "Editar Artista",
             "registerContestants": "Registro de Concursantes",
             "newParticipant": "Añadir Nuevo Participante",
             "category": "Categoria",

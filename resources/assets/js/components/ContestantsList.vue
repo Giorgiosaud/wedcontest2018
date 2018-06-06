@@ -1,8 +1,10 @@
 <template>
 <div>
   
-  <div class="d-flex">
+  <div class="container">
+    <div class="row">
   <contestantCard v-for="contestant in contestants" :contestant="contestant" :key="contestant.id"></contestantCard>
+  </div>
   </div>
   </div>
 </template>

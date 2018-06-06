@@ -13,5 +13,6 @@ return [
     'FAQ'             => 'Preguntas Frecuentes',
     'list'            => 'Lista de Concursos',
     'logout'          => 'Desconectarme',
+    
 
 ];

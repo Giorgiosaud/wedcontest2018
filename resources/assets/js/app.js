@@ -35,7 +35,11 @@ Vue.component(
   "ContestantRegistrationForm",
   require("./components/ContestantRegistrationForm.vue")
 );
-Vue.component("ContestantsList", require("./components/ContestantsList.vue"));
+Vue.component(
+  "ContestantEditForm",
+  require("./components/ContestantEditForm.vue")
+);
+Vue.component("contestantCard", require("./components/ContestantCard.vue"));
 Vue.component("LogoutButton", require("./components/LogoutButton.vue"));
 Vue.component("EditMyProfile", require("./components/EditMyProfile.vue"));
 Vue.component(

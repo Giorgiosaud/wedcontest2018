@@ -1,20 +1,34 @@
 <template>
-	<div class="d-flex align-items-center ml-4">
-		<div class="w-prof h-prof rounded-full mr-4 d-flex align-items-center justify-content-center" :class="statusColor">
-			{{ shortCat }}
-		</div>
-		<div class="text-sm">
-			<p class="text-black leading-none">{{ contestant.name }} {{ contestant.last_name }}</p>
-			<p class="text-grey-dark">{{ contestant.category[0].name }}</p>
+	<div class="col-12 col-md-4 mb-4">
+		<div class="card" :class="statusColor">
+			<div class="card-header">
+				{{  contestant.category[0].name }} {{ categoryLabel }} {{  $t('contestants.yearsOld') }}
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">{{ contestant.name }} {{ contestant.last_name }} – {{ age }} {{ $t('contestants.yearsOld') }}</li>
+				<li class="list-group-item">{{ contestant.category[0].pivot.status }}</li>
+			</ul>
+			<div class="card-footer">
+				<div class="d-flex align-center justify-content-between">
+					<div class="edit">
+						<a :href="editLink"><i class="far fa-edit"></i>{{ $t('contestants.edit') }}</a>
+					</div>
+					<div class="upload">
+						<a href="#">{{ $t('contestants.upload') }}<i class="fas fa-cloud-upload-alt"></i></a>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </template>
 
 <script>
+import {format,differenceInYears} from "date-fns";
 export default {
 
 	name: 'contestantCard',
-	props:["contestant"],
+	props:["contestant","editLink"],
 	computed:{
 		statusColor(){
 			if(this.contestant.category[0].pivot.status==='pending'){
@@ -24,15 +38,47 @@ export default {
 				return this.contestant.category[0].color;
 			}
 		},
+		age() {
+			return differenceInYears(new Date(),this.contestant.dob)
+		},
 		shortCat(){
 			if(this.contestant.category[0].name=="Game Changers"){
 				return "GC";
 			}
 			return this.contestant.category[0].name.substr(0, 2).toUpperCase();
+		},
+		categoryLabel(){
+			if(this.contestant.category[0].name=="Seeds"){
+
+				return this.$t("contestants.upto3");
+			}
+			else if(this.contestant.category[0].name=="Sprouts"){
+				return this.$t("contestants.upto7");
+			}
+			else if(this.contestant.category[0].name=="Thinkers"){
+				return this.$t("contestants.upto10");
+			}
+			else{
+				return this.$t("contestants.upto15");
+			}
 		}
 	}
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
+li.list-group-item {
+	border: none;
+}
+.card-footer {
+	background: #fff;
+	border-top: none;
+	padding: 0.5rem;
+}
+i.far,i.fas{
+	margin:0 0.3rem;
+}
+a{
+	color:#666;
+}
 </style>
