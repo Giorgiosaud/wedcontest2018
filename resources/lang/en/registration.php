@@ -45,7 +45,7 @@ return [
     'mail'                         => [
         'subject' => 'Please Confirm Your Email',
     ],
-    'editContestants'=>'Edit Artist',
+    'editContestants'                 => 'Edit Artist',
     'edit'                            => 'Edit your Profile',
     'register'                        => 'Register',
     'registerContestants'             => 'Contestant Registration',

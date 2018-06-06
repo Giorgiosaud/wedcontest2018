@@ -31,6 +31,7 @@ class ContestantController extends Controller
             'contest'    => $contest,
         ]);
     }
+
     public function edit(Contestant $contestant)
     {
         $contest = Contest::whereActive(true)->first();
@@ -42,7 +43,9 @@ class ContestantController extends Controller
             'contest'    => $contest,
         ]);
     }
-    public function update(Contestant $contestant){
+
+    public function update(Contestant $contestant)
+    {
         $contestant->update(request()->validate([
             'name'      => 'required',
             'last_name' => 'required',
@@ -51,6 +54,7 @@ class ContestantController extends Controller
             // 'motivo'    =>'string'
         ]));
     }
+
     public function store(Request $request)
     {
         $request->validate([

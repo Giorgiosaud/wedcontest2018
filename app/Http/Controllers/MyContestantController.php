@@ -31,6 +31,7 @@ class MyContestantController extends Controller
             'contest'    => $contest,
         ]);
     }
+
     public function edit(Contestant $contestant)
     {
         $contest = Contest::whereActive(true)->first();
@@ -39,10 +40,12 @@ class MyContestantController extends Controller
         return view('mycontestants.edit', [
             'contestant' => $contestant,
             'contest'    => $contest,
-            'categories' => $categories
+            'categories' => $categories,
         ]);
     }
-    public function update(Contestant $contestant){
+
+    public function update(Contestant $contestant)
+    {
         $contestant->update(request()->validate([
             'name'      => 'required',
             'last_name' => 'required',
@@ -58,6 +61,7 @@ class MyContestantController extends Controller
 
         return redirect()->route('mycontestants.index');
     }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -86,7 +90,7 @@ class MyContestantController extends Controller
         return redirect()->route('mycontestants.index');
     }
 
-    public function verifyStatus($dob,$cat)
+    public function verifyStatus($dob, $cat)
     {
         dd($cat);
         $cat = Category::find($categoryId)->get();

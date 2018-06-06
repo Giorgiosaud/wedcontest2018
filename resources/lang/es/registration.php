@@ -46,7 +46,7 @@ return [
         'subject' => 'Porfavor Confirma tu Correo',
     ],
     'register'                        => 'Registar',
-    'editContestants'=>'Editar Artista',
+    'editContestants'                 => 'Editar Artista',
     'registerContestants'             => 'Registro de Concursantes',
     'newParticipant'                  => 'Añadir Nuevo Participante',
     'category'                        => 'Categoria',
