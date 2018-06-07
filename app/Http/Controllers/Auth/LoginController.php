@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/the_contest';
+    protected $redirectTo = '/mycontestants';
 
     /**
      * Create a new controller instance.
