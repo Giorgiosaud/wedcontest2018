@@ -65511,6 +65511,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}
 			return this.contestant.category[0].name.substr(0, 2).toUpperCase();
 		},
+		status: function status() {
+			return this.contestant.category[0].pivot.status;
+		},
 		categoryLabel: function categoryLabel() {
 			if (this.contestant.category[0].name == "Seeds") {
 
@@ -65563,7 +65566,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "list-group-item" }, [
-          _vm._v(_vm._s(_vm.contestant.category[0].pivot.status))
+          _vm._v(_vm._s(_vm.status))
         ])
       ]),
       _vm._v(" "),

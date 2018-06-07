@@ -6,7 +6,7 @@
 			</div>
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">{{ contestant.name }} {{ contestant.last_name }} – {{ age }} {{ $t('contestants.yearsOld') }}</li>
-				<li class="list-group-item">{{ contestant.category[0].pivot.status }}</li>
+				<li class="list-group-item">{{ status }}</li>
 			</ul>
 			<div class="card-footer">
 				<div class="d-flex align-center justify-content-between">
@@ -47,6 +47,9 @@ export default {
 				return "GC";
 			}
 			return this.contestant.category[0].name.substr(0, 2).toUpperCase();
+		},
+		status(){
+			return this.contestant.category[0].pivot.status
 		},
 		categoryLabel(){
 			if(this.contestant.category[0].name=="Seeds"){
