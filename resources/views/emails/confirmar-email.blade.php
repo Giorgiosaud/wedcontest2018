@@ -6,7 +6,7 @@
     @endslot
 
     {{-- Body --}}
-    # Un Ultimo Paso
+    # Un ultimo paso
 
     Solo necesitamos confirmar que tu correo no le pertenece a un Robot y que los recibes bien.
     ¿Nos entiendes cierto? , Cool.
@@ -15,7 +15,7 @@ Confirma tu Correo
 @endcomponent
 
 Gracias,<br>
-{{ config('app.name') }}
+WED CONTEST TEAM
 
     {{-- Subcopy --}}
     @isset($subcopy)

@@ -17,7 +17,7 @@ Please confirm your email
 @endcomponent
 
 Gracias,<br>
-WED CONTEST TEAM 
+WED CONTEST TEAM
 
     {{-- Subcopy --}}
     @isset($subcopy)
