@@ -11,10 +11,11 @@ export default {
             "yearsOld": "Years old",
             "edit": "Edit",
             "upload": "Upload artwork",
-            "upto3": "Children up to 3",
-            "upto7": "Children between 4 and 7",
-            "upto10": "Children between 8 and 10",
-            "upto15": "Between 11 and 15"
+            "upto3": "children up to 3",
+            "upto7": "children between 4 and 7",
+            "upto10": "children between 8 and 10",
+            "upto15": "between 11 and 15",
+            "category": "Category"
         },
         "contests": {
             "edit": "Edit",
@@ -216,7 +217,8 @@ export default {
             "upto3": "Niños hasta los 3",
             "upto7": "Niños entre 4 y 7",
             "upto10": "Niños entre 8 y 10",
-            "upto15": "Entre 11 y 15"
+            "upto15": "Entre 11 y 15",
+            "category": "Categoria"
         },
         "contests": {
             "edit": "Editar",
@@ -277,8 +279,9 @@ export default {
             "registration": "Registro",
             "birthdate": "Fecha de Cumpleaños",
             "name": "Nombre(s) de Representante",
-            "contestantName": "Nombre(s)",
-            "last_name": "Apellido(s)",
+            "contestant_name": "Nombre(s)",
+            "last_name": "Apellido(s) del Representante",
+            "contestant_last_name": "Apellido(s)",
             "country": "País",
             "phone": "Telefono",
             "specify": "Especifique",
