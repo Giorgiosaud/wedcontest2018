@@ -58950,7 +58950,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.v-select input[type=search] {\n  background: #fff;\n}\n", ""]);
+exports.push([module.i, "\n.v-select input[type=search] {\n  background: #fff;\n}\n.v-select .dropdown-toggle {\n  background-color: #fff;\n}\ninput:-webkit-autofill {\n  -webkit-box-shadow: 0 0 0 1000px #fff inset;\n}\n", ""]);
 
 // exports
 

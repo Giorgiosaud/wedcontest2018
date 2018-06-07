@@ -268,4 +268,10 @@ watch: {
 .v-select input[type=search]{
     background:#fff;
 }
+.v-select .dropdown-toggle{
+    background-color:#fff;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
 </style>
