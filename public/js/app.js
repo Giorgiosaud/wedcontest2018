@@ -18892,6 +18892,9 @@ Vue.component("Contest", __webpack_require__(257));
 Vue.component("contest-create", __webpack_require__(275));
 Vue.component("wysiwyg", __webpack_require__(280));
 
+Vue.filter('capitalize', function (string) {
+  return string.toUppercase();
+});
 var i18n = new __WEBPACK_IMPORTED_MODULE_1_vue_i18n__["a" /* default */]({
   locale: window.App.locale, // set locale
   messages: __WEBPACK_IMPORTED_MODULE_0__vue_i18n_locales_generated_js__["a" /* default */] // set locale messages
@@ -65446,7 +65449,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\nli.list-group-item[data-v-f19a530c] {\n  border: none;\n}\n.card-footer[data-v-f19a530c] {\n  background: #fff;\n  border-top: none;\n  padding: .5rem;\n}\ni.far[data-v-f19a530c],\ni.fas[data-v-f19a530c] {\n  margin: 0 .3rem;\n}\na[data-v-f19a530c] {\n  color: #666;\n}\n", ""]);
+exports.push([module.i, "\nli.list-group-item[data-v-f19a530c] {\n  border: none;\n}\n.realze[data-v-f19a530c] {\n  font-size: 1.1em;\n}\n.card-footer[data-v-f19a530c] {\n  background: #fff;\n  border-top: none;\n  padding: .5rem;\n}\ni.far[data-v-f19a530c],\ni.fas[data-v-f19a530c] {\n  margin: 0 .3rem;\n}\na[data-v-f19a530c] {\n  color: #666;\n}\n", ""]);
 
 // exports
 
@@ -65533,10 +65536,11 @@ var render = function() {
   return _c("div", { staticClass: "col-12 col-md-4 mb-4" }, [
     _c("div", { staticClass: "card", class: _vm.statusColor }, [
       _c("div", { staticClass: "card-header" }, [
+        _c("span", { staticClass: "realze" }, [
+          _vm._v(_vm._s(_vm._f("capitalize")(_vm.contestant.category[0].name)))
+        ]),
         _vm._v(
-          "\n\t\t\t" +
-            _vm._s(_vm.contestant.category[0].name) +
-            " " +
+          " " +
             _vm._s(_vm.categoryLabel) +
             " " +
             _vm._s(_vm.$t("contestants.yearsOld")) +

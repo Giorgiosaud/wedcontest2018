@@ -2,7 +2,7 @@
 	<div class="col-12 col-md-4 mb-4">
 		<div class="card" :class="statusColor">
 			<div class="card-header">
-				{{  contestant.category[0].name }} {{ categoryLabel }} {{  $t('contestants.yearsOld') }}
+				<span class="realze">{{  contestant.category[0].name | capitalize}}</span> {{ categoryLabel }} {{  $t('contestants.yearsOld') }}
 			</div>
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">{{ contestant.name }} {{ contestant.last_name }} – {{ age }} {{ $t('contestants.yearsOld') }}</li>
@@ -69,6 +69,9 @@ export default {
 <style lang="scss" scoped>
 li.list-group-item {
 	border: none;
+}
+.realze{
+	font-size:1.1em;
 }
 .card-footer {
 	background: #fff;
