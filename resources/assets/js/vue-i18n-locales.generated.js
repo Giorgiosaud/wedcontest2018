@@ -6,20 +6,20 @@ export default {
         },
         "contestants": {
             "contestants": "Contestants",
-            "addNew": "Add New Artist",
+            "addNew": "Add new artist",
             "myParticipants": "My Artists",
-            "yearsOld": "Years Old",
+            "yearsOld": "Years old",
             "edit": "Edit",
-            "upload": "Upload Artwork",
+            "upload": "Upload artwork",
             "upto3": "Children up to 3",
-            "upto7": "Children Between 4 and 7",
-            "upto10": "Children Between 8 and 10",
+            "upto7": "Children between 4 and 7",
+            "upto10": "Children between 8 and 10",
             "upto15": "Between 11 and 15"
         },
         "contests": {
             "edit": "Edit",
             "read_more": "Read More",
-            "confirm_email": "Please confirm your email address to participate.",
+            "confirm_email": "Please confirm your e-mail address to participate.",
             "register_button": "Register as representant",
             "login_button": "Login to contest",
             "topic": "Topic",
@@ -27,6 +27,7 @@ export default {
             "topicPlaceholder": "Ocean is Our Home",
             "otherLang": "Español",
             "FAQ": "Frequently asked questions",
+            "faqlink": "http:\/\/wedcontest2018.diproinduca.com\/frequently-asked-questions\/",
             "list": "Contest list",
             "logout": "Logout"
         },
@@ -225,6 +226,7 @@ export default {
             "new_contest": "Crear concurso",
             "topicPlaceholder": "El Oceano es tu hogar",
             "otherLang": "Ingles",
+            "faqlink": "http:\/\/wedcontest2018.diproinduca.com\/es\/preguntas-frecuentes\/",
             "FAQ": "Preguntas frecuentes",
             "list": "Lista de concursos",
             "logout": "Desconectarme"

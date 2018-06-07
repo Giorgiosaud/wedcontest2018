@@ -11,6 +11,7 @@ return [
     'topicPlaceholder'=> 'Ocean is Our Home',
     'otherLang'       => 'Español',
     'FAQ'             => 'Frequently asked questions',
+    'faqlink'         => 'http://wedcontest2018.diproinduca.com/frequently-asked-questions/',
     'list'            => 'Contest list',
     'logout'          => 'Logout',
 

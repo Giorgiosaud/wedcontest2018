@@ -10,6 +10,7 @@ return [
     'new_contest'     => 'Crear concurso',
     'topicPlaceholder'=> 'El Oceano es tu hogar',
     'otherLang'       => 'Ingles',
+    'faqlink'         => 'http://wedcontest2018.diproinduca.com/es/preguntas-frecuentes/',
     'FAQ'             => 'Preguntas frecuentes',
     'list'            => 'Lista de concursos',
     'logout'          => 'Desconectarme',
