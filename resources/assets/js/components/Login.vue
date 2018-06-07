@@ -16,7 +16,7 @@
         <div v-if="errors.email" v-text="errors.email[0]" class="invalid-feedback"></div>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">{{ $t('passwords.password_label') }}</label>
         <input
         type="password"
         class="form-control"
@@ -35,10 +35,10 @@
         @click="login"
         class="btn btn-wedcontest mr-2"
         :class="loading ? 'loader' : ''"
-        :disabled="loading">Log In</button>
+        :disabled="loading">{{$t('passwords.login')}}</button>
         <a href="/register"
         class="btn btn-link text-muted"
-        >or register</a>
+        >{{$t('passwords.or_register')}}</a>
       </div>
       <a :href="resetLink"
         class="btn btn-link text-muted"

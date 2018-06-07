@@ -18,5 +18,7 @@ return [
     'sent'     => '¡Te hemos enviado el link de reinicio de tu password!',
     'token'    => 'Esta clave de reinicio es invalida.',
     'user'     => 'No tenemos un usuario con ese email en el sistema',
-
+    'password_label'=>'Clave',
+    'login'=>'Loguearse',
+    'or_register'=>'o regístrate',
 ];

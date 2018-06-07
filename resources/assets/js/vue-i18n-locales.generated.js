@@ -67,7 +67,10 @@ export default {
             "reset": "Your password has been reset!",
             "sent": "We have e-mailed your password reset link!",
             "token": "This password reset token is invalid.",
-            "user": "We can't find a user with that e-mail address."
+            "user": "We can't find a user with that e-mail address.",
+            "password_label": "Password",
+            "login": "Log In",
+            "or_register": "or register"
         },
         "profile": {
             "my_profile": "My Profile"
@@ -75,7 +78,7 @@ export default {
         "registration": {
             "contestname": "WED Contest 2018 of World Enviroment Day",
             "registration": "Register",
-            "forgot": "Forgot Password",
+            "forgot": "Forgot password",
             "birthdate": "Birth date",
             "name": "Representant name",
             "contestant_name": "Name",
@@ -283,7 +286,10 @@ export default {
             "reset": "¡Tu contraseña se reinició!",
             "sent": "¡Te hemos enviado el link de reinicio de tu password!",
             "token": "Esta clave de reinicio es invalida.",
-            "user": "No tenemos un usuario con ese email en el sistema"
+            "user": "No tenemos un usuario con ese email en el sistema",
+            "password_label": "Clave",
+            "login": "Loguearse",
+            "or_register": "o regístrate"
         },
         "profile": {
             "my_profile": "Mi Perfil"
@@ -291,7 +297,7 @@ export default {
         "registration": {
             "contestname": "Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente",
             "registration": "Registro",
-            "forgot": "Olvido de Clave",
+            "forgot": "Olvido de clave",
             "birthdate": "Fecha de Cumpleaños",
             "name": "Nombre(s) de Representante",
             "contestant_name": "Nombre(s)",
@@ -337,11 +343,11 @@ export default {
             "salutation": "¡Hola!",
             "message": "Estas recibiendo este email porque nos enviaron una notificacion de reseteo de clave en tu cuenta",
             "outro": "Si no has solicitado reiniciar tu clave haz como si no vistes este correo.",
-            "button": "Reiniciar Password",
+            "button": "Reiniciar password",
             "regards": "Atentamente",
             "email": "e-mail ",
-            "title": "Reiniciar Contraseña",
-            "sendpwb": "Enviar Link para reiniciar contraseña",
+            "title": "Reiniciar contraseña",
+            "sendpwb": "Enviar link para reiniciar contraseña",
             "subject": "Reiniciar clave de  Wedcontest"
         },
         "routes": {

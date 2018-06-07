@@ -55911,7 +55911,10 @@ $(window).scroll(function () {
             "reset": "Your password has been reset!",
             "sent": "We have e-mailed your password reset link!",
             "token": "This password reset token is invalid.",
-            "user": "We can't find a user with that e-mail address."
+            "user": "We can't find a user with that e-mail address.",
+            "password_label": "Password",
+            "login": "Log In",
+            "or_register": "or register"
         },
         "profile": {
             "my_profile": "My Profile"
@@ -55919,7 +55922,7 @@ $(window).scroll(function () {
         "registration": {
             "contestname": "WED Contest 2018 of World Enviroment Day",
             "registration": "Register",
-            "forgot": "Forgot Password",
+            "forgot": "Forgot password",
             "birthdate": "Birth date",
             "name": "Representant name",
             "contestant_name": "Name",
@@ -56127,7 +56130,10 @@ $(window).scroll(function () {
             "reset": "¡Tu contraseña se reinició!",
             "sent": "¡Te hemos enviado el link de reinicio de tu password!",
             "token": "Esta clave de reinicio es invalida.",
-            "user": "No tenemos un usuario con ese email en el sistema"
+            "user": "No tenemos un usuario con ese email en el sistema",
+            "password_label": "Clave",
+            "login": "Loguearse",
+            "or_register": "o regístrate"
         },
         "profile": {
             "my_profile": "Mi Perfil"
@@ -56135,7 +56141,7 @@ $(window).scroll(function () {
         "registration": {
             "contestname": "Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente",
             "registration": "Registro",
-            "forgot": "Olvido de Clave",
+            "forgot": "Olvido de clave",
             "birthdate": "Fecha de Cumpleaños",
             "name": "Nombre(s) de Representante",
             "contestant_name": "Nombre(s)",
@@ -56181,11 +56187,11 @@ $(window).scroll(function () {
             "salutation": "¡Hola!",
             "message": "Estas recibiendo este email porque nos enviaron una notificacion de reseteo de clave en tu cuenta",
             "outro": "Si no has solicitado reiniciar tu clave haz como si no vistes este correo.",
-            "button": "Reiniciar Password",
+            "button": "Reiniciar password",
             "regards": "Atentamente",
             "email": "e-mail ",
-            "title": "Reiniciar Contraseña",
-            "sendpwb": "Enviar Link para reiniciar contraseña",
+            "title": "Reiniciar contraseña",
+            "sendpwb": "Enviar link para reiniciar contraseña",
             "subject": "Reiniciar clave de  Wedcontest"
         },
         "routes": {
@@ -57926,7 +57932,9 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "password" } }, [_vm._v("Password")]),
+          _c("label", { attrs: { for: "password" } }, [
+            _vm._v(_vm._s(_vm.$t("passwords.password_label")))
+          ]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -57974,7 +57982,7 @@ var render = function() {
                 attrs: { type: "submit", disabled: _vm.loading },
                 on: { click: _vm.login }
               },
-              [_vm._v("Log In")]
+              [_vm._v(_vm._s(_vm.$t("passwords.login")))]
             ),
             _vm._v(" "),
             _c(
@@ -57983,7 +57991,7 @@ var render = function() {
                 staticClass: "btn btn-link text-muted",
                 attrs: { href: "/register" }
               },
-              [_vm._v("or register")]
+              [_vm._v(_vm._s(_vm.$t("passwords.or_register")))]
             )
           ]),
           _vm._v(" "),
