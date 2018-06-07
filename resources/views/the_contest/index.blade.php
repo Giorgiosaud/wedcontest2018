@@ -30,7 +30,7 @@
         @endif
     </div>
     <div class="d-flex justify-content-center">
-        <a class="btn btn-primary btn-wedcontest-2 mt-4" href="https://docs.google.com/document/d/1ktxsSWtbP2nC0xrpk7hnlNsLKlkh7dCLr8wPiapxhro/edit?usp=sharing">@lang('contests.FAQ')</a>
+        <a class="btn btn-wedcontest-2 mt-4" href="https://docs.google.com/document/d/1ktxsSWtbP2nC0xrpk7hnlNsLKlkh7dCLr8wPiapxhro/edit?usp=sharing">@lang('contests.FAQ')</a>
     </div>
 
 </div>
