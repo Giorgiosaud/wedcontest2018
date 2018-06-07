@@ -50,10 +50,10 @@ Route::group([
     Route::post('/profile', 'ProfileController@update')->name('profile.update');
     Route::post('/profile', 'ProfileController@index')->name('profile.index');
     Route::get('/mycontestants', 'MyContestantController@index')->name('mycontestants.index');
+    Route::post('/mycontestant', 'MyContestantController@store')->middleware('auth')->name('mycontestant.store');
     Route::get('/mycontestants/{contestant}/edit', 'MyContestantController@edit')->name('mycontestants.edit');
     Route::put('/mycontestants/{contestant}', 'MyContestantController@update')->name('mycontestants.update');
     Route::get('/mycontestant/create', 'MyContestantController@create')->middleware('auth')->name('mycontestant.create');
-    Route::post('/mycontestant', 'MyContestantController@store')->name('mycontestant.store');
     Route::post('/contestant/{contestant}/edit', 'ContestantController@edit')->name('contestant.edit');
     Route::put('/contestant/{contestant}', 'ContestantController@update')->name('contestant.update');
     Route::get('/contestants', 'ContestantController@index')->name('contestants.index');

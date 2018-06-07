@@ -148,8 +148,6 @@ export default {
   },
   register() {
     this.loading = true;
-    console.log(this.form);
-
     axios
     .post(this.postTo, this.form)
     .then(response => {

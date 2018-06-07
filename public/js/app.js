@@ -60061,8 +60061,6 @@ var locales = {
       var _this = this;
 
       this.loading = true;
-      console.log(this.form);
-
       axios.post(this.postTo, this.form).then(function (response) {
         console.log(response);
         window.location.href = response.request.responseURL;
