@@ -3,7 +3,9 @@
 @include('layouts.assets.headerStandart')
 <div class="container py-4">
 	<div class="row py-4">
+		<div class="col">
 		<h1>@lang('contestants.contestants')</h1>
+		</div>
 	</div>
 	<div class="row">
 		@foreach($contestants as $contestant)
