@@ -11065,6 +11065,13 @@ a.text-dark:focus {
   src: url("fonts/icomoon.woff");
 }
 
+.dropdown-toggle.clearfix,
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  background-color: #fff;
+}
+
 .dropdown-item:hover,
 .dropdown-item:focus {
   background: rgba(0, 0, 0, .59);

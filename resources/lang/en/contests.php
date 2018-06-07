@@ -3,7 +3,7 @@
 return [
     'edit'            => 'Edit',
     'read_more'       => 'Read More',
-    'confirm_email'   => 'Please confirm your email address to participate.',
+    'confirm_email'   => 'Please confirm your e-mail address to participate.',
     'register_button' => 'Register as representant',
     'login_button'    => 'Login to contest',
     'topic'           => 'Topic',
