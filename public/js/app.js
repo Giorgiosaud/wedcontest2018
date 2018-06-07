@@ -18893,7 +18893,7 @@ Vue.component("contest-create", __webpack_require__(275));
 Vue.component("wysiwyg", __webpack_require__(280));
 
 Vue.filter('capitalize', function (string) {
-  return string.toUppercase();
+  return string.toUpperCase();
 });
 var i18n = new __WEBPACK_IMPORTED_MODULE_1_vue_i18n__["a" /* default */]({
   locale: window.App.locale, // set locale
