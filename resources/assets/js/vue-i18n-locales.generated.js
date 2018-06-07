@@ -70,11 +70,11 @@ export default {
             "my_profile": "My Profile"
         },
         "registration": {
-            "contestname": "WED Contest 2018 del World Enviroment Day",
+            "contestname": "WED Contest 2018 of World Enviroment Day",
             "registration": "Register",
-            "birthdate": "Birth Date",
-            "name": "Name",
-            "last_name": "Last Name",
+            "birthdate": "Birth date",
+            "name": "Representant name",
+            "last_name": "Representant last name",
             "country": "Country",
             "phone": "Phone",
             "specify": "Specify",
@@ -93,20 +93,20 @@ export default {
                     "es": "Spanish"
                 }
             },
-            "subscribed": "Subscribe to email newsletter",
-            "email": "E-Mail Address",
+            "subscribed": "Subscribe to e-mail newsletter",
+            "email": "E-mail address",
             "password": "Password",
-            "change_password": "Change Password",
-            "password_confirmation": "Confirm Password",
-            "change_password_confirmation": "Confirm Changed Password",
-            "countryselect": "Select Your Country",
+            "change_password": "Change password",
+            "password_confirmation": "Confirm password",
+            "change_password_confirmation": "Confirm changed password",
+            "countryselect": "Select your country",
             "mail": {
-                "subject": "Please Confirm Your Email"
+                "subject": "Please Confirm Your e-mail"
             },
-            "editContestants": "Edit Artist",
-            "edit": "Edit your Profile",
+            "editContestants": "Edit artist",
+            "edit": "Edit your profile",
             "register": "Register",
-            "registerContestants": "Contestant Registration",
+            "registerContestants": "Contestant registration",
             "newParticipant": "Add new Participant",
             "category": "Category",
             "motivo": "Explain why did you change the default category",

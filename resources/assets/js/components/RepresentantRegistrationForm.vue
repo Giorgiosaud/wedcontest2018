@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h1>{{$t("registration.register")}}</h1>
+      <h1 class="pb-4">{{$t("registration.register")}}</h1>
       <form @submit.prevent="register">
         <div class="form-group">
             <label for="name">{{ $t("registration.name")}}</label>
