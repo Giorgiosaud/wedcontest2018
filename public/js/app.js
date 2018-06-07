@@ -55865,7 +55865,7 @@ $(window).scroll(function () {
             "new_contest": "New Contest",
             "topicPlaceholder": "Ocean is Our Home",
             "otherLang": "Español",
-            "FAQ": "Frequently Asked Questions",
+            "FAQ": "Frequently asked questions",
             "list": "Contest List",
             "logout": "Logout"
         },
