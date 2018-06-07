@@ -64,7 +64,7 @@ class MyContestantController extends Controller
 
     public function store(Request $request)
     {
-     $request->validate([
+        $request->validate([
             'name'      => 'required',
             'last_name' => 'required',
             'dob'       => 'required',

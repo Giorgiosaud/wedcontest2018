@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Contest;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
-use App\Contest;
+
 class ForgotPasswordController extends Controller
 {
     /*
@@ -21,12 +22,14 @@ class ForgotPasswordController extends Controller
     use SendsPasswordResetEmails;
 
     protected $redirectTo = '/the_contest';
+
     public function showLinkRequestForm()
     {
         $contest = Contest::whereActive(true)->first();
 
-        return view('auth.passwords.email',['contest'=>$contest]);
+        return view('auth.passwords.email', ['contest'=>$contest]);
     }
+
     /**
      * Create a new controller instance.
      *
