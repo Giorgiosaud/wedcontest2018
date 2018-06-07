@@ -55852,14 +55852,15 @@ $(window).scroll(function () {
             "contestants": "Contestants",
             "addNew": "Add new artist",
             "myParticipants": "My Artists",
-            "yearsOld": "Years old",
+            "yearsOld": "years old",
             "edit": "Edit",
             "upload": "Upload artwork",
             "upto3": "children up to 3",
             "upto7": "children between 4 and 7",
             "upto10": "children between 8 and 10",
             "upto15": "between 11 and 15",
-            "category": "Category"
+            "category": "Category",
+            "uploadTooltip": "Not yet open"
         },
         "contests": {
             "edit": "Edit",
@@ -56054,15 +56055,16 @@ $(window).scroll(function () {
         "contestants": {
             "contestants": "Concursantes",
             "addNew": "Añade un nuevo artista",
-            "myParticipants": "Mis Artistas",
-            "yearsOld": "Años",
+            "myParticipants": "Mis artistas",
+            "yearsOld": "años",
             "edit": "Editar",
-            "upload": "Subir Dibujos",
+            "upload": "Subir dibujos",
             "upto3": "Niños hasta los 3",
             "upto7": "Niños entre 4 y 7",
             "upto10": "Niños entre 8 y 10",
             "upto15": "Entre 11 y 15",
-            "category": "Categoria"
+            "category": "Categoria",
+            "uploadTooltip": "Aún no disponible."
         },
         "contests": {
             "edit": "Editar",
