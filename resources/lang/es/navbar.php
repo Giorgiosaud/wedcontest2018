@@ -6,7 +6,7 @@ return [
     'topic_link'      => 'http://wedcontest2018.diproinduca.com/es/',
     'learning_center' => 'Centro de Aprendizaje',
     'topic_link'      => 'http://wedcontest2018.diproinduca.com/es/',
-    'categories'      => 'info Kits',
+    'categories'      => 'Info Kits',
     'categories_link' => 'http://wedcontest2018.diproinduca.com/es/centro-de-aprendizaje',
     'articles'        => 'Lecturas',
     'articles_link'   => 'http://wedcontest2018.diproinduca.com/es/blog/',
