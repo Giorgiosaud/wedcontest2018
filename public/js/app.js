@@ -57797,12 +57797,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       form: { email: "", password: "" },
       feedback: "",
+      errors: {},
       loading: false
     };
   },
@@ -57816,8 +57822,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.post("login", this.form).then(function (response) {
         // console.log(response)
         window.location.href = response.request.responseURL;
-      }).catch(function (error) {
-        _this.feedback = "The given credentials are incorrect. Please try again.";
+      }).catch(function (errors) {
+        _this.errors = errors.response.data.errors;
         _this.loading = false;
       });
     }
@@ -57862,6 +57868,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            class: { "is-invalid": _vm.errors && _vm.errors.email },
             attrs: {
               type: "email",
               id: "email",
@@ -57878,7 +57885,14 @@ var render = function() {
                 _vm.$set(_vm.form, "email", $event.target.value)
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _vm.errors.email
+            ? _c("div", {
+                staticClass: "invalid-feedback",
+                domProps: { textContent: _vm._s(_vm.errors.email[0]) }
+              })
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
@@ -57894,6 +57908,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            class: { "is-invalid": _vm.errors && _vm.errors.email },
             attrs: {
               type: "password",
               id: "password",
@@ -57909,7 +57924,14 @@ var render = function() {
                 _vm.$set(_vm.form, "password", $event.target.value)
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _vm.errors.password
+            ? _c("div", {
+                staticClass: "invalid-feedback",
+                domProps: { textContent: _vm._s(_vm.errors.password[0]) }
+              })
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c(

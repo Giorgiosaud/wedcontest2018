@@ -9,9 +9,11 @@
         class="form-control" 
         id="email" 
         autocomplete="email" 
+        :class="{'is-invalid':errors && errors.email}"
         v-model="form.email" 
         aria-describedby="emailHelp" 
         required>
+        <div v-if="errors.email" v-text="errors.email[0]" class="invalid-feedback"></div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -19,9 +21,12 @@
         type="password" 
         class="form-control" 
         id="password" 
+        :class="{'is-invalid':errors&&errors.email}"
         autocomplete="current-password" 
         required 
         v-model="form.password">
+        <div v-if="errors.password" v-text="errors.password[0]" class="invalid-feedback"></div>
+
       </div>
 
 
@@ -43,6 +48,7 @@ export default {
     return {
       form: { email: "", password: "" },
       feedback: "",
+      errors:{},
       loading: false
     };
   },
@@ -56,9 +62,8 @@ export default {
         // console.log(response)
         window.location.href = response.request.responseURL
       })
-      .catch(error => {
-        this.feedback =
-        "The given credentials are incorrect. Please try again.";
+      .catch(errors => {
+        this.errors=errors.response.data.errors;
         this.loading = false;
       });
     }
