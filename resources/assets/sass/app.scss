@@ -72,6 +72,13 @@
     color: #fff;
     background-color: transparent;
     border:2px solid #FFF;
+    &:hover{
+        color: #fff;
+        background-color: #1e73be;
+        background-image: -webkit-gradient(linear, left bottom, left top, from(#23bbdd), to(#1e73be));
+        background-image: linear-gradient(to top, #23bbdd, #1e73be);
+        border: none;
+    }
 }
 .bg-pending-rethinking-plastic{
     background-color:#ffc107
@@ -139,7 +146,7 @@
   from {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
-    }
+}
 to {
     -webkit-transform: rotate(0);
     transform: rotate(0);
