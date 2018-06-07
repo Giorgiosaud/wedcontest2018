@@ -14,5 +14,9 @@ return [
     'faqlink'         => 'http://wedcontest2018.diproinduca.com/frequently-asked-questions/',
     'list'            => 'Contest list',
     'logout'          => 'Logout',
+    'seeds_label'         => 'Niños hasta los 3',
+    'thinkers_label'         => 'Niños entre 4 y 7',
+    'sprouts_label'        => 'Niños entre 8 y 10',
+    'gamechangers_label'        => 'Entre 11 y 15',
 
 ];

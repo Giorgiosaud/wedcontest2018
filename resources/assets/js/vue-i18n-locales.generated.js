@@ -16,7 +16,11 @@ export default {
             "upto10": "children between 8 and 10",
             "upto15": "between 11 and 15",
             "category": "Category",
-            "uploadTooltip": "Not yet open"
+            "uploadTooltip": "Not yet open",
+            "seeds": "Seed children up to 3 years",
+            "thinkers": "Thiner children between 4 and 7",
+            "sprouts": "Sprout children between 8 and 10",
+            "gamechangers": "Game changer between 11 and 15"
         },
         "contests": {
             "edit": "Edit",
@@ -31,7 +35,11 @@ export default {
             "FAQ": "Frequently asked questions",
             "faqlink": "http:\/\/wedcontest2018.diproinduca.com\/frequently-asked-questions\/",
             "list": "Contest list",
-            "logout": "Logout"
+            "logout": "Logout",
+            "seeds_label": "Niños hasta los 3",
+            "thinkers_label": "Niños entre 4 y 7",
+            "sprouts_label": "Niños entre 8 y 10",
+            "gamechangers_label": "Entre 11 y 15"
         },
         "navbar": {
             "topic": "Topic 2018",
@@ -79,7 +87,7 @@ export default {
             "contestname": "WED Contest 2018 of World Enviroment Day",
             "registration": "Register",
             "forgot": "Forgot password",
-            "birthdate": "Birth date",
+            "birthdate": "Date of birth",
             "name": "Representant name",
             "contestant_name": "Name",
             "last_name": "Representant last name",
@@ -235,7 +243,11 @@ export default {
             "upto10": "Niños entre 8 y 10",
             "upto15": "Entre 11 y 15",
             "category": "Categoria",
-            "uploadTooltip": "Aún no disponible."
+            "uploadTooltip": "Aún no disponible.",
+            "seeds": "Seed hasta los 3 Años",
+            "thinkers": "Thinker entre 4 y 7 Años",
+            "sprouts": "Sprout entre 8 y 10 Años",
+            "gamechangers": "Game Changer Entre 11 y 15 Años"
         },
         "contests": {
             "edit": "Editar",
@@ -298,14 +310,14 @@ export default {
             "contestname": "Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente",
             "registration": "Registro",
             "forgot": "Olvido de clave",
-            "birthdate": "Fecha de Cumpleaños",
+            "birthdate": "Fecha de nacimiento",
             "name": "Nombre de representante",
             "contestant_name": "Nombre",
             "last_name": "Apellido del representante",
             "contestant_last_name": "Apellido",
             "country": "País",
-            "phone": "Telefono",
-            "specify": "Especifique",
+            "phone": "Teléfono",
+            "specify": "Especifíque",
             "referred": {
                 "label": "Referido por",
                 "options": {
@@ -322,22 +334,22 @@ export default {
                 }
             },
             "subscribed": "Recibir notificaciones",
-            "email": "Email",
+            "email": "E-mail",
             "password": "Contraseña",
             "password_confirmation": "Confirmacion de contraseña",
             "change_password": "Cambia tu contraseña",
             "change_password_confirmation": "Confirma tu contraseña cambiada",
-            "countryselect": "Select your country",
+            "countryselect": "Seleccione su país",
             "mail": {
                 "subject": "Porfavor confirma tu correo"
             },
-            "register": "Registar",
+            "register": "Registrar",
             "editContestants": "Editar artista",
             "registerContestants": "Registro de concursantes",
             "newParticipant": "Añadir nuevo participante",
             "category": "Categoria",
             "motivo": "Explique porque cambio la categoria que corresponde",
-            "sendInformationtoContestantemail": "Autorizo el envío de información relevante al correo del Concursante"
+            "sendInformationtoContestantemail": "Autorizo el envío de información relevante al correo del concursante"
         },
         "reset": {
             "salutation": "¡Hola!",

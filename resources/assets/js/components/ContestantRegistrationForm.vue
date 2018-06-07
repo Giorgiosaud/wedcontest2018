@@ -66,7 +66,7 @@
       v-model="category"
       >
       <template slot="option" slot-scope="props" :class="classBgCat(props.option.name)">
-        <span>{{props.option.label}}</span>
+        <span>{{$t('contestants.'+props.option.label)}}</span>
       </template> 
     </multiselect>
     <span v-if="errors.categories" v-text="errors.categories[0]" class="text-xs text-red"></span>
@@ -184,12 +184,8 @@ computed: {
     return this.categoryCorrespondent === this.category;
   },
   categoriesModified(){
-    return this.categories.map((category,index,cats)=>{
-      if(index===0){
-        category.label=  `up to/hasta los ${category.max_age} years/años`;
-        return category;
-      }
-      category.label=  `${cats[index-1].max_age} to/hasta ${category.max_age} years/años`;
+    return this.categories.map(category=>{
+      category.label=  category.name.replace(/\s/g,'').toLowerCase();
       return category;
     });
   }
