@@ -14,7 +14,7 @@
 						<a :href="editLink"><i class="far fa-edit"></i>{{ $t('contestants.edit') }}</a>
 					</div>
 					<div class="upload">
-						<button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top" :title="$t(contestants.uploadTooltip)">
+						<button type="button" class="btn btn-link disabled" data-toggle="tooltip" data-placement="top" :title="$t(contestants.uploadTooltip)">
 							{{ $t('contestants.upload') }}<i class="fas fa-cloud-upload-alt"></i>
 						</button>
 					</div>
