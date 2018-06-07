@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-
+use App\Contest;
+use Illuminate\Http\Request;
 class ResetPasswordController extends Controller
 {
     /*
@@ -19,6 +20,15 @@ class ResetPasswordController extends Controller
      */
 
     use ResetsPasswords;
+
+    public function showResetForm(Request $request, $token = null)
+    {
+        $contest = Contest::whereActive(true)->first();
+
+        return view('auth.passwords.reset')->with(
+            ['token' => $token, 'email' => request('email'),'contest'=>$contest]
+        );
+    }
 
     /**
      * Where to redirect users after resetting their password.

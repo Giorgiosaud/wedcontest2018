@@ -1,8 +1,7 @@
 @component('mail::layout')
     {{-- Header --}}
     @slot('header')
-        @component('mail::header', ['url' => config('app.url'),'logo'=>$logo])
-            {{ config('app.name') }}
+        @component('mail::header', ['url' => config('app.url'),'logo'=>asset('/storage/contest/rethinking-plastic/enLogo.jpg')])
         @endcomponent
     @endslot
 

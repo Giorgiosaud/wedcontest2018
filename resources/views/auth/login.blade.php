@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col">
                 <div class="card-body">
-                <login></login>    
+                <login reset-link="{{ route('password.request') }}"></login>    
                 </div>
             </div>
         </div>

@@ -75,6 +75,7 @@ export default {
         "registration": {
             "contestname": "WED Contest 2018 of World Enviroment Day",
             "registration": "Register",
+            "forgot": "Forgot Password",
             "birthdate": "Birth date",
             "name": "Representant name",
             "contestant_name": "Name",

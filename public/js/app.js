@@ -55919,6 +55919,7 @@ $(window).scroll(function () {
         "registration": {
             "contestname": "WED Contest 2018 of World Enviroment Day",
             "registration": "Register",
+            "forgot": "Forgot Password",
             "birthdate": "Birth date",
             "name": "Representant name",
             "contestant_name": "Name",
@@ -57802,8 +57803,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['resetLink'],
   data: function data() {
     return {
       form: { email: "", password: "" },
@@ -57934,25 +57941,38 @@ var render = function() {
             : _vm._e()
         ]),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-wedcontest mr-2",
-            class: _vm.loading ? "loader" : "",
-            attrs: { type: "submit", disabled: _vm.loading },
-            on: { click: _vm.login }
-          },
-          [_vm._v("Log In")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-link text-muted",
-            attrs: { href: "/register" }
-          },
-          [_vm._v("or register")]
-        )
+        _c("div", { staticClass: "d-flex justify-content-between" }, [
+          _c("div", [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-wedcontest mr-2",
+                class: _vm.loading ? "loader" : "",
+                attrs: { type: "submit", disabled: _vm.loading },
+                on: { click: _vm.login }
+              },
+              [_vm._v("Log In")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-link text-muted",
+                attrs: { href: "/register" }
+              },
+              [_vm._v("or register")]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-link text-muted",
+              attrs: { href: _vm.resetLink }
+            },
+            [_vm._v(_vm._s(_vm.$t("registration.forgot")))]
+          )
+        ])
       ]
     )
   ])
