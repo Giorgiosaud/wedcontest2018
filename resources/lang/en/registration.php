@@ -14,7 +14,7 @@ return [
  */
 'contestname'   => 'WED Contest 2018 of World Enviroment Day',
 'registration'  => 'Register',
-'forgot'=>'Forgot Password',
+'forgot'=>'Forgot password',
     'birthdate' => 'Birth date',
     'name'      => 'Representant name',
     'contestant_name'      => 'Name',
