@@ -11,7 +11,7 @@ return [
     'articles_link'     => 'http://wedcontest2018.diproinduca.com/blog/',
     'links'             => 'Multimedia',
     'link_links'        => 'http://wedcontest2018.diproinduca.com/learning-center/',
-    'about'             => 'About The Contest',
+    'about'             => 'About the Contest',
     'history'           => 'History',
     'history_link'      => 'http://wedcontest2018.diproinduca.com/about-the-contest/',
     'rules'             => 'Rules',

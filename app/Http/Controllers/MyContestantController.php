@@ -26,7 +26,7 @@ class MyContestantController extends Controller
         $categories = Contest::whereActive('1')->get()->first()->categories()->get();
         $contest = Contest::whereActive(true)->first();
 
-        return view('contestants.create', [
+        return view('mycontestants.create', [
             'categories' => $categories,
             'contest'    => $contest,
         ]);
