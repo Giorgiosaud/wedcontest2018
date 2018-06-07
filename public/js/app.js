@@ -57850,7 +57850,7 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+          _c("label", { attrs: { for: "email" } }, [_vm._v("E-mail")]),
           _vm._v(" "),
           _c("input", {
             directives: [

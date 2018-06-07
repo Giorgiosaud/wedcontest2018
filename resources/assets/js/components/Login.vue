@@ -3,7 +3,7 @@
     <h1 class="pb-4">Login</h1>
     <form @submit.prevent="login" @keydown="feedback = ''">
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">E-mail</label>
         <input 
         type="email" 
         class="form-control" 
