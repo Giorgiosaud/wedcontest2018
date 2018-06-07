@@ -4,7 +4,7 @@ return [
     'contestants'    => 'Contestants',
     'addNew'         => 'Add new artist',
     'myParticipants' => 'My Artists',
-    'yearsOld'       => 'Years old',
+    'yearsOld'       => 'years old',
     'edit'           => 'Edit',
     'upload'         => 'Upload artwork',
     'upto3'          => 'children up to 3',

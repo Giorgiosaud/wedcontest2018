@@ -5,7 +5,7 @@
 				<span class="realze">{{  contestant.category[0].name | capitalize}}</span> - {{ $t('contestants.category') }} {{ categoryLabel }} {{  $t('contestants.yearsOld') }}
 			</div>
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item">{{ contestant.name }} {{ contestant.last_name }} – {{ age }} {{ $t('contestants.yearsOld') }}</li>
+				<li class="list-group-item"><strong>{{ contestant.name }} {{ contestant.last_name }} – {{ age }} {{ $t('contestants.yearsOld') }}</strong></li>
 				<li class="list-group-item">{{ status }}</li>
 			</ul>
 			<div class="card-footer">
@@ -14,7 +14,7 @@
 						<a :href="editLink"><i class="far fa-edit"></i>{{ $t('contestants.edit') }}</a>
 					</div>
 					<div class="upload">
-						<a href="#">{{ $t('contestants.upload') }}<i class="fas fa-cloud-upload-alt"></i></a>
+						<a href="#" data-toggle="tooltip" data-placement="top" title="Tooltip on top">{{ $t('contestants.upload') }}<i class="fas fa-cloud-upload-alt"></i></a>
 					</div>
 				</div>
 			</div>

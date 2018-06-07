@@ -65560,15 +65560,17 @@ var render = function() {
       _vm._v(" "),
       _c("ul", { staticClass: "list-group list-group-flush" }, [
         _c("li", { staticClass: "list-group-item" }, [
-          _vm._v(
-            _vm._s(_vm.contestant.name) +
-              " " +
-              _vm._s(_vm.contestant.last_name) +
-              " – " +
-              _vm._s(_vm.age) +
-              " " +
-              _vm._s(_vm.$t("contestants.yearsOld"))
-          )
+          _c("strong", [
+            _vm._v(
+              _vm._s(_vm.contestant.name) +
+                " " +
+                _vm._s(_vm.contestant.last_name) +
+                " – " +
+                _vm._s(_vm.age) +
+                " " +
+                _vm._s(_vm.$t("contestants.yearsOld"))
+            )
+          ])
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "list-group-item" }, [
@@ -65589,10 +65591,21 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "upload" }, [
-              _c("a", { attrs: { href: "#" } }, [
-                _vm._v(_vm._s(_vm.$t("contestants.upload"))),
-                _c("i", { staticClass: "fas fa-cloud-upload-alt" })
-              ])
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href: "#",
+                    "data-toggle": "tooltip",
+                    "data-placement": "top",
+                    title: "Tooltip on top"
+                  }
+                },
+                [
+                  _vm._v(_vm._s(_vm.$t("contestants.upload"))),
+                  _c("i", { staticClass: "fas fa-cloud-upload-alt" })
+                ]
+              )
             ])
           ]
         )
