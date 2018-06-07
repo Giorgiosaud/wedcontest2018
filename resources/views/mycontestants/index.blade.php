@@ -13,7 +13,9 @@
 		@endforeach
 	</div>
 	<div class="row">
+		<div class="col">
 		<a class="btn btn-wedcontest is-green w-full" href="{{route('mycontestant.create')}}">@lang('contestants.addNew')</a>
+		</div>
 	</div>
 </div>
 @endsection    
