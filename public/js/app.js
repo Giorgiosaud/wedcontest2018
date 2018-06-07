@@ -55914,8 +55914,9 @@ $(window).scroll(function () {
             "registration": "Register",
             "birthdate": "Birth date",
             "name": "Representant name",
-            "contestantName": "Name",
+            "contestant_name": "Name",
             "last_name": "Representant last name",
+            "contestant_last_name": "Last name",
             "country": "Country",
             "phone": "Phone",
             "specify": "Specify",
@@ -64350,7 +64351,7 @@ var render = function() {
       [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "name" } }, [
-            _vm._v(_vm._s(_vm.$t("registration.contestantName")))
+            _vm._v(_vm._s(_vm.$t("registration.contestant?name")))
           ]),
           _vm._v(" "),
           _c("input", {
@@ -64395,7 +64396,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "last_name" } }, [
-            _vm._v(_vm._s(_vm.$t("registration.last_name")))
+            _vm._v(_vm._s(_vm.$t("registration.contestant_last_name")))
           ]),
           _vm._v(" "),
           _c("input", {
