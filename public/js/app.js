@@ -65600,7 +65600,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-link",
+                  staticClass: "btn btn-link disabled",
                   attrs: {
                     type: "button",
                     "data-toggle": "tooltip",
