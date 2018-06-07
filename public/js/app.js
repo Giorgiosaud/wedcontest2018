@@ -65545,7 +65545,9 @@ var render = function() {
           _vm._v(_vm._s(_vm._f("capitalize")(_vm.contestant.category[0].name)))
         ]),
         _vm._v(
-          " " +
+          " - " +
+            _vm._s(_vm.$t("contestants.category")) +
+            " " +
             _vm._s(_vm.categoryLabel) +
             " " +
             _vm._s(_vm.$t("contestants.yearsOld")) +
