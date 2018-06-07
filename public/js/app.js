@@ -55819,20 +55819,22 @@ module.exports = function spread(callback) {
 /***/ (function(module, exports) {
 
 $("document").ready(function ($) {
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+	var nav = $('#main-menu-container');
 
-    var nav = $('#main-menu-container');
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 125) {
+			nav.addClass("bg-black").delay(1500).slideDown(500);
+		} else {
 
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 125) {
-            nav.addClass("bg-black").delay(1500).slideDown(500);
-        } else {
-
-            nav.removeClass("bg-black");
-        }
-    });
+			nav.removeClass("bg-black");
+		}
+	});
 });
 $(window).scroll(function () {
-    $('nav').toggleClass('scrolled', $(this).scrollTop() > 50);
+	$('nav').toggleClass('scrolled', $(this).scrollTop() > 50);
 });
 
 /***/ }),
@@ -65596,12 +65598,12 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-secondary",
+                  staticClass: "btn btn-link",
                   attrs: {
                     type: "button",
                     "data-toggle": "tooltip",
                     "data-placement": "top",
-                    title: "Tooltip on top"
+                    title: _vm.$t(_vm.contestants.uploadTooltip)
                   }
                 },
                 [

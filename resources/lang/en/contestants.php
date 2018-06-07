@@ -11,5 +11,6 @@ return [
     'upto7'          => 'children between 4 and 7',
     'upto10'         => 'children between 8 and 10',
     'upto15'         => 'between 11 and 15',
-    'category'=>'Category'
+    'category'=>'Category',
+    'uploadTooltip'=>'Not yet open'
 ];
