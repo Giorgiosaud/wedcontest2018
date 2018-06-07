@@ -65506,6 +65506,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			return Object(__WEBPACK_IMPORTED_MODULE_0_date_fns__["differenceInYears"])(new Date(), this.contestant.dob);
 		},
 		shortCat: function shortCat() {
+			if (this.contestant.category.length === 0) return;
 			if (this.contestant.category[0].name == "Game Changers") {
 				return "GC";
 			}

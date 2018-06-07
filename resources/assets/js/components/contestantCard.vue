@@ -43,6 +43,7 @@ export default {
 			return differenceInYears(new Date(),this.contestant.dob)
 		},
 		shortCat(){
+			if(this.contestant.category.length===0) return;
 			if(this.contestant.category[0].name=="Game Changers"){
 				return "GC";
 			}
