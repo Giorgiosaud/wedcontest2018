@@ -19,7 +19,7 @@
 
         @if (auth()->check())
         @if(auth()->user()->confirmed)
-        <a class="btn btn-wedcontest is-green w-full" href="{{route('contestant.create')}}">@lang('contestants.addNew')</a>
+        <a class="btn btn-wedcontest is-green w-full" href="{{route('mycontestant.create')}}">@lang('contestants.addNew')</a>
 
         @else
         <p class="border-dashed border-light p-3">@lang('contests.confirm_email')</p>
@@ -30,7 +30,7 @@
         @endif
     </div>
     <div class="d-flex justify-content-center">
-        <a class="btn btn-wedcontest-2 mt-4" href="@lang('contests.faqlink')">@lang('contests.FAQ')</a>
+        <a class="btn btn-wedcontest-2 mt-4" href="@lang('contests.faqlink')" target="_blank">@lang('contests.FAQ')</a>
     </div>
 
 </div>

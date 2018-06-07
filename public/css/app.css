@@ -11069,6 +11069,10 @@ a.text-dark:focus {
   background-color: #fff;
 }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+}
+
 .dropdown-item:hover,
 .dropdown-item:focus {
   background: rgba(0, 0, 0, .59);

@@ -54,7 +54,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="{{route('mycontestants.index')}}">@lang('contestants.myParticipants')</a>
-                    <a class="dropdown-item" href="{{ route('contestant.create') }}" class="link">@lang('contestants.addNew')</a>
+                    <a class="dropdown-item" href="{{ route('mycontestant.create') }}" class="link">@lang('contestants.addNew')</a>
                     <div class="dropdown-divider"></div>
                     
                     @if(auth()->user()->isAdmin())

@@ -52,9 +52,9 @@ Route::group([
     Route::get('/mycontestants', 'MyContestantController@index')->name('mycontestants.index');
     Route::get('/mycontestants/{contestant}/edit', 'MyContestantController@edit')->name('mycontestants.edit');
     Route::put('/mycontestants/{contestant}', 'MyContestantController@update')->name('mycontestants.update');
-    Route::post('/contestant', 'ContestantController@store')->name('contestant.store');
+    Route::get('/mycontestant/create', 'MyContestantController@create')->middleware('auth')->name('mycontestant.create');
+    Route::post('/mycontestant', 'MyContestantController@store')->name('mycontestant.store');
     Route::post('/contestant/{contestant}/edit', 'ContestantController@edit')->name('contestant.edit');
     Route::put('/contestant/{contestant}', 'ContestantController@update')->name('contestant.update');
     Route::get('/contestants', 'ContestantController@index')->name('contestants.index');
-    Route::get('/contestant/create', 'ContestantController@create')->middleware('admin')->name('contestant.create');
 });
