@@ -13,12 +13,12 @@ return [
     |
     */
 
-    'password' => 'La Contraseña debe tener almenos seis caracteres y la confirmacion debe coincidir',
-    'reset'    => '¡Tu contraseña se reinició!',
-    'sent'     => '¡Te hemos enviado el link de reinicio de tu password!',
-    'token'    => 'Esta clave de reinicio es invalida.',
-    'user'     => 'No tenemos un usuario con ese email en el sistema',
-    'password_label'=>'Clave',
-    'login'=>'Loguearse',
-    'or_register'=>'o regístrate',
+    'password'      => 'La Contraseña debe tener almenos seis caracteres y la confirmacion debe coincidir',
+    'reset'         => '¡Tu contraseña se reinició!',
+    'sent'          => '¡Te hemos enviado el link de reinicio de tu password!',
+    'token'         => 'Esta clave de reinicio es invalida.',
+    'user'          => 'No tenemos un usuario con ese email en el sistema',
+    'password_label'=> 'Clave',
+    'login'         => 'Loguearse',
+    'or_register'   => 'o regístrate',
 ];

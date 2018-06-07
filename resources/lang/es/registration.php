@@ -12,18 +12,18 @@ return [
     | these language lines according to your application's requirements.
     |
  */
-    'contestname' => 'Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente',
-    'registration'=> 'Registro',
-    'forgot'=>'Olvido de clave',
-    'birthdate'   => 'Fecha de nacimiento',
-    'name'        => 'Nombre de representante',
-    'contestant_name'      => 'Nombre',
-    'last_name'   => 'Apellido del representante',
+    'contestname'            => 'Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente',
+    'registration'           => 'Registro',
+    'forgot'                 => 'Olvido de clave',
+    'birthdate'              => 'Fecha de nacimiento',
+    'name'                   => 'Nombre de representante',
+    'contestant_name'        => 'Nombre',
+    'last_name'              => 'Apellido del representante',
     'contestant_last_name'   => 'Apellido',
-    'country'     => 'País',
-    'phone'       => 'Teléfono',
-    'specify'     => 'Especifíque',
-    'referred'    => [
+    'country'                => 'País',
+    'phone'                  => 'Teléfono',
+    'specify'                => 'Especifíque',
+    'referred'               => [
         'label'   => 'Referido por',
         'options' => [
             '1' => 'Soy un empleado de dirpoinduca',

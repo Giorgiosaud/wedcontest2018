@@ -12,18 +12,18 @@ return [
     | these language lines according to your application's requirements.
     |
  */
-'contestname'   => 'WED Contest 2018 of World Enviroment Day',
-'registration'  => 'Register',
-'forgot'=>'Forgot password',
-    'birthdate' => 'Date of birth',
-    'name'      => 'Representant name',
-    'contestant_name'      => 'Name',
-    'last_name' => 'Representant last name',
+'contestname'                => 'WED Contest 2018 of World Enviroment Day',
+'registration'               => 'Register',
+'forgot'                     => 'Forgot password',
+    'birthdate'              => 'Date of birth',
+    'name'                   => 'Representant name',
+    'contestant_name'        => 'Name',
+    'last_name'              => 'Representant last name',
     'contestant_last_name'   => 'Last name',
-    'country'   => 'Country',
-    'phone'     => 'Phone',
-    'specify'   => 'Specify',
-    'referred'  => [
+    'country'                => 'Country',
+    'phone'                  => 'Phone',
+    'specify'                => 'Specify',
+    'referred'               => [
         'label'   => 'Referred',
         'options' => [
             '1' => 'I am a Diproinduca employee',

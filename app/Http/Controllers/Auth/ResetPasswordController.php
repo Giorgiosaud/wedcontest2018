@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Contest;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use App\Contest;
 use Illuminate\Http\Request;
+
 class ResetPasswordController extends Controller
 {
     /*
@@ -26,7 +27,7 @@ class ResetPasswordController extends Controller
         $contest = Contest::whereActive(true)->first();
 
         return view('auth.passwords.reset')->with(
-            ['token' => $token, 'email' => request('email'),'contest'=>$contest]
+            ['token' => $token, 'email' => request('email'), 'contest'=>$contest]
         );
     }
 
