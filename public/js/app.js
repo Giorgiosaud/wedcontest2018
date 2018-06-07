@@ -65490,6 +65490,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -65592,17 +65594,20 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "upload" }, [
               _c(
-                "a",
+                "button",
                 {
+                  staticClass: "btn btn-secondary",
                   attrs: {
-                    href: "#",
+                    type: "button",
                     "data-toggle": "tooltip",
                     "data-placement": "top",
                     title: "Tooltip on top"
                   }
                 },
                 [
-                  _vm._v(_vm._s(_vm.$t("contestants.upload"))),
+                  _vm._v(
+                    "\n\t\t\t\t\t\t" + _vm._s(_vm.$t("contestants.upload"))
+                  ),
                   _c("i", { staticClass: "fas fa-cloud-upload-alt" })
                 ]
               )
