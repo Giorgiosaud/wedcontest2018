@@ -55914,6 +55914,7 @@ $(window).scroll(function () {
             "registration": "Register",
             "birthdate": "Birth date",
             "name": "Representant name",
+            "contestantName": "Name",
             "last_name": "Representant last name",
             "country": "Country",
             "phone": "Phone",
@@ -56113,7 +56114,8 @@ $(window).scroll(function () {
             "contestname": "Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente",
             "registration": "Registro",
             "birthdate": "Fecha de Cumpleaños",
-            "name": "Nombre(s)",
+            "name": "Nombre(s) de Representante",
+            "contestantName": "Nombre(s)",
             "last_name": "Apellido(s)",
             "country": "País",
             "phone": "Telefono",
@@ -64331,7 +64333,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container py-4" }, [
-    _c("h1", [_vm._v(_vm._s(_vm.$t("registration.registerContestants")))]),
+    _c("h1", { staticClass: "pb-4" }, [
+      _vm._v(_vm._s(_vm.$t("registration.registerContestants")))
+    ]),
     _vm._v(" "),
     _c(
       "form",
@@ -64346,7 +64350,7 @@ var render = function() {
       [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "name" } }, [
-            _vm._v(_vm._s(_vm.$t("registration.name")))
+            _vm._v(_vm._s(_vm.$t("registration.contestantName")))
           ]),
           _vm._v(" "),
           _c("input", {

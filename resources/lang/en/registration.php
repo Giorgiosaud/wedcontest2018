@@ -16,6 +16,7 @@ return [
 'registration'  => 'Register',
     'birthdate' => 'Birth date',
     'name'      => 'Representant name',
+    'contestantName'      => 'Name',
     'last_name' => 'Representant last name',
     'country'   => 'Country',
     'phone'     => 'Phone',
