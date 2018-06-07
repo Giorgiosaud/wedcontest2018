@@ -65495,6 +65495,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	props: ["contestant", "editLink"],
 	computed: {
 		statusColor: function statusColor() {
+			if (!this.contestant) retuen;
 			if (this.contestant.category[0].pivot.status === 'pending') {
 				return 'bg-pending-rethinking-plastic';
 			} else {

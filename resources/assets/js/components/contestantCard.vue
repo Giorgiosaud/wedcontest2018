@@ -31,6 +31,7 @@ export default {
 	props:["contestant","editLink"],
 	computed:{
 		statusColor(){
+			if(!this.contestant) return;
 			if(this.contestant.category[0].pivot.status==='pending'){
 				return 'bg-pending-rethinking-plastic';
 			}
