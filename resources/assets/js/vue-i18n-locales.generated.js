@@ -23,11 +23,11 @@ export default {
             "register_button": "Register as representant",
             "login_button": "Login to contest",
             "topic": "Topic",
-            "new_contest": "New Contest",
+            "new_contest": "New contest",
             "topicPlaceholder": "Ocean is Our Home",
             "otherLang": "Español",
             "FAQ": "Frequently asked questions",
-            "list": "Contest List",
+            "list": "Contest list",
             "logout": "Logout"
         },
         "navbar": {
@@ -217,16 +217,16 @@ export default {
         },
         "contests": {
             "edit": "Editar",
-            "read_more": "Leer Más",
-            "confirm_email": "Por Favor Confirma el email para poder concursar.",
+            "read_more": "Leer más",
+            "confirm_email": "Por favor confirma el email para poder concursar.",
             "register_button": "Registrese como representante",
-            "login_button": "Logueese en el Concurso",
+            "login_button": "Logueese en el concurso",
             "topic": "Tema",
-            "new_contest": "Crear Concurso",
+            "new_contest": "Crear concurso",
             "topicPlaceholder": "El Oceano es tu hogar",
             "otherLang": "Ingles",
-            "FAQ": "Preguntas Frecuentes",
-            "list": "Lista de Concursos",
+            "FAQ": "Preguntas frecuentes",
+            "list": "Lista de concursos",
             "logout": "Desconectarme"
         },
         "navbar": {

@@ -7,11 +7,11 @@ return [
     'register_button' => 'Register as representant',
     'login_button'    => 'Login to contest',
     'topic'           => 'Topic',
-    'new_contest'     => 'New Contest',
+    'new_contest'     => 'New contest',
     'topicPlaceholder'=> 'Ocean is Our Home',
     'otherLang'       => 'Español',
     'FAQ'             => 'Frequently asked questions',
-    'list'            => 'Contest List',
+    'list'            => 'Contest list',
     'logout'          => 'Logout',
 
 ];
