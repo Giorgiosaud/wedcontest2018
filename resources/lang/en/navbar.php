@@ -5,7 +5,7 @@ return [
     'topic'             => 'Topic 2018',
     'topic_link'        => 'http://wedcontest2018.diproinduca.com/',
     'learning_center'   => 'Learning Center',
-    'categories'        => 'Info kits',
+    'categories'        => 'Info Kits',
     'categories_link'   => 'http://wedcontest2018.diproinduca.com/learning-center/',
     'articles'          => 'Stories',
     'articles_link'     => 'http://wedcontest2018.diproinduca.com/blog/',
