@@ -64351,7 +64351,7 @@ var render = function() {
       [
         _c("div", { staticClass: "form-group" }, [
           _c("label", { attrs: { for: "name" } }, [
-            _vm._v(_vm._s(_vm.$t("registration.contestant?name")))
+            _vm._v(_vm._s(_vm.$t("registration.contestant_name")))
           ]),
           _vm._v(" "),
           _c("input", {

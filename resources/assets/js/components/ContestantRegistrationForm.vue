@@ -4,7 +4,7 @@
     <h1 class="pb-4">{{$t("registration.registerContestants")}}</h1>
     <form class="" @submit.prevent="register">
       <div class="form-group">
-        <label for="name">{{ $t("registration.contestant?name")}}</label>
+        <label for="name">{{ $t("registration.contestant_name")}}</label>
         <input 
         type="text" 
         class="form-control" 
