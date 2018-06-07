@@ -14,6 +14,7 @@ return [
  */
     'contestname' => 'Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente',
     'registration'=> 'Registro',
+    'forgot'=>'Olvido de Clave',
     'birthdate'   => 'Fecha de Cumpleaños',
     'name'        => 'Nombre(s) de Representante',
     'contestant_name'      => 'Nombre(s)',

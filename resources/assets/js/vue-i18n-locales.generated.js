@@ -118,6 +118,17 @@ export default {
             "motivo": "Explain why did you change the default category",
             "sendInformationtoContestantemail": "I authorize to send notifications about the contest to this contestant."
         },
+        "reset": {
+            "salutation": "Hello!",
+            "message": "You are receiving this email because we received a password reset request for your account",
+            "outro": "If you did not request a password reset, no further action is required.",
+            "button": "Reset password",
+            "regards": "Regards",
+            "email": "E-mail address",
+            "title": "Reset password",
+            "sendpwb": "Send password reset link",
+            "subject": "Reset Pasword of Wedcontest"
+        },
         "routes": {
             "the_contest": "the_contest"
         },
@@ -280,6 +291,7 @@ export default {
         "registration": {
             "contestname": "Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente",
             "registration": "Registro",
+            "forgot": "Olvido de Clave",
             "birthdate": "Fecha de Cumpleaños",
             "name": "Nombre(s) de Representante",
             "contestant_name": "Nombre(s)",
@@ -320,6 +332,17 @@ export default {
             "category": "Categoria",
             "motivo": "Explique porque cambio la categoria que corresponde",
             "sendInformationtoContestantemail": "Autorizo el envío de información relevante al correo del Concursante"
+        },
+        "reset": {
+            "salutation": "¡Hola!",
+            "message": "Estas recibiendo este email porque nos enviaron una notificacion de reseteo de clave en tu cuenta",
+            "outro": "Si no has solicitado reiniciar tu clave haz como si no vistes este correo.",
+            "button": "Reiniciar Password",
+            "regards": "Atentamente",
+            "email": "e-mail ",
+            "title": "Reiniciar Contraseña",
+            "sendpwb": "Enviar Link para reiniciar contraseña",
+            "subject": "Reiniciar clave de  Wedcontest"
         },
         "routes": {
             "the_contest": "el_concurso"
