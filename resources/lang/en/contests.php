@@ -4,7 +4,7 @@ return [
     'edit'                      => 'Edit',
     'read_more'                 => 'Read More',
     'confirm_email'             => 'Please confirm your e-mail address to participate.',
-    'register_button'           => 'Register as representant',
+    'register_button'           => 'Register as parent/legal guardian',
     'login_button'              => 'Login to contest',
     'topic'                     => 'Topic',
     'new_contest'               => 'New contest',
