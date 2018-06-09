@@ -30,6 +30,6 @@ class CreateCategoryContestantsPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_contestants');
+        Schema::dropIfExists('category_contestant');
     }
 }

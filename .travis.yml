@@ -2,7 +2,8 @@ language: php
 
 php:
   - 7.1
-
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS contest_test;'
 before_script:
   - cp .env.travis .env
   - composer self-update
@@ -14,7 +15,7 @@ script:
 
 services:
   - redis-server
-
+  - mysql
 cache:
   directories:
     - vendor 
