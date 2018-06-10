@@ -2,6 +2,7 @@
 
 
 return [
+    'adminHeader'=>'Administrator',
     'topic'             => 'Topic 2018',
     'topic_link'        => 'http://wedcontest2018.diproinduca.com/',
     'learning_center'   => 'Learning Center',

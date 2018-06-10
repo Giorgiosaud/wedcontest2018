@@ -17,7 +17,7 @@ class EditContestTest extends TestCase
     {
         $contest = create(Contest::class);
         $this->withExceptionHandling();
-        $this->get("contest/$contest->slug/edit")
+        $this->get(route('contest.edit',$contest->slug))
             ->assertRedirect('/login');
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Tests\Unit;
 
+use App\Contestant;
+use App\Role;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -30,21 +32,39 @@ class UserTest extends TestCase
      */
     public function a_user_may_have_contestants()
     {
-        factory(User::class, 4)->create(['representant_id' => 1]);
+        factory(Contestant::class,4)->create(['representant_id' => $this->user->id]);
         $this->assertInstanceOf(Collection::class, $this->user->contestants);
     }
-
     /**
      * @test
      */
-    public function a_user_can_be_an_administrator()
+    public function a_user_can_be_assigned_a_role()
     {
         $this->withExceptionHandling();
-
-        $user = User::whereEmail('jorgelsaud@gmail.com')->first();
+        $user=create(User::class);
+        $user->setRole('Administrator');
         $this->assertTrue($user->isAdmin());
     }
-
+    /**
+     * @test
+     */
+    public function error_is_throw_if_roles_dont_exist()
+    {
+        $this->expectException(\Exception::class);
+        $user=create(User::class);
+        $user->setRole('Administrator23');
+    }
+    /**
+     * @test
+     */
+    public function a_user_can_be_setted_as_administrator_by_another_administrator()
+    {
+        $this->withExceptionHandling();
+        $user=create(User::class);
+        $user->setRole('Administrator');
+        $this->assertTrue($user->isAdmin());
+        
+    }
     /**
      * @test
      */

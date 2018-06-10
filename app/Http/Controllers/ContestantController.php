@@ -12,13 +12,15 @@ class ContestantController extends Controller
 {
     public function index()
     {
-        $contestants = Contestant::with('representant')->get();
-        $contest = Contest::whereActive(true)->first();
 
-        return view('contestants.index', [
-            'contestants' => $contestants,
-            'contest'     => $contest,
-        ]);
+        // $users= User::all();
+        // $contestants = Contestant::with('representant')->get();
+        // $contest = Contest::whereActive(true)->first();
+        return ('contestants.index');
+        // return view('contestants.index', [
+            // 'contestants' => $contestants,
+            // 'contest'     => $contest,
+        // ]);
     }
 
     public function create()

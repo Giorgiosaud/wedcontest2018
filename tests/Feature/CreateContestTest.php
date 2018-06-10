@@ -39,7 +39,7 @@ class CreateContestTest extends TestCase
             'background_image'=> 'contest/rethinking-plastic/backgroundImage.jpg',
         ];
         // dd($this->get($response->headers->get('Location')));
-        $response = $this->post('/contest', $contest)
+        $response = $this->post(route('contest.store'), $contest)
         ->assertRedirect();
         // ->assertSee($contest['en']['topic'])
         // ->assertSee($contest['en']['description'])
@@ -54,7 +54,7 @@ class CreateContestTest extends TestCase
     public function guest_may_not_create_a_contest()
     {
         $this->withExceptionHandling();
-        $this->get('/contest/create')
+        $this->get(route('contest.create'))
         ->assertRedirect('/login');
         // $this->post('/contest')
         // ->assertRedirect('/login');

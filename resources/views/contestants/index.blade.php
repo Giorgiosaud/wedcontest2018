@@ -6,12 +6,12 @@
 		<h1>@lang('contestants.contestants')</h1>
 	</div>
 	<div class="row">
-		@foreach($contestants as $contestant)
-		<contestant-card edit-link="{{  route('mycontestants.edit',$contestant->id)}}" :contestant="{{$contestant}}" :key="{{$contestant->id}}"></contestant-card>
-		@endforeach
+		{{-- <registered-users> --}}
+			
+		{{-- </registered-users> --}}
 	</div>
 	<div class="row">
-		<a class="btn btn-wedcontest is-green w-full" href="{{route('mycontestant.create')}}">@lang('contestants.addNew')</a>
+		{{-- <a class="btn btn-wedcontest is-green w-full" href="{{route('user.create')}}">@lang('contestants.addNew')</a> --}}
 	</div>
 </div>
 @endsection    

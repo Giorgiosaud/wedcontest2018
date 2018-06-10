@@ -42,7 +42,7 @@ class Contest extends Model
      */
     public function path()
     {
-        return '/contest/'.$this->slug;
+        return route('contest.show',$this->slug);
     }
 
     public function getPathAttribute()

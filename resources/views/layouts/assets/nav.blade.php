@@ -58,8 +58,9 @@
                     <div class="dropdown-divider"></div>
                     
                     @if(auth()->user()->isAdmin())
-                    <a class="dropdown-item" href="{{ route('contest.create') }}" class="link">Add Contest</a>
-                    <a class="dropdown-item" href="{{ route('contestants.index') }}" class="link">List Contestants</a>
+                    {{-- <a class="dropdown-item" href="{{ route('contest.create') }}" class="link">Add Contest</a> --}}
+                    <a class="dropdown-item" href="{{ route('users.index') }}" class="link">List Of Representants and Contestants</a>
+
                     
                     <div class="dropdown-divider"></div>
                     @endif
