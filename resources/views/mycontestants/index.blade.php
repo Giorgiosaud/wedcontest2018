@@ -9,7 +9,7 @@
 	</div>
 	<div class="row">
 		@foreach($contestants as $contestant)
-		<contestant-card edit-link="{{  route('mycontestants.edit',$contestant->id)}}" :contestant="{{$contestant}}" :key="{{$contestant->id}}"></contestant-card>
+		<contestant-card edit-link="{{  route('mycontestant.edit',$contestant->id)}}" :contestant="{{$contestant}}" :key="{{$contestant->id}}"></contestant-card>
 		@endforeach
 	</div>
 	<div class="row">

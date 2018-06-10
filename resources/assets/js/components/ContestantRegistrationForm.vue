@@ -47,7 +47,7 @@
         @input="setDefaultCategory" 
         :typeable="false"
         initial-view="year"
-
+        :language="locale"
         ></datepicker>
 
       </div>
@@ -112,7 +112,7 @@
 
 <script>
 // import component and stylesheet
-
+import {en, es} from 'vuejs-datepicker/dist/locale';
 import {format,differenceInYears} from "date-fns";
 let locales = {
   es: require("date-fns/locale/es"),
@@ -132,7 +132,6 @@ export default {
         email:""
       },
       dob:"",
-      locale:window.App.locale,
       category: "",
       dateFormat: "D MMMM YYYY",
       dateOne: "",
@@ -161,14 +160,10 @@ export default {
     this.category = this.categories.find(cat => this.age <= cat.max_age);
   },
   categoryLabel: function(object) {
-    return `${object.name} – ${object.max_age}`;
+    return this.$t('contestants.'+object.label);
   },
   classBgCat(cat){
     return `${cat} bg-red`;
-  },
-
-  groupHighlight (index, selectedGroup) {
-    return 'hola';
   },
 },
 computed: {
@@ -188,7 +183,11 @@ computed: {
       category.label=  category.name.replace(/\s/g,'').toLowerCase();
       return category;
     });
-  }
+  },
+  locale(){
+    if (App.locale==='en') return en;
+    return es;
+  },
 },
 watch: {
   category: function(value) {

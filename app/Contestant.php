@@ -14,6 +14,9 @@ class Contestant extends Model
         'dob',
         'motivo',
     ];
+    protected $appends = [
+        'editPath',
+    ];
     protected $with = ['category'];
 
     public function category()
@@ -29,5 +32,20 @@ class Contestant extends Model
     public function contest()
     {
         return $this->hasManyThrough(\App\Contest::class, \App\Category::class);
+    }
+    /**
+     * @return string
+     */
+    public function editPath()
+    {
+        if(auth()->user()->isAdmin()){
+            return route('contestant.edit',$this->id);
+        }
+        return route('mycontestant.edit',$this->id);
+    }
+
+    public function getEditPathAttribute()
+    {
+        return $this->editPath();
     }
 }
