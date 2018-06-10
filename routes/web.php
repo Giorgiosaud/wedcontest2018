@@ -50,19 +50,17 @@ Route::group([
     Route::redirect('/', 'the_contest');
     Route::get(LaravelLocalization::transRoute('routes.the_contest'), 'TheContestController@index')
     ->name('the_contest');
-    
     // Route::resource('contests', 'ContestController');
-
-    
 
     Route::get('/register/confirm', 'Auth\RegisterConfirmationController@index')->name('register.confirm');
     Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
     Route::post('/profile', 'ProfileController@update')->name('profile.update');
     Route::post('/profile', 'ProfileController@index')->name('profile.index');
     Route::get('/mycontestants', 'MyContestantController@index')->name('mycontestants.index');
+    Route::get('/mycontestant/create', 'MyContestantController@create')->middleware('auth')->name('mycontestant.create');
     Route::get('/mycontestant/{contestant}', 'MyContestantController@show')->name('mycontestants.show');
     Route::post('/mycontestant', 'MyContestantController@store')->middleware('auth')->name('mycontestant.store');
     Route::get('/mycontestants/{contestant}/edit', 'MyContestantController@edit')->middleware('auth')->name('mycontestant.edit');
     Route::put('/mycontestant/{contestant}', 'MyContestantController@update')->middleware('auth')->name('mycontestant.update');
-    Route::get('/mycontestant/create', 'MyContestantController@create')->middleware('auth')->name('mycontestant.create');
+    
 });
