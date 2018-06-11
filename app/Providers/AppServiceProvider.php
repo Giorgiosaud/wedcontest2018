@@ -6,7 +6,6 @@ use App\Country;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Passport\Passport;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,6 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Passport::routes();
+        // Passport::routes();
     }
 }
