@@ -16,7 +16,7 @@ class ContestantController extends Controller
         // $users= User::all();
         // $contestants = Contestant::with('representant')->get();
         // $contest = Contest::whereActive(true)->first();
-        return ('contestants.index');
+        return 'contestants.index';
         // return view('contestants.index', [
             // 'contestants' => $contestants,
             // 'contest'     => $contest,

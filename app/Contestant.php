@@ -33,15 +33,17 @@ class Contestant extends Model
     {
         return $this->hasManyThrough(\App\Contest::class, \App\Category::class);
     }
+
     /**
      * @return string
      */
     public function editPath()
     {
-        if(auth()->user()){
-            return route('mycontestant.edit',$this->id);
+        if (auth()->user()) {
+            return route('mycontestant.edit', $this->id);
         }
-        return route('contestant.edit',$this->id);
+
+        return route('contestant.edit', $this->id);
     }
 
     public function getEditPathAttribute()

@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Role;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -78,15 +77,18 @@ class User extends Authenticatable
     }
 
     /**
-     * [representant description]
+     * [representant description].
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function representant()
     {
         return $this->belongsTo(self::class, 'representant_id');
     }
+
     /**
-     * [contestants description]
+     * [contestants description].
+     *
      * @return [USer] [description]
      */
     public function contestants()
@@ -105,8 +107,10 @@ class User extends Authenticatable
     {
         return  asset($avatar ?: 'images/avatars/default.svg');
     }
+
     /**
-     * [confirm description]
+     * [confirm description].
+     *
      * @return [User] [description]
      */
     public function confirm()
@@ -115,23 +119,30 @@ class User extends Authenticatable
         $this->confirmation_token = null;
         $this->save();
     }
+
     /**
-     * [roles description]
+     * [roles description].
+     *
      * @return [User] [description]
      */
     public function roles()
     {
         return  $this->belongsToMany(Role::class);
     }
+
     /**
-     * [setRole description]
+     * [setRole description].
+     *
      * @param [string] $role [description]
      */
-    public function setRole($role){
-        if(Role::whereName($role)->exists()){
+    public function setRole($role)
+    {
+        if (Role::whereName($role)->exists()) {
             $role = Role::whereName($role)->first();
+
             return $this->roles()->attach($role->id);
         }
+
         throw new \Exception('Role not Exist');
     }
 }

@@ -20,9 +20,12 @@ class MyContestantController extends Controller
             'contest'     => $contest,
         ]);
     }
-    public function show(){
+
+    public function show()
+    {
         return redirect()->route('mycontestants.index');
     }
+
     public function create()
     {
         $categories = Contest::whereActive('1')->get()->first()->categories()->get();
@@ -48,15 +51,15 @@ class MyContestantController extends Controller
 
     public function update(Contestant $contestant)
     {
-        $req=request()->validate([
+        $req = request()->validate([
             'name'      => 'required',
             'last_name' => 'required',
             'dob'       => 'required',
             // 'email'     => 'email',
             // 'motivo'    =>'string'
         ]);
-        $activeContest=Contest::whereActive(true)->first();
-        $contestCatsId=Contest::whereActive(true)->first()->categories->pluck('id');
+        $activeContest = Contest::whereActive(true)->first();
+        $contestCatsId = Contest::whereActive(true)->first()->categories->pluck('id');
         $contestant->category()->detach($contestCatsId);
         // dd($contestant);
         $contestant->update($req);
@@ -67,6 +70,7 @@ class MyContestantController extends Controller
 
         $contestant->category()->attach(request()->categoryId, ['status'=>$status]);
         dd($contestant);
+
         return redirect()->route('mycontestants.index');
     }
 
