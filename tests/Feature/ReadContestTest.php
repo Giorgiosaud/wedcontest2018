@@ -51,6 +51,6 @@ class ReadContestTest extends TestCase
         $contest = create(Contest::class);
         create(Category::class, ['contest_id' => $contest->id], 2);
         $this->json('GET', route('categories.index', $contest->slug))
-            ->assertStatus(500);
+            ->assertStatus(403);
     }
 }
