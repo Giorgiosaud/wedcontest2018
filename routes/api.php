@@ -12,4 +12,4 @@
 |
  */
 Route::middleware('api')->get('countries', 'CountriesController@index')->name('api.countries.index');
-Route::middleware('auth:api')->get('users', 'UserController@index')->name('api.users.index');
+Route::middleware('api')->get('users', 'UserApiController@index')->name('api.users.index');

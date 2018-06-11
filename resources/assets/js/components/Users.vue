@@ -1,28 +1,30 @@
 <template>
-	<div>
-		<ul>
-			<li v-for="user in users"></li>
-		</ul>
-		<button type="button" @click="fetchUsers">usersGet</button>
+	<div class="container">
+		<h1>Users Subscribed</h1>
+	<showUserData v-for="user in users" :user="user" :key="user.id"></showUserData>
 	</div>
 </template>
 
 <script>
+import showUserData from './showUserData';
 export default {
 
 	name: 'Users',
-
+	components:{
+		showUserData
+	},
 	data () {
 		return {
 			'users':[]
 		}
 	},
+
 	methods:{
-		fetchUsers(){
-			axios.get('/api/users')
-			.then(users=>this.users=users);
-		}
-	}
+	},
+	created(){
+		axios.get('/api/users')
+		.then(response=>this.users=response.data);
+	},
 }
 </script>
 

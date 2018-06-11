@@ -38,10 +38,10 @@ class Contestant extends Model
      */
     public function editPath()
     {
-        if(auth()->user()->isAdmin()){
-            return route('contestant.edit',$this->id);
+        if(auth()->user()){
+            return route('mycontestant.edit',$this->id);
         }
-        return route('mycontestant.edit',$this->id);
+        return route('contestant.edit',$this->id);
     }
 
     public function getEditPathAttribute()
