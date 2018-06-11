@@ -50,7 +50,7 @@ class ReadContestTest extends TestCase
         $this->withExceptionHandling();
         $contest = create(Contest::class);
         create(Category::class, ['contest_id' => $contest->id], 2);
-        $this->json('GET', $contest->path().'/categories')
-            ->assertStatus(403);
+        $this->json('GET', route('categories.index', $contest->slug))
+            ->assertStatus(500);
     }
 }

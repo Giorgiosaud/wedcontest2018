@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserApiController extends Controller
 {
@@ -11,6 +13,6 @@ class UserApiController extends Controller
  	* @return [type] [description]
  	*/
  	public function index(){
- 		return User::all();;
+ 		return User::with('contestants','roles')->get();
  	}
  }
