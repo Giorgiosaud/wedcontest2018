@@ -14,8 +14,8 @@ return [
     'category'            => 'Categoria',
     'uploadTooltip'       => 'Aún no disponible.',
     'seeds'               => 'Seed hasta los 3 Años',
-    'thinkers'            => 'Thinker entre 4 y 7 Años',
-    'sprouts'             => 'Sprout entre 8 y 10 Años',
+    'sprouts'             => 'Sprout entre 4 y 7 Años',
+    'thinkers'            => 'Thinker entre 8 y 10 Años',
     'gamechangers'        => 'Game Changer Entre 11 y 15 Años',
 
 ];

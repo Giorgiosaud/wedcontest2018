@@ -14,8 +14,8 @@ return [
     'category'            => 'Category',
     'uploadTooltip'       => 'Not yet open',
     'seeds'               => 'Seed children up to 3 years',
-    'thinkers'            => 'Thiner children between 4 and 7',
-    'sprouts'             => 'Sprout children between 8 and 10',
+    'sprouts'             => 'Sprout children between 4 and 7',
+    'thinkers'            => 'Thinker children between 8 and 10',
     'gamechangers'        => 'Game changer between 11 and 15',
 
 ];

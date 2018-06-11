@@ -1,47 +1,17 @@
 export default {
     "en": {
-        "auth": {
-            "failed": "These credentials do not match our records.",
-            "throttle": "Too many login attempts. Please try again in {seconds} seconds."
-        },
-        "contestants": {
-            "contestants": "Contestants",
-            "addNew": "Add new artist",
-            "myParticipants": "My Artists",
-            "yearsOld": "years old",
-            "edit": "Edit",
-            "upload": "Upload artwork",
-            "upto3": "children up to 3",
-            "upto7": "children between 4 and 7",
-            "upto10": "children between 8 and 10",
-            "upto15": "between 11 and 15",
-            "category": "Category",
-            "uploadTooltip": "Not yet open",
-            "seeds": "Seed children up to 3 years",
-            "thinkers": "Thiner children between 4 and 7",
-            "sprouts": "Sprout children between 8 and 10",
-            "gamechangers": "Game changer between 11 and 15"
-        },
-        "contests": {
-            "edit": "Edit",
-            "read_more": "Read More",
-            "confirm_email": "Please confirm your e-mail address to participate.",
-            "register_button": "Register as representant",
-            "login_button": "Login to contest",
-            "topic": "Topic",
-            "new_contest": "New contest",
-            "topicPlaceholder": "Ocean is Our Home",
-            "otherLang": "Español",
-            "FAQ": "Frequently asked questions",
-            "faqlink": "http:\/\/wedcontest2018.diproinduca.com\/frequently-asked-questions\/",
-            "list": "Contest list",
-            "logout": "Logout",
-            "seeds_label": "Niños hasta los 3",
-            "thinkers_label": "Niños entre 4 y 7",
-            "sprouts_label": "Niños entre 8 y 10",
-            "gamechangers_label": "Entre 11 y 15"
+        "passwords": {
+            "password": "Passwords must be at least six characters and match the confirmation.",
+            "reset": "Your password has been reset!",
+            "sent": "We have e-mailed your password reset link!",
+            "token": "This password reset token is invalid.",
+            "user": "We can't find a user with that e-mail address.",
+            "password_label": "Password",
+            "login": "Log In",
+            "or_register": "or register"
         },
         "navbar": {
+            "adminHeader": "Administrator",
             "topic": "Topic 2018",
             "topic_link": "http:\/\/wedcontest2018.diproinduca.com\/",
             "learning_center": "Learning Center",
@@ -66,68 +36,32 @@ export default {
             "unconfirmed_1": "You are almost there!",
             "unconfirmed_2": "Just a few more steps to complete your registration to the 2018 World Environment Day Drawing Contest"
         },
+        "auth": {
+            "failed": "These credentials do not match our records.",
+            "throttle": "Too many login attempts. Please try again in {seconds} seconds."
+        },
+        "contests": {
+            "edit": "Edit",
+            "read_more": "Read More",
+            "confirm_email": "Please confirm your e-mail address to participate.",
+            "register_button": "Register as parent\/legal guardian",
+            "login_button": "Login to contest",
+            "topic": "Topic",
+            "new_contest": "New contest",
+            "topicPlaceholder": "Ocean is Our Home",
+            "otherLang": "Español",
+            "FAQ": "Frequently asked questions",
+            "faqlink": "http:\/\/wedcontest2018.diproinduca.com\/frequently-asked-questions\/",
+            "list": "Contest list",
+            "logout": "Logout",
+            "seeds_label": "Niños hasta los 3",
+            "thinkers_label": "Niños entre 4 y 7",
+            "sprouts_label": "Niños entre 8 y 10",
+            "gamechangers_label": "Entre 11 y 15"
+        },
         "pagination": {
             "previous": "&laquo; Previous",
             "next": "Next &raquo;"
-        },
-        "passwords": {
-            "password": "Passwords must be at least six characters and match the confirmation.",
-            "reset": "Your password has been reset!",
-            "sent": "We have e-mailed your password reset link!",
-            "token": "This password reset token is invalid.",
-            "user": "We can't find a user with that e-mail address.",
-            "password_label": "Password",
-            "login": "Log In",
-            "or_register": "or register"
-        },
-        "profile": {
-            "my_profile": "My Profile"
-        },
-        "registration": {
-            "contestname": "WED Contest 2018 of World Enviroment Day",
-            "registration": "Register",
-            "forgot": "Forgot password",
-            "birthdate": "Date of birth",
-            "name": "Parent\/legal guardian name",
-            "contestant_name": "Name",
-            "last_name": "Parent\/legal guardian last name",
-            "contestant_last_name": "Last name",
-            "country": "Country",
-            "phone": "Phone",
-            "specify": "Specify",
-            "referred": {
-                "label": "Referred",
-                "options": {
-                    "1": "I am a Diproinduca employee",
-                    "2": "I was invited by",
-                    "3": "I learned about the contest through. Twitter, facebook, Instagram, google search, contest website, Other, please specify"
-                }
-            },
-            "language": {
-                "label": "Language",
-                "options": {
-                    "en": "English",
-                    "es": "Spanish"
-                }
-            },
-            "subscribed": "Subscribe to e-mail newsletter",
-            "email": "E-mail address",
-            "password": "Password",
-            "change_password": "Change password",
-            "password_confirmation": "Confirm password",
-            "change_password_confirmation": "Confirm changed password",
-            "countryselect": "Select your country",
-            "mail": {
-                "subject": "Please Confirm Your e-mail"
-            },
-            "editContestants": "Edit artist",
-            "edit": "Edit your profile",
-            "register": "Register",
-            "registerContestants": "Contestant registration",
-            "newParticipant": "Add new Participant",
-            "category": "Category",
-            "motivo": "Explain why did you change the default category",
-            "sendInformationtoContestantemail": "I authorize to send notifications about the contest to this contestant."
         },
         "reset": {
             "salutation": "Hello!",
@@ -142,6 +76,9 @@ export default {
         },
         "routes": {
             "the_contest": "the_contest"
+        },
+        "profile": {
+            "my_profile": "My Profile"
         },
         "validation": {
             "accepted": "The {attribute} must be accepted.",
@@ -224,47 +161,85 @@ export default {
                 }
             },
             "attributes": []
+        },
+        "registration": {
+            "contestname": "WED Contest 2018 of World Enviroment Day",
+            "registration": "Register",
+            "forgot": "Forgot password",
+            "birthdate": "Date of birth",
+            "name": "Parent\/legal guardian name",
+            "contestant_name": "Name",
+            "last_name": "Parent\/legal guardian last name",
+            "contestant_last_name": "Last name",
+            "country": "Country",
+            "phone": "Phone",
+            "specify": "Specify",
+            "referred": {
+                "label": "Referred",
+                "options": {
+                    "1": "I am a Diproinduca employee",
+                    "2": "I was invited by",
+                    "3": "I learned about the contest through. Twitter, facebook, Instagram, google search, contest website, Other, please specify"
+                }
+            },
+            "language": {
+                "label": "Language",
+                "options": {
+                    "en": "English",
+                    "es": "Spanish"
+                }
+            },
+            "subscribed": "Subscribe to e-mail newsletter",
+            "email": "E-mail address",
+            "password": "Password",
+            "change_password": "Change password",
+            "password_confirmation": "Confirm password",
+            "change_password_confirmation": "Confirm changed password",
+            "countryselect": "Select your country",
+            "mail": {
+                "subject": "Please Confirm Your e-mail"
+            },
+            "editContestants": "Edit artist",
+            "edit": "Edit your profile",
+            "register": "Register",
+            "registerContestants": "Contestant registration",
+            "newParticipant": "Add new Participant",
+            "category": "Category",
+            "motivo": "Explain why did you change the default category",
+            "sendInformationtoContestantemail": "I authorize to send notifications about the contest to this contestant."
+        },
+        "contestants": {
+            "contestants": "Contestants",
+            "addNew": "Add new artist",
+            "myParticipants": "My Artists",
+            "yearsOld": "years old",
+            "edit": "Edit",
+            "upload": "Upload artwork",
+            "upto3": "children up to 3",
+            "upto7": "children between 4 and 7",
+            "upto10": "children between 8 and 10",
+            "upto15": "between 11 and 15",
+            "category": "Category",
+            "uploadTooltip": "Not yet open",
+            "seeds": "Seed children up to 3 years",
+            "sprouts": "Sprout children between 4 and 7",
+            "thinkers": "Thinker children between 8 and 10",
+            "gamechangers": "Game changer between 11 and 15"
         }
     },
     "es": {
-        "auth": {
-            "failed": "Estas credenciales no coinciden con los datos del sistema.",
-            "throttle": "Muchos Intentos. Porfavor espere {seconds} segundos para intentarlo nuevamente."
-        },
-        "contestants": {
-            "contestants": "Concursantes",
-            "addNew": "Añade un nuevo artista",
-            "myParticipants": "Mis artistas",
-            "yearsOld": "años",
-            "edit": "Editar",
-            "upload": "Subir dibujos",
-            "upto3": "Niños hasta los 3",
-            "upto7": "Niños entre 4 y 7",
-            "upto10": "Niños entre 8 y 10",
-            "upto15": "Entre 11 y 15",
-            "category": "Categoria",
-            "uploadTooltip": "Aún no disponible.",
-            "seeds": "Seed hasta los 3 Años",
-            "thinkers": "Thinker entre 4 y 7 Años",
-            "sprouts": "Sprout entre 8 y 10 Años",
-            "gamechangers": "Game Changer Entre 11 y 15 Años"
-        },
-        "contests": {
-            "edit": "Editar",
-            "read_more": "Leer más",
-            "confirm_email": "Por favor confirma el email para poder concursar.",
-            "register_button": "Registrese como representante",
-            "login_button": "Logueese en el concurso",
-            "topic": "Tema",
-            "new_contest": "Crear concurso",
-            "topicPlaceholder": "El Oceano es tu hogar",
-            "otherLang": "Ingles",
-            "faqlink": "http:\/\/wedcontest2018.diproinduca.com\/es\/preguntas-frecuentes\/",
-            "FAQ": "Preguntas frecuentes",
-            "list": "Lista de concursos",
-            "logout": "Desconectarme"
+        "passwords": {
+            "password": "La Contraseña debe tener almenos seis caracteres y la confirmacion debe coincidir",
+            "reset": "¡Tu contraseña se reinició!",
+            "sent": "¡Te hemos enviado el link de reinicio de tu password!",
+            "token": "Esta clave de reinicio es invalida.",
+            "user": "No tenemos un usuario con ese email en el sistema",
+            "password_label": "Clave",
+            "login": "Loguearse",
+            "or_register": "o regístrate"
         },
         "navbar": {
+            "adminHeader": "Administrador",
             "topic": "Tema 2018",
             "topic_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/",
             "learning_center": "Centro de Aprendizaje",
@@ -289,67 +264,28 @@ export default {
             "unconfirmed_1": "¡Ya casi estamos listos!",
             "unconfirmed_2": " Solo faltan pocos pasos para confirmar tu registro en el Concurso del Día Mundial del Medio Ambiente 2018"
         },
+        "auth": {
+            "failed": "Estas credenciales no coinciden con los datos del sistema.",
+            "throttle": "Muchos Intentos. Porfavor espere {seconds} segundos para intentarlo nuevamente."
+        },
+        "contests": {
+            "edit": "Editar",
+            "read_more": "Leer más",
+            "confirm_email": "Por favor confirma el email para poder concursar.",
+            "register_button": "Registrese como representante",
+            "login_button": "Logueese en el concurso",
+            "topic": "Tema",
+            "new_contest": "Crear concurso",
+            "topicPlaceholder": "El Oceano es tu hogar",
+            "otherLang": "Ingles",
+            "faqlink": "http:\/\/wedcontest2018.diproinduca.com\/es\/preguntas-frecuentes\/",
+            "FAQ": "Preguntas frecuentes",
+            "list": "Lista de concursos",
+            "logout": "Desconectarme"
+        },
         "pagination": {
             "previous": "&laquo; Anterior",
             "next": "Siguiente &raquo;"
-        },
-        "passwords": {
-            "password": "La Contraseña debe tener almenos seis caracteres y la confirmacion debe coincidir",
-            "reset": "¡Tu contraseña se reinició!",
-            "sent": "¡Te hemos enviado el link de reinicio de tu password!",
-            "token": "Esta clave de reinicio es invalida.",
-            "user": "No tenemos un usuario con ese email en el sistema",
-            "password_label": "Clave",
-            "login": "Loguearse",
-            "or_register": "o regístrate"
-        },
-        "profile": {
-            "my_profile": "Mi Perfil"
-        },
-        "registration": {
-            "contestname": "Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente",
-            "registration": "Registro",
-            "forgot": "Olvido de clave",
-            "birthdate": "Fecha de nacimiento",
-            "name": "Nombre de representante",
-            "contestant_name": "Nombre",
-            "last_name": "Apellido del representante",
-            "contestant_last_name": "Apellido",
-            "country": "País",
-            "phone": "Teléfono",
-            "specify": "Especifíque",
-            "referred": {
-                "label": "Referido por",
-                "options": {
-                    "1": "Soy un empleado de dirpoinduca",
-                    "2": "Fui invitado por",
-                    "3": "Vi el concurso por Twitter, Facebook, Instagram, Google Search, el sitio del concurso, u otro, porfavor especifique"
-                }
-            },
-            "language": {
-                "label": "Idioma",
-                "options": {
-                    "en": "Ingles",
-                    "es": "Español"
-                }
-            },
-            "subscribed": "Recibir notificaciones",
-            "email": "E-mail",
-            "password": "Contraseña",
-            "password_confirmation": "Confirmacion de contraseña",
-            "change_password": "Cambia tu contraseña",
-            "change_password_confirmation": "Confirma tu contraseña cambiada",
-            "countryselect": "Seleccione su país",
-            "mail": {
-                "subject": "Porfavor confirma tu correo"
-            },
-            "register": "Registrar",
-            "editContestants": "Editar artista",
-            "registerContestants": "Registro de concursantes",
-            "newParticipant": "Añadir nuevo participante",
-            "category": "Categoria",
-            "motivo": "Explique porque cambio la categoria que corresponde",
-            "sendInformationtoContestantemail": "Autorizo el envío de información relevante al correo del concursante"
         },
         "reset": {
             "salutation": "¡Hola!",
@@ -364,6 +300,9 @@ export default {
         },
         "routes": {
             "the_contest": "el_concurso"
+        },
+        "profile": {
+            "my_profile": "Mi Perfil"
         },
         "validation": {
             "accepted": "{attribute} debe ser aceptado.",
@@ -446,6 +385,69 @@ export default {
                 }
             },
             "attributes": []
+        },
+        "registration": {
+            "contestname": "Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente",
+            "registration": "Registro",
+            "forgot": "Olvido de clave",
+            "birthdate": "Fecha de nacimiento",
+            "name": "Nombre de representante",
+            "contestant_name": "Nombre",
+            "last_name": "Apellido del representante",
+            "contestant_last_name": "Apellido",
+            "country": "País",
+            "phone": "Teléfono",
+            "specify": "Especifíque",
+            "referred": {
+                "label": "Referido por",
+                "options": {
+                    "1": "Soy un empleado de dirpoinduca",
+                    "2": "Fui invitado por",
+                    "3": "Vi el concurso por Twitter, Facebook, Instagram, Google Search, el sitio del concurso, u otro, porfavor especifique"
+                }
+            },
+            "language": {
+                "label": "Idioma",
+                "options": {
+                    "en": "Ingles",
+                    "es": "Español"
+                }
+            },
+            "subscribed": "Recibir notificaciones",
+            "email": "E-mail",
+            "password": "Contraseña",
+            "password_confirmation": "Confirmacion de contraseña",
+            "change_password": "Cambia tu contraseña",
+            "change_password_confirmation": "Confirma tu contraseña cambiada",
+            "countryselect": "Seleccione su país",
+            "mail": {
+                "subject": "Porfavor confirma tu correo"
+            },
+            "register": "Registrar",
+            "editContestants": "Editar artista",
+            "registerContestants": "Registro de concursantes",
+            "newParticipant": "Añadir nuevo participante",
+            "category": "Categoria",
+            "motivo": "Explique porque cambio la categoria que corresponde",
+            "sendInformationtoContestantemail": "Autorizo el envío de información relevante al correo del concursante"
+        },
+        "contestants": {
+            "contestants": "Concursantes",
+            "addNew": "Añade un nuevo artista",
+            "myParticipants": "Mis artistas",
+            "yearsOld": "años",
+            "edit": "Editar",
+            "upload": "Subir dibujos",
+            "upto3": "Niños hasta los 3",
+            "upto7": "Niños entre 4 y 7",
+            "upto10": "Niños entre 8 y 10",
+            "upto15": "Entre 11 y 15",
+            "category": "Categoria",
+            "uploadTooltip": "Aún no disponible.",
+            "seeds": "Seed hasta los 3 Años",
+            "sprouts": "Sprout entre 4 y 7 Años",
+            "thinkers": "Thinker entre 8 y 10 Años",
+            "gamechangers": "Game Changer Entre 11 y 15 Años"
         }
     }
 }
