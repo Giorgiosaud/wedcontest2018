@@ -22,7 +22,7 @@
 					Country
 				</div>
 				<div class="row">
-					{{ user.country }}
+					{{ user.country }} <img class="mx-2" :src="flag" alt="user.country">
 				</div>
 			</div>
 			<div class="col">
@@ -47,14 +47,6 @@
 				</div>
 				<div class="row">
 					{{ user.phone }}
-				</div>
-			</div>
-			<div class="col">
-				<div class="row text-muted">
-					Country
-				</div>
-				<div class="row">
-					<img :src="flag" alt="user.country">
 				</div>
 			</div>
 			<div class="col">
@@ -85,16 +77,22 @@
 				<i class="fas fa-caret-up" :class="{'show-child':showChild}"></i>
 			</div>
 		</div>
-		<div class="collapse" :class="{show:showChild}" >
+		<div class="collapse" v-if="user.contestants.length>0" :class="{show:showChild}" >
 			<contestantData 
 			v-for="contestant in user.contestants" 
 			:contestant="contestant" 
 			:key="contestant.id"
 			></contestantData>
 		</div>
+		<div class="collapse" v-else :class="{show:showChild}" >
+			<div class="row no-contestant">
+				<div class="col">
+					Dont Have Artist Subscribed
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
-
 
 <script>
 import contestantData from './contestantData';
@@ -123,5 +121,8 @@ export default {
 }
 .show-child{
 	transform:rotate(180deg);
+}
+.no-contestant {
+    border: dashed 1px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<h1>Users Subscribed</h1>
-	<showUserData v-for="user in users" :user="user" :key="user.id"></showUserData>
+		<showUserData v-for="user in users" :user="user" :key="user.id"></showUserData>
 	</div>
 </template>
 
