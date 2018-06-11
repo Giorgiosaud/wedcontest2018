@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Contestant;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -27,8 +26,9 @@ class Category extends Model
     {
         return $this->belongsTo(Contest::class);
     }
-    public function contestants(){
-        return $this->belongsToMany(Contestant::class)->withPivot('status');
 
+    public function contestants()
+    {
+        return $this->belongsToMany(Contestant::class)->withPivot('status');
     }
 }

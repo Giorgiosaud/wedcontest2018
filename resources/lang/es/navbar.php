@@ -2,7 +2,7 @@
 
 
 return [
-    'adminHeader'=>'Administrador',
+    'adminHeader'     => 'Administrador',
     'topic'           => 'Tema 2018',
     'topic_link'      => 'http://wedcontest2018.diproinduca.com/es/',
     'learning_center' => 'Centro de Aprendizaje',

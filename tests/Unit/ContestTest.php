@@ -31,7 +31,7 @@ class ContestTest extends TestCase
     public function a_contest_have_a_path()
     {
         $this->assertEquals(
-            route('contest.show',$this->contest->slug),
+            route('contest.show', $this->contest->slug),
             $this->contest->path()
         );
     }
@@ -42,7 +42,7 @@ class ContestTest extends TestCase
     public function a_contest_can_be_called_by_slug_from_administrator()
     {
         $this->asAdmin();
-        $this->get(route('contest.show',$this->contest->slug))
+        $this->get(route('contest.show', $this->contest->slug))
             ->assertSee($this->contest->topic)
             ->assertSee($this->contest->description)
             ->assertSee((string) $this->contest->year);
@@ -69,7 +69,7 @@ class ContestTest extends TestCase
     public function a_contest_have_active_prop_and_can_be_viewed_as_admin()
     {
         $this->asAdmin();
-        $this->get(route('contest.show',$this->contest->slug))
+        $this->get(route('contest.show', $this->contest->slug))
             ->assertSee('Inactive');
     }
 
@@ -82,7 +82,7 @@ class ContestTest extends TestCase
         $data = [
             'background_image' => asset('/images/Home/ContestIntro.jpg'),
         ];
-        $this->getJson(route('contest.show',$this->contest->slug))
+        $this->getJson(route('contest.show', $this->contest->slug))
             ->assertJsonStructure()
             ->assertJsonFragment($data);
     }

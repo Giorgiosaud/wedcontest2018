@@ -21,7 +21,6 @@ Route::get('lang/{route}/{language}', 'LanguageController@switchLang')->name('la
 
 Route::post('/images/upload', 'ImageController@store')->middleware('auth')->name('store.image');
 
-
 Route::group([
     'prefix'     => '/admin',
     'middleware' => ['admin'], // Route admin
@@ -63,5 +62,4 @@ Route::group([
     Route::post('/mycontestant', 'MyContestantController@store')->middleware('auth')->name('mycontestant.store');
     Route::get('/mycontestants/{contestant}/edit', 'MyContestantController@edit')->middleware('auth')->name('mycontestant.edit');
     Route::put('/mycontestant/{contestant}', 'MyContestantController@update')->middleware('auth')->name('mycontestant.update');
-    
 });
