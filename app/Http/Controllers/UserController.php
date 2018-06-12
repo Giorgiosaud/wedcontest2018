@@ -25,21 +25,26 @@ class UserController extends Controller
      */
     public function toggleAdmin(User $user)
     {
-        if(auth()->user()->id!==$user->id){
+        if (auth()->user()->id !== $user->id) {
             $user->roles()->toggle('1');
         }
+
         return view('users.index');
     }
+
     /**
-     * Delete User
-     * @param  Reply  $reply [description]
-     * @return [type]        [description]
+     * Delete User.
+     *
+     * @param Reply $reply [description]
+     *
+     * @return [type] [description]
      */
     public function destroy(User $user)
     {
-        if(auth()->user()->id!==$user->id){
+        if (auth()->user()->id !== $user->id) {
             $user->delete();
         }
+
         return view('users.index');
     }
 }
