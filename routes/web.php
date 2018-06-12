@@ -28,6 +28,7 @@ Route::group([
 ], function () {
     Route::get('users', 'UserController@index')->name('users.index');
     Route::get('users/{user}', 'UserController@toggleAdmin')->name('user.make.admin');
+    Route::delete('users/{user}', 'UserController@destroy')->name('user.destroy');
     Route::get('/contestants', 'ContestantController@index')->name('contestants.index');
     Route::get('/contestant/create', 'ContestantController@create')->name('mycontestant.create');
     Route::post('/contestant/{contestant}/edit', 'ContestantController@edit')->name('contestant.edit');

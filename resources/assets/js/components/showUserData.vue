@@ -73,6 +73,14 @@
 					<a :href="'/admin/users/'+user.id">Toggle Admin Role</a>
 				</div>
 			</div>
+			<div class="col">
+				<div class="row text-muted">
+					Delete
+				</div>
+				<div class="row">
+					<button class="btn btn-link" @click="deleteUser">Delete User</button>
+				</div>
+			</div>
 			<div class="d-flex align-items-center justify-content-center mx-3">
 				<i class="fas fa-caret-up" :class="{'show-child':showChild}"></i>
 			</div>
@@ -111,6 +119,12 @@ export default {
 		flag(){
 			return `/images/flags/${this.user.country}.png`;
 		}
+	},
+	methods:{
+		deleteUser(){
+			axios.delete(`/admin/users/${this.user.id}`)
+			.then(response=>window.location.href = response.request.responseURL);
+		}
 	}
 }
 </script>
@@ -123,6 +137,6 @@ export default {
 	transform:rotate(180deg);
 }
 .no-contestant {
-    border: dashed 1px;
+	border: dashed 1px;
 }
 </style>
