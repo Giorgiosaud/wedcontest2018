@@ -69,7 +69,7 @@ class MyContestantController extends Controller
         $activeContest = Contest::whereActive(true)->first();
         $contestCatsId = Contest::whereActive(true)->first()->categories->pluck('id');
         $contestant->category()->detach($contestCatsId);
-        // dd($contestant);
+        dd($contestant);
         $contestant->update($contestantUpdate);
         if (request('email')) {
             Newsletter::subscribe(request('email'), ['firstName'=>request('name'), 'lastName'=>request('last_Name')], 'contestants');
