@@ -58,18 +58,25 @@ class MyContestantController extends Controller
             // 'email'     => 'email',
             // 'motivo'    =>'string'
         ]);
+        $contestantUpdate = [
+            // 'representant_id' => auth()->user()->id,
+            'name'            => $request->name,
+            'last_name'       => $request->last_name,
+            'dob'             => $request->dob,
+            'motivo'          => $request->motivo,
+            'email'           => $request->email,
+        ];
         $activeContest = Contest::whereActive(true)->first();
         $contestCatsId = Contest::whereActive(true)->first()->categories->pluck('id');
         $contestant->category()->detach($contestCatsId);
         // dd($contestant);
-        $contestant->update($req);
+        $contestant->update($contestantUpdate);
         if (request('email')) {
             Newsletter::subscribe(request('email'), ['firstName'=>request('name'), 'lastName'=>request('last_Name')], 'contestants');
         }
         $status = $this->verifyStatus($contestant->dob, request('categoryId'));
 
         $contestant->category()->attach(request()->categoryId, ['status'=>$status]);
-        dd($contestant);
 
         return redirect()->route('mycontestants.index');
     }
