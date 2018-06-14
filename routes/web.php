@@ -58,9 +58,10 @@ Route::group([
     Route::post('/profile', 'ProfileController@update')->name('profile.update');
     Route::post('/profile', 'ProfileController@index')->name('profile.index');
     Route::get('/mycontestants', 'MyContestantController@index')->name('mycontestants.index');
-    Route::get('/mycontestant/create', 'MyContestantController@create')->middleware('auth')->name('mycontestant.create');
-    Route::get('/mycontestant/{contestant}', 'MyContestantController@show')->name('mycontestants.show');
-    Route::post('/mycontestant', 'MyContestantController@store')->middleware('auth')->name('mycontestant.store');
     Route::get('/mycontestants/{contestant}/edit', 'MyContestantController@edit')->middleware('auth')->name('mycontestant.edit');
-    Route::put('/mycontestant/{contestant}', 'MyContestantController@update')->middleware('auth')->name('mycontestant.update');
+    Route::post('/mycontestant', 'MyContestantController@store')->middleware('auth')->name('mycontestant.store');
+    Route::get('/mycontestant/create', 'MyContestantController@create')->middleware('auth')->name('mycontestant.create');
+    Route::get('/mycontestant/{contestant}', 'MyContestantController@show')->name('mycontestant.show');
+    Route::put('/mycontestant/{contestant}', 'MyContestantController@update')->middleware('auth')->name('mycontestant.update')
+    ;
 });

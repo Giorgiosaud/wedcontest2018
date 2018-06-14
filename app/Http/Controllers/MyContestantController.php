@@ -51,6 +51,7 @@ class MyContestantController extends Controller
 
     public function update(Contestant $contestant)
     {
+
         $req = request()->validate([
             'name'      => 'required',
             'last_name' => 'required',
@@ -60,26 +61,29 @@ class MyContestantController extends Controller
         ]);
         $contestantUpdate = [
             // 'representant_id' => auth()->user()->id,
-            'name'            => $request->name,
-            'last_name'       => $request->last_name,
-            'dob'             => $request->dob,
-            'motivo'          => $request->motivo,
-            'email'           => $request->email,
+            'name'            => request()->name,
+            'last_name'       => request()->last_name,
+            'dob'             => request()->dob,
+            'motivo'          => request()->motivo,
+            'email'           => request()->email,
         ];
-        dd($contestant);
-        $activeContest = Contest::whereActive(true)->first();
-        $contestCatsId = Contest::whereActive(true)->first()->categories->pluck('id');
-        $contestant->category()->detach($contestCatsId);
         
+
+        $activeContest = Contest::whereActive(true)->first();
+        
+
+        $contestCatsId = Contest::whereActive(true)->first()->categories->pluck('id');
+        $status = $this->verifyStatus($contestant->dob, request('categoryId'));
+
+        $contestant->category()->detach($contestCatsId);
+        $contestant->category()->attach([request()->categoryId=> ['status'=>$status]]);
         $contestant->update($contestantUpdate);
+        
+
         if (request('email')) {
             Newsletter::subscribe(request('email'), ['firstName'=>request('name'), 'lastName'=>request('last_Name')], 'contestants');
         }
-        $status = $this->verifyStatus($contestant->dob, request('categoryId'));
-
-        $contestant->category()->attach(request()->categoryId, ['status'=>$status]);
-
-        return redirect()->route('mycontestants.index');
+        return route('mycontestants.index');
     }
 
     public function store(Request $request)

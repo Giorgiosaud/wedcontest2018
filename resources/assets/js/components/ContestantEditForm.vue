@@ -136,12 +136,11 @@ export default {
   edit() {
     this.loading = true;
     console.log(this.contestant);
-
     axios
     .put(this.putTo, this.contestant)
     .then(response => {
       console.log(response);
-      window.location.href = response.request.responseURL;
+      window.location.href = response.request.response;
     })
     .catch(error => {this.errors=error.response.data.errors;this.loading=false});
   },

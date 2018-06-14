@@ -65891,10 +65891,9 @@ var locales = {
 
       this.loading = true;
       console.log(this.contestant);
-
       axios.put(this.putTo, this.contestant).then(function (response) {
         console.log(response);
-        window.location.href = response.request.responseURL;
+        window.location.href = response.request.response;
       }).catch(function (error) {
         _this.errors = error.response.data.errors;_this.loading = false;
       });
