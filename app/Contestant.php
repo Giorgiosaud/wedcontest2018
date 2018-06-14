@@ -21,6 +21,7 @@ class Contestant extends Model
     protected $dates = [
         'dob',
     ];
+
     public function category()
     {
         return $this->belongsToMany(Category::class)->withPivot('status');
