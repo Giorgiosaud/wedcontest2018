@@ -40,11 +40,11 @@
         <datepicker
         :bootstrapStyling="true"
         autocomplete="off"
-        v-model="contestant.dob"
-        name="dob"
         input-class="disabled"
+        v-model="dob"
         @input="setDefaultCategory"
         :typeable="false"
+        @selectDate="selectDate"
         initial-view="year"
         :language="locale"
         ></datepicker>
@@ -126,7 +126,9 @@ export default {
       feedback: "",
       loading: false,
       authorizedEmail:false,
-      errors: {}
+      errors: {},
+      dob:'',
+      dob2:''
     };
   },
   methods: {
@@ -140,12 +142,18 @@ export default {
     .put(this.putTo, this.contestant)
     .then(response => {
       console.log(response);
+      this.contestant.dob=this.contestant.dob.toString().substring(0, 9);
       window.location.href = response.request.response;
     })
     .catch(error => {this.errors=error.response.data.errors;this.loading=false});
   },
-  setDefaultCategory() {
+  selectDate(val){
+    console.log("SELECTD");
+    this.contestant.dob=moment(val.timestamp).format('YYYY-MM-DD-MM');
+  },
+  setDefaultCategory(value) {
     console.log(this.categories.find(cat => this.age < cat.max_age));
+
     this.category = this.categories.find(cat => this.age <= cat.max_age);
   },
   categoryLabel: function(object) {
@@ -163,7 +171,7 @@ watch:{
 },
 computed: {
   age() {
-    // if(this.dob) this.form.dob=format(this.dob, 'YYYY-MM-DD');
+    if(this.dob) this.contestant.dob=format(this.dob, 'YYYY-MM-DD');
     return differenceInYears(new Date(), this.contestant.dob);
   },
   categoryCorrespondent() {

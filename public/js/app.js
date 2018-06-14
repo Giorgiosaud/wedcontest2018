@@ -65878,7 +65878,9 @@ var locales = {
       feedback: "",
       loading: false,
       authorizedEmail: false,
-      errors: {}
+      errors: {},
+      dob: '',
+      dob2: ''
     };
   },
 
@@ -65893,17 +65895,23 @@ var locales = {
       console.log(this.contestant);
       axios.put(this.putTo, this.contestant).then(function (response) {
         console.log(response);
+        _this.contestant.dob = _this.contestant.dob.toString().substring(0, 9);
         window.location.href = response.request.response;
       }).catch(function (error) {
         _this.errors = error.response.data.errors;_this.loading = false;
       });
     },
-    setDefaultCategory: function setDefaultCategory() {
+    selectDate: function selectDate(val) {
+      console.log("SELECTD");
+      this.contestant.dob = moment(val.timestamp).format('YYYY-MM-DD-MM');
+    },
+    setDefaultCategory: function setDefaultCategory(value) {
       var _this2 = this;
 
       console.log(this.categories.find(function (cat) {
         return _this2.age < cat.max_age;
       }));
+
       this.category = this.categories.find(function (cat) {
         return _this2.age <= cat.max_age;
       });
@@ -65924,7 +65932,7 @@ var locales = {
   },
   computed: {
     age: function age() {
-      // if(this.dob) this.form.dob=format(this.dob, 'YYYY-MM-DD');
+      if (this.dob) this.contestant.dob = Object(__WEBPACK_IMPORTED_MODULE_1_date_fns__["format"])(this.dob, 'YYYY-MM-DD');
       return Object(__WEBPACK_IMPORTED_MODULE_1_date_fns__["differenceInYears"])(new Date(), this.contestant.dob);
     },
     categoryCorrespondent: function categoryCorrespondent() {
@@ -66093,19 +66101,18 @@ var render = function() {
               attrs: {
                 bootstrapStyling: true,
                 autocomplete: "off",
-                name: "dob",
                 "input-class": "disabled",
                 typeable: false,
                 "initial-view": "year",
                 language: _vm.locale
               },
-              on: { input: _vm.setDefaultCategory },
+              on: { input: _vm.setDefaultCategory, selectDate: _vm.selectDate },
               model: {
-                value: _vm.contestant.dob,
+                value: _vm.dob,
                 callback: function($$v) {
-                  _vm.$set(_vm.contestant, "dob", $$v)
+                  _vm.dob = $$v
                 },
-                expression: "contestant.dob"
+                expression: "dob"
               }
             })
           ],

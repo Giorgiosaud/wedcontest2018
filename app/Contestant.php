@@ -18,7 +18,9 @@ class Contestant extends Model
         'editPath',
     ];
     protected $with = ['category'];
-
+    protected $dates = [
+        'dob',
+    ];
     public function category()
     {
         return $this->belongsToMany(Category::class)->withPivot('status');

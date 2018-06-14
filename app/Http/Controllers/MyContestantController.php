@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Contest;
 use App\Contestant;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Spatie\Newsletter\NewsletterFacade as Newsletter;
 
@@ -51,7 +52,6 @@ class MyContestantController extends Controller
 
     public function update(Contestant $contestant)
     {
-
         $req = request()->validate([
             'name'      => 'required',
             'last_name' => 'required',
