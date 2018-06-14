@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Contest;
 use App\Contestant;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Spatie\Newsletter\NewsletterFacade as Newsletter;
 
@@ -67,10 +66,8 @@ class MyContestantController extends Controller
             'motivo'          => request()->motivo,
             'email'           => request()->email,
         ];
-        
 
         $activeContest = Contest::whereActive(true)->first();
-        
 
         $contestCatsId = Contest::whereActive(true)->first()->categories->pluck('id');
         $status = $this->verifyStatus($contestant->dob, request('categoryId'));
@@ -78,11 +75,11 @@ class MyContestantController extends Controller
         $contestant->category()->detach($contestCatsId);
         $contestant->category()->attach([request()->categoryId=> ['status'=>$status]]);
         $contestant->update($contestantUpdate);
-        
 
         if (request('email')) {
             Newsletter::subscribe(request('email'), ['firstName'=>request('name'), 'lastName'=>request('last_Name')], 'contestants');
         }
+
         return route('mycontestants.index');
     }
 

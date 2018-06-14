@@ -62,6 +62,5 @@ Route::group([
     Route::post('/mycontestant', 'MyContestantController@store')->middleware('auth')->name('mycontestant.store');
     Route::get('/mycontestant/create', 'MyContestantController@create')->middleware('auth')->name('mycontestant.create');
     Route::get('/mycontestant/{contestant}', 'MyContestantController@show')->name('mycontestant.show');
-    Route::put('/mycontestant/{contestant}', 'MyContestantController@update')->middleware('auth')->name('mycontestant.update')
-    ;
+    Route::put('/mycontestant/{contestant}', 'MyContestantController@update')->middleware('auth')->name('mycontestant.update');
 });
