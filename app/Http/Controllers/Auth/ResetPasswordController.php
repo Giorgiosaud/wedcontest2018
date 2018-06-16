@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class ResetPasswordController extends Controller
 {
+    
+    /**
+     * Where to redirect users after resetting their password.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/mycontestants';
     /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
@@ -31,12 +38,6 @@ class ResetPasswordController extends Controller
         );
     }
 
-    /**
-     * Where to redirect users after resetting their password.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/the_contest';
 
     /**
      * Create a new controller instance.

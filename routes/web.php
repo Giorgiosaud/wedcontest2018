@@ -63,4 +63,6 @@ Route::group([
     Route::get('/mycontestant/create', 'MyContestantController@create')->middleware('auth')->name('mycontestant.create');
     Route::get('/mycontestant/{contestant}', 'MyContestantController@show')->name('mycontestant.show');
     Route::put('/mycontestant/{contestant}', 'MyContestantController@update')->middleware('auth')->name('mycontestant.update');
+    Route::get('/mycontestant/{contestant}/artwork-upload', 'ArtworkUploadController@create')->middleware('auth')->name('artwork.upload');
+
 });

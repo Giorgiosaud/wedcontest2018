@@ -50,6 +50,7 @@ class User extends Authenticatable
     protected $judgesEmails = [
         'jorgelsaud+judge@gmail.com',
     ];
+    protected $appends=['isAdmin'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -64,6 +65,13 @@ class User extends Authenticatable
      *Check if user is Admin.
      */
     public function isAdmin()
+    {
+        return $this->roles()->whereName('Administrator')->exists();
+    }
+    /**
+     *Check if user is Admin.
+     */
+    public function getisAdminAttribute()
     {
         return $this->roles()->whereName('Administrator')->exists();
     }

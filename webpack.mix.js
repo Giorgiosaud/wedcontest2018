@@ -26,4 +26,4 @@ mix
     processCssUrls: false,
     postCss: [tailwindcss("./tailwind.js")]
   })
-  .browserSync("https://concurso.zonapro");
+  .browserSync("https://wedcontest.develop/");
