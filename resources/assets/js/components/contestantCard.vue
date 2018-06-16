@@ -13,11 +13,11 @@
 					<div class="edit">
 						<a :href="editLink"><i class="far fa-edit"></i>{{ $t('contestants.edit') }}</a>
 					</div>
-					<div class="upload">
-						<button type="button" class="btn btn-link text-muted" data-toggle="tooltip" 
+					<div class="upload" v-if="isAdmin">
+						<a class="btn btn-link text-muted" :href="uploadLink" data-toggle="tooltip" 
 						data-placement="top" :title="$t('contestants.uploadTooltip')">
 							{{ $t('contestants.upload') }}<i class="fas fa-cloud-upload-alt"></i>
-						</button>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -31,8 +31,11 @@ import {format,differenceInYears} from "date-fns";
 export default {
 
 	name: 'contestantCard',
-	props:["contestant","editLink"],
+	props:["contestant","editLink","uploadLink"],
 	computed:{
+		isAdmin(){
+			return App.user.isAdmin;
+		},
 		statusColor(){
 			console.log(this.contestant);
 			if(this.contestant.category[0].pivot.status==='pending'){
