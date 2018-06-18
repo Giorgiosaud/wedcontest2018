@@ -78,7 +78,7 @@
 					Delete
 				</div>
 				<div class="row">
-					<button class="btn btn-link" @click="deleteUser">Delete User</button>
+					<button class="btn btn-link" @click.prevent="deleteUser">Delete User</button>
 				</div>
 			</div>
 			<div class="d-flex align-items-center justify-content-center mx-3">
@@ -123,7 +123,7 @@ export default {
 	methods:{
 		deleteUser(){
 			axios.delete(`/admin/users/${this.user.id}`)
-			.then(response=>window.location.href = response.request.responseURL);
+			.then(response=>window.location.reload());
 		}
 	}
 }

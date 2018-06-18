@@ -25,6 +25,7 @@ import VueInternalization from "vue-i18n";
  */
 
  window.Vue = require("vue");
+ require('vue2-animate/dist/vue2-animate.min.css')
  import VueFeather from "vue-feather";
  Vue.component(VueFeather.name, VueFeather);
  Vue.use(VueInternalization);

@@ -40,6 +40,8 @@ Vue.component(
   "ContestantEditForm",
   require("./components/ContestantEditForm.vue")
 );
+Vue.component('artworkUploadForm',require("./components/artworkUploadForm.vue"));
+Vue.component('artworkEditForm',require("./components/artworkEditForm.vue"));
 Vue.component("contestantCard", require("./components/ContestantCard.vue"));
 Vue.component("LogoutButton", require("./components/LogoutButton.vue"));
 Vue.component("EditMyProfile", require("./components/EditMyProfile.vue"));

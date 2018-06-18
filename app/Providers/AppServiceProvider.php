@@ -17,10 +17,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $contest=Contest::whereActive(true)->first();
-        View::share('contest', $contest);
+        if (! $this->app->runningInConsole()) {
 
-        Blade::component('components.header', 'header');
+            $contest=Contest::whereActive(true)->first();
+            View::share('contest', $contest);
+        }
+        // Blade::component('components.header', 'header');
         // View::share('countries', Country::all());
         //
     }

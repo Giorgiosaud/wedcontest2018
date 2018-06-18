@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div class="form-group">
         <input id="trix" type="hidden" :name="name" :value="value">
 
         <trix-editor
-        class="bg-light"
+                class="form-control"
                 ref="trix"
                 input="trix"
                 @trix-change="change"

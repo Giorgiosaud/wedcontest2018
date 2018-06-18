@@ -2,7 +2,7 @@
 	<div class="col-12 col-md-4 mb-4">
 		<div class="card" :class="statusColor">
 			<div class="card-header">
-				<span class="realze">{{  contestant.category[0].name | capitalize}}</span> - {{ $t('contestants.category') }} {{ categoryLabel }} {{  $t('contestants.yearsOld') }}
+				<span class="realze">{{  contestant.categories[0].name | capitalize}}</span> - {{ $t('contestants.category') }} {{ categoriesLabel }} {{  $t('contestants.yearsOld') }}
 			</div>
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item"><strong>{{ contestant.name }} {{ contestant.last_name }} – {{ age }} {{ $t('contestants.yearsOld') }}</strong></li>
@@ -11,11 +11,17 @@
 			<div class="card-footer">
 				<div class="d-flex align-center justify-content-between">
 					<div class="edit">
-						<a :href="editLink"><i class="far fa-edit"></i>{{ $t('contestants.edit') }}</a>
+						<a :href="contestant.editPath"><i class="far fa-edit"></i>{{ $t('contestants.edit') }}</a>
 					</div>
 					<div class="upload" v-if="isAdmin">
-						<a class="btn btn-link text-muted" :href="uploadLink" data-toggle="tooltip" 
-						data-placement="top" :title="$t('contestants.uploadTooltip')">
+						<a class="btn btn-link text-muted" :href="contestant.uploadPath" data-toggle="tooltip" 
+						data-placement="top" :title="$t('lang.uploadTooltip')">
+							{{ $t('contestants.upload') }}<i class="fas fa-cloud-upload-alt"></i>
+						</a>
+					</div>
+					<div class="upload" v-else>
+						<a class="btn btn-link text-muted" href="#" data-toggle="tooltip" 
+						data-placement="top" :title="$t('lang.uploadTooltipNotOpen')">
 							{{ $t('contestants.upload') }}<i class="fas fa-cloud-upload-alt"></i>
 						</a>
 					</div>
@@ -31,42 +37,42 @@ import {format,differenceInYears} from "date-fns";
 export default {
 
 	name: 'contestantCard',
-	props:["contestant","editLink","uploadLink"],
+	props:["contestant","uploadLink"],
 	computed:{
 		isAdmin(){
 			return App.user.isAdmin;
 		},
 		statusColor(){
-			console.log(this.contestant);
-			if(this.contestant.category[0].pivot.status==='pending'){
+			// console.log(this.contestant);
+			if(this.contestant.categories[0].pivot.status==='pending'){
 				return 'bg-pending-rethinking-plastic';
 			}
 			else{
-				return this.contestant.category[0].color;
+				return this.contestant.categories[0].color;
 			}
 		},
 		age() {
 			return differenceInYears(new Date(),this.contestant.dob)
 		},
 		shortCat(){
-			if(this.contestant.category.length===0) return;
-			if(this.contestant.category[0].name=="Game Changers"){
+			if(this.contestant.categories.length===0) return;
+			if(this.contestant.categories[0].name=="Game Changers"){
 				return "GC";
 			}
-			return this.contestant.category[0].name.substr(0, 2).toUpperCase();
+			return this.contestant.categories[0].name.substr(0, 2).toUpperCase();
 		},
 		status(){
-			return this.contestant.category[0].pivot.status
+			return this.contestant.categories[0].pivot.status
 		},
-		categoryLabel(){
-			if(this.contestant.category[0].name=="Seeds"){
+		categoriesLabel(){
+			if(this.contestant.categories[0].name=="Seeds"){
 
 				return this.$t("contestants.upto3");
 			}
-			else if(this.contestant.category[0].name=="Sprouts"){
+			else if(this.contestant.categories[0].name=="Sprouts"){
 				return this.$t("contestants.upto7");
 			}
-			else if(this.contestant.category[0].name=="Thinkers"){
+			else if(this.contestant.categories[0].name=="Thinkers"){
 				return this.$t("contestants.upto10");
 			}
 			else{

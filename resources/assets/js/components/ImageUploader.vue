@@ -4,27 +4,28 @@
       <label class="label" data-toggle="tooltip" title="Change your avatar">
         <img class="img-fluid" :src="src" v-if="value">
         <div v-else>
-          <p class="border-dashed border-light text-muted p-3">insert an Image</p>
+          <p class="border-dashed border-light text-muted p-3">{{$t('lang.dropImage')}}</p>
         </div>
         <input type="file" class="sr-only" ref="imageFile" id="input" name="image" accept="image/*" @change="onChange" >
       </label>
     </div>
     <div>
-      <button type="button" class="btn btn-wedcontest" v-if="src" @click="editImage" >Edit Rotate or Crop Image</button>
-      <button type="button" class="btn btn-wedcontest" @click="$refs.imageFile.click()" >Upload Image</button>
+      <button type="button" class="btn btn-wedcontest" v-if="src" @click="editImage" >{{$t('lang.editOrRotate')}}</button>
+      <button type="button" class="btn btn-wedcontest" @click="$refs.imageFile.click()" >{{$t('lang.uploadImage')}}</button>
     </div>
   </label>
   <div
-  class="modal
-  fade"
+  class="modal fade"
   :id="name"
   tabindex="-1"
   role="dialog"
   :aria-labelledby="name"
   aria-hidden="true"
   @show.bs.modal="createCropper"
-  @hide.bs.modal  ="destroyCropper">
-  <div class="modal-dialog modal-lg" role="document">
+  @hide.bs.modal  ="destroyCropper"
+  data-backdrop="static" 
+  data-keyboard="false">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Crop The Uploaded Image</h5>
@@ -34,31 +35,78 @@
       </div>
       <div class="modal-body">
         <div class="container-fluid">
-          <div class="row">
-            <div class="col">
-              <img id="image" ref="imagen" :src="src">
-            </div>
-          </div>
+          <img id="image" ref="imagen" :src="src">
         </div>
       </div>
       <div class="modal-footer">
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" @click="rotateRight" class="btn btn-primary">
-            <feather type="rotate-cw" animation="spin" animation-speed="fast"></feather>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" @click.prevent="cropper.setDragMode('move')" data-option="move" title="Move">
+            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.setDragMode('move')">
+              <span class="fa fa-arrows-alt"></span>
+            </span>
           </button>
-          <button class="btn btn-primary" type="button" @click="rotateRightSlow">
-            <feather type="rotate-cw" animation="spin" animation-speed="slow"></feather>
-          </button>
-          <button class="btn btn-primary" type="button" @click="rotateLeft">
-            <feather type="rotate-ccw" animation="unspin" animation-speed="fast"></feather>
-          </button>
-          <button class="btn btn-primary" type="button" @click="rotateLeftSlow">
-            <feather type="rotate-ccw" animation="unspin" animation-speed="slow"></feather>
-          </button>
-          <button class="btn btn-primary" type="button" @click="resetRotation">
-            <feather type="repeat"></feather>
+          <button type="button" class="btn btn-primary" @click.prevent="cropper.setDragMode('crop')" title="Crop">
+            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.setDragMode('crop')">
+              <span class="fa fa-crop"></span>
+            </span>
           </button>
         </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" @click.prevent="cropper.zoom(0.1)" title="Zoom In">
+            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.zoomIn">
+              <span class="fa fa-search-plus"></span>
+            </span>
+          </button>
+          <button type="button" class="btn btn-primary" @click.prevent="cropper.zoom(-0.1)" title="Zoom Out">
+            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.zoom(-0.1)">
+              <span class="fa fa-search-minus"></span>
+            </span>
+          </button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" @click.prevent="cropper.move(-10, 0)" title="Move Left">
+            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.move(-10, 0)">
+              <span class="fa fa-arrow-left"></span>
+            </span>
+          </button>
+          <button type="button" class="btn btn-primary" data-method="move" @click.prevent="cropper.move(10, 0)" title="Move Right">
+            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.move(10, 0)">
+              <span class="fa fa-arrow-right"></span>
+            </span>
+          </button>
+          <button type="button" class="btn btn-primary" data-method="move" @click.prevent="cropper.move(0, -10)" title="Move Up">
+            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.move(0, -10)">
+              <span class="fa fa-arrow-up"></span>
+            </span>
+          </button>
+          <button type="button" class="btn btn-primary" data-method="move" @click.prevent="cropper.move(0, 10)" title="Move Down">
+            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.move(0, 10)">
+              <span class="fa fa-arrow-down"></span>
+            </span>
+          </button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" @click.prevent="cropper.rotate(-45)"  title="Rotate Left">
+            <feather type="rotate-ccw" data-toggle="tooltip"  data-original-title="cropper.rotate(45)"></feather>
+          </button>
+          <button type="button" class="btn btn-primary"  @click.prevent="cropper.rotate(45)" title="Rotate Right">
+            <feather type="rotate-cw" data-toggle="tooltip"  data-original-title="cropper.rotate(45)"></feather>
+            </span>
+          </button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" @click.prevent="cropper.scaleX(-1)" title="Flip Horizontal">
+            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.scaleX(-1)">
+              <span class="fa fa-arrows-alt-h"></span>
+            </span>
+          </button>
+          <button type="button" class="btn btn-primary" @click.prevent="cropper.scaleY(-1)" title="Flip Vertical">
+            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.scaleY(-1)">
+              <span class="fa fa-arrows-alt-v"></span>
+            </span>
+          </button>
+        </div>
+        
         <button type="button" class="btn btn-primary" @click="endEdition"><feather type="check"></feather></button>
       </div>
     </div>
@@ -106,12 +154,7 @@ export default {
       cropper: "",
       cropperOptionsMerged: Object.assign(
       {
-        // aspectRatio: 16 / 9,
-        movable: false,
-        zoomOnWheel: false
-          // minContainerWidth: 800,
-          // minCropBoxWidth: 800
-        },
+      },
         _.clone(this.cropperOptions)
         ),
       croppedCanvasOptionsMerged: Object.assign(
@@ -213,3 +256,21 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.modal-dialog {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  max-width: 100%;  
+  padding: 0;
+}
+
+.modal-content {
+  height: auto;
+  min-height: 100%;
+  border-radius: 0;
+}
+i.feather{
+  height: 15px;
+}
+</style>

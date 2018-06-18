@@ -1,10 +1,10 @@
 <template>
-	<div class="row contestant" :class="contestant.category[0].color">
+	<div class="row contestant" :class="contestant.categories[0].color">
 		<div class="col">
 			{{ contestant.id }}
 		</div>
 		<div class="col">
-			{{  contestant.category[0].name}}
+			{{  contestant.categories[0].name}}
 		</div>
 		<div class="col">
 			<a :href="contestant.editPath">{{ contestant.name }}

@@ -3,8 +3,9 @@
 @include('layouts.assets.headerStandart')
 <div class="pt-6">
    <div class="content">
-   <artwork-upload-form :contestant="{{$contestant}}"
-   ></artwork-upload-form>
+   <artwork-edit-form :contestant="{{$contestant}}"
+    :artwork="{{$artwork}}"
+   ></artwork-edit-form>
    </div>
 </div>
 @endsection

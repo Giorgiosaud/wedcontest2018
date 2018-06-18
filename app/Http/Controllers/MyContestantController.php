@@ -13,11 +13,8 @@ class MyContestantController extends Controller
     public function index()
     {
         $contestants = auth()->user()->contestants;
-        $contest = Contest::whereActive(true)->first();
-
         return view('mycontestants.index', [
             'contestants' => $contestants,
-            'contest'     => $contest,
         ]);
     }
 

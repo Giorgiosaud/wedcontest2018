@@ -165,7 +165,7 @@ export default {
 },
 watch:{
   category(value){
-    this.contestant.category[0]=value;
+    this.contestant.categories[0]=value;
     this.contestant.categoryId=value.id;
   }
 },
@@ -179,7 +179,7 @@ computed: {
     return this.categories.find(cat => this.age <= cat.max_age);
   },
   contestantCorrespondToSelectedCategory() {
-    return this.categoryCorrespondent.id=== this.contestant.category[0].id;
+    return this.categoryCorrespondent.id=== this.contestant.categories[0].id;
   },
   categoriesModified(){
     return this.categories.map(category=>{
@@ -193,7 +193,7 @@ computed: {
   },
 },
 created(){
-  this.category=this.categoriesModified.find(cat=>cat.id===this.contestant.category[0].id);
+  this.category=this.categoriesModified.find(cat=>cat.id===this.contestant.categories[0].id);
 }
 };
 </script>

@@ -16,9 +16,9 @@ class ArtworkPolicy
      * @param  Reply $reply
      * @return bool
      */
-     public function update(User $user, Contestant $reply)
+     public function update(User $user, Contestant $contestant)
      {
-        return $reply->user_id == $user->id;
+        return $contestant->representant->id == $user->id;
     }
         /**
          * Create a new policy instance.

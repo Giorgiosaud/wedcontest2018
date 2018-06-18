@@ -137,6 +137,10 @@ class User extends Authenticatable
     {
         return  $this->belongsToMany(Role::class);
     }
+    public function getFlagAttribute(){
+        return asset('/images/flags/'.$this->country.'.png');
+    }
+    
 
     /**
      * [setRole description].
