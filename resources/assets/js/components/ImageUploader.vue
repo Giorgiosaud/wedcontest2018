@@ -222,7 +222,7 @@ export default {
           .catch(e => flash(e.response.data.message, "warning"))
           .then(({ data }) => {
             console.log(data.data);
-            that.src = "/" + data.data;
+            that.src = "/storage/" + data.data;
             // that.$emit("cropped", data);
             that.$emit("input", that.src);
             flash("Imagen Guardada Temporalmente", "success");

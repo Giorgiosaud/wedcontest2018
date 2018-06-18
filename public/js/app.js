@@ -67589,7 +67589,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           var data = _ref.data;
 
           console.log(data.data);
-          that.src = "/" + data.data;
+          that.src = "/storage/" + data.data;
           // that.$emit("cropped", data);
           that.$emit("input", that.src);
           flash("Imagen Guardada Temporalmente", "success");
