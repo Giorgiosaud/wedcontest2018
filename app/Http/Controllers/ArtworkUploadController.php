@@ -40,7 +40,7 @@ class ArtworkUploadController extends Controller
             Storage::delete($artworkFile);
         }
 
-        Storage::move('storage/public/'.request('url'), 'storage/public/'.$artworkFile );
+        Storage::move('storage/'.request('url'), 'storage/'.$artworkFile );
 
         $artwork = Artwork::create([
             'contestant_id' => $contestant->id,
