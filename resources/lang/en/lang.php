@@ -133,4 +133,5 @@ return[
 	'dropImage'=>'Drop Image',
 	'revisar'=>'Review',
 	'required'=>'This Field is required',
+	'delete'=>'Delete',
 ];
