@@ -67317,7 +67317,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}
 			axios.post(this.contestant.uploadPath, this.form).then(function (response) {
 				console.log(response);
-				window.location.href = response.request.responseURL;
+				// window.location.href = response.request.responseURL;
 			});
 		}
 	}
@@ -67631,7 +67631,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           var data = _ref.data;
 
           console.log(data.data);
-          that.src = "/" + data.data;
+          that.src = data.data;
           // that.$emit("cropped", data);
           that.$emit("input", that.src);
           flash("Imagen Guardada Temporalmente", "success");
@@ -71420,7 +71420,10 @@ var render = function() {
         },
         [
           _vm.value
-            ? _c("img", { staticClass: "img-fluid", attrs: { src: _vm.src } })
+            ? _c("img", {
+                staticClass: "img-fluid",
+                attrs: { src: "/" + _vm.src }
+              })
             : _c("div", [
                 _c(
                   "p",
