@@ -126,7 +126,8 @@ export default {
             "uploadImage": "Upload Image",
             "dropImage": "Drop Image",
             "revisar": "Review",
-            "required": "This Field is required"
+            "required": "This Field is required",
+            "delete": "Delete"
         },
         "passwords": {
             "password": "Passwords must be at least six characters and match the confirmation.",
@@ -477,7 +478,8 @@ export default {
             "uploadImage": "Subir imagen",
             "dropImage": "Suelte aquí su imagen",
             "revisar": "Revisar",
-            "required": "Este campo es requerido"
+            "required": "Este campo es requerido",
+            "delete": "Borrar"
         },
         "passwords": {
             "password": "La Contraseña debe tener almenos seis caracteres y la confirmacion debe coincidir",

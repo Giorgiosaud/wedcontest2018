@@ -21,6 +21,7 @@ class Contestant extends Model
     protected $appends = [
         'editPath',
         'uploadPath',
+        'deletePath',
 
     ];
     protected $with = ['categories'];
@@ -78,6 +79,20 @@ class Contestant extends Model
 
     }
     /**
+     * @return string
+     */
+    public function deletePath()
+    {
+
+        if(request()->wantsJson()) { 
+            return route('contestant.destroy', $this->slug);
+        }   
+        if (auth()->user()->isAdmin) {
+            return route('contestant.destroy', $this->slug);
+        }
+        return '#';
+    }
+    /**
      * Get the route key name.
      *
      * @return string
@@ -86,7 +101,10 @@ class Contestant extends Model
     {
         return 'slug';
     }
-
+    public function getDeletePathAttribute()
+    {
+        return $this->deletePath();
+    }
     public function getEditPathAttribute()
     {
         return $this->editPath();

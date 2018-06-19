@@ -2,28 +2,32 @@
 	<div class="col-12 col-md-4 mb-4">
 		<div class="card" :class="statusColor">
 			<div class="card-header">
-				<span class="realze">{{  contestant.categories[0].name | capitalize}}</span> - {{ $t('contestants.category') }} {{ categoriesLabel }} {{  $t('contestants.yearsOld') }}
+				<span class="realze">{{  contestant.categories[0].name | capitalize}}</span> - {{ $t('lang.category') }} {{ categoriesLabel }} {{  $t('lang.yearsOld') }}
 			</div>
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item"><strong>{{ contestant.name }} {{ contestant.last_name }} – {{ age }} {{ $t('contestants.yearsOld') }}</strong></li>
+				<li class="list-group-item"><strong>{{ contestant.name }} {{ contestant.last_name }} – {{ age }} {{ $t('lang.yearsOld') }}</strong></li>
 				<li class="list-group-item">{{ status }}</li>
 			</ul>
 			<div class="card-footer">
 				<div class="d-flex align-center justify-content-between">
 					<div class="edit">
-						<a :href="contestant.editPath"><i class="far fa-edit"></i>{{ $t('contestants.edit') }}</a>
+						<a :href="contestant.editPath"><i class="far fa-edit"></i>{{ $t('lang.edit') }}</a>
 					</div>
+					
 					<div class="upload" v-if="isAdmin">
 						<a class="btn btn-link text-muted" :href="contestant.uploadPath" data-toggle="tooltip" 
 						data-placement="top" :title="$t('lang.uploadTooltip')">
-							{{ $t('contestants.upload') }}<i class="fas fa-cloud-upload-alt"></i>
+							{{ $t('lang.upload') }}<i class="fas fa-cloud-upload-alt"></i>
 						</a>
 					</div>
 					<div class="upload" v-else>
 						<a class="btn btn-link text-muted" href="#" data-toggle="tooltip" 
 						data-placement="top" :title="$t('lang.uploadTooltipNotOpen')">
-							{{ $t('contestants.upload') }}<i class="fas fa-cloud-upload-alt"></i>
+							{{ $t('lang.upload') }}<i class="fas fa-cloud-upload-alt"></i>
 						</a>
+					</div>
+					<div class="delete">
+						<a href="#" @click.prevent="deleteContestant"><i class="far fa-trash-alt"></i>{{ $t('lang.delete') }}</a>
 					</div>
 				</div>
 			</div>
@@ -38,6 +42,12 @@ export default {
 
 	name: 'contestantCard',
 	props:["contestant","uploadLink"],
+	methods:{
+		deleteContestant(){
+			axios.delete(this.contestant.deletePath)
+			.then(()=>window.location.reload())
+		},
+	},
 	computed:{
 		isAdmin(){
 			return App.user.isAdmin;
@@ -64,19 +74,20 @@ export default {
 		status(){
 			return this.contestant.categories[0].pivot.status
 		},
+
 		categoriesLabel(){
 			if(this.contestant.categories[0].name=="Seeds"){
 
-				return this.$t("contestants.upto3");
+				return this.$t("lang.upto3");
 			}
 			else if(this.contestant.categories[0].name=="Sprouts"){
-				return this.$t("contestants.upto7");
+				return this.$t("lang.upto7");
 			}
 			else if(this.contestant.categories[0].name=="Thinkers"){
-				return this.$t("contestants.upto10");
+				return this.$t("lang.upto10");
 			}
 			else{
-				return this.$t("contestants.upto15");
+				return this.$t("lang.upto15");
 			}
 		}
 	}

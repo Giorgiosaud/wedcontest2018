@@ -45,7 +45,14 @@ class ContestantController extends Controller
             'contest'    => $contest,
         ]);
     }
-
+    public function destroy(Contestant $contestant){
+        $this->authorize('delete', $contestant);
+        $contestant->delete();
+        if (request()->wantsJson()) {
+            return response([], 204);
+        }
+        return redirect()->route('mycontestants.index');
+    }
     public function update(Contestant $contestant)
     {
         $contestant->update(request()->validate([

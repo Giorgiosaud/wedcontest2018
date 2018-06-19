@@ -15,6 +15,12 @@ class ContestantPolicy
         }
         return $contestant->representant->id===$user->id;
     }
+     public function delete(User $user,Contestant $contestant){
+        if($user->isAdmin){
+            return true;
+        }
+        return $contestant->representant->id===$user->id;
+    }
     /**
      * Create a new policy instance.
      *

@@ -129,4 +129,5 @@ return [
 	'dropImage'=>'Suelte aquí su imagen',
 	'revisar'=>'Revisar',
 	'required'=>'Este campo es requerido',
+	'delete'=>'Borrar',
 ];
