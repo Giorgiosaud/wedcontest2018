@@ -134,4 +134,5 @@ return[
 	'revisar'=>'Review',
 	'required'=>'This Field is required',
 	'delete'=>'Delete',
+	'from'=>'From'
 ];

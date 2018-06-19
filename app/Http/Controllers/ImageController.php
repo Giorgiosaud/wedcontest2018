@@ -12,7 +12,7 @@ class ImageController extends Controller
             'image' => ['required'],
         ]);
         $data = request()->file('image')->store('temp','public');
-
+        
         return response(compact('data'), 201);
     }
 }

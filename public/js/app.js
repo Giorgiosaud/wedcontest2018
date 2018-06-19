@@ -58473,7 +58473,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["message"],
@@ -58489,7 +58488,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   computed: {
     classes: function classes() {
-      var defaults = ["alert", "fixed-bottom"];
+      var defaults = ["alert", "fixed-bottom-right"];
 
       if (this.level === "success") defaults.push("alert-success");
       if (this.level === "warning") defaults.push("alert-warning");
@@ -58545,7 +58544,6 @@ var render = function() {
       { name: "show", rawName: "v-show", value: _vm.show, expression: "show" }
     ],
     class: _vm.classes,
-    staticStyle: { right: "25px", bottom: "25px" },
     attrs: { role: "alert" },
     domProps: { textContent: _vm._s(_vm.body) }
   })
@@ -67317,7 +67315,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}
 			axios.post(this.contestant.uploadPath, this.form).then(function (response) {
 				console.log(response);
-				// window.location.href = response.request.responseURL;
+				window.location.href = response.request.responseURL;
 			});
 		}
 	}
@@ -71422,7 +71420,7 @@ var render = function() {
           _vm.value
             ? _c("img", {
                 staticClass: "img-fluid",
-                attrs: { src: "/" + _vm.src }
+                attrs: { src: "/storage/" + _vm.src }
               })
             : _c("div", [
                 _c(

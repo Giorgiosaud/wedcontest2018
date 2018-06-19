@@ -130,4 +130,5 @@ return [
 	'revisar'=>'Revisar',
 	'required'=>'Este campo es requerido',
 	'delete'=>'Borrar',
+	'from'=>'Desde'
 ];

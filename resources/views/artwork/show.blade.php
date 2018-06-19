@@ -5,12 +5,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<h1>{{$contestant->name}} {{$contestant->last_name}} {{$contestant->age}} @lang('lang.yearsOld') From: <img src="{{$contestant->representant->flag}}" alt="{{$contestant->representant->country}}"></h1>
+				<h1>{{$contestant->name}} {{$contestant->last_name}} {{$contestant->age}} @lang('lang.yearsOld') @lang('lang.from'): <img src="{{$contestant->representant->flag}}" alt="{{$contestant->representant->country}}"></h1>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
-				<img src="{{asset($artwork->url)}}" class="img-fluid">
+				<img src="/{{($artwork->url)}}" class="img-fluid">
 			</div>
 		</div>
 		<div class="row py-4">

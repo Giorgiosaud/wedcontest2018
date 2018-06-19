@@ -11065,6 +11065,10 @@ a.text-dark:focus {
   src: url("fonts/icomoon.woff");
 }
 
+#app {
+  position: relative;
+}
+
 .v-select .dropdown-toggle {
   background-color: #fff;
 }
@@ -11262,6 +11266,12 @@ a.dropdown-item {
 
 [v-cloak] {
   display: none;
+}
+
+.fixed-bottom-right {
+  right: 25px;
+  position: absolute;
+  bottom: 25px;
 }
 
 @media (min-width: 768px) {

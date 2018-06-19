@@ -16,6 +16,9 @@
     font-family: IcoMoon;
     src: url('fonts/icomoon.woff');
 }
+#app{
+    position: relative;
+}
 .v-select .dropdown-toggle{
     background-color:#fff;
 }
@@ -166,7 +169,11 @@ to {
 [v-cloak] {
   display: none;
 }
-
+.fixed-bottom-right{
+    right: 25px;    
+    position: absolute;
+    bottom: 25px;
+}
 @media (min-width: 768px){
     .bg-wedcontest{
         background-color:rgba(0,0,0,0.59);

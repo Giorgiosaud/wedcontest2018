@@ -39,9 +39,9 @@ class ArtworkUploadController extends Controller
         if (Storage::exists($artworkFile)) {
             Storage::delete($artworkFile);
         }
+        $file=Storage::disk('public')->move(request('url'), $artworkFile);
 
-        Storage::move(request('url'), $artworkFile);
-
+        // $url=asset($contest->slug.'/'.$contestant->slug.'/'.$name.'.jpg');
         $artwork = Artwork::create([
             'contestant_id' => $contestant->id,
             'category_id' => $catId,

@@ -1,6 +1,5 @@
 <template>
     <div :class="classes"
-         style="right: 25px; bottom: 25px;"
          role="alert"
          v-show="show"
          v-text="body">
@@ -21,7 +20,7 @@ export default {
 
   computed: {
     classes() {
-      let defaults = ["alert", "fixed-bottom"];
+      let defaults = ["alert", "fixed-bottom-right"];
 
       if (this.level === "success")
         defaults.push("alert-success");

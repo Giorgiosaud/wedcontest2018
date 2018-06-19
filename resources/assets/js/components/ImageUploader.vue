@@ -2,7 +2,7 @@
   <div>
     <div>
       <label class="label" data-toggle="tooltip" title="Change your avatar">
-        <img class="img-fluid" :src="'/'+src" v-if="value">
+        <img class="img-fluid" :src="'/storage/'+src" v-if="value">
         <div v-else>
           <p class="border-dashed border-light text-muted p-3">{{$t('lang.dropImage')}}</p>
         </div>
