@@ -96,7 +96,7 @@ export default {
 			axios.post(this.contestant.uploadPath,this.form)
 			.then(response=>{
 				console.log(response)
-				window.location.href = response.request.responseURL;
+				// window.location.href = response.request.responseURL;
 			});
 		}
 	}

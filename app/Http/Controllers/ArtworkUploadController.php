@@ -23,24 +23,24 @@ class ArtworkUploadController extends Controller
 		]);
 	}
 	public function store(Contestant $contestant){
-		$this->authorize('createArtwork', $contestant);
+        $this->authorize('createArtwork', $contestant);
 		request()->validate([
             'url'             => 'required',
             'title'             => 'required',
             'explenation'         => 'required',
         ]);
+
         $name=str_slug(request('title'));
         $contest=Contest::whereActive(1)->first();
         $activeContestCatIds=$contest->categories->pluck('id');
         $activeContestantCatIds=$contestant->categories->pluck('id');
         $catId=$activeContestCatIds->intersect($activeContestantCatIds)->first();
         $artworkFile=$contest->slug.'/'.$contestant->slug.'/'.$name.'.jpg';
-
         if (Storage::exists($artworkFile)) {
             Storage::delete($artworkFile);
         }
 
-        Storage::move('storage/'.request('url'), 'storage/'.$artworkFile );
+        Storage::move(request('url'), $artworkFile);
 
         $artwork = Artwork::create([
             'contestant_id' => $contestant->id,
