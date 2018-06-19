@@ -10,7 +10,7 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<img src="/{{($artwork->url)}}" class="img-fluid">
+				<img src="/storage/{{($artwork->url)}}" class="img-fluid">
 			</div>
 		</div>
 		<div class="row py-4">
