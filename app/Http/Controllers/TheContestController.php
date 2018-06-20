@@ -14,7 +14,7 @@ class TheContestController extends Controller
      */
     public function index()
     {
-        if(auth()->check()){
+        if (auth()->check()) {
             return redirect('mycontestants');
         }
         $contest = Contest::whereActive('1')->get()->first();

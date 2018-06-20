@@ -11,8 +11,8 @@ class ImageController extends Controller
         request()->validate([
             'image' => ['required'],
         ]);
-        $data = request()->file('image')->store('temp','public');
-        
+        $data = request()->file('image')->store('temp', 'public');
+
         return response(compact('data'), 201);
     }
 }
