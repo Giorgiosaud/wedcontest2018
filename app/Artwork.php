@@ -31,7 +31,7 @@ class Artwork extends Model
         return $this->belongsTo(Contestant::class);
     }
     public function getImageLinkAttribute(){
-        return asset('/'.$this->url);
+        return '/'.$this->url;
     }
     public function getUpdatePathAttribute(){
         return $this->updatePath;

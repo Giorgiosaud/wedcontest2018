@@ -80,7 +80,10 @@ export default {
 				autoCropArea:1,
 				movable: true,
 				zoomOnWheel: true,
-				viewMode:1
+				viewMode:0,
+				dragMode:'move',
+				minCropBoxWidth:800,
+				minCropBoxHeight:800
 			},
 		}
 	},

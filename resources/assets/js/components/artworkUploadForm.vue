@@ -62,7 +62,7 @@
 import ImageUploader from "./ImageUploader.vue";
 export default {
 
-	name: 'artworkUploadForm',
+	name: 'artworkEditForm',
 	components:{
 		ImageUploader
 	},
@@ -79,10 +79,13 @@ export default {
 				minWidth:800,
 				minHeight:800,
 				aspectRatio: 16 / 9,
-				autoCropArea:1,
+				autoCropArea:2,
 				movable: true,
 				zoomOnWheel: true,
-				viewMode:1
+				viewMode:0,
+				dragMode:'move',
+				minCropBoxWidth:800,
+				minCropBoxHeight:800
 			},
 		}
 	},
