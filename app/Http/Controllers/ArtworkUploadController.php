@@ -18,13 +18,13 @@ class ArtworkUploadController extends Controller
             return redirect()->route('artwork.edit',$contestant->slug);
         }
 
-		return view('artwork.create', [
-			'contestant' => $contestant,
-		]);
-	}
-	public function store(Contestant $contestant){
+        return view('artwork.create', [
+         'contestant' => $contestant,
+     ]);
+    }
+    public function store(Contestant $contestant){
         $this->authorize('createArtwork', $contestant);
-		request()->validate([
+        request()->validate([
             'url'             => 'required',
             'title'             => 'required',
             'explenation'         => 'required',
@@ -55,9 +55,9 @@ class ArtworkUploadController extends Controller
             	'description'=>request('explenation'),
             ],
         ]);
-		
+
         return redirect()->route('artwork.review',[$contestant->slug,$artwork->id]);
-	}
+    }
     public function review(Contestant $contestant, Artwork $artwork){
         return view('artwork.show',compact('contestant','artwork'));
     }
@@ -83,10 +83,10 @@ class ArtworkUploadController extends Controller
         $artworkFile=$contest->slug.'/'.$contestant->slug.'/'.$name.'.jpg';
         if(request('url')!==$artworkFile);
         {
-            if (Storage::exists($artworkFile)) {
-                Storage::delete($artworkFile);
+            if (Storage::disk('public')->exists($artworkFile)) {
+                Storage::disk('public')->delete($artworkFile);
             }
-            Storage::move('public/'.request('url'), $artworkFile );
+            $file=Storage::disk('public')->move(request('url'), $artworkFile);
         }
         $artwork->update([
             'url'    => $artworkFile,
@@ -99,11 +99,10 @@ class ArtworkUploadController extends Controller
                 'description'=>request('description'),
             ],
         ]);
-        return redirect()->route('mycontestants.index')->flash('artwork uploaded');
-        dd(request()->all());
+        return ['data'=>route('artwork.review',[$contestant->slug,$artwork->id])];
     }
     
     
-	
+
 
 }

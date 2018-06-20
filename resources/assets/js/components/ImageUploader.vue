@@ -2,7 +2,7 @@
   <div>
     <div>
       <label class="label" data-toggle="tooltip" title="Change your avatar">
-        <img class="img-fluid" :src="'/storage/'+src" v-if="value">
+        <img class="img-fluid" :src="source" v-if="value">
         <div v-else>
           <p class="border-dashed border-light text-muted p-3">{{$t('lang.dropImage')}}</p>
         </div>
@@ -35,7 +35,7 @@
       </div>
       <div class="modal-body">
         <div class="container-fluid">
-          <img id="image" ref="imagen" :src="src">
+          <img id="image" ref="imagen" :src="source">
         </div>
       </div>
       <div class="modal-footer">
@@ -91,26 +91,26 @@
           </button>
           <button type="button" class="btn btn-primary"  @click.prevent="cropper.rotate(45)" title="Rotate Right">
             <feather type="rotate-cw" data-toggle="tooltip"  data-original-title="cropper.rotate(45)"></feather>
-            </span>
-          </button>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-primary" @click.prevent="cropper.scaleX(-1)" title="Flip Horizontal">
-            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.scaleX(-1)">
-              <span class="fa fa-arrows-alt-h"></span>
-            </span>
-          </button>
-          <button type="button" class="btn btn-primary" @click.prevent="cropper.scaleY(-1)" title="Flip Vertical">
-            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.scaleY(-1)">
-              <span class="fa fa-arrows-alt-v"></span>
-            </span>
-          </button>
-        </div>
-        
-        <button type="button" class="btn btn-primary" @click="endEdition"><feather type="check"></feather></button>
+          </span>
+        </button>
       </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary" @click.prevent="cropper.scaleX(-1)" title="Flip Horizontal">
+          <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.scaleX(-1)">
+            <span class="fa fa-arrows-alt-h"></span>
+          </span>
+        </button>
+        <button type="button" class="btn btn-primary" @click.prevent="cropper.scaleY(-1)" title="Flip Vertical">
+          <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.scaleY(-1)">
+            <span class="fa fa-arrows-alt-v"></span>
+          </span>
+        </button>
+      </div>
+      
+      <button type="button" class="btn btn-primary" @click="endEdition"><feather type="check"></feather></button>
     </div>
   </div>
+</div>
 </div>
 </div>
 </template>
@@ -155,8 +155,8 @@ export default {
       cropperOptionsMerged: Object.assign(
       {
       },
-        _.clone(this.cropperOptions)
-        ),
+      _.clone(this.cropperOptions)
+      ),
       croppedCanvasOptionsMerged: Object.assign(
       {
         fillColor: "#fff"
@@ -250,6 +250,15 @@ export default {
       this.cropper.rotateTo(0);
     }
   },
+  computed:{
+    source(){
+      let ext=this.src.substring(0, 4);
+      if(ext==='blob'){
+        return this.src;
+      }
+      return '/storage/'+this.src
+    }
+  },
   mounted() {
     $('#'+this.name).on("shown.bs.modal",(e)=>this.createCropper())
     $('#'+this.name).on("hidden.bs.modal",(e)=>this.destroyCropper())
@@ -264,7 +273,9 @@ export default {
   max-width: 100%;  
   padding: 0;
 }
+.modal-body{
 
+}
 .modal-content {
   height: auto;
   min-height: 100%;

@@ -40,7 +40,7 @@
 	</div>
 	<div class="py-2">
 		<label for="artwork">{{$t('lang.artWork')}}</label>
-		<image-uploader name="artwork" class="mr-1" v-model="artwork.imageLink" :cropperOptions="cropperOptions"></image-uploader> 
+		<image-uploader name="artwork" class="mr-1" v-model="artwork.url" :cropperOptions="cropperOptions"></image-uploader> 
 		<transition
 		name="zoom"
 		enter-active-class="zoomIn"
@@ -69,11 +69,6 @@ export default {
 	props:['contestant','artwork'],
 	data () {
 		return {
-			form:{
-				title:'',
-				explenation:'',
-				url:''
-			},
 			errors:{},
 			cropperOptions: {
 				aspectRatio: 16 / 9,
@@ -100,7 +95,7 @@ export default {
 			axios.put(window.location.href,this.artwork)
 			.then(response=>{
 				console.log(response)
-				// window.location.href = response.request.responseURL;
+				window.location.href = response.data.data;
 			});
 		}
 	}
