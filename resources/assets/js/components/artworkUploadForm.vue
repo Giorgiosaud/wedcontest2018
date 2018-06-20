@@ -76,6 +76,9 @@ export default {
 			},
 			errors:{},
 			cropperOptions: {
+				minWidth:800,
+				minHeight:800,
+				aspectRatio: 16 / 9,
 				autoCropArea:1,
 				movable: true,
 				zoomOnWheel: true,
