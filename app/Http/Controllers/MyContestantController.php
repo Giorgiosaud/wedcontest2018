@@ -13,6 +13,7 @@ class MyContestantController extends Controller
     public function index()
     {
         $contestants = auth()->user()->contestants;
+
         return view('mycontestants.index', [
             'contestants' => $contestants,
         ]);
@@ -107,14 +108,18 @@ class MyContestantController extends Controller
 
         return redirect()->route('mycontestants.index');
     }
-    public function destroy(Contestant $contestant){
+
+    public function destroy(Contestant $contestant)
+    {
         $this->authorize('delete', $contestant);
         $contestant->delete();
         if (request()->wantsJson()) {
             return response([], 204);
         }
+
         return redirect()->route('mycontestants.index');
     }
+
     public function verifyStatus($dob, $categoryId)
     {
         $cat = Category::find($categoryId);

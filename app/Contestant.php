@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Artwork;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -28,15 +27,17 @@ class Contestant extends Model
     protected $dates = [
         'dob',
     ];
-    protected static function boot(){
-        static::creating(function($contestant){
-            $contestant->slug=$contestant->name.'_'.$contestant->last_name;
+
+    protected static function boot()
+    {
+        static::creating(function ($contestant) {
+            $contestant->slug = $contestant->name.'_'.$contestant->last_name;
         });
         static::created(function ($contestant) {
             $contestant->update(['slug' => $contestant->name.'_'.$contestant->last_name]);
         });
     }
-    
+
     public function categories()
     {
         return $this->belongsToMany(Category::class)->withPivot('status');
@@ -49,9 +50,9 @@ class Contestant extends Model
 
     public function contest()
     {
-        return $this->hasManyThrough(\App\Category::class,\App\Contest::class );
+        return $this->hasManyThrough(\App\Category::class, \App\Contest::class);
     }
-    
+
     /**
      * @return string
      */
@@ -61,37 +62,38 @@ class Contestant extends Model
         //     return route('contestant.edit', $this->slug);
         // }
         return route('mycontestant.edit', $this->slug);
-
     }
+
     /**
      * @return string
      */
     public function uploadPath()
     {
-
-        if(request()->wantsJson()) { 
+        if (request()->wantsJson()) {
             return route('artwork.create', $this->slug);
-        }   
+        }
         if (auth()->user()->isAdmin) {
             return route('artwork.create', $this->slug);
         }
-        return '#';
 
+        return '#';
     }
+
     /**
      * @return string
      */
     public function deletePath()
     {
-
-        if(request()->wantsJson()) { 
+        if (request()->wantsJson()) {
             return route('contestant.destroy', $this->slug);
-        }   
+        }
         if (auth()->user()->isAdmin) {
             return route('contestant.destroy', $this->slug);
         }
+
         return '#';
     }
+
     /**
      * Get the route key name.
      *
@@ -101,36 +103,46 @@ class Contestant extends Model
     {
         return 'slug';
     }
+
     public function getDeletePathAttribute()
     {
         return $this->deletePath();
     }
+
     public function getEditPathAttribute()
     {
         return $this->editPath();
     }
+
     public function getUploadPathAttribute()
     {
         return $this->uploadPath();
     }
-    public function getContestStatusAttribute(){
+
+    public function getContestStatusAttribute()
+    {
         return $this->contest()->first()->slug;
     }
-    public function getAgeAttribute(){
+
+    public function getAgeAttribute()
+    {
         $dt = Carbon::now();
+
         return $dt->diffInYears($this->dob);  // 1
     }
-    public function getActiveArtworkAttribute(){
-        $actualContest=Contest::whereActive(true)->first();
-        $cats=$actualContest->categories->pluck('id')->toArray();
-        $thisYearArtwork=$this->artworks->whereIn('category_id', $cats);
-        if($thisYearArtwork->count()===0){
+
+    public function getActiveArtworkAttribute()
+    {
+        $actualContest = Contest::whereActive(true)->first();
+        $cats = $actualContest->categories->pluck('id')->toArray();
+        $thisYearArtwork = $this->artworks->whereIn('category_id', $cats);
+        if ($thisYearArtwork->count() === 0) {
             return false;
         }
+
         return $thisYearArtwork->first();
     }
-    
-    
+
     /**
      * Set the proper slug attribute.
      *
@@ -143,17 +155,21 @@ class Contestant extends Model
         }
         $this->attributes['slug'] = $slug;
     }
-    public function artworks(){
+
+    public function artworks()
+    {
         return $this->hasMany(Artwork::class);
     }
-    public function getHasArtworkForThisYearAttribute(){
-        $actualContest=Contest::whereActive(true)->first();
-        $cats=$actualContest->categories->pluck('id')->toArray();
-        $thisYearArtwork=$this->artworks->whereIn('category_id', $cats);
-        if($thisYearArtwork->count()===0){
+
+    public function getHasArtworkForThisYearAttribute()
+    {
+        $actualContest = Contest::whereActive(true)->first();
+        $cats = $actualContest->categories->pluck('id')->toArray();
+        $thisYearArtwork = $this->artworks->whereIn('category_id', $cats);
+        if ($thisYearArtwork->count() === 0) {
             return false;
-        };
+        }
+
         return true;
     }
-    
 }

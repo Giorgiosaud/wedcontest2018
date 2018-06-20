@@ -17,9 +17,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (! $this->app->runningInConsole()) {
-
-            $contest=Contest::whereActive(true)->first();
+        if (!$this->app->runningInConsole()) {
+            $contest = Contest::whereActive(true)->first();
             View::share('contest', $contest);
         }
         // Blade::component('components.header', 'header');

@@ -71,6 +71,4 @@ Route::group([
     Route::get('/mycontestant/{contestant}/artwork-edit', 'ArtworkUploadController@edit')->middleware('auth')->name('artwork.edit');
     Route::put('/mycontestant/{contestant}/artwork-edit', 'ArtworkUploadController@update')->middleware('auth')->name('artwork.update');
     Route::get('/mycontestant/{contestant}/{artwork}/artwork-review', 'ArtworkUploadController@review')->middleware('auth')->name('artwork.review');
-    
-
 });
