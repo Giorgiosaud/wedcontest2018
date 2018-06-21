@@ -8,15 +8,16 @@
     @endslot
 
     {{-- Body --}}
-    # One more step
+    # The user {{$user->name}} {{$user->last_name}} was registered as Representant
+    # User Data
+    # email: {{$user->email}}
+    # telephone: {{$user->phone}}
+    # from: {{$user->country}}
+    # type of referral: {{$user->referred}} @if($user->referred_specify){{$user->referred_specify}}@endif 
+    # preferred language {{$user->language}}
+    
 
-    We just need you to confirm your email address to prove that you're a human.
-    You get it, right? Cool.
-@component('mail::button',  ['url' => url('/register/confirm?token=' . $user->confirmation_token)])
-Please confirm your email
-@endcomponent
-
-Thank you,<br>
+Gracias,<br>
 WED CONTEST TEAM
 
     {{-- Subcopy --}}

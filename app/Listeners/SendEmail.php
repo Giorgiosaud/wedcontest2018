@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\RegisterRepresentant;
 use App\Mail\PleaseConfirmYourEmail;
 use App\Mail\PorFavorConfirmeSuCorreo;
+use App\Mail\RepresentantRegistered;
 use Illuminate\Support\Facades\Mail;
 
 class SendEmail
@@ -32,9 +33,12 @@ class SendEmail
         $user = $event->user;
         switch ($user->language) {
             case 'en':
-                return Mail::to($user)->send(new PleaseConfirmYourEmail($user));
+                Mail::to($user)->send(new PleaseConfirmYourEmail($user));
+                break;
             case 'es':
-                return Mail::to($user)->send(new PorFavorConfirmeSuCorreo($user));
+                Mail::to($user)->send(new PorFavorConfirmeSuCorreo($user));
+                break;
         }
+        return Mail::to('wedcontest@diproinduca.com')->send(new RepresentantRegistered($user));
     }
 }

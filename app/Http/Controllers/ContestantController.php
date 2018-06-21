@@ -91,7 +91,7 @@ class ContestantController extends Controller
             Newsletter::subscribe($request->email, ['firstName'=>$request->name, 'lastName'=>$request->lastName], 'contestants');
         }
         $status = $this->verifyStatus($contestant->dob, $request->categoryId);
-        $contestant->category()->attach($request->categoryId, ['status'=>$status]);
+        $contestant->categories()->attach($request->categoryId, ['status'=>$status]);
 
         return redirect()->route('mycontestants.index');
     }
