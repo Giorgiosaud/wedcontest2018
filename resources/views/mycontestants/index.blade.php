@@ -2,7 +2,8 @@
 @section('content')
 @include('layouts.assets.headerStandart')
 <div class="container py-4">
-	<div class="row py-4">
+	@if(auth()->user()->confirmed)
+       <div class="row py-4">
 		<div class="col">
 		<h1>@lang('contestants.contestants')</h1>
 		</div>
@@ -17,5 +18,10 @@
 		<a class="btn btn-wedcontest is-green w-full" href="{{route('mycontestant.create')}}">@lang('contestants.addNew')</a>
 		</div>
 	</div>
+
+        @else
+        <p class="border-dashed border-light p-3">@lang('contests.confirm_email')</p>
+        @endif
+	
 </div>
 @endsection    
