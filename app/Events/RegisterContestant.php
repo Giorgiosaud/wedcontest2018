@@ -19,10 +19,10 @@ class RegisterContestant
      *
      * @return void
      */
-    public function __construct(User $user,Contestant $contestant)
+    public function __construct(User $user, Contestant $contestant)
     {
-        $this->user=$user;
-        $this->contestant=$contestant;
+        $this->user = $user;
+        $this->contestant = $contestant;
     }
 
     /**
