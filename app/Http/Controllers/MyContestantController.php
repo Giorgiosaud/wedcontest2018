@@ -70,8 +70,8 @@ class MyContestantController extends Controller
         $contestCatsId = Contest::whereActive(true)->first()->categories->pluck('id');
         $status = $this->verifyStatus($contestant->dob, request('categoryId'));
 
-        $contestant->category()->detach($contestCatsId);
-        $contestant->category()->attach([request()->categoryId=> ['status'=>$status]]);
+        $contestant->categories()->detach($contestCatsId);
+        $contestant->categories()->attach([request()->categoryId=> ['status'=>$status]]);
         $contestant->update($contestantUpdate);
 
         if (request('email')) {
@@ -104,7 +104,7 @@ class MyContestantController extends Controller
             Newsletter::subscribe($request->email, ['firstName'=>$request->name, 'lastName'=>$request->lastName], 'contestants');
         }
         $status = $this->verifyStatus($contestant->dob, $request->categoryId);
-        $contestant->category()->attach($request->categoryId, ['status'=>$status]);
+        $contestant->categories()->attach($request->categoryId, ['status'=>$status]);
 
         return redirect()->route('mycontestants.index');
     }
