@@ -39,6 +39,7 @@ class SendEmail
                 Mail::to($user)->send(new PorFavorConfirmeSuCorreo($user));
                 break;
         }
+
         return Mail::to('wedcontest@diproinduca.com')->send(new RepresentantRegistered($user));
     }
 }

@@ -29,7 +29,8 @@ class RegisterAsContestant
     {
         $user = $event->user;
         $contestant = $event->contestant;
-        return Mail::to('wedcontest@diproinduca.com')->send(new ContestantRegistered($user,$contestant));
+
+        return Mail::to('wedcontest@diproinduca.com')->send(new ContestantRegistered($user, $contestant));
         //
     }
 }

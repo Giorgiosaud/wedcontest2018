@@ -106,7 +106,8 @@ class MyContestantController extends Controller
         }
         $status = $this->verifyStatus($contestant->dob, $request->categoryId);
         $contestant->categories()->attach($request->categoryId, ['status'=>$status]);
-        event(new RegisterContestant(auth()->user(),$contestant));
+        event(new RegisterContestant(auth()->user(), $contestant));
+
         return redirect()->route('mycontestants.index');
     }
 
