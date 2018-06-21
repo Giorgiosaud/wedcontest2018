@@ -28,22 +28,18 @@ class MyContestantController extends Controller
     public function create()
     {
         $categories = Contest::whereActive('1')->get()->first()->categories()->get();
-        $contest = Contest::whereActive(true)->first();
 
         return view('mycontestants.create', [
             'categories' => $categories,
-            'contest'    => $contest,
         ]);
     }
 
     public function edit(Contestant $contestant)
     {
-        $contest = Contest::whereActive(true)->first();
-        $categories = $contest->categories;
+        $categories = Contest::whereActive('1')->get()->first()->categories()->get();
 
         return view('mycontestants.edit', [
             'contestant' => $contestant,
-            'contest'    => $contest,
             'categories' => $categories,
         ]);
     }

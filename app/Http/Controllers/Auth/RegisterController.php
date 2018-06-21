@@ -64,7 +64,6 @@ class RegisterController extends Controller
     {
 //        dd('he');
         return Validator::make($data, [
-            'subscribed' => 'boolean',
             'name'       => 'required|string|max:255',
             'last_name'  => 'required|string|max:255',
             'email'      => 'required|string|email|max:255|unique:users',

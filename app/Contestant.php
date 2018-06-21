@@ -21,6 +21,7 @@ class Contestant extends Model
         'editPath',
         'uploadPath',
         'deletePath',
+        'activeCategory',
 
     ];
     protected $with = ['categories'];
@@ -141,6 +142,14 @@ class Contestant extends Model
         }
 
         return $thisYearArtwork->first();
+    }
+    public function getActiveCategoryAttribute()
+    {
+        if($this->categories->count()>0){
+            return $this->categories->last()->name;
+        }
+        else
+            return '';
     }
 
     /**
