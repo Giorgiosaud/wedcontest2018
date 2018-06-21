@@ -91,7 +91,7 @@ class Contestant extends Model
             return route('contestant.destroy', $this->slug);
         }
 
-        return '#';
+        return route('mycontestant.destroy', $this->slug);
     }
 
     /**

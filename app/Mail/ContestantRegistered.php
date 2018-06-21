@@ -2,13 +2,14 @@
 
 namespace App\Mail;
 
+use App\Contestant;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class RepresentantRegistered extends Mailable
+class ContestantRegistered extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,9 +18,10 @@ class RepresentantRegistered extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(User $user,Contestant $contestant)
     {
         $this->user=$user;
+        $this->contestant=$contestant;
     }
 
     /**
@@ -29,10 +31,11 @@ class RepresentantRegistered extends Mailable
      */
     public function build()
     {
-        return $this->subject('User Registered')->markdown('emails.usuario-registrado', 
+        return $this->subject('Contestant Registrado')->markdown('emails.concursante-registrado', 
             [
                 'logo'=>asset('/storage/contest/rethinking-plastic/enLogo.jpg'),
-                'user'=>$this->user
+                'user'=>$this->user,
+                'contestant'=>$this->contestant
             ]);
     }
 }

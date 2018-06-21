@@ -65,6 +65,8 @@ Route::group([
     Route::get('/mycontestant/{contestant}', 'MyContestantController@show')->name('mycontestant.show');
     Route::put('/mycontestant/{contestant}', 'MyContestantController@update')->middleware('auth')->name('mycontestant.update');
     Route::put('/mycontestant/{contestant}', 'MyContestantController@destroy')->middleware('auth')->name('mycontestant.destroy');
+    Route::delete('/mycontestant/{contestant}', 'MyContestantController@destroy')->name('mycontestant.destroy');
+
     Route::get('/mycontestant/{contestant}/artwork-upload', 'ArtworkUploadController@create')->middleware('auth')->name('artwork.create');
     Route::post('/mycontestant/{contestant}/artwork-upload', 'ArtworkUploadController@store')->middleware('auth')->name('artwork.store');
     Route::put('/mycontestant/{contestant}/artwork-upload', 'ArtworkUploadController@update')->middleware('auth')->name('artwork.update');

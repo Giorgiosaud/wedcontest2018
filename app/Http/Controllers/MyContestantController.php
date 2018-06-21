@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Contest;
 use App\Contestant;
+use App\Events\RegisterContestant;
 use Illuminate\Http\Request;
 use Spatie\Newsletter\NewsletterFacade as Newsletter;
 
@@ -105,7 +106,7 @@ class MyContestantController extends Controller
         }
         $status = $this->verifyStatus($contestant->dob, $request->categoryId);
         $contestant->categories()->attach($request->categoryId, ['status'=>$status]);
-
+        event(new RegisterContestant(auth()->user(),$contestant));
         return redirect()->route('mycontestants.index');
     }
 

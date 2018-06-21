@@ -3,6 +3,8 @@
 namespace App\Listeners;
 
 use App\Events\RegisterContestant;
+use App\Mail\ContestantRegistered;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterAsContestant
 {
@@ -25,6 +27,9 @@ class RegisterAsContestant
      */
     public function handle(RegisterContestant $event)
     {
+        $user = $event->user;
+        $contestant = $event->contestant;
+        return Mail::to('wedcontest@diproinduca.com')->send(new ContestantRegistered($user,$contestant));
         //
     }
 }

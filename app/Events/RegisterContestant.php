@@ -2,6 +2,8 @@
 
 namespace App\Events;
 
+use App\Contestant;
+use App\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -17,9 +19,10 @@ class RegisterContestant
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user,Contestant $contestant)
     {
-        //
+        $this->user=$user;
+        $this->contestant=$contestant;
     }
 
     /**
