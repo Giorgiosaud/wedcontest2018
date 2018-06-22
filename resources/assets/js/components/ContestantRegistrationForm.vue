@@ -151,7 +151,7 @@ export default {
     .post(this.postTo, this.form)
     .then(response => {
       console.log(response);
-      // window.location.href = response.request.responseURL;
+      window.location.href = response.request.responseURL;
     })
     .catch(error => {this.errors=error.response.data.errors;this.loading=false});
   },
