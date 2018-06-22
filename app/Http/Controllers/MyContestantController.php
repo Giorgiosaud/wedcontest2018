@@ -74,7 +74,8 @@ class MyContestantController extends Controller
         if (request('email')) {
             Newsletter::subscribe(request('email'), ['firstName'=>request('name'), 'lastName'=>request('last_Name')], 'contestants');
         }
-
+        event(new RegisterContestant(auth()->user(), $contestant));
+        
         return route('mycontestants.index');
     }
 

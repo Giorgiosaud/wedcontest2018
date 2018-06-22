@@ -59058,22 +59058,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -59663,81 +59647,6 @@ var render = function() {
                 }
               }
             })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-6" }, [
-            _c(
-              "label",
-              {
-                staticClass:
-                  "block uppercase ubscribedtracking-wide text-grey-darker text-xs font-bold mb-2",
-                attrs: { for: "subscribed" }
-              },
-              [
-                _vm._v(
-                  "\n    " + _vm._s(_vm.$t("registration.subscribed")) + "\n"
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.subscribed,
-                  expression: "form.subscribed"
-                }
-              ],
-              staticClass: "w-full p-2 leading-normal",
-              attrs: {
-                type: "checkbox",
-                value: "1",
-                id: "subscribed",
-                autocomplete: "subscribed",
-                name: "subscribed",
-                required: ""
-              },
-              domProps: {
-                checked: Array.isArray(_vm.form.subscribed)
-                  ? _vm._i(_vm.form.subscribed, "1") > -1
-                  : _vm.form.subscribed
-              },
-              on: {
-                keydown: function($event) {
-                  _vm.errors.subscribed = false
-                },
-                change: function($event) {
-                  var $$a = _vm.form.subscribed,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = "1",
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 &&
-                        _vm.$set(_vm.form, "subscribed", $$a.concat([$$v]))
-                    } else {
-                      $$i > -1 &&
-                        _vm.$set(
-                          _vm.form,
-                          "subscribed",
-                          $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                        )
-                    }
-                  } else {
-                    _vm.$set(_vm.form, "subscribed", $$c)
-                  }
-                }
-              }
-            }),
-            _vm._v(" "),
-            _vm.errors.subscribed
-              ? _c("div", {
-                  staticClass: "text-xs text-red mt-2",
-                  domProps: { textContent: _vm._s(_vm.errors.subscribed[0]) }
-                })
-              : _vm._e()
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "flex items-center -mx-4" }, [
@@ -64898,24 +64807,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['postTo'],
@@ -65483,75 +65374,6 @@ var render = function() {
                 domProps: { textContent: _vm._s(_vm.errors.password[0]) }
               })
             : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("div", { staticClass: "form-check" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.subscribed,
-                  expression: "form.subscribed"
-                }
-              ],
-              staticClass: "form-check-input",
-              attrs: {
-                type: "checkbox",
-                value: "1",
-                id: "subscribed",
-                autocomplete: "subscribed",
-                name: "subscribed",
-                required: ""
-              },
-              domProps: {
-                checked: Array.isArray(_vm.form.subscribed)
-                  ? _vm._i(_vm.form.subscribed, "1") > -1
-                  : _vm.form.subscribed
-              },
-              on: {
-                keydown: function($event) {
-                  _vm.errors.subscribed = false
-                },
-                change: function($event) {
-                  var $$a = _vm.form.subscribed,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = "1",
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 &&
-                        _vm.$set(_vm.form, "subscribed", $$a.concat([$$v]))
-                    } else {
-                      $$i > -1 &&
-                        _vm.$set(
-                          _vm.form,
-                          "subscribed",
-                          $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                        )
-                    }
-                  } else {
-                    _vm.$set(_vm.form, "subscribed", $$c)
-                  }
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              { staticClass: "form-check-label", attrs: { for: "subscribed" } },
-              [_vm._v(_vm._s(_vm.$t("registration.subscribed")))]
-            ),
-            _vm._v(" "),
-            _vm.errors.subscribed
-              ? _c("div", {
-                  staticClass: "invalid-feedback",
-                  domProps: { textContent: _vm._s(_vm.errors.subscribed[0]) }
-                })
-              : _vm._e()
-          ])
         ]),
         _vm._v(" "),
         _c(

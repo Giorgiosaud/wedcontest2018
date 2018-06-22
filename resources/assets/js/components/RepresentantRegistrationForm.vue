@@ -159,24 +159,6 @@
             <div v-if="errors.password" v-text="errors.password[0]" class="invalid-feedback">
             </div>
         </div>
-        <div class="form-group">
-            <div class="form-check">
-                <input
-                type="checkbox"
-                value="1"
-                id="subscribed"
-                autocomplete="subscribed"
-                name="subscribed"
-                required
-                v-model="form.subscribed"
-                @keydown="errors.subscribed = false"
-                class="form-check-input"
-                >
-                <label class="form-check-label" for="subscribed">{{$t('registration.subscribed')}}</label>
-                <div v-if="errors.subscribed" v-text="errors.subscribed[0]" class="invalid-feedback">
-                </div>
-            </div>
-        </div>
         <button
         type="submit"
         class="btn btn-wedcontest"

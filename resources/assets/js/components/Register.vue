@@ -147,23 +147,7 @@ v-model="form.password_confirmation"
 @keydown="errors.password = false">
 </div>
 
-<div class="mb-6">
-    <label for="subscribed" 
-    class="block uppercase ubscribedtracking-wide text-grey-darker text-xs font-bold mb-2">
-    {{$t('registration.subscribed')}}
-</label>
-<input 
-type="checkbox" 
-value="1" 
-class="w-full p-2 leading-normal" 
-id="subscribed" 
-autocomplete="subscribed" 
-name="subscribed" 
-required
-v-model="form.subscribed" 
-@keydown="errors.subscribed = false">
-<div v-if="errors.subscribed" v-text="errors.subscribed[0]" class="text-xs text-red mt-2"></div>
-</div>
+
 
 
 <div class="flex items-center -mx-4">
