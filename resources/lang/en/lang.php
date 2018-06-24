@@ -82,6 +82,7 @@ return [
     'phone'=>' Phone ',
     'previous'=>' « Previous ',
     'profile'=>'Profile',
+    'profileTooltip'=>'See Profile',
     'read_more'=>' Read More ',
     'referred'=>[
         'label'    =>'     Referred ',

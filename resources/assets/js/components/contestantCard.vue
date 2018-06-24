@@ -24,6 +24,11 @@
 							data-placement="top" :title="$t('lang.editTooltip')">
 							{{ $t('lang.edit') }} {{ $t('lang.artwork') }}<i class="fas fa-cloud-upload-alt"></i></a>
 						</div>
+						<div v-else>
+							<a :href="artwork[0].pathReview" data-toggle="tooltip"
+							data-placement="top" :title="$t('lang.profileTooltip')">
+							{{ $t('lang.profile') }} {{ $t('lang.artwork') }}<i class="fas fa-cloud-upload-alt"></i></a>
+						</div>
 					</div>
 					<div class="upload" v-else>
 						<a class="btn btn-link text-muted" href="#" data-toggle="tooltip"

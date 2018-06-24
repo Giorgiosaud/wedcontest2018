@@ -123,6 +123,7 @@ export default {
             "phone": " Phone ",
             "previous": " « Previous ",
             "profile": "Profile",
+            "profileTooltip": "See Profile",
             "read_more": " Read More ",
             "referred": {
                 "label": "     Referred ",
@@ -481,6 +482,7 @@ export default {
             "phone": "Teléfono",
             "previous": "« Anterior",
             "profile": "Perfil",
+            "profileTooltip": "Ver Perfil",
             "read_more": "Leer más",
             "referred": {
                 "label": "    Referido por",

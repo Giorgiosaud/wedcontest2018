@@ -79,6 +79,7 @@ return [
     'phone'=>'Teléfono',
     'previous'=>'« Anterior',
     'profile'=>'Perfil',
+    'profileTooltip'=>'Ver Perfil',
     'read_more'=>'Leer más',
     'referred'=>[
         'label'    =>'    Referido por',

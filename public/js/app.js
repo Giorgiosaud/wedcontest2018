@@ -56525,6 +56525,7 @@ $(window).scroll(function () {
             "phone": " Phone ",
             "previous": " « Previous ",
             "profile": "Profile",
+            "profileTooltip": "See Profile",
             "read_more": " Read More ",
             "referred": {
                 "label": "     Referred ",
@@ -56883,6 +56884,7 @@ $(window).scroll(function () {
             "phone": "Teléfono",
             "previous": "« Anterior",
             "profile": "Perfil",
+            "profileTooltip": "Ver Perfil",
             "read_more": "Leer más",
             "referred": {
                 "label": "    Referido por",
@@ -72577,6 +72579,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -72740,7 +72747,28 @@ var render = function() {
                           ]
                         )
                       ])
-                    : _vm._e()
+                    : _c("div", [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href: _vm.artwork[0].pathReview,
+                              "data-toggle": "tooltip",
+                              "data-placement": "top",
+                              title: _vm.$t("lang.profileTooltip")
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t" +
+                                _vm._s(_vm.$t("lang.profile")) +
+                                " " +
+                                _vm._s(_vm.$t("lang.artwork"))
+                            ),
+                            _c("i", { staticClass: "fas fa-cloud-upload-alt" })
+                          ]
+                        )
+                      ])
                 ])
               : _c("div", { staticClass: "upload" }, [
                   _c(
