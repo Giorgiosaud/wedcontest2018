@@ -78,14 +78,12 @@ export default {
 			cropperOptions: {
 				minWidth:800,
 				minHeight:800,
-				aspectRatio: 16 / 9,
+				// aspectRatio: 16 / 9,
 				autoCropArea:2,
 				movable: true,
 				zoomOnWheel: true,
 				viewMode:0,
 				dragMode:'move',
-				minCropBoxWidth:800,
-				minCropBoxHeight:800
 			},
 		}
 	},

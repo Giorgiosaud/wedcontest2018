@@ -13,15 +13,19 @@ class ArtworkUploadController extends Controller
     public function create(Contestant $contestant)
     {
         $this->authorize('createArtwork', $contestant);
-        if ($contestant->hasArtworkForThisYear) {
-            return redirect()->route('artwork.edit', $contestant->slug);
-        }
-
         return view('artwork.create', [
-         'contestant' => $contestant,
-     ]);
+            'contestant' => $contestant ]);
     }
 
+    public function review(Contestant $contestant, Artwork $artwork)
+    {
+        return view('artwork.show', compact('contestant', 'artwork'));
+    }
+
+    public function edit(Contestant $contestant, Artwork $artwork)
+    {
+        return view('artwork.edit', compact('contestant', 'artwork'));
+    }
     public function store(Contestant $contestant)
     {
         $this->authorize('createArtwork', $contestant);
@@ -59,22 +63,15 @@ class ArtworkUploadController extends Controller
 
         return redirect()->route('artwork.review', [$contestant->slug, $artwork->id]);
     }
-
-    public function review(Contestant $contestant, Artwork $artwork)
+    public function approve(Contestant $contestant, Artwork $artwork)
     {
-        return view('artwork.show', compact('contestant', 'artwork'));
+        $this->authorize('createArtwork', $contestant);
+        $artwork->state='approved';
+        $artwork->save();
+        return redirect()->route('artwork.review', [$contestant->slug, $artwork->id]);
     }
 
-    public function edit(Contestant $contestant)
-    {
-        $actualContest = Contest::whereActive(true)->first();
-        $cats = $actualContest->categories->pluck('id')->toArray();
-        $artwork = $contestant->artworks->whereIn('category_id', $cats)->first();
-
-        return view('artwork.edit', compact('contestant', 'artwork'));
-    }
-
-    public function update(Contestant $contestant)
+    public function update(Contestant $contestant, Artwork $artwork)
     {
         $this->authorize('createArtwork', $contestant);
         request()->validate([
@@ -82,15 +79,11 @@ class ArtworkUploadController extends Controller
             'title'               => 'required',
             'description'         => 'required',
         ]);
-        $artwork = $contestant->activeArtwork;
+
         $name = str_slug(request('title'));
-        $contest = Contest::whereActive(1)->first();
-        $activeContestCatIds = $contest->categories->pluck('id');
-        $activeContestantCatIds = $contestant->categories->pluck('id');
-        $catId = $activeContestCatIds->intersect($activeContestantCatIds)->first();
-        $artworkFile = $contest->slug.'/'.$contestant->slug.'/'.$name.'.jpg';
-        if (request('url') !== $artworkFile);
-        {
+        $artworkFile = $artwork->category->contest->slug.'/'.$artwork->contestant->slug.'/'.$name.'.jpg';
+        if (request('url') !== $artworkFile) {
+
             if (Storage::disk('public')->exists($artworkFile)) {
                 Storage::disk('public')->delete($artworkFile);
             }
@@ -107,7 +100,9 @@ class ArtworkUploadController extends Controller
                 'description'=> request('description'),
             ],
         ]);
-
         return ['data'=>route('artwork.review', [$contestant->slug, $artwork->id])];
+
+
     }
+
 }

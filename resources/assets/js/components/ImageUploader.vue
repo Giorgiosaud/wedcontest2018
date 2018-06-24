@@ -34,7 +34,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="container-fluid">
+        <div class="container max-height-windw">
           <img id="image" ref="imagen" :src="source">
         </div>
       </div>
@@ -283,5 +283,8 @@ export default {
 }
 i.feather{
   height: 15px;
+}
+.max-height-windw{
+  height:80vh;
 }
 </style>

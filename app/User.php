@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Country;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -66,7 +67,7 @@ class User extends Authenticatable
      */
     public function isAdmin()
     {
-        return $this->roles()->whereName('Administrator')->exists();
+        return $this->roles->pluck('name')->contains('Administrator');
     }
 
     /**
@@ -74,7 +75,7 @@ class User extends Authenticatable
      */
     public function getisAdminAttribute()
     {
-        return $this->roles()->whereName('Administrator')->exists();
+        return $this->roles->pluck('name')->contains('Administrator');
     }
 
     /**
@@ -82,7 +83,7 @@ class User extends Authenticatable
      */
     public function isJudge()
     {
-        return $this->roles()->whereName('Judge')->exists();
+        return $this->roles->pluck('name')->contains('Judge');
     }
 
     /**
@@ -158,5 +159,8 @@ class User extends Authenticatable
         }
 
         throw new \Exception('Role not Exist');
+    }
+    public function countryData(){
+        return $this->belongsTo(Country::class,'country','code');
     }
 }

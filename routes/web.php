@@ -69,7 +69,8 @@ Route::group([
     Route::get('/mycontestant/{contestant}/artwork-upload', 'ArtworkUploadController@create')->middleware('auth')->name('artwork.create');
     Route::post('/mycontestant/{contestant}/artwork-upload', 'ArtworkUploadController@store')->middleware('auth')->name('artwork.store');
     Route::put('/mycontestant/{contestant}/artwork-upload', 'ArtworkUploadController@update')->middleware('auth')->name('artwork.update');
-    Route::get('/mycontestant/{contestant}/artwork-edit', 'ArtworkUploadController@edit')->middleware('auth')->name('artwork.edit');
-    Route::put('/mycontestant/{contestant}/artwork-edit', 'ArtworkUploadController@update')->middleware('auth')->name('artwork.update');
+    Route::get('/mycontestant/{contestant}/{artwork}/artwork-edit', 'ArtworkUploadController@edit')->middleware('auth')->name('artwork.edit');
+    Route::put('/mycontestant/{contestant}/{artwork}/artwork-edit', 'ArtworkUploadController@update')->middleware('auth')->name('artwork.update');
+    Route::get('/mycontestant/{contestant}/{artwork}/artwork-approve', 'ArtworkUploadController@approve')->middleware('auth')->name('artwork.approve');
     Route::get('/mycontestant/{contestant}/{artwork}/artwork-review', 'ArtworkUploadController@review')->middleware('auth')->name('artwork.review');
 });

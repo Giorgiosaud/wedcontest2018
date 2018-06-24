@@ -71,14 +71,14 @@ export default {
 		return {
 			errors:{},
 			cropperOptions: {
-				aspectRatio: 16 / 9,
-				autoCropArea:1,
+				minWidth:800,
+				minHeight:800,
+				// aspectRatio: 16 / 9,
+				autoCropArea:2,
 				movable: true,
 				zoomOnWheel: true,
 				viewMode:0,
 				dragMode:'move',
-				minCropBoxWidth:800,
-				minCropBoxHeight:800
 			},
 		}
 	},
@@ -92,7 +92,7 @@ export default {
 				this.$refs.explenation.$refs.trix.focus();
 				return 
 			}
-			axios.put(window.location.href,this.artwork)
+			axios.put(this.artwork.pathEdit,this.artwork)
 			.then(response=>{
 				console.log(response)
 				window.location.href = response.data.data;
