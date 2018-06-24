@@ -56450,6 +56450,7 @@ $(window).scroll(function () {
             "adminHeader": " Administrator ",
             "approve": " Approve ",
             "artWork": " Artwork ",
+            "artwork": " Artwork ",
             "artWorkTitle": " Title ",
             "articles": " Stories ",
             "articles_link": " http:\/\/wedcontest2018.diproinduca.com\/blog\/ ",
@@ -56471,14 +56472,15 @@ $(window).scroll(function () {
             "required": " This Field is Required ",
             "delete": " Delete ",
             "dropImage": " Click to upload your artwork ",
-            "edit": " Edit your profile ",
+            "edit": " Edit ",
             "editContestants": " Edit artist ",
             "editOrRotate": " Edit Crop or Rotate ",
+            "editTooltip": "Edit Image",
             "email": " E-mail address ",
             "failed": " These credentials do not match our records. ",
             "faqlink": " http:\/\/wedcontest2018.diproinduca.com\/frequently-asked-questions\/ ",
             "forgot": " Forgot password ",
-            "from": " From ",
+            "from": " from ",
             "gamechangers": " Game changer between 11 and 15 ",
             "gamechangers_label": " Entre 11 y 15 ",
             "header": " Registration to the World Environment Day Drawing Contest 2018 ",
@@ -56522,6 +56524,7 @@ $(window).scroll(function () {
             "password_label": " Password ",
             "phone": " Phone ",
             "previous": " « Previous ",
+            "profile": "Profile",
             "read_more": " Read More ",
             "referred": {
                 "label": "     Referred ",
@@ -56806,6 +56809,7 @@ $(window).scroll(function () {
             "adminHeader": "Administrador",
             "approve": "Aprobar",
             "artWork": "Obra de Arte",
+            "artwork": "Obra de Arte",
             "artWorkTitle": "Título",
             "articles": "Lecturas",
             "articles_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/blog\/",
@@ -56824,17 +56828,18 @@ $(window).scroll(function () {
             "contestname": "Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente",
             "country": "País",
             "countryselect": "Seleccione su país",
-            "d": "Este campo es requerido",
+            "required": "Este campo es requerido",
             "delete": "Borrar",
             "dropImage": "Click aquí para subir tu Obra de Arte",
             "edit": "Editar",
             "editContestants": "Editar artista",
             "editOrRotate": "Editar, recortar o rotar",
+            "editTooltip": "Editar Imagen",
             "email": "e-mail",
             "failed": "Estas credenciales no coinciden con los datos del sistema.",
             "faqlink": "http:\/\/wedcontest2018.diproinduca.com\/es\/preguntas-frecuentes\/",
             "forgot": "Olvido de clave",
-            "from": "Desde",
+            "from": "desde",
             "gamechangers": "Game Changer Entre 11 y 15 Años",
             "header": "Registro al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente",
             "header_confirmed": "Es hora de registrar a tus artistas participando este año.",
@@ -56877,6 +56882,7 @@ $(window).scroll(function () {
             "password_label": "Clave",
             "phone": "Teléfono",
             "previous": "« Anterior",
+            "profile": "Perfil",
             "read_more": "Leer más",
             "referred": {
                 "label": "    Referido por",
@@ -56913,7 +56919,7 @@ $(window).scroll(function () {
             "topic_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/",
             "unconfirmed_1": "¡Ya casi estamos listos!",
             "unconfirmed_2": "Solo faltan pocos pasos para confirmar tu registro en el Concurso del Día Mundial del Medio Ambiente 2018",
-            "upload": "Subir dibujos",
+            "upload": "Subir dibujo",
             "uploadImage": "Subir imagen",
             "uploadTooltip": "Sube tu Dibujo.",
             "uploadTooltipNotOpen": "Not abierto aun",
@@ -56924,7 +56930,7 @@ $(window).scroll(function () {
             "user": "No tenemos un usuario con ese email en el sistema",
             "winners": "Ganadores 2017",
             "winners_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/ganadores\/",
-            "yearsOld": "año"
+            "yearsOld": "años"
         },
         "navbar": {
             "adminHeader": "Administrador",
@@ -72566,12 +72572,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
 	name: 'contestantCard',
-	props: ["contestant", "uploadLink"],
+	props: ["contestant", "artwork"],
 	methods: {
 		deleteContestant: function deleteContestant() {
 			axios.delete(this.contestant.deletePath).then(function () {
@@ -72642,7 +72653,7 @@ var render = function() {
             _vm._s(_vm.categoriesLabel) +
             " " +
             _vm._s(_vm.$t("lang.yearsOld")) +
-            "\n\t\t"
+            "\n\t\t\t"
         )
       ]),
       _vm._v(" "),
@@ -72674,28 +72685,62 @@ var render = function() {
             _c("div", { staticClass: "edit" }, [
               _c("a", { attrs: { href: _vm.contestant.editPath } }, [
                 _c("i", { staticClass: "far fa-edit" }),
-                _vm._v(_vm._s(_vm.$t("lang.edit")))
+                _vm._v(
+                  _vm._s(_vm.$t("lang.edit")) +
+                    " " +
+                    _vm._s(_vm.$t("lang.profile"))
+                )
               ])
             ]),
             _vm._v(" "),
             _vm.isAdmin
               ? _c("div", { staticClass: "upload" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-link text-muted",
-                      attrs: {
-                        href: _vm.contestant.uploadPath,
-                        "data-toggle": "tooltip",
-                        "data-placement": "top",
-                        title: _vm.$t("lang.uploadTooltip")
-                      }
-                    },
-                    [
-                      _vm._v("\n\t\t\t\t\t\t" + _vm._s(_vm.$t("lang.upload"))),
-                      _c("i", { staticClass: "fas fa-cloud-upload-alt" })
-                    ]
-                  )
+                  _vm.artwork.length === 0
+                    ? _c("div", [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href: _vm.contestant.uploadPath,
+                              "data-toggle": "tooltip",
+                              "data-placement": "top",
+                              title: _vm.$t("lang.uploadTooltip")
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t" + _vm._s(_vm.$t("lang.upload"))
+                            ),
+                            _c("i", { staticClass: "fas fa-cloud-upload-alt" })
+                          ]
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.artwork.length > 0 && _vm.artwork[0].state === "reviewing"
+                    ? _c("div", [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href: _vm.artwork[0].pathEdit,
+                              "data-toggle": "tooltip",
+                              "data-placement": "top",
+                              title: _vm.$t("lang.editTooltip")
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t" +
+                                _vm._s(_vm.$t("lang.edit")) +
+                                " " +
+                                _vm._s(_vm.$t("lang.artwork"))
+                            ),
+                            _c("i", { staticClass: "fas fa-cloud-upload-alt" })
+                          ]
+                        )
+                      ])
+                    : _vm._e()
                 ])
               : _c("div", { staticClass: "upload" }, [
                   _c(

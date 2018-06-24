@@ -26,8 +26,13 @@ class SubscribeToContestantNewsletter
      */
     public function handle(RegisterContestant $event)
     {
-         $user = $event->user;
-         $contestant = $event->contestant;
+        $contestant = $event->contestant;
+
+        if (!$contestant->email) {
+            return true;
+        }
+        $user = $event->user;
+
         Newsletter::subscribe($contestant->email, [
             'FNAME'    => $contestant->name,
             'LNAME'    => $contestant->last_name,

@@ -14,9 +14,10 @@ class MyContestantController extends Controller
     public function index()
     {
         $contestants = auth()->user()->contestants;
-
+        $actualContest = Contest::whereActive(true)->first();
+        $cats = $actualContest->categories->pluck('id')->toArray();
         return view('mycontestants.index', [
-            'contestants' => $contestants,
+            'contestants' => $contestants,'cats'=>$cats
         ]);
     }
 

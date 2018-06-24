@@ -11,29 +11,34 @@
 			<div class="card-footer">
 				<div class="d-flex align-center justify-content-between">
 					<div class="edit">
-						<a :href="contestant.editPath"><i class="far fa-edit"></i>{{ $t('lang.edit') }}</a>
+						<a :href="contestant.editPath"><i class="far fa-edit"></i>{{ $t('lang.edit') }} {{ $t('lang.profile') }}</a>
 					</div>
-					
 					<div class="upload" v-if="isAdmin">
-						<a class="btn btn-link text-muted" :href="contestant.uploadPath" data-toggle="tooltip" 
-						data-placement="top" :title="$t('lang.uploadTooltip')">
-							{{ $t('lang.upload') }}<i class="fas fa-cloud-upload-alt"></i>
-						</a>
+						<div v-if="artwork.length===0">
+							<a :href="contestant.uploadPath" data-toggle="tooltip"
+							data-placement="top" :title="$t('lang.uploadTooltip')">
+							{{ $t('lang.upload') }}<i class="fas fa-cloud-upload-alt"></i></a>
+						</div>
+						<div v-if="artwork.length>0&&artwork[0].state==='reviewing'">
+							<a :href="artwork[0].pathEdit" data-toggle="tooltip"
+							data-placement="top" :title="$t('lang.editTooltip')">
+							{{ $t('lang.edit') }} {{ $t('lang.artwork') }}<i class="fas fa-cloud-upload-alt"></i></a>
+						</div>
 					</div>
 					<div class="upload" v-else>
-						<a class="btn btn-link text-muted" href="#" data-toggle="tooltip" 
+						<a class="btn btn-link text-muted" href="#" data-toggle="tooltip"
 						data-placement="top" :title="$t('lang.uploadTooltipNotOpen')">
-							{{ $t('lang.upload') }}<i class="fas fa-cloud-upload-alt"></i>
-						</a>
-					</div>
-					<div class="delete">
-						<a href="#" @click.prevent="deleteContestant"><i class="far fa-trash-alt"></i>{{ $t('lang.delete') }}</a>
-					</div>
+						{{ $t('lang.upload') }}<i class="fas fa-cloud-upload-alt"></i>
+					</a>
+				</div>
+				<div class="delete">
+					<a href="#" @click.prevent="deleteContestant"><i class="far fa-trash-alt"></i>{{ $t('lang.delete') }}</a>
 				</div>
 			</div>
-
 		</div>
+
 	</div>
+</div>
 </template>
 
 <script>
@@ -41,7 +46,7 @@ import {format,differenceInYears} from "date-fns";
 export default {
 
 	name: 'contestantCard',
-	props:["contestant","uploadLink"],
+	props:["contestant","artwork"],
 	methods:{
 		deleteContestant(){
 			axios.delete(this.contestant.deletePath)

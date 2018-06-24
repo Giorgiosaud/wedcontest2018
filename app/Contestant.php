@@ -22,9 +22,7 @@ class Contestant extends Model
         'uploadPath',
         'deletePath',
         'activeCategory',
-
     ];
-    protected $with = ['categories'];
     protected $dates = [
         'dob',
     ];
@@ -131,25 +129,13 @@ class Contestant extends Model
 
         return $dt->diffInYears($this->dob);  // 1
     }
-
-    public function getActiveArtworkAttribute()
-    {
-        $actualContest = Contest::whereActive(true)->first();
-        $cats = $actualContest->categories->pluck('id')->toArray();
-        $thisYearArtwork = $this->artworks->whereIn('category_id', $cats);
-        if ($thisYearArtwork->count() === 0) {
-            return false;
-        }
-
-        return $thisYearArtwork->first();
-    }
     public function getActiveCategoryAttribute()
     {
-        if($this->categories->count()>0){
+        if ($this->categories->count()>0) {
             return $this->categories->last()->name;
-        }
-        else
+        } else {
             return '';
+        }
     }
 
     /**
@@ -169,9 +155,13 @@ class Contestant extends Model
     {
         return $this->hasMany(Artwork::class);
     }
-
+    public function getActiveArtworkAttribute()
+    {
+       return 'cfscf';
+    }
     public function getHasArtworkForThisYearAttribute()
     {
+
         $actualContest = Contest::whereActive(true)->first();
         $cats = $actualContest->categories->pluck('id')->toArray();
         $thisYearArtwork = $this->artworks->whereIn('category_id', $cats);
