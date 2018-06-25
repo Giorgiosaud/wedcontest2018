@@ -34,10 +34,10 @@ class SubscribeToContestantNewsletter
         $user = $event->user;
 
         Newsletter::subscribe($contestant->email, [
-            'FNAME'    => $contestant->name,
-            'LNAME'    => $contestant->last_name,
+            'FNAME'       => $contestant->name,
+            'LNAME'       => $contestant->last_name,
             'CATEGORY'    => $contestant->activeCategory,
-        ],'contestants');
+        ], 'contestants');
         //
     }
 }
