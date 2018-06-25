@@ -33,8 +33,13 @@
 		
 		@if($artwork->state==='reviewing')
 		<hr>
-		<a href="{{ $artwork->pathEdit }}" class="btn btn-wedcontest">@lang('lang.edit')</a>
-		<a href="{{ $artwork->pathApprove }}" class="btn btn-wedcontest">@lang('lang.approve')</a>
+		<div class="row">
+			<div class="container py-4">
+				<a href="{{ $artwork->pathApprove }}" class="btn btn-wedcontest">@lang('lang.approve')</a>
+				<a href="{{ $artwork->pathEdit }}" class="btn btn-wedcontest">@lang('lang.edit')</a>
+
+			</div>
+		</div>
 		@endif
 	</div>
 </div>
