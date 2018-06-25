@@ -13,8 +13,9 @@ class ArtworkUploadController extends Controller
     public function create(Contestant $contestant)
     {
         $this->authorize('createArtwork', $contestant);
+
         return view('artwork.create', [
-            'contestant' => $contestant ]);
+            'contestant' => $contestant, ]);
     }
 
     public function review(Contestant $contestant, Artwork $artwork)
@@ -26,6 +27,7 @@ class ArtworkUploadController extends Controller
     {
         return view('artwork.edit', compact('contestant', 'artwork'));
     }
+
     public function store(Contestant $contestant)
     {
         $this->authorize('createArtwork', $contestant);
@@ -63,11 +65,13 @@ class ArtworkUploadController extends Controller
 
         return redirect()->route('artwork.review', [$contestant->slug, $artwork->id]);
     }
+
     public function approve(Contestant $contestant, Artwork $artwork)
     {
         $this->authorize('createArtwork', $contestant);
-        $artwork->state='approved';
+        $artwork->state = 'approved';
         $artwork->save();
+
         return redirect()->route('artwork.review', [$contestant->slug, $artwork->id]);
     }
 
@@ -83,7 +87,6 @@ class ArtworkUploadController extends Controller
         $name = str_slug(request('title'));
         $artworkFile = $artwork->category->contest->slug.'/'.$artwork->contestant->slug.'/'.$name.'.jpg';
         if (request('url') !== $artworkFile) {
-
             if (Storage::disk('public')->exists($artworkFile)) {
                 Storage::disk('public')->delete($artworkFile);
             }
@@ -100,9 +103,7 @@ class ArtworkUploadController extends Controller
                 'description'=> request('description'),
             ],
         ]);
+
         return ['data'=>route('artwork.review', [$contestant->slug, $artwork->id])];
-
-
     }
-
 }

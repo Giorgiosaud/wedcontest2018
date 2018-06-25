@@ -16,8 +16,9 @@ class MyContestantController extends Controller
         $contestants = auth()->user()->contestants;
         $actualContest = Contest::whereActive(true)->first();
         $cats = $actualContest->categories->pluck('id')->toArray();
+
         return view('mycontestants.index', [
-            'contestants' => $contestants,'cats'=>$cats
+            'contestants' => $contestants, 'cats'=>$cats,
         ]);
     }
 
@@ -76,7 +77,7 @@ class MyContestantController extends Controller
             Newsletter::subscribe(request('email'), ['firstName'=>request('name'), 'lastName'=>request('last_Name')], 'contestants');
         }
         event(new RegisterContestant(auth()->user(), $contestant));
-        
+
         return route('mycontestants.index');
     }
 

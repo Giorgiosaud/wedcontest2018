@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Country;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -160,7 +159,9 @@ class User extends Authenticatable
 
         throw new \Exception('Role not Exist');
     }
-    public function countryData(){
-        return $this->belongsTo(Country::class,'country','code');
+
+    public function countryData()
+    {
+        return $this->belongsTo(Country::class, 'country', 'code');
     }
 }

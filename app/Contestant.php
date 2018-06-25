@@ -129,9 +129,10 @@ class Contestant extends Model
 
         return $dt->diffInYears($this->dob);  // 1
     }
+
     public function getActiveCategoryAttribute()
     {
-        if ($this->categories->count()>0) {
+        if ($this->categories->count() > 0) {
             return $this->categories->last()->name;
         } else {
             return '';
@@ -155,13 +156,14 @@ class Contestant extends Model
     {
         return $this->hasMany(Artwork::class);
     }
+
     public function getActiveArtworkAttribute()
     {
-       return 'cfscf';
+        return 'cfscf';
     }
+
     public function getHasArtworkForThisYearAttribute()
     {
-
         $actualContest = Contest::whereActive(true)->first();
         $cats = $actualContest->categories->pluck('id')->toArray();
         $thisYearArtwork = $this->artworks->whereIn('category_id', $cats);
