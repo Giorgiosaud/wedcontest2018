@@ -13,7 +13,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col text-center">
-				<h3>{{$contestant->name}} {{$contestant->last_name}}, {{$contestant->age}} @lang('lang.yearsOld'), @lang('lang.from') {{ $contestant->representant->countryData->name}} <img src="{{$contestant->representant->flag}}" alt="{{$contestant->representant->country}}"></h3>
+				<h3>{{$contestant->name}} {{$contestant->last_name}}, {{ Carbon\Carbon::parse($contestant->dob)->diffInYears($contest->year) }} @lang('lang.yearsOld'), @lang('lang.from') {{ $contestant->representant->countryData->name}} <img src="{{$contestant->representant->flag}}" alt="{{$contestant->representant->country}}"></h3>
 			</div>
 		</div>
 		<hr>
