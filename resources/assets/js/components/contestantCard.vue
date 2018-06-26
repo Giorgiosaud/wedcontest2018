@@ -14,17 +14,17 @@
 						<a :href="contestant.editPath"><i class="far fa-edit"></i>{{ $t('lang.edit') }} {{ $t('lang.profile') }}</a>
 					</div>
 					<div class="upload" v-if="isAdmin">
-						<div v-if="artwork.length===0">
+						<div v-if="!artwork || artwork.length===0">
 							<a :href="contestant.uploadPath" data-toggle="tooltip"
 							data-placement="top" :title="$t('lang.uploadTooltip')">
 							{{ $t('lang.upload') }}<i class="fas fa-cloud-upload-alt"></i></a>
 						</div>
-						<div v-if="artwork.length>0&&artwork[0].state==='reviewing'">
+						<div v-if=" artwork.length>0 && artwork[0].state==='reviewing'">
 							<a :href="artwork[0].pathEdit" data-toggle="tooltip"
 							data-placement="top" :title="$t('lang.editTooltip')">
 							{{ $t('lang.edit') }} {{ $t('lang.artwork') }}<i class="fas fa-cloud-upload-alt"></i></a>
 						</div>
-						<div v-else>
+						<div v-if="artwork.length>0 && artwork[0].state!=='reviewing'">
 							<a :href="artwork[0].pathReview" data-toggle="tooltip"
 							data-placement="top" :title="$t('lang.profileTooltip')">
 							{{ $t('lang.profile') }} {{ $t('lang.artwork') }}<i class="fas fa-cloud-upload-alt"></i></a>
