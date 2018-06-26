@@ -39,6 +39,7 @@ return [
     'forgot'                      => 'Olvido de clave',
     'from'                        => 'desde',
     'gamechangers'                => 'Game Changer Entre 11 y 15 Años',
+    'gallery'=>'Galeria',
     'header'                      => 'Registro al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente',
     'header_confirmed'            => 'Es hora de registrar a tus artistas participando este año.',
     'history'                     => 'Historia',

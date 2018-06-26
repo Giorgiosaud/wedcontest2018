@@ -46,6 +46,7 @@
 
                 </div>
             </li>
+            <li class="nav-item"><a href="{{route('gallery.index')}}" class="nav-link">@lang('lang.gallery')</a></li>
 
             @if (auth()->check())
             <li class="nav-item dropdown">

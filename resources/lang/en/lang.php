@@ -40,6 +40,7 @@ return [
     'from'                        => ' from ',
     'gamechangers'                => ' Game changer between 11 and 15 ',
     'gamechangers_label'          => ' Entre 11 y 15 ',
+    'gallery'=>'Gallery',
     'header'                      => ' Registration to the World Environment Day Drawing Contest 2018 ',
     'header_confirmed'            => ' It’s time to register your artist(s) participating this year ',
     'history'                     => ' History ',
