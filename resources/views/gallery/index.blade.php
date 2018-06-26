@@ -2,8 +2,8 @@
 @section('content')
 @include('layouts.assets.headerStandart')
 <div class="pt-6">
-   <div class="content">
-   	<gallery slug="{{$contest->slug}}">
+   <div class="content py-4">
+   	<gallery :contest="{{$contest}}">
    		
    	</gallery>
    </div>

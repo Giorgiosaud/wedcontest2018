@@ -25,7 +25,7 @@ class Contest extends Model
         'path',
         'background_image',
     ];
-    protected $with = ['translations'];
+    protected $with = ['translations','categories'];
 
     /**
      * Get the route key name.

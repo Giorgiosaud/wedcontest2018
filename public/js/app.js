@@ -72703,7 +72703,7 @@ var render = function() {
             _vm._v(" "),
             _vm.isAdmin
               ? _c("div", { staticClass: "upload" }, [
-                  _vm.artwork.length === 0
+                  !_vm.artwork || _vm.artwork.length === 0
                     ? _c("div", [
                         _c(
                           "a",
@@ -72748,7 +72748,10 @@ var render = function() {
                           ]
                         )
                       ])
-                    : _c("div", [
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.artwork.length > 0 && _vm.artwork[0].state !== "reviewing"
+                    ? _c("div", [
                         _c(
                           "a",
                           {
@@ -72770,6 +72773,7 @@ var render = function() {
                           ]
                         )
                       ])
+                    : _vm._e()
                 ])
               : _c("div", { staticClass: "upload" }, [
                   _c(
@@ -75998,7 +76002,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n", ""]);
+exports.push([module.i, "\n.filters[data-v-5dc0f28b] {\n  cursor: pointer;\n  font-weight: bold;\n  font-size: 1.1rem;\n}\n.artwork[data-v-5dc0f28b] {\n  overflow: hidden;\n  height: 200px;\n  -webkit-transition: all .5s ease-in-out;\n  transition: all .5s ease-in-out;\n}\n.artwork img[data-v-5dc0f28b] {\n  -webkit-transition: all .5s ease-in-out;\n  transition: all .5s ease-in-out;\n}\n.artwork img[data-v-5dc0f28b]:hover {\n  -webkit-transform: scale(1.3);\n          transform: scale(1.3);\n}\n", ""]);
 
 // exports
 
@@ -76018,14 +76022,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
   name: 'gallery',
-  props: ['slug'],
+  props: ['contest'],
   data: function data() {
     return {
-      contest: null
+      gallery: null,
+      category: 'all'
     };
   },
 
@@ -76036,13 +76058,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           return translation.locale === App.locale;
         })[element];
       }
+    },
+    selectedCat: function selectedCat(cat) {
+      this.category = cat;
+    }
+  },
+  computed: {
+    filteredGallery: function filteredGallery() {
+      var _this = this;
+
+      return this.gallery.filter(function (art) {
+        if (_this.category === 'all') {
+          return true;
+        }
+        return art.category.name === _this.category;
+      });
     }
   },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
-    axios.get('/api/gallery/' + this.slug).then(function (response) {
-      return _this.contest = response.data;
+    axios.get('/api/gallery/' + this.contest.slug).then(function (response) {
+      return _this2.gallery = response.data;
     });
   }
 });
@@ -76056,20 +76093,79 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", {
-      domProps: { innerHTML: _vm._s(_vm.translate(_vm.contest, "description")) }
-    }),
+    _c("div", { staticClass: "container text-center" }, [
+      _c("h1", {
+        domProps: {
+          innerHTML: _vm._s(_vm.translate(_vm.contest, "description"))
+        }
+      })
+    ]),
     _vm._v(" "),
     _vm.contest
+      ? _c("div", { staticClass: "filters container text-center py-4" }, [
+          _c(
+            "div",
+            { staticClass: "d-flex align-items-center justify-content-around" },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "flex-expand",
+                  on: {
+                    click: function($event) {
+                      _vm.category = "all"
+                    }
+                  }
+                },
+                [_vm._v("All")]
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.contest.categories, function(category) {
+                return _c("div", {
+                  staticClass: "flex-expand",
+                  domProps: { textContent: _vm._s(category.name) },
+                  on: {
+                    click: function($event) {
+                      _vm.selectedCat(category.name)
+                    }
+                  }
+                })
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.gallery
       ? _c(
           "div",
-          { staticClass: "filters row text-center" },
-          _vm._l(_vm.contest.categories, function(category) {
-            return _c("div", {
-              staticClass: "col",
-              domProps: { textContent: _vm._s(category.name) }
-            })
-          })
+          { staticClass: "artworks container" },
+          [
+            _c(
+              "transition-group",
+              { staticClass: "row", attrs: { name: "fadeLeft", tag: "div" } },
+              _vm._l(_vm.filteredGallery, function(artwork) {
+                return _c(
+                  "div",
+                  {
+                    key: artwork.id,
+                    staticClass:
+                      "col-6 col-md-4  artwork-container p-2 d-flex align-items-center justify-content-center"
+                  },
+                  [
+                    _c("div", { staticClass: "m-2 artwork border" }, [
+                      _c("img", {
+                        staticClass: "img-fluid p-2",
+                        attrs: { src: artwork.imageLink, alt: artwork.title }
+                      })
+                    ])
+                  ]
+                )
+              })
+            )
+          ],
+          1
         )
       : _vm._e()
   ])

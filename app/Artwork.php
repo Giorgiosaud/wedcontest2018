@@ -11,7 +11,7 @@ class Artwork extends Model
     public $translatedAttributes = ['title', 'description'];
     protected $fillable = ['url', 'contestant_id', 'category_id'];
     protected $appends = ['imageLink','pathReview','pathEdit','pathApprove'];
-    protected $with = ['translations'];
+    protected $with = ['translations','category'];
 
     public function pathReview()
     {
