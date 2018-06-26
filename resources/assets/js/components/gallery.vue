@@ -44,7 +44,7 @@ name="bounce"
      <img :src="'/storage'+selectedArtwork.imageLink" alt="selectedArtwork.title" class="img-fluid">
      <div class="move moveNext" @click="selectNext"><i class="fas fa-chevron-right"></i></div>
    </div>
-   <div class="container">
+   <div class="container py-4">
      <h2 v-html="translate(selectedArtwork,'title')"></h2>
      <div v-html="translate(selectedArtwork,'description')"></div>
    </div>
