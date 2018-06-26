@@ -110,6 +110,7 @@ return [
     'subscribed'                      => 'Recibir notificaciones',
     'thinkers'                        => 'Thinker entre 8 y 10 Años',
     'throttle'                        => 'Muchos Intentos. Porfavor espere :seconds segundos para intentarlo nuevamente.',
+    'terms'=>'Acepte <a href="https://wedcontest2018.diproinduca.com/es/reglas/" target="_blank">Terminos y condiciones</a> para continuar',
     'title'                           => 'Reiniciar contraseña',
     'token'                           => 'Esta clave de reinicio es invalida.',
     'topic'                           => 'Tema 2018',

@@ -48,7 +48,13 @@
 		>
 		<div class="text-red" v-if="form.url===''">{{$t('lang.required')}}</div>
 	</transition>
-
+	<div class="py-2">
+		<div class="form-check">
+			<input class="form-check-input" type="checkbox" value="" id="tems" v-model="terms">
+			<label class="form-check-label" for="tems" v-html="$t('lang.terms')">
+			</label>
+		</div>
+	</div>
 
 </div>
 <div class="py-2">
@@ -74,6 +80,7 @@ export default {
 				explenation:'',
 				url:''
 			},
+			terms:'',
 			errors:{},
 			cropperOptions: {
 				minWidth:800,

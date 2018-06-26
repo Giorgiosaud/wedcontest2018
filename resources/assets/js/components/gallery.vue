@@ -31,7 +31,7 @@ name="bounce"
   leave-active-class="bounceOutRight"
 >
 <div class="detail" v-if="!hiddenDetail">
-  <div class="p-4">
+  <div class="p-4 container">
     <div class="row">
       <div class="container-fluid text-right">
         <button type="button" class="close"  @click="hiddenDetail=true" aria-label="Close">
@@ -39,7 +39,7 @@ name="bounce"
         </button>
       </div>
     </div>
-    <div class="d-flex align-items-center justify-content-center">
+    <div class="d-flex align-items-center justify-content-center px-4">
      <div class="move movePrev" @click="selectPrev"><i class="fas fa-chevron-left"></i></div>
      <img :src="'/storage'+selectedArtwork.imageLink" alt="selectedArtwork.title" class="img-fluid">
      <div class="move moveNext" @click="selectNext"><i class="fas fa-chevron-right"></i></div>
@@ -128,6 +128,9 @@ created(){
   cursor:pointer;
   font-weight:bold;
   font-size:1.1rem;
+}
+.artworks {
+    min-height: 50vh;
 }
 .artwork{
   overflow:hidden;
