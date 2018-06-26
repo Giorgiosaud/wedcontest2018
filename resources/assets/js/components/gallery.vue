@@ -21,7 +21,7 @@
       <div 
       class="m-2 artwork border" 
       >
-      <img :src="artwork.imageLink" :alt="artwork.title" class="img-fluid p-2">
+      <img :src="'/storage'+artwork.imageLink" :alt="artwork.title" class="img-fluid p-2">
     </div>
   </div>
 </transition-group>
@@ -41,7 +41,7 @@ name="bounce"
     </div>
     <div class="d-flex align-items-center justify-content-center">
      <div class="move movePrev" @click="selectPrev"><i class="fas fa-chevron-left"></i></div>
-     <img :src="selectedArtwork.imageLink" alt="selectedArtwork.title" class="img-fluid">
+     <img :src="'/storage'+selectedArtwork.imageLink" alt="selectedArtwork.title" class="img-fluid">
      <div class="move moveNext" @click="selectNext"><i class="fas fa-chevron-right"></i></div>
    </div>
    <div class="container">

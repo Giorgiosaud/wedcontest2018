@@ -46,7 +46,7 @@
 
                 </div>
             </li>
-            <li class="nav-item"><a href="{{route('gallery.index')}}" class="nav-link">@lang('lang.gallery')</a></li>
+            
 
             @if (auth()->check())
             <li class="nav-item dropdown">
@@ -61,7 +61,7 @@
                     @if(auth()->user()->isAdmin())
                     {{-- <a class="dropdown-item" href="{{ route('contest.create') }}" class="link">Add Contest</a> --}}
                     <a class="dropdown-item" href="{{ route('users.index') }}" class="link">List Of Representants and Contestants</a>
-
+                    <a href="{{route('gallery.index')}}" class="dropdown-item">@lang('lang.gallery')</a>
                     
                     <div class="dropdown-divider"></div>
                     @endif
