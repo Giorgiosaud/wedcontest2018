@@ -71,11 +71,11 @@ class Contestant extends Model
         if (request()->wantsJson()) {
             return route('artwork.create', $this->slug);
         }
-        if(auth()->check()){
-        if (auth()->user()->isAdmin) {
-            return route('artwork.create', $this->slug);
+        if (auth()->check()) {
+            if (auth()->user()->isAdmin) {
+                return route('artwork.create', $this->slug);
+            }
         }
-    }
 
         return '#';
     }
@@ -88,11 +88,12 @@ class Contestant extends Model
         if (request()->wantsJson()) {
             return route('contestant.destroy', $this->slug);
         }
-           if(auth()->check()){
-        if (auth()->user()->isAdmin) {
-            return route('contestant.destroy', $this->slug);
+        if (auth()->check()) {
+            if (auth()->user()->isAdmin) {
+                return route('contestant.destroy', $this->slug);
+            }
         }
-}
+
         return route('mycontestant.destroy', $this->slug);
     }
 
