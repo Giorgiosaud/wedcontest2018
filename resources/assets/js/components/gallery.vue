@@ -5,8 +5,8 @@
     </div>
     <div v-if="contest" class="filters container text-center py-4">
       <div class="d-flex align-items-center justify-content-around">
-        <div class="flex-expand" @click="category='all'">All</div>
-        <div v-for="category in contest.categories" class="flex-expand" v-text="category.name" @click="selectedCat(category.name)"></div>
+        <div class="flex-expand" :class="{selected:category==='all'}" @click="category='all'">All</div>
+        <div v-for="cat in contest.categories" class="flex-expand" :class="{selected:category===cat.name}" v-text="cat.name" @click="selectedCat(cat.name)"></div>
       </div>
     </div>
     <div v-if="gallery" class="artworks container">
@@ -45,8 +45,9 @@ name="bounce"
      <div class="move moveNext" @click="selectNext"><i class="fas fa-chevron-right"></i></div>
    </div>
    <div class="container py-4">
-     <h2 v-html="translate(selectedArtwork,'title')"></h2>
-     <div v-html="translate(selectedArtwork,'description')"></div>
+     <h1 v-html="translate(selectedArtwork,'title')"></h1>
+     <h2 v-html="translate(selectedArtwork,'description')"></h2>
+     <p>{{ selectedArtwork.contestant.name }} {{ selectedArtwork.contestant.last_name }} – {{ age }} {{ $t('lang.yearsOld') }} – {{ selectedArtwork.category.name}}</p>
    </div>
  </div>
 </div>
@@ -56,6 +57,8 @@ name="bounce"
 </template>
 
 <script>
+import {format,differenceInYears} from "date-fns";
+
 export default {
 
   name: 'gallery',
@@ -101,6 +104,10 @@ export default {
 
 },
 computed:{
+
+    age() {
+      return differenceInYears(new Date(),this.selectedArtwork.contestant.dob);
+    },
   filteredGallery(){
     return this.gallery.filter(art=>{
       if(this.category==='all'){
@@ -126,8 +133,10 @@ created(){
 <style lang="scss" scoped>
 .filters{
   cursor:pointer;
-  font-weight:bold;
   font-size:1.1rem;
+  .selected{
+    font-weight:bold
+  }
 }
 .artworks {
     min-height: 50vh;

@@ -41,6 +41,9 @@ Route::group([
     Route::get('contest/{contest}/categories', 'CategoriesController@index')->name('categories.index');
     Route::post('contest', 'ContestController@store')->name('contest.store');
     Route::put('contest/{contest}', 'ContestController@update')->name('contest.update');
+    Route::get('/review/{contest}/{contestant}/{artwork}', 'AdminController@review')->middleware('admin')->name('admin.review');
+    Route::get('/translate', 'AdminController@translateActive')->middleware('admin')->name('admin.translateActive');
+    Route::get('/translate/{contest}', 'AdminController@translate')->middleware('admin')->name('admin.translations');
 });
 Route::group([
     'prefix'     => LaravelLocalization::setLocale(),

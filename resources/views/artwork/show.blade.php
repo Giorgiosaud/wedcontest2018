@@ -13,15 +13,15 @@
 	<div class="container">
 		<div class="row">
 			<div class="col text-center">
-				<h3>{{$contestant->name}} {{$contestant->last_name}}, {{ Carbon\Carbon::parse($contestant->dob)->diffInYears($contest->year) }} @lang('lang.yearsOld'), @lang('lang.from') {{ $contestant->representant->countryData->name}} <img src="{{$contestant->representant->flag}}" alt="{{$contestant->representant->country}}"></h3>
+				<p>{{$contestant->name}} {{$contestant->last_name}}, {{ Carbon\Carbon::parse($contestant->dob)->diffInYears($contest->year) }} @lang('lang.yearsOld'), @lang('lang.from') {{ $contestant->representant->countryData->name}} <img src="{{$contestant->representant->flag}}" alt="{{$contestant->representant->country}}"></p>
 			</div>
 		</div>
 		<hr>
 
 		<div class="row">
 			<div class="col text-center pb-4">
-				<h2 class="text-muted">{{$artwork->title}}</h2>
-				<blockquote class="blockquote mb-0 font-italic">{!!$artwork->description!!}</blockquote>
+				<h1 class="text-muted">{{$artwork->title}}</h1>
+				<h2 >{!!$artwork->description!!}</h2>
 			</div>
 		</div>
 		<div class="row">

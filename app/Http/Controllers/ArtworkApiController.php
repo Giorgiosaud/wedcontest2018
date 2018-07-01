@@ -11,7 +11,7 @@ class ArtworkApiController extends Controller
     {
         $activeContest = Contest::whereActive(true)->first();
         $catsId = $activeContest->categories->pluck('id');
-        $artworks = Artwork::whereIn('category_id', $catsId)->get();
+        $artworks = Artwork::whereIn('category_id', $catsId)->whereState('approved')->get();
 
         return $artworks;
     }
@@ -20,7 +20,7 @@ class ArtworkApiController extends Controller
     {
         $contest->load('categories.artworks')->get();
         $catsId = $contest->categories->pluck('id');
-        $artworks = Artwork::whereIn('category_id', $catsId)->get();
+        $artworks = Artwork::whereIn('category_id', $catsId)->whereState('approved')->get();
 
         return $artworks;
     }
