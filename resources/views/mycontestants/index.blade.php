@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@include('layouts.assets.headerStandart')
+@include('layouts.assets.noTextHeaderStandart')
 <div class="container py-4">
 	@if(auth()->user()->confirmed)
 	<div class="row py-4">

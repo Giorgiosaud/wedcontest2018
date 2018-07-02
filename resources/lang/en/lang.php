@@ -28,6 +28,7 @@ return [
     'countryselect'               => ' Select your country ',
     'required'                    => ' This Field is Required ',
     'terms'                       => 'Accept <a href="http://wedcontest2018.diproinduca.com/rules/" target="_blank">Terms and Conditions</a> to continue',
+    'translate'                   => 'Transalate',
     'delete'                      => ' Delete ',
     'dropImage'                   => ' Click to upload your artwork ',
     'edit'                        => ' Edit ',

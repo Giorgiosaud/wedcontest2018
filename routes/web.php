@@ -44,6 +44,7 @@ Route::group([
     Route::get('/review/{contest}/{contestant}/{artwork}', 'AdminController@review')->middleware('admin')->name('admin.review');
     Route::get('/translate', 'AdminController@translateActive')->middleware('admin')->name('admin.translateActive');
     Route::get('/translate/{contest}', 'AdminController@translate')->middleware('admin')->name('admin.translations');
+    Route::put('/translate/{artwork}', 'AdminController@SaveTranslation')->middleware('admin')->name('admin.save.translations');
 });
 Route::group([
     'prefix'     => LaravelLocalization::setLocale(),
@@ -77,4 +78,5 @@ Route::group([
     Route::get('/mycontestant/{contestant}/{artwork}/artwork-approve', 'ArtworkUploadController@approve')->middleware('auth')->name('artwork.approve');
     Route::get('/mycontestant/{contestant}/{artwork}/artwork-review', 'ArtworkUploadController@review')->middleware('auth')->name('artwork.review');
     Route::get('/gallery', 'GalleryController@index')->name('gallery.index');
+    Route::get('/gallery/{contest}', 'GalleryController@show')->name('gallery.show');
 });

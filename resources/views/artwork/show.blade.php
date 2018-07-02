@@ -1,14 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="d-flex flex-column h-low align-items-center justify-content-center text-light" style="background-image:url({{$contest->background_image}})">
-	<div class="container text-center">
-		<img src="/storage/{{$contest->logo_image}}" width="300" alt="Reinventando el Plástico">
-	</div>
-	<!--div class="container">
-		<div class="artwork-title"><h1>{{$artwork->title}}</h1></div>
-		<div class="artwork-author"><p>@lang('lang.by'): {{$contestant->name}} {{$contestant->last_name}} – {{$artwork->category->name}} {{$artwork->category->contest->year}}</p></div>
-	</div-->
-</div>
+@include('layouts.assets.noTextHeaderStandart')
 <div class="pt-4">
 	<div class="container">
 		<div class="row">

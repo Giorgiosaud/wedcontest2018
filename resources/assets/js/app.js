@@ -26,6 +26,8 @@ Vue.use(VueI18n);
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component("Flash", require("./components/Flash.vue"));
 Vue.component("Login", require("./components/Login.vue"));
+Vue.component("Translations", require("./components/Translations.vue"));
+Vue.component("Translation", require("./components/Translation.vue"));
 Vue.component("Register", require("./components/Register.vue"));
 Vue.component("Users", require("./components/Users.vue"));
 Vue.component(

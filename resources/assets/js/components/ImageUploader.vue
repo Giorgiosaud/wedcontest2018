@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <label class="label" data-toggle="tooltip" title="Change your avatar">
+      <label class="label" >
         <img class="img-fluid" :src="source" v-if="value">
         <div v-else>
           <p class="border-dashed border-light text-muted p-3">{{$t('lang.dropImage')}}</p>
@@ -106,8 +106,11 @@
           </span>
         </button>
       </div>
-      
-      <button type="button" class="btn btn-primary" @click="endEdition"><feather type="check"></feather></button>
+      <div class="btn-group">
+
+        <button type="button" class="btn btn-primary" @click="reset" data-toggle="tooltip" title="" data-original-title="Reset"><feather type="repeat"></feather></button>
+        <button type="button" class="btn btn-primary" @click="endEdition"><feather type="check"></feather></button>
+      </div>
     </div>
   </div>
 </div>
@@ -248,6 +251,9 @@ export default {
     },
     resetRotation() {
       this.cropper.rotateTo(0);
+    },
+    reset(){
+      this.cropper.reset();
     }
   },
   computed:{

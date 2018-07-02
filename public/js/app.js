@@ -1262,186 +1262,11 @@ module.exports = g;
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(0)
-
-/**
- * @category Day Helpers
- * @summary Add the specified number of days to the given date.
- *
- * @description
- * Add the specified number of days to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of days to be added
- * @returns {Date} the new date with the days added
- *
- * @example
- * // Add 10 days to 1 September 2014:
- * var result = addDays(new Date(2014, 8, 1), 10)
- * //=> Thu Sep 11 2014 00:00:00
- */
-function addDays (dirtyDate, dirtyAmount) {
-  var date = parse(dirtyDate)
-  var amount = Number(dirtyAmount)
-  date.setDate(date.getDate() + amount)
-  return date
-}
-
-module.exports = addDays
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var parse = __webpack_require__(0)
-
-/**
- * @category Millisecond Helpers
- * @summary Add the specified number of milliseconds to the given date.
- *
- * @description
- * Add the specified number of milliseconds to the given date.
- *
- * @param {Date|String|Number} date - the date to be changed
- * @param {Number} amount - the amount of milliseconds to be added
- * @returns {Date} the new date with the milliseconds added
- *
- * @example
- * // Add 750 milliseconds to 10 July 2014 12:45:30.000:
- * var result = addMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
- * //=> Thu Jul 10 2014 12:45:30.750
- */
-function addMilliseconds (dirtyDate, dirtyAmount) {
-  var timestamp = parse(dirtyDate).getTime()
-  var amount = Number(dirtyAmount)
-  return new Date(timestamp + amount)
-}
-
-module.exports = addMilliseconds
-
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var getISOYear = __webpack_require__(5)
-var startOfISOWeek = __webpack_require__(6)
-
-/**
- * @category ISO Week-Numbering Year Helpers
- * @summary Return the start of an ISO week-numbering year for the given date.
- *
- * @description
- * Return the start of an ISO week-numbering year,
- * which always starts 3 days before the year's first Thursday.
- * The result will be in the local timezone.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param {Date|String|Number} date - the original date
- * @returns {Date} the start of an ISO year
- *
- * @example
- * // The start of an ISO week-numbering year for 2 July 2005:
- * var result = startOfISOYear(new Date(2005, 6, 2))
- * //=> Mon Jan 03 2005 00:00:00
- */
-function startOfISOYear (dirtyDate) {
-  var year = getISOYear(dirtyDate)
-  var fourthOfJanuary = new Date(0)
-  fourthOfJanuary.setFullYear(year, 0, 4)
-  fourthOfJanuary.setHours(0, 0, 0, 0)
-  var date = startOfISOWeek(fourthOfJanuary)
-  return date
-}
-
-module.exports = startOfISOYear
-
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var parse = __webpack_require__(0)
-
-/**
- * @category Common Helpers
- * @summary Compare the two dates and return -1, 0 or 1.
- *
- * @description
- * Compare the two dates and return 1 if the first date is after the second,
- * -1 if the first date is before the second or 0 if dates are equal.
- *
- * @param {Date|String|Number} dateLeft - the first date to compare
- * @param {Date|String|Number} dateRight - the second date to compare
- * @returns {Number} the result of the comparison
- *
- * @example
- * // Compare 11 February 1987 and 10 July 1989:
- * var result = compareAsc(
- *   new Date(1987, 1, 11),
- *   new Date(1989, 6, 10)
- * )
- * //=> -1
- *
- * @example
- * // Sort the array of dates:
- * var result = [
- *   new Date(1995, 6, 2),
- *   new Date(1987, 1, 11),
- *   new Date(1989, 6, 10)
- * ].sort(compareAsc)
- * //=> [
- * //   Wed Feb 11 1987 00:00:00,
- * //   Mon Jul 10 1989 00:00:00,
- * //   Sun Jul 02 1995 00:00:00
- * // ]
- */
-function compareAsc (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse(dirtyDateLeft)
-  var timeLeft = dateLeft.getTime()
-  var dateRight = parse(dirtyDateRight)
-  var timeRight = dateRight.getTime()
-
-  if (timeLeft < timeRight) {
-    return -1
-  } else if (timeLeft > timeRight) {
-    return 1
-  } else {
-    return 0
-  }
-}
-
-module.exports = compareAsc
-
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var buildDistanceInWordsLocale = __webpack_require__(156)
-var buildFormatLocale = __webpack_require__(157)
-
-/**
- * @category Locales
- * @summary English locale.
- */
 module.exports = {
-  distanceInWords: buildDistanceInWordsLocale(),
-  format: buildFormatLocale()
-}
-
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = {
-  addDays: __webpack_require__(9),
+  addDays: __webpack_require__(10),
   addHours: __webpack_require__(41),
   addISOYears: __webpack_require__(42),
-  addMilliseconds: __webpack_require__(10),
+  addMilliseconds: __webpack_require__(11),
   addMinutes: __webpack_require__(44),
   addMonths: __webpack_require__(17),
   addQuarters: __webpack_require__(45),
@@ -1451,7 +1276,7 @@ module.exports = {
   areRangesOverlapping: __webpack_require__(144),
   closestIndexTo: __webpack_require__(145),
   closestTo: __webpack_require__(146),
-  compareAsc: __webpack_require__(12),
+  compareAsc: __webpack_require__(13),
   compareDesc: __webpack_require__(24),
   differenceInCalendarDays: __webpack_require__(16),
   differenceInCalendarISOWeeks: __webpack_require__(147),
@@ -1572,7 +1397,7 @@ module.exports = {
   startOfDay: __webpack_require__(7),
   startOfHour: __webpack_require__(64),
   startOfISOWeek: __webpack_require__(6),
-  startOfISOYear: __webpack_require__(11),
+  startOfISOYear: __webpack_require__(12),
   startOfMinute: __webpack_require__(68),
   startOfMonth: __webpack_require__(231),
   startOfQuarter: __webpack_require__(71),
@@ -1592,6 +1417,181 @@ module.exports = {
   subSeconds: __webpack_require__(241),
   subWeeks: __webpack_require__(242),
   subYears: __webpack_require__(243)
+}
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(0)
+
+/**
+ * @category Day Helpers
+ * @summary Add the specified number of days to the given date.
+ *
+ * @description
+ * Add the specified number of days to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of days to be added
+ * @returns {Date} the new date with the days added
+ *
+ * @example
+ * // Add 10 days to 1 September 2014:
+ * var result = addDays(new Date(2014, 8, 1), 10)
+ * //=> Thu Sep 11 2014 00:00:00
+ */
+function addDays (dirtyDate, dirtyAmount) {
+  var date = parse(dirtyDate)
+  var amount = Number(dirtyAmount)
+  date.setDate(date.getDate() + amount)
+  return date
+}
+
+module.exports = addDays
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(0)
+
+/**
+ * @category Millisecond Helpers
+ * @summary Add the specified number of milliseconds to the given date.
+ *
+ * @description
+ * Add the specified number of milliseconds to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of milliseconds to be added
+ * @returns {Date} the new date with the milliseconds added
+ *
+ * @example
+ * // Add 750 milliseconds to 10 July 2014 12:45:30.000:
+ * var result = addMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
+ * //=> Thu Jul 10 2014 12:45:30.750
+ */
+function addMilliseconds (dirtyDate, dirtyAmount) {
+  var timestamp = parse(dirtyDate).getTime()
+  var amount = Number(dirtyAmount)
+  return new Date(timestamp + amount)
+}
+
+module.exports = addMilliseconds
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getISOYear = __webpack_require__(5)
+var startOfISOWeek = __webpack_require__(6)
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Return the start of an ISO week-numbering year for the given date.
+ *
+ * @description
+ * Return the start of an ISO week-numbering year,
+ * which always starts 3 days before the year's first Thursday.
+ * The result will be in the local timezone.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of an ISO year
+ *
+ * @example
+ * // The start of an ISO week-numbering year for 2 July 2005:
+ * var result = startOfISOYear(new Date(2005, 6, 2))
+ * //=> Mon Jan 03 2005 00:00:00
+ */
+function startOfISOYear (dirtyDate) {
+  var year = getISOYear(dirtyDate)
+  var fourthOfJanuary = new Date(0)
+  fourthOfJanuary.setFullYear(year, 0, 4)
+  fourthOfJanuary.setHours(0, 0, 0, 0)
+  var date = startOfISOWeek(fourthOfJanuary)
+  return date
+}
+
+module.exports = startOfISOYear
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(0)
+
+/**
+ * @category Common Helpers
+ * @summary Compare the two dates and return -1, 0 or 1.
+ *
+ * @description
+ * Compare the two dates and return 1 if the first date is after the second,
+ * -1 if the first date is before the second or 0 if dates are equal.
+ *
+ * @param {Date|String|Number} dateLeft - the first date to compare
+ * @param {Date|String|Number} dateRight - the second date to compare
+ * @returns {Number} the result of the comparison
+ *
+ * @example
+ * // Compare 11 February 1987 and 10 July 1989:
+ * var result = compareAsc(
+ *   new Date(1987, 1, 11),
+ *   new Date(1989, 6, 10)
+ * )
+ * //=> -1
+ *
+ * @example
+ * // Sort the array of dates:
+ * var result = [
+ *   new Date(1995, 6, 2),
+ *   new Date(1987, 1, 11),
+ *   new Date(1989, 6, 10)
+ * ].sort(compareAsc)
+ * //=> [
+ * //   Wed Feb 11 1987 00:00:00,
+ * //   Mon Jul 10 1989 00:00:00,
+ * //   Sun Jul 02 1995 00:00:00
+ * // ]
+ */
+function compareAsc (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var timeLeft = dateLeft.getTime()
+  var dateRight = parse(dirtyDateRight)
+  var timeRight = dateRight.getTime()
+
+  if (timeLeft < timeRight) {
+    return -1
+  } else if (timeLeft > timeRight) {
+    return 1
+  } else {
+    return 0
+  }
+}
+
+module.exports = compareAsc
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var buildDistanceInWordsLocale = __webpack_require__(156)
+var buildFormatLocale = __webpack_require__(157)
+
+/**
+ * @category Locales
+ * @summary English locale.
+ */
+module.exports = {
+  distanceInWords: buildDistanceInWordsLocale(),
+  format: buildFormatLocale()
 }
 
 
@@ -1977,7 +1977,7 @@ module.exports = getDaysInMonth
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var addDays = __webpack_require__(9)
+var addDays = __webpack_require__(10)
 
 /**
  * @category Week Helpers
@@ -2067,7 +2067,7 @@ module.exports = compareDesc
 
 var parse = __webpack_require__(0)
 var differenceInCalendarMonths = __webpack_require__(49)
-var compareAsc = __webpack_require__(12)
+var compareAsc = __webpack_require__(13)
 
 /**
  * @category Month Helpers
@@ -2176,7 +2176,7 @@ module.exports = endOfDay
 
 var parse = __webpack_require__(0)
 var startOfISOWeek = __webpack_require__(6)
-var startOfISOYear = __webpack_require__(11)
+var startOfISOYear = __webpack_require__(12)
 
 var MILLISECONDS_IN_WEEK = 604800000
 
@@ -17644,7 +17644,7 @@ module.exports = Cancel;
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var addMilliseconds = __webpack_require__(10)
+var addMilliseconds = __webpack_require__(11)
 
 var MILLISECONDS_IN_HOUR = 3600000
 
@@ -17710,7 +17710,7 @@ module.exports = addISOYears
 /***/ (function(module, exports, __webpack_require__) {
 
 var parse = __webpack_require__(0)
-var startOfISOYear = __webpack_require__(11)
+var startOfISOYear = __webpack_require__(12)
 var differenceInCalendarDays = __webpack_require__(16)
 
 /**
@@ -17751,7 +17751,7 @@ module.exports = setISOYear
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var addMilliseconds = __webpack_require__(10)
+var addMilliseconds = __webpack_require__(11)
 
 var MILLISECONDS_IN_MINUTE = 60000
 
@@ -17814,7 +17814,7 @@ module.exports = addQuarters
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var addMilliseconds = __webpack_require__(10)
+var addMilliseconds = __webpack_require__(11)
 
 /**
  * @category Second Helpers
@@ -18013,7 +18013,7 @@ module.exports = differenceInCalendarYears
 
 var parse = __webpack_require__(0)
 var differenceInCalendarDays = __webpack_require__(16)
-var compareAsc = __webpack_require__(12)
+var compareAsc = __webpack_require__(13)
 
 /**
  * @category Day Helpers
@@ -18092,7 +18092,7 @@ var compareDesc = __webpack_require__(24)
 var parse = __webpack_require__(0)
 var differenceInSeconds = __webpack_require__(26)
 var differenceInMonths = __webpack_require__(25)
-var enLocale = __webpack_require__(13)
+var enLocale = __webpack_require__(14)
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_ALMOST_TWO_DAYS = 2520
@@ -18683,7 +18683,7 @@ module.exports = isSameISOWeek
 /* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var startOfISOYear = __webpack_require__(11)
+var startOfISOYear = __webpack_require__(12)
 
 /**
  * @category ISO Week-Numbering Year Helpers
@@ -19293,6 +19293,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_i18n__["a" /* default */]);
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component("Flash", __webpack_require__(122));
 Vue.component("Login", __webpack_require__(125));
+Vue.component("Translations", __webpack_require__(334));
+Vue.component("Translation", __webpack_require__(329));
 Vue.component("Register", __webpack_require__(128));
 Vue.component("Users", __webpack_require__(131));
 Vue.component("RepresentantRegistrationForm", __webpack_require__(247));
@@ -60195,7 +60197,7 @@ exports.push([module.i, "\n.contestant[data-v-f6e09c18] {\n  color: #fff;\n}\na[
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_date_fns__);
 //
 //
@@ -60587,7 +60589,7 @@ module.exports = differenceInHours
 
 var parse = __webpack_require__(0)
 var differenceInCalendarISOYears = __webpack_require__(48)
-var compareAsc = __webpack_require__(12)
+var compareAsc = __webpack_require__(13)
 var subISOYears = __webpack_require__(53)
 
 /**
@@ -60736,7 +60738,7 @@ module.exports = differenceInWeeks
 
 var parse = __webpack_require__(0)
 var differenceInCalendarYears = __webpack_require__(51)
-var compareAsc = __webpack_require__(12)
+var compareAsc = __webpack_require__(13)
 
 /**
  * @category Year Helpers
@@ -60980,7 +60982,7 @@ module.exports = buildFormatLocale
 var compareDesc = __webpack_require__(24)
 var parse = __webpack_require__(0)
 var differenceInSeconds = __webpack_require__(26)
-var enLocale = __webpack_require__(13)
+var enLocale = __webpack_require__(14)
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_MONTH = 43200
@@ -61638,7 +61640,7 @@ var getISOWeek = __webpack_require__(28)
 var getISOYear = __webpack_require__(5)
 var parse = __webpack_require__(0)
 var isValid = __webpack_require__(60)
-var enLocale = __webpack_require__(13)
+var enLocale = __webpack_require__(14)
 
 /**
  * @category Common Helpers
@@ -62085,7 +62087,7 @@ module.exports = getHours
 /* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var startOfISOYear = __webpack_require__(11)
+var startOfISOYear = __webpack_require__(12)
 var addWeeks = __webpack_require__(23)
 
 var MILLISECONDS_IN_WEEK = 604800000
@@ -63527,7 +63529,7 @@ module.exports = setDate
 /***/ (function(module, exports, __webpack_require__) {
 
 var parse = __webpack_require__(0)
-var addDays = __webpack_require__(9)
+var addDays = __webpack_require__(10)
 
 /**
  * @category Weekday Helpers
@@ -63638,7 +63640,7 @@ module.exports = setHours
 /***/ (function(module, exports, __webpack_require__) {
 
 var parse = __webpack_require__(0)
-var addDays = __webpack_require__(9)
+var addDays = __webpack_require__(10)
 var getISODay = __webpack_require__(62)
 
 /**
@@ -63997,7 +63999,7 @@ module.exports = startOfYesterday
 /* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var addDays = __webpack_require__(9)
+var addDays = __webpack_require__(10)
 
 /**
  * @category Day Helpers
@@ -64057,7 +64059,7 @@ module.exports = subHours
 /* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var addMilliseconds = __webpack_require__(10)
+var addMilliseconds = __webpack_require__(11)
 
 /**
  * @category Millisecond Helpers
@@ -65516,7 +65518,7 @@ exports.push([module.i, "\n.v-select input[type=search] {\n  background: #fff;\n
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker_dist_locale__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_date_fns__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_date_fns__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_date_fns___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_date_fns__);
 //
 //
@@ -65636,7 +65638,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 var locales = {
   es: __webpack_require__(78),
-  en: __webpack_require__(13)
+  en: __webpack_require__(14)
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -66354,7 +66356,7 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker_dist_locale__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_date_fns__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_date_fns__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_date_fns___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_date_fns__);
 //
 //
@@ -66472,7 +66474,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 var locales = {
   es: __webpack_require__(78),
-  en: __webpack_require__(13)
+  en: __webpack_require__(14)
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -67382,6 +67384,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -67504,6 +67509,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     resetRotation: function resetRotation() {
       this.cropper.rotateTo(0);
+    },
+    reset: function reset() {
+      this.cropper.reset();
     }
   },
   computed: {
@@ -71271,39 +71279,29 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", [
-      _c(
-        "label",
-        {
-          staticClass: "label",
-          attrs: { "data-toggle": "tooltip", title: "Change your avatar" }
-        },
-        [
-          _vm.value
-            ? _c("img", {
-                staticClass: "img-fluid",
-                attrs: { src: _vm.source }
-              })
-            : _c("div", [
-                _c(
-                  "p",
-                  { staticClass: "border-dashed border-light text-muted p-3" },
-                  [_vm._v(_vm._s(_vm.$t("lang.dropImage")))]
-                )
-              ]),
-          _vm._v(" "),
-          _c("input", {
-            ref: "imageFile",
-            staticClass: "sr-only",
-            attrs: {
-              type: "file",
-              id: "input",
-              name: "image",
-              accept: "image/*"
-            },
-            on: { change: _vm.onChange }
-          })
-        ]
-      )
+      _c("label", { staticClass: "label" }, [
+        _vm.value
+          ? _c("img", { staticClass: "img-fluid", attrs: { src: _vm.source } })
+          : _c("div", [
+              _c(
+                "p",
+                { staticClass: "border-dashed border-light text-muted p-3" },
+                [_vm._v(_vm._s(_vm.$t("lang.dropImage")))]
+              )
+            ]),
+        _vm._v(" "),
+        _c("input", {
+          ref: "imageFile",
+          staticClass: "sr-only",
+          attrs: {
+            type: "file",
+            id: "input",
+            name: "image",
+            accept: "image/*"
+          },
+          on: { change: _vm.onChange }
+        })
+      ])
     ]),
     _vm._v(" "),
     _c("div", [
@@ -71612,16 +71610,34 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { type: "button" },
-                    on: { click: _vm.endEdition }
-                  },
-                  [_c("feather", { attrs: { type: "check" } })],
-                  1
-                )
+                _c("div", { staticClass: "btn-group" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: {
+                        type: "button",
+                        "data-toggle": "tooltip",
+                        title: "",
+                        "data-original-title": "Reset"
+                      },
+                      on: { click: _vm.reset }
+                    },
+                    [_c("feather", { attrs: { type: "repeat" } })],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "button" },
+                      on: { click: _vm.endEdition }
+                    },
+                    [_c("feather", { attrs: { type: "check" } })],
+                    1
+                  )
+                ])
               ])
             ])
           ]
@@ -72595,7 +72611,7 @@ exports.push([module.i, "\nli.list-group-item[data-v-f19a530c] {\n  border: none
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_date_fns__);
 //
 //
@@ -76066,7 +76082,7 @@ exports.push([module.i, "\n.filters[data-v-5dc0f28b] {\n  cursor: pointer;\n  fo
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_date_fns__);
 //
 //
@@ -76438,6 +76454,707 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 328 */,
+/* 329 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(330)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(332)
+/* template */
+var __vue_template__ = __webpack_require__(333)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-2e6aa5ca"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Translation.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2e6aa5ca", Component.options)
+  } else {
+    hotAPI.reload("data-v-2e6aa5ca", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 330 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(331);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("3bea9ac6", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2e6aa5ca\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Translation.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2e6aa5ca\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Translation.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 331 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 332 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ImageUploader_vue__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ImageUploader_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ImageUploader_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	name: 'Translation',
+	components: {
+		ImageUploader: __WEBPACK_IMPORTED_MODULE_0__ImageUploader_vue___default.a
+	},
+	props: ['artwork'],
+	data: function data() {
+		return {
+			cropperOptions: {
+				minWidth: 800,
+				minHeight: 800,
+				// aspectRatio: 16 / 9,
+				autoCropArea: 2,
+				movable: true,
+				zoomOnWheel: true,
+				viewMode: 0,
+				dragMode: 'move'
+			},
+			state: '',
+			errors: {},
+			translations: {
+				en: {
+					title: '',
+					description: ''
+				},
+				es: {
+					title: '',
+					description: ''
+				}
+			}
+		};
+	},
+
+	methods: {
+		translate: function translate(model, element) {
+			if (this.contest) {
+				return model.translations.find(function (translation) {
+					return translation.locale === App.locale;
+				})[element];
+			}
+		},
+		saveTranslation: function saveTranslation() {
+			var _this = this;
+
+			axios.put('/admin/translate/' + this.artwork.id, this.translations).then(function (response) {
+				console.log("saving translation");
+				_this.state = 'translated';
+			});
+		}
+	},
+	created: function created() {
+		this.translations.en.title = this.artwork.translations.find(function (translation) {
+			return translation.locale === 'en';
+		}).title;
+		this.translations.es.title = this.artwork.translations.find(function (translation) {
+			return translation.locale === 'es';
+		}).title;
+		this.translations.en.description = this.artwork.translations.find(function (translation) {
+			return translation.locale === 'en';
+		}).description;
+		this.translations.es.description = this.artwork.translations.find(function (translation) {
+			return translation.locale === 'es';
+		}).description;
+		this.state = this.artwork.state;
+	}
+});
+
+/***/ }),
+/* 333 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container py-4" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "col" }, [
+          _c("h2", [
+            _vm._v(
+              _vm._s(_vm.translations.en.title) +
+                " / " +
+                _vm._s(_vm.translations.es.title) +
+                " "
+            ),
+            _c("span", { staticClass: "badge badge-pill badge-primary" }, [
+              _vm._v(_vm._s(_vm.state))
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col col-md-4" }, [
+        _c("h3", [_vm._v("Inglés")]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "name" } }, [
+              _vm._v(_vm._s(_vm.$t("lang.artWorkTitle")))
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.translations.en.title,
+                  expression: "translations.en.title"
+                }
+              ],
+              ref: "title",
+              staticClass: "form-control",
+              class: { "is-invalid": _vm.errors && _vm.errors.title },
+              attrs: {
+                type: "text",
+                id: "title",
+                autocomplete: "title",
+                "aria-describedby": "title",
+                required: ""
+              },
+              domProps: { value: _vm.translations.en.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.translations.en, "title", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "transition",
+              {
+                attrs: {
+                  name: "zoom",
+                  "enter-active-class": "zoomIn",
+                  "leave-active-class": "zoomOut"
+                }
+              },
+              [
+                _vm.artwork.title === ""
+                  ? _c("div", { staticClass: "text-red" }, [
+                      _vm._v(_vm._s(_vm.$t("lang.required")))
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "description" } }, [
+              _vm._v("Description")
+            ]),
+            _vm._v(" "),
+            _c("wysiwyg", {
+              ref: "explenation",
+              attrs: { name: "explenation", id: "explenation", required: "" },
+              model: {
+                value: _vm.translations.en.description,
+                callback: function($$v) {
+                  _vm.$set(_vm.translations.en, "description", $$v)
+                },
+                expression: "translations.en.description"
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "transition",
+              {
+                attrs: {
+                  name: "zoom",
+                  "enter-active-class": "zoomIn",
+                  "leave-active-class": "zoomOut"
+                }
+              },
+              [
+                _vm.artwork.description === ""
+                  ? _c("div", { staticClass: "text-red" }, [
+                      _vm._v(_vm._s(_vm.$t("lang.required")))
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col col-md-4" }, [
+        _c("h3", [_vm._v("Español")]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "name" } }, [
+              _vm._v(_vm._s(_vm.$t("lang.artWorkTitle")))
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.translations.es.title,
+                  expression: "translations.es.title"
+                }
+              ],
+              ref: "title",
+              staticClass: "form-control",
+              class: { "is-invalid": _vm.errors && _vm.errors.title },
+              attrs: {
+                type: "text",
+                id: "title",
+                autocomplete: "title",
+                "aria-describedby": "title",
+                required: ""
+              },
+              domProps: { value: _vm.translations.es.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.translations.es, "title", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "transition",
+              {
+                attrs: {
+                  name: "zoom",
+                  "enter-active-class": "zoomIn",
+                  "leave-active-class": "zoomOut"
+                }
+              },
+              [
+                _vm.artwork.title === ""
+                  ? _c("div", { staticClass: "text-red" }, [
+                      _vm._v(_vm._s(_vm.$t("lang.required")))
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "description" } }, [
+              _vm._v("Description")
+            ]),
+            _vm._v(" "),
+            _c("wysiwyg", {
+              ref: "explenation",
+              attrs: { name: "explenation", id: "explenation", required: "" },
+              model: {
+                value: _vm.translations.es.description,
+                callback: function($$v) {
+                  _vm.$set(_vm.translations.es, "description", $$v)
+                },
+                expression: "translations.es.description"
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "transition",
+              {
+                attrs: {
+                  name: "zoom",
+                  "enter-active-class": "zoomIn",
+                  "leave-active-class": "zoomOut"
+                }
+              },
+              [
+                _vm.artwork.description === ""
+                  ? _c("div", { staticClass: "text-red" }, [
+                      _vm._v(_vm._s(_vm.$t("lang.required")))
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col col-md-4" }, [
+        _c("img", {
+          staticClass: "img-fluid",
+          attrs: { src: "/storage/" + _vm.artwork.url, alt: _vm.artwork.title }
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-wedcontest",
+            attrs: { type: "button" },
+            on: { click: _vm.saveTranslation }
+          },
+          [_vm._v("Guardar Traduccion")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2e6aa5ca", module.exports)
+  }
+}
+
+/***/ }),
+/* 334 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(335)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(337)
+/* template */
+var __vue_template__ = __webpack_require__(338)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-bad496ce"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Translations.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-bad496ce", Component.options)
+  } else {
+    hotAPI.reload("data-v-bad496ce", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 335 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(336);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("c0255cfc", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-bad496ce\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Translations.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-bad496ce\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Translations.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 336 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 337 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	name: 'Translations',
+	props: ['artworks'],
+	data: function data() {
+		return {};
+	}
+});
+
+/***/ }),
+/* 338 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._l(_vm.artworks, function(artwork) {
+        return _c("translation", {
+          key: artwork.id,
+          attrs: { artwork: artwork }
+        })
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "filters" }, [
+      _c("div", { staticClass: "col" }, [_vm._v("\n\t\t\tapproved\n\t\t")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }, [_vm._v("\n\t\t\ttranslated\n\t\t")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-bad496ce", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

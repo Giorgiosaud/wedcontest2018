@@ -61,7 +61,8 @@
                     @if(auth()->user()->isAdmin())
                     {{-- <a class="dropdown-item" href="{{ route('contest.create') }}" class="link">Add Contest</a> --}}
                     <a class="dropdown-item" href="{{ route('users.index') }}" class="link">List Of Representants and Contestants</a>
-                    <a href="{{route('gallery.index')}}" class="dropdown-item">@lang('lang.gallery')</a>
+                    <a href="{{route('gallery.show',$contest->slug)}}" class="dropdown-item">@lang('lang.gallery')</a>
+                    <a href="{{route('admin.translations',$contest->slug)}}" class="dropdown-item">@lang('lang.translate')</a>
                     
                     <div class="dropdown-divider"></div>
                     @endif
