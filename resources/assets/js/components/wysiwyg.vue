@@ -1,11 +1,11 @@
 <template>
     <div class="form-group">
-        <input id="trix" type="hidden" :name="name" :value="value">
+        <input :id="id" type="hidden" :name="name" :value="value">
 
         <trix-editor
                 class="form-control"
-                ref="trix"
-                input="trix"
+                :ref="id"
+                :input="id"
                 @trix-change="change"
                 :placeholder="placeholder">
         </trix-editor>
@@ -20,7 +20,13 @@
 import Trix from "trix";
 
 export default {
-  props: ["name", "value", "placeholder"],
+  props: {
+    name:{type:String},
+    value:{type:String},
+    Placeholder:{type:String},
+    id:{type:String,default:'trix'}
+
+  },
 
   methods: {
     change({ target }) {

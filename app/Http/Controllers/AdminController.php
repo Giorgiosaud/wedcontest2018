@@ -18,6 +18,7 @@ class AdminController extends Controller
 		return view('translate.bulk',compact('contest','artworks'));
 	}
 	public function SaveTranslation(Artwork $artwork){
+		// dd(request()->en);
 		$artwork->fill([
 			'en'=>request()->en,
 			'es'=>request()->es
