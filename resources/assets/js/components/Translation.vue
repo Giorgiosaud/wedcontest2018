@@ -126,8 +126,8 @@ export default {
 		saveTranslation(){
 			axios.put('/admin/translate/'+this.artwork.id,this.translations)
 			.then((response)=>{
-				console.log("saving translation");
 				this.state='translated';
+				this.artwork.state='translated';
 			});
 		}
 	},
