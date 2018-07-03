@@ -13,8 +13,8 @@ class ArtworkPolicy
     /**
      * Determine if the authenticated user has permission to update a reply.
      *
-     * @param  User  $user
-     * @param  Reply $reply
+     * @param User  $user
+     * @param Reply $reply
      *
      * @return bool
      */

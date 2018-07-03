@@ -12,9 +12,7 @@ class Artwork extends Model
     protected $fillable = ['url', 'contestant_id', 'category_id'];
     protected $appends = ['imageLink', 'pathReview', 'pathEdit', 'pathApprove'];
     protected $with = ['translations', 'category'];
-    /**
-     * 
-     */
+
     public function pathReview()
     {
         return route('artwork.review', [$this->contestant->slug, $this->id]);
