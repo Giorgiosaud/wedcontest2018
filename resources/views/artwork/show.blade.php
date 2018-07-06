@@ -4,7 +4,7 @@
 <div class="pt-4">
 	<div class="container">
 		<div class="row">
-			<div class="col text-center">
+			<div class="col text-center child-name">
 				<p>{{$contestant->name}} {{$contestant->last_name}}, {{ Carbon\Carbon::parse($contestant->dob)->diffInYears($contest->year) }} @lang('lang.yearsOld'), @lang('lang.from') {{ $contestant->representant->countryData->name}} <img src="{{$contestant->representant->flag}}" alt="{{$contestant->representant->country}}"></p>
 			</div>
 		</div>

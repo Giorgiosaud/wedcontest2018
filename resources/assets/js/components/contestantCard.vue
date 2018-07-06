@@ -19,7 +19,7 @@
 							data-placement="top" :title="$t('lang.uploadTooltip')">
 							{{ $t('lang.upload') }}<i class="fas fa-cloud-upload-alt"></i></a>
 						</div>
-						<div v-if=" artwork.length>0 && artwork[0].state==='reviewing'">
+						<div v-if=" artwork.length>0">
 							<a :href="artwork[0].pathEdit" data-toggle="tooltip"
 							data-placement="top" :title="$t('lang.editTooltip')">
 							{{ $t('lang.edit') }} {{ $t('lang.artwork') }}<i class="fas fa-cloud-upload-alt"></i></a>
