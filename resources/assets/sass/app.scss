@@ -180,6 +180,10 @@ to {
     position: absolute;
     bottom: 25px;
 }
+p.text-big {
+    font-size: 2.5rem;
+    font-weight: light;
+}
 @media (min-width: 768px){
     .bg-wedcontest{
         background-color:rgba(0,0,0,0.59);
