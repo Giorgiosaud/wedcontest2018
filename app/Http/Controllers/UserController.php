@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ResendConfirmationLink;
 use App\User;
 
 class UserController extends Controller
@@ -47,4 +48,8 @@ class UserController extends Controller
 
         return view('users.index');
     }
+    public function resendConfirmationLink(User $user){
+        event(new ResendConfirmationLink($user));;
+    }
+    
 }

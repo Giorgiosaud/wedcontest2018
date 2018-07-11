@@ -3,12 +3,14 @@
 namespace App\Listeners;
 
 use App\Events\RegisterRepresentant;
+use App\Events\ResendConfirmationLink;
 use App\Mail\PleaseConfirmYourEmail;
 use App\Mail\PorFavorConfirmeSuCorreo;
 use App\Mail\RepresentantRegistered;
+use App\Mail\ResendRepresentantRegisteredEmail;
 use Illuminate\Support\Facades\Mail;
 
-class SendEmail
+class ReSendEmail
 {
     /**
      * Create the event listener.
@@ -27,16 +29,17 @@ class SendEmail
      *
      * @return void
      */
-    public function handle(RegisterRepresentant $event)
+    public function handle(ResendConfirmationLink $event)
     {
 //        dd($event->user);
         $user = $event->user;
         switch ($user->language) {
-            case 'en':
-                Mail::to($user)->send(new PleaseConfirmYourEmail($user));
-                break;
+            
             case 'es':
                 Mail::to($user)->send(new PorFavorConfirmeSuCorreo($user));
+                break;
+            default:
+                Mail::to($user)->send(new PleaseConfirmYourEmail($user));
                 break;
         }
 

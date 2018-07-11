@@ -81,6 +81,18 @@
 					<button class="btn btn-link" @click.prevent="deleteUser">Delete User</button>
 				</div>
 			</div>
+			<div class="col">
+				<div class="row text-muted">
+					ResendConfirmation
+				</div>
+				<div class="row">
+					<button class="btn btn-link" @click.prevent="resendConfirmation">
+					Resend Confirmation Link to User<i class="fas fa-spinner fa-spin" v-if="sending"></i>
+
+
+				</button>
+				</div>
+			</div>
 			<div class="d-flex align-items-center justify-content-center mx-3">
 				<i class="fas fa-caret-up" :class="{'show-child':showChild}"></i>
 			</div>
@@ -112,7 +124,8 @@ export default {
 	},
 	data () {
 		return {
-			showChild:false
+			showChild:false,
+			sending:false
 		}
 	},
 	computed:{
@@ -124,6 +137,11 @@ export default {
 		deleteUser(){
 			axios.delete(`/admin/users/${this.user.id}`)
 			.then(response=>window.location.reload());
+		},
+		resendConfirmation(){
+			this.sending=true;
+			axios.get(`/admin/users/resendConfirmationLink/${this.user.id}`)
+			.then(()=>this.sending=false);
 		}
 	}
 }

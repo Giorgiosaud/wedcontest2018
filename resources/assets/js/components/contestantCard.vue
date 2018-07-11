@@ -13,7 +13,7 @@
 					<div class="edit">
 						<a :href="contestant.editPath"><i class="far fa-edit"></i>{{ $t('lang.edit') }} {{ $t('lang.profile') }}</a>
 					</div>
-					<div class="upload" v-if="isAdmin">
+					<div class="upload">
 						<div v-if="!artwork || artwork.length===0">
 							<a :href="contestant.uploadPath" data-toggle="tooltip"
 							data-placement="top" :title="$t('lang.uploadTooltip')">
@@ -30,12 +30,13 @@
 							{{ $t('lang.profile') }} {{ $t('lang.artwork') }}<i class="fas fa-cloud-upload-alt"></i></a>
 						</div>
 					</div>
-					<div class="upload" v-else>
+					<!--div class="upload" v-else>
 						<a class="btn btn-link text-muted" href="#" data-toggle="tooltip"
 						data-placement="top" :title="$t('lang.uploadTooltipNotOpen')">
-						{{ $t('lang.upload') }}<i class="fas fa-cloud-upload-alt"></i>
-					</a>
-				</div>
+						{{ $t('lang.upload') }}
+							<i class="fas fa-cloud-upload-alt"></i>
+						</a>
+					</div-->
 				<div class="delete">
 					<a href="#" @click.prevent="deleteContestant"><i class="far fa-trash-alt"></i>{{ $t('lang.delete') }}</a>
 				</div>
