@@ -88,8 +88,6 @@
 				<div class="row">
 					<button class="btn btn-link" @click.prevent="resendConfirmation">
 					Resend Confirmation Link to User<i class="fas fa-spinner fa-spin" v-if="sending"></i>
-
-
 				</button>
 				</div>
 			</div>

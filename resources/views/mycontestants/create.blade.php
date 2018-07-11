@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@include('layouts.assets.headerStandart')
+@include('layouts.assets.noTextHeaderStandart')
 <div class="pt-6">
 	<div class="content">
 		@if(auth()->user()->confirmed)

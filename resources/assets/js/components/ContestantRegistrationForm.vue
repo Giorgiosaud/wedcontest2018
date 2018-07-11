@@ -1,10 +1,10 @@
 <template>
   <div class="container py-4">
 
-    <h1 class="pb-4">{{$t("registration.registerContestants")}}</h1>
+    <h1 class="pb-4">{{$t("lang.registerContestants")}}</h1>
     <form class="" @submit.prevent="register">
       <div class="form-group">
-        <label for="name">{{ $t("registration.contestant_name")}}</label>
+        <label for="name">{{ $t("lang.contestant_name")}}</label>
         <input 
         type="text" 
         class="form-control" 
@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="last_name">{{ $t("registration.contestant_last_name")}}</label>
+        <label for="last_name">{{ $t("lang.contestant_last_name")}}</label>
         <input 
         type="text" 
         class="form-control" 
@@ -36,7 +36,7 @@
 
       <div class="datepicker-trigger form-group">
         <label for="datepicker-trigger"class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 ">
-          {{ $t("registration.birthdate")}}
+          {{ $t("lang.birthdate")}}
         </label>
         <datepicker 
         :bootstrapStyling="true"
@@ -66,7 +66,7 @@
       v-model="category"
       >
       <template slot="option" slot-scope="props" :class="classBgCat(props.option.name)">
-        <span>{{$t('contestants.'+props.option.label)}}</span>
+        <span>{{$t('lang.'+props.option.label)}}</span>
       </template> 
     </multiselect>
     <span v-if="errors.categories" v-text="errors.categories[0]" class="text-xs text-red"></span>
@@ -85,7 +85,7 @@
     <label class="form-check-label" for="authorizedEmail">{{$t('registration.sendInformationtoContestantemail')}}</label>
   </div>
   <div class="form-group" v-if="authorizedEmail">
-    <label for="email">{{ $t("registration.email")}}</label>
+    <label for="email">{{ $t("lang.email")}}</label>
     <input 
     type="text" 
     class="form-control" 
@@ -160,7 +160,7 @@ export default {
     this.category = this.categories.find(cat => this.age <= cat.max_age);
   },
   categoryLabel: function(object) {
-    return this.$t('contestants.'+object.label);
+    return this.$t('lang.'+object.label);
   },
   classBgCat(cat){
     return `${cat} bg-red`;
