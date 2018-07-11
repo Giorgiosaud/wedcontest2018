@@ -6,8 +6,6 @@ use App\Events\RegisterRepresentant;
 use App\Events\ResendConfirmationLink;
 use App\Mail\PleaseConfirmYourEmail;
 use App\Mail\PorFavorConfirmeSuCorreo;
-use App\Mail\RepresentantRegistered;
-use App\Mail\ResendRepresentantRegisteredEmail;
 use Illuminate\Support\Facades\Mail;
 
 class ReSendEmail
@@ -34,7 +32,7 @@ class ReSendEmail
 //        dd($event->user);
         $user = $event->user;
         switch ($user->language) {
-            
+
             case 'es':
                 Mail::to($user)->send(new PorFavorConfirmeSuCorreo($user));
                 break;
@@ -42,6 +40,7 @@ class ReSendEmail
                 Mail::to($user)->send(new PleaseConfirmYourEmail($user));
                 break;
         }
+
         return Mail::to('wedcontest@diproinduca.com')->send(new PleaseConfirmYourEmail($user));
     }
 }

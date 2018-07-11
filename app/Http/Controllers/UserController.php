@@ -48,8 +48,9 @@ class UserController extends Controller
 
         return view('users.index');
     }
-    public function resendConfirmationLink(User $user){
-        event(new ResendConfirmationLink($user));;
+
+    public function resendConfirmationLink(User $user)
+    {
+        event(new ResendConfirmationLink($user));
     }
-    
 }

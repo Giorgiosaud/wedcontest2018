@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Listeners\RegisterAsRepresentant;
-use App\Listeners\SendEmail;
 use App\Listeners\ReSendEmail;
+use App\Listeners\SendEmail;
 use App\Listeners\SubscribeToNewsletter;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
