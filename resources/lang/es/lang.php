@@ -7,6 +7,8 @@ return [
     'adminHeader'                 => 'Administrador',
     'approve'                     => 'Aprobar',
     'artWork'                     => 'Obra de Arte',
+    'artworkSubmition'            => 'Envío de obra de arte',
+    'artworkEdit'                 => 'Editar obra de arte',
     'artwork'                     => 'Obra de Arte',
     'artWorkTitle'                => 'Título',
     'articles'                    => 'Lecturas',

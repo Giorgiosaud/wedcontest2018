@@ -8,6 +8,8 @@ return [
     'approve'                     => ' Approve ',
     'artWork'                     => ' Artwork ',
     'artwork'                     => ' Artwork ',
+    'artworkSubmition'            => 'Artwork Submition',
+    'artworkEdit'            => 'Artwork Edit',
     'artWorkTitle'                => ' Title ',
     'articles'                    => ' Stories ',
     'articles_link'               => ' http://wedcontest2018.diproinduca.com/blog/ ',

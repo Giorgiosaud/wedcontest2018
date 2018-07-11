@@ -1,6 +1,6 @@
 <template>
 	<div class="container py-4">
-		<h1 class="pb-4">{{$t("lang.registerContestants")}}</h1>
+		<h1 class="pb-4">{{$t("lang.artworkSubmition")}}</h1>
 		<form class="" id="valid" @submit.prevent="register">
 			<div class="form-group">
 				<label for="name">{{ $t("lang.artWorkTitle")}}</label>
