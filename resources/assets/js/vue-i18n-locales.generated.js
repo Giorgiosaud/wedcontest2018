@@ -8,7 +8,7 @@ export default {
             "approve": " Approve ",
             "artWork": " Artwork ",
             "artwork": " Artwork ",
-            "artworkSubmition": "Artwork Submition",
+            "artworkSubmition": "Artwork Submission",
             "artworkEdit": "Artwork Edit",
             "artWorkTitle": " Title ",
             "articles": " Stories ",
