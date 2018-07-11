@@ -42,7 +42,6 @@ class ReSendEmail
                 Mail::to($user)->send(new PleaseConfirmYourEmail($user));
                 break;
         }
-
-        return Mail::to('wedcontest@diproinduca.com')->send(new ResendRepresentantRegisteredEmail($user));
+        return Mail::to('wedcontest@diproinduca.com')->send(new PleaseConfirmYourEmail($user));
     }
 }
