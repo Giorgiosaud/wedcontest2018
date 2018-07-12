@@ -113,7 +113,7 @@ return [
     'thinkers'                        => 'Thinker entre 8 y 10 Años',
     'throttle'                        => 'Muchos Intentos. Porfavor espere :seconds segundos para intentarlo nuevamente.',
     'terms'                           => 'Acepte <button type="button" class="p-0 btn btn-link" data-toggle="modal" data-target="#modal" >Terminos y condiciones</button> para continuar',
-    'termsConditions'             => '<h2>DERECHOS DE IMAGEN,  TRATAMIENTO DE DATOS PERSONALES Y PROPIEDAD INTELECTUAL</h2>
+    'termsConditions'                 => '<h2>DERECHOS DE IMAGEN,  TRATAMIENTO DE DATOS PERSONALES Y PROPIEDAD INTELECTUAL</h2>
 </br>
 <h3>Derechos de imagen</h3>
 </br>
@@ -147,7 +147,7 @@ Y REGLAMENTOS DEL CONCURSO</h3>
 <p>La participación en el concurso presupone la aceptación íntegra de las presentes bases que lo regulan.</p>
 </br>
 <p>En caso de existir dudas o discrepancias en la interpretación de las presentes bases, se decidirá atendiendo al espíritu y finalidad  para la cual se ha creado el concurso congruentes con las expectativas de promover, informar y concientizar sobre la conservación del medioambiente a través de la sana competencia por medio del dibujo, el arte y la creatividad.</p>',
-    'termsTitle'                  => 'Terminos y Condiciones',
+    'termsTitle'                      => 'Terminos y Condiciones',
     'translate'                       => 'Traducir',
     'title'                           => 'Reiniciar contraseña',
     'token'                           => 'Esta clave de reinicio es invalida.',
