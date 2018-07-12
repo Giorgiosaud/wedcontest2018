@@ -27,7 +27,7 @@
 		</div>
 		<div class="form-group">
 			<label for="description">Description</label>
-			<wysiwyg name="explenation" id="explenation" ref="explenation" v-model="form.explenation" required></wysiwyg>
+			<wysiwyg name="explenation" id="explenation" ref="explenation" v-model="form.explenation" placeholder="" required></wysiwyg>
 			<transition
 			name="zoom"
 			enter-active-class="zoomIn"
@@ -61,6 +61,20 @@
 	<button type="button" class="btn btn-wedcontest" @click.prevent="createArtwork">{{$t('lang.revisar')}}</button>
 </div>
 </form>
+<div class="modal fade bd-example-modal-lg" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" v-html="$t('lang.termsTitle')"></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body"  v-html="$t('lang.termsConditions')">
+			</div>
+		</div>
+	</div>
+</div>
 </div>
 </template>
 
@@ -116,6 +130,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media (min-width: 576px)
+{
+	.modal-dialog {
+    	max-width: 800px;
+    	margin: 1.75rem auto;
+	}
+}
 .text-red{
 	color:red;
 }

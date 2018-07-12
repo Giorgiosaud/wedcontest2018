@@ -112,7 +112,42 @@ return [
     'subscribed'                      => 'Recibir notificaciones',
     'thinkers'                        => 'Thinker entre 8 y 10 Años',
     'throttle'                        => 'Muchos Intentos. Porfavor espere :seconds segundos para intentarlo nuevamente.',
-    'terms'                           => 'Acepte <a href="https://wedcontest2018.diproinduca.com/es/reglas/" target="_blank">Terminos y condiciones</a> para continuar',
+    'terms'                           => 'Acepte <button type="button" class="p-0 btn btn-link" data-toggle="modal" data-target="#modal" >Terminos y condiciones</button> para continuar',
+    'termsConditions'             => '<h2>DERECHOS DE IMAGEN,  TRATAMIENTO DE DATOS PERSONALES Y PROPIEDAD INTELECTUAL</h2>
+</br>
+<h3>Derechos de imagen</h3>
+</br>
+<p>Los padres o tutores del menor consentirán que Diproinduca pueda utilizar indistintamente todas las imágenes o parte de las mismas, fotografías, vídeos, material gráfico, etc., (en adelante “las imágenes”),  en las que el menor intervenga como participante.</p>
+</br>
+<p>Esta autorización se entiende concedida con un ámbito territorial y temporal amplio, por lo que Diproinduca podrá utilizar, publicar y reproducir en todo el mundo y sin limitación, su imagen y nombre en cualquier tipo de publicidad, promoción, publicación, incluido Internet, o cualquier otro medio de la naturaleza que sea, con fines promocionales o informativos siempre que éstos se relacionen únicamente con el presente concurso, todo ello con la única salvedad y limitación de aquellas utilizaciones o aplicaciones que pudieran atentar al derecho al honor, a la moral y/o al orden público, en los términos previstos en la legislación vigente en cada país.</p>
+</br>
+<p>La presente autorización, hecha en los términos fijados en el presente acuerdo, es de carácter gratuito.</p>
+</br>
+<p>Diproinduca se exime de responsabilidad sobre cualquier uso que pueda hacer un tercero de las imágenes fuera del ámbito territorial, temporal y material objeto del presente acuerdo.</p>
+</br>
+<h3>Tratamiento de datos personales</h3>
+</br>
+<p>Para poder participar en este concurso, los participantes (o sus padres/tutores, en su caso) deberán facilitar información personal (nombre, apellido y  edad de los participantes y  una dirección de correo electrónico). Diproinduca utilizará los datos personales de los participantes con el fin de gestionar el concurso e brindar informacion importante del concurso de este año a los participantes a traves de sus emails ( p.e. fecha cuando los dibujos concursantes son expuestos en la galeria, dibujos premiados, etc,).</p>
+</br>
+<p>Por motivos promocionales y publicitarios de este concurso es interés de Diproinduca  publicar en su sitio web y en otros canales de comunicación de la compañia, el nombre, el apellido, la edad y el dibujo del participante que resulte ganador. Con la participación en este concurso, los participantes y sus padres/tutores dan su consentimiento para que Diproinduca utilice dicha información para los fines aquí indicados sin requerir ningún otro consentimiento ni notificación adicional, así como ningún tipo de compensación.</p>
+</br>
+<h3>Propiedad intelectual.</h3>
+</br>
+<p>Todos los dibujos que se presenten al concurso deben ser trabajos originales de los participantes. Todos los derechos de propiedad  intelectual, incluidos los derechos de autor y de diseño de los dibujos que presenten los participantes, incluidos  los dibujos ganadores, pertenecerán a Diproinduca desde el momento en que dichos dibujos sean facilitados para el concurso.</p>
+</br>
+<p>Asimismo, todos los derechos de explotación, reproducción, distribución, comunicación pública y cualesquier otro derecho de propiedad intelectual que pudieran emanar del dibujo realizado, incluidos los de los dibujos ganadores, serán cedidos en exclusiva, de manera ilimitada e indefinida a Diproinduca desde el momento en que dichos dibujos sean facilitados para el concurso, renunciando expresamente los participantes a percibir ningún tipo de compensación por ello.</p>
+</br>
+<p>Todos los dibujos, datos, imágenes y/o grabaciones podrán ser utilizadas por Diproinduca, para la promoción de esta edición y para ediciones futuras. Podrán ser usadas en cualquier medio de comunicación (con carácter enunciativo pero no limitativo: marketing, Internet, páginas web, etc).</p>
+</br>
+<h3>DERECHO DE ELIMINACIÓN DE PARTICIPACIONES FRAUDULENTAS,. ACEPTACIÓN DE LAS PRESENTES BASES
+Y REGLAMENTOS DEL CONCURSO</h3>
+</br>
+<p>Diproinduca se reserva el derecho de eliminar a cualquier usuario que de fraude, altere o inutilice el buen funcionamiento y el transcurso normal y reglamentario del presente concurso.</p>
+</br>
+<p>La participación en el concurso presupone la aceptación íntegra de las presentes bases que lo regulan.</p>
+</br>
+<p>En caso de existir dudas o discrepancias en la interpretación de las presentes bases, se decidirá atendiendo al espíritu y finalidad  para la cual se ha creado el concurso congruentes con las expectativas de promover, informar y concientizar sobre la conservación del medioambiente a través de la sana competencia por medio del dibujo, el arte y la creatividad.</p>',
+    'termsTitle'                  => 'Terminos y Condiciones',
     'translate'                       => 'Traducir',
     'title'                           => 'Reiniciar contraseña',
     'token'                           => 'Esta clave de reinicio es invalida.',

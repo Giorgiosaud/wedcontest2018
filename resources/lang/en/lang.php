@@ -29,7 +29,38 @@ return [
     'country'                     => ' Country ',
     'countryselect'               => ' Select your country ',
     'required'                    => ' This Field is Required ',
-    'terms'                       => 'Accept <a href="http://wedcontest2018.diproinduca.com/rules/" target="_blank">Terms and Conditions</a> to continue',
+    'terms'                       => 'Accept <button type="button" class="p-0 btn btn-link" data-toggle="modal" data-target="#modal">Terms and Conditions</button> to continue',
+    'termsConditions'             => '<h2>IMAGE RIGHTS, PROCESSING OF PERSONAL DATA AND INTELLECTUAL PROPERTY</h2></br>
+<h3>Image rights</h3></br>
+<p>The parents or guardians of the minors consent that Diproinduca may use all the images or parts thereof, photographs, videos, graphic material, etc. (from here on "the images"), in which the minor participates as a contestant.</p>
+ </br>
+<p>There is an understanding that this authorization is granted with a broad territorial and temporal scope, to which Diproinduca may use, publish and reproduce throughout the world and without limitation, its image and name in any type of advertising, promotion, publication, including Internet, or any other means of whatever nature, for promotional or informative purposes provided that they relate only to the present contest, all with the only exception and limitation of those uses or applications that could infringe the right of honor, morality and / or  of public order, under the terms provided in the legislation in force in each country.</p>
+ </br>
+<p>This authorization, made in the terms set in this agreement, is free.</p>
+ </br>
+<p>Diproinduca disclaims responsibility for any use that a third party may make of the images outside the territorial, temporal and material scope of this agreement.</p>
+ </br>
+<h3>Processing of personal data</h3>
+</br>
+<p>To participate in this contest, participants (or their parents / guardians, if applicable) must provide personal information (first and last name, age of participants and an email address). Diproinduca will use the personal data of the participants to manage the contest and provide the participants, through their emails, with important information related to this year’s contest (i.e. date when accepted drawings are posted on the gallery, awarded drawings, etc.).</p>
+ </br>
+<p>For promotional and advertising reasons of this contest, it is of Diproinduca’s interest, to publish on its website and other communication channels of the company, the name, surname, age and drawing of the participant that is awarded. By participating in this contest, the participants and their parents / guardians give their consent for Diproinduca to use aforementioned information for the purposes indicated herein without requiring any other consent or additional notification, as well as any type of compensation.</p>
+ </br>
+<h3>Intellectual Rights</h3>
+</br>
+<p>All the drawings presented to the contest must be done originally by the participants. All intellectual property rights, including author’s rights and the design of the drawings presented by the participants, including awarded drawings, will belong to Diproinduca from the moment the drawings are submitted to participate in the contest.</p>
+</br>
+<p>Likewise, all exploitation rights, reproduction, distribution, public communication and any other intellectual property rights that may arise from the drawings, including the awarded drawings will be ceded exclusively, in an unlimited and indefinite manner to Diproinduca from the moment these drawings are submitted for the contest, all participants expressly waive the right to perceive any type of compensation for them.</p>
+</br> 
+<p>All drawings, data, images and / or recordings may be used by Diproinduca, for the promotion of this edition and for future editions. They could be used in any means of communication (with an unlimited enunciative character: marketing, Internet, web pages, etc).</p>
+ </br> 
+<h3>THE RIGHT TO ELIMINATE FRAUDULENT PARTICIPATIONS, ACCEPTANCE OF THE PRESENT BASES AND RULES OF THE CONTEST .
+Diproinduca reserves the right to eliminate any user who defrauds, alters or disables the proper functioning and the normal course and rules of this contest.</h3>
+</br>
+<p>The participation in the contest presupposes the full acceptance of the rules that regulate it.</p>
+</br>
+<p>In case of doubts or discrepancies in the interpretation of these rules, decisions will be made according to the spirit and purpose for which the contest has been created, consistent with the expectations of promoting, informing and raising awareness about the conservation of the environment through healthy competition through drawing, art and creativity.</p>',
+    'termsTitle'                  => 'Terms And Conditions',
     'translate'                   => 'Transalate',
     'delete'                      => ' Delete ',
     'dropImage'                   => ' Click to upload your artwork ',
