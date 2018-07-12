@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\RegisterRepresentant;
 use App\Mail\PleaseConfirmYourEmail;
 use App\Mail\PorFavorConfirmeSuCorreo;
+use App\Mail\RepresentantRegistered;
 use Illuminate\Support\Facades\Mail;
 
 class SendEmail
@@ -39,6 +40,6 @@ class SendEmail
                 break;
         }
 
-        return Mail::to('wedcontest@diproinduca.com')->send(new ResendRepresentantRegisteredEmail($user));
+        return Mail::to('wedcontest@diproinduca.com')->send(new RepresentantRegistered($user));
     }
 }

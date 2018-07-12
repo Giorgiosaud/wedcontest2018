@@ -6,6 +6,7 @@ use App\Events\RegisterRepresentant;
 use App\Events\ResendConfirmationLink;
 use App\Mail\PleaseConfirmYourEmail;
 use App\Mail\PorFavorConfirmeSuCorreo;
+use App\Mail\ResendRepresentantRegisteredEmail;
 use Illuminate\Support\Facades\Mail;
 
 class ReSendEmail
@@ -41,6 +42,6 @@ class ReSendEmail
                 break;
         }
 
-        return Mail::to('wedcontest@diproinduca.com')->send(new PleaseConfirmYourEmail($user));
+        return Mail::to('wedcontest@diproinduca.com')->send(new ResendRepresentantRegisteredEmail($user));
     }
 }
