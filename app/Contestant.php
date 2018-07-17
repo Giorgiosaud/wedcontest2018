@@ -72,9 +72,7 @@ class Contestant extends Model
             return route('artwork.create', $this->slug);
         }
         if (auth()->check()) {
-            if (auth()->user()->isAdmin) {
-                return route('artwork.create', $this->slug);
-            }
+            return route('artwork.create', $this->slug);
         }
 
         return '#';
