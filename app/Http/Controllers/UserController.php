@@ -18,7 +18,6 @@ class UserController extends Controller
         return view('users.index');
     }
     public function aliasify(User $user){
-        dd($user);
         Auth::loginUsingId($user->id, true);
         return redirect('/the_contest');
 
