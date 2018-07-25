@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\ResendConfirmationLink;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -16,7 +17,11 @@ class UserController extends Controller
     {
         return view('users.index');
     }
+    public function aliasify(User $user){
+        Auth::loginUsingId($user->id, true);
+        return redirect('/the_contest');
 
+    }
     /**
      * [makeAdmin description].
      *

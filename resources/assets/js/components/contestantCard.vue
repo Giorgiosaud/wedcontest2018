@@ -30,13 +30,6 @@
 							{{ $t('lang.profile') }} {{ $t('lang.artwork') }}<i class="fas fa-cloud-upload-alt"></i></a>
 						</div>
 					</div>
-					<!--div class="upload" v-else>
-						<a class="btn btn-link text-muted" href="#" data-toggle="tooltip"
-						data-placement="top" :title="$t('lang.uploadTooltipNotOpen')">
-						{{ $t('lang.upload') }}
-							<i class="fas fa-cloud-upload-alt"></i>
-						</a>
-					</div-->
 				<div class="delete">
 					<a href="#" @click.prevent="deleteContestant"><i class="far fa-trash-alt"></i>{{ $t('lang.delete') }}</a>
 				</div>
