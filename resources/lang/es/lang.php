@@ -28,6 +28,7 @@ return [
     'contestname'                 => 'Concurso de Dibujo 2018 del Día Mundial del Medio Ambiente',
     'country'                     => 'País',
     'countryselect'               => 'Seleccione su país',
+    'evaluating'                  => 'Proceso de Evaluación',
     'required'                    => 'Este campo es requerido',
     'delete'                      => 'Borrar',
     'dropImage'                   => 'Click aquí para subir tu Obra de Arte',

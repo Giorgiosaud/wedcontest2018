@@ -6,6 +6,7 @@ use App\Category;
 use App\Contest;
 use App\Contestant;
 use App\Events\RegisterContestant;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Spatie\Newsletter\NewsletterFacade as Newsletter;
 
@@ -13,12 +14,16 @@ class MyContestantController extends Controller
 {
     public function index()
     {
+        $now=Carbon::now();
+        $limitTime = Carbon::create(2018, 7, 30, 0, 0, 0, 'America/Toronto');
+
+        $endedTime= $limitTime->gt($now)? 'notEnded' : 'ended';
         $contestants = auth()->user()->contestants;
         $actualContest = Contest::whereActive(true)->first();
         $cats = $actualContest->categories->pluck('id')->toArray();
 
         return view('mycontestants.index', [
-            'contestants' => $contestants, 'cats'=>$cats,
+            'contestants' => $contestants, 'cats'=>$cats,'endedTime'=>$endedTime
         ]);
     }
 

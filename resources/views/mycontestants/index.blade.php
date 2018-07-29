@@ -9,8 +9,10 @@
 		</div>
 	</div>
 	<div class="row">
+		
 		@foreach($contestants as $contestant)
-		<contestant-card :contestant="{{$contestant}}" :artwork="{{ $contestant->artworks->whereIn('category_id', $cats) }}" :key="{{$contestant->id}}"></contestant-card>
+
+		<contestant-card :contestant="{{$contestant}}" :artwork="{{ $contestant->artworks->whereIn('category_id', $cats) }}" :key="{{$contestant->id}}" ended-time="{{$endedTime}}"></contestant-card>
 		@endforeach
 	</div>
 	<div class="row">

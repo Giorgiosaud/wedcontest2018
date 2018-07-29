@@ -6,10 +6,11 @@
 			</div>
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item"><strong>{{ contestant.name }} {{ contestant.last_name }} – {{ age }} {{ $t('lang.yearsOld') }}</strong></li>
-				<li class="list-group-item">{{ status }}</li>
+				<li class="list-group-item" v-if="endedTime =='notEnded'">{{ status }}</li>
+				<li class="list-group-item" v-else>{{$t('lang.evaluating')}}</li>
 			</ul>
 			<div class="card-footer">
-				<div class="d-flex align-center justify-content-between">
+				<div class="d-flex align-center justify-content-between" v-if="endedTime =='notEnded'">
 					<div class="edit">
 						<a :href="contestant.editPath"><i class="far fa-edit"></i>{{ $t('lang.edit') }} {{ $t('lang.profile') }}</a>
 					</div>
@@ -45,7 +46,7 @@ import {format,differenceInYears} from "date-fns";
 export default {
 
 	name: 'contestantCard',
-	props:["contestant","artwork"],
+	props:["contestant","artwork","endedTime"],
 	methods:{
 		deleteContestant(){
 			axios.delete(this.contestant.deletePath)

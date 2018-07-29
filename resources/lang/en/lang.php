@@ -28,6 +28,7 @@ return [
     'contestname'                 => ' WED Contest 2018 of World Enviroment Day ',
     'country'                     => ' Country ',
     'countryselect'               => ' Select your country ',
+    'evaluating'                  => 'Evaluating Process',
     'required'                    => ' This Field is Required ',
     'terms'                       => 'Accept <button type="button" class="p-0 btn btn-link" data-toggle="modal" data-target="#modal">Terms and Conditions</button> to continue',
     'termsConditions'             => '<h2>IMAGE RIGHTS, PROCESSING OF PERSONAL DATA AND INTELLECTUAL PROPERTY</h2></br>
