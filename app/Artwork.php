@@ -11,26 +11,37 @@ class Artwork extends Model
     public $translatedAttributes = ['title', 'description'];
     protected $fillable = ['url', 'contestant_id', 'category_id'];
     protected $appends = ['imageLink', 'pathReview', 'pathEdit', 'pathApprove'];
-    protected $with = ['translations', 'category'];
+    protected $with = ['translations', 'category','contestant'];
 
     public function pathReview()
     {
-        return route('artwork.review', [$this->contestant->slug, $this->id]);
+        if($this->contestant){
+            return route('artwork.review', [$this->contestant->slug, $this->id]);
+        }   
     }
 
     public function pathEdit()
     {
-        return route('artwork.edit', [$this->contestant->slug, $this->id]);
+        if($this->contestant){
+
+            return route('artwork.edit', [$this->contestant->slug, $this->id]);
+        }
     }
 
     public function pathUpdate()
     {
-        return route('artwork.update', $this->contestant->slug);
+        if($this->contestant){
+
+            return route('artwork.update', $this->contestant->slug);
+        }
     }
 
     public function pathApprove()
     {
-        return route('artwork.approve', [$this->contestant->slug, $this->id]);
+        if($this->contestant){
+
+            return route('artwork.approve', [$this->contestant->slug, $this->id]);
+        }
     }
 
     public function getPathReviewAttribute()
