@@ -12,6 +12,9 @@
 
 		</div>
 		<div class="col">
+			{{ contestant.slug }}
+		</div>
+		<div class="col">
 			{{ contestant.dob }}
 		</div>
 		<div class="col">

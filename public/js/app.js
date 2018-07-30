@@ -65688,6 +65688,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -69757,6 +69760,10 @@ var render = function() {
               _vm._s(_vm.contestant.last_name)
           )
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }, [
+        _vm._v("\n\t\t" + _vm._s(_vm.contestant.slug) + "\n\t")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col" }, [
