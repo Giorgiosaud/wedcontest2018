@@ -26,7 +26,7 @@ Route::group([
     'middleware' => ['admin'], // Route admin
 
 ], function () {
-    Route::get('aliasify/{user}','UserController@aliasify');
+    Route::get('aliasify/{user}', 'UserController@aliasify');
     Route::get('users', 'UserController@index')->name('users.index');
     Route::get('users/{user}', 'UserController@toggleAdmin')->name('user.make.admin');
     Route::delete('users/{user}', 'UserController@destroy')->name('user.destroy');
