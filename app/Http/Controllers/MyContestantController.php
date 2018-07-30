@@ -14,16 +14,16 @@ class MyContestantController extends Controller
 {
     public function index()
     {
-        $now=Carbon::now();
+        $now = Carbon::now();
         $limitTime = Carbon::create(2018, 7, 30, 0, 0, 0, 'America/Toronto');
 
-        $endedTime= $limitTime->gt($now)? 'notEnded' : 'ended';
+        $endedTime = $limitTime->gt($now) ? 'notEnded' : 'ended';
         $contestants = auth()->user()->contestants;
         $actualContest = Contest::whereActive(true)->first();
         $cats = $actualContest->categories->pluck('id')->toArray();
 
         return view('mycontestants.index', [
-            'contestants' => $contestants, 'cats'=>$cats,'endedTime'=>$endedTime
+            'contestants' => $contestants, 'cats'=>$cats, 'endedTime'=>$endedTime,
         ]);
     }
 
@@ -133,7 +133,7 @@ class MyContestantController extends Controller
         $age = \Carbon\Carbon::now()->diffInYears($dob);
         $response = '';
         switch ($cat->name) {
-            case 'Seeds':
+            case 'Seeds' :
             if ($age >= 0 && $age <= $cat->max_age) {
                 $response = 'approved';
             }
