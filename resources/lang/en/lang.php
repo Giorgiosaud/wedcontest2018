@@ -78,6 +78,8 @@ Diproinduca reserves the right to eliminate any user who defrauds, alters or dis
     'gamechangers_label'          => ' Entre 11 y 15 ',
     'gallery'                     => 'Gallery',
     'header'                      => ' Registration to the World Environment Day Drawing Contest 2018 ',
+    'header_closed'               => 'Submissions to the World Environment Day Drawing Contest 2018 are now closed.',
+    'header_closed_mini'          => 'For any support please contact to: <a class="text-light" href="mailto:wedcontest@diproinduca.com">wedcontest@diproinduca.com</a>',
     'header_confirmed'            => ' It’s time to register your artist(s) participating this year ',
     'history'                     => ' History ',
     'history_link'                => ' http://wedcontest2018.diproinduca.com/about-the-contest/ ',

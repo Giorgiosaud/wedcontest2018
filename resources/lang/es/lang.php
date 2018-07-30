@@ -44,6 +44,8 @@ return [
     'gamechangers'                => 'Game Changer Entre 11 y 15 Años',
     'gallery'                     => 'Galeria',
     'header'                      => 'Registro al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente',
+    'header_closed'               => 'El tiempo de subir dibujos al concurso 2018 del medio ambiente terminó.',
+    'header_closed_mini'          => 'Para soporte contáctenos a: <a class="text-light"href="mailto:wedcontest@diproinduca.com">wedcontest@diproinduca.com</a>',
     'header_confirmed'            => 'Es hora de registrar a tus artistas participando este año.',
     'history'                     => 'Historia',
     'history_link'                => 'http://wedcontest2018.diproinduca.com/es/acerca-del-concurso/',
