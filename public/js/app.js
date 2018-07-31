@@ -64166,6 +64166,7 @@ var render = function() {
               attrs: {
                 id: "en" + _vm.artwork.id,
                 name: "en" + _vm.artwork.id,
+                placeholder: "description",
                 required: ""
               },
               model: {
@@ -64272,6 +64273,7 @@ var render = function() {
               attrs: {
                 id: "es" + _vm.artwork.id,
                 name: "es" + _vm.artwork.id,
+                placeholder: "descripcion",
                 required: ""
               },
               model: {
