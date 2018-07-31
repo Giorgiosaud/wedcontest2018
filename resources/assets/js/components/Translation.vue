@@ -29,7 +29,7 @@
 				</div>
 				<div class="form-group">
 					<label for="description">Description</label>
-					<wysiwyg :id="'en'+artwork.id" :name="'en'+artwork.id" placeholder="description" :ref="'en'+artwork.id" v-model="translations.en.description" required>
+					<wysiwyg :id="'en'+artwork.id" :name="'en'+artwork.id" :placeholder="'description'" :ref="'en'+artwork.id" v-model="translations.en.description" required>
 					</wysiwyg>
 					<transition name="zoom" enter-active-class="zoomIn" leave-active-class="zoomOut">
 						<div class="text-red" v-if="artwork.description===''">{{$t('lang.required')}}</div>
@@ -56,7 +56,7 @@
 				</div>
 				<div class="form-group">
 					<label for="description">Descripcion</label>
-					<wysiwyg :id="'es'+artwork.id" :name="'es'+artwork.id" placeholder="descripcion" :ref="'es'+artwork.id" v-model="translations.es.description" required>
+					<wysiwyg :id="'es'+artwork.id" :name="'es'+artwork.id" :placeholder="'descripcion'" :ref="'es'+artwork.id" v-model="translations.es.description" required>
 					</wysiwyg>
 					<transition name="zoom" enter-active-class="zoomIn" leave-active-class="zoomOut">
 						<div class="text-red" v-if="artwork.description===''">{{$t('lang.required')}}</div>

@@ -23,7 +23,7 @@ export default {
   props: {
     name:{type:String},
     value:{type:String},
-    Placeholder:{type:String},
+    placeholder:{type:String},
     id:{type:String,default:'trix'}
 
   },
