@@ -77,6 +77,7 @@
 		<div class="row">
 			<div class="container">
 				<button type="button" class="btn btn-wedcontest" @click="saveTranslation">Guardar Traduccion</button>
+				<a class="btn btn-wedcontest" :href="artwork.pathEdit">Editar Dibujo</a>
 			</div>
 		</div>
 	</div>

@@ -59318,6 +59318,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -64322,6 +64323,15 @@ var render = function() {
             on: { click: _vm.saveTranslation }
           },
           [_vm._v("Guardar Traduccion")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-wedcontest",
+            attrs: { href: _vm.artwork.pathEdit }
+          },
+          [_vm._v("Editar Dibujo")]
         )
       ])
     ])
