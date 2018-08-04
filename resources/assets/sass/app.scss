@@ -188,6 +188,9 @@ p.text-big {
     max-height: 100%;
     width: auto;
 }
+.img-container {
+    height: 70vh;
+}
 @media (min-width: 768px){
     .bg-wedcontest{
         background-color:rgba(0,0,0,0.59);
