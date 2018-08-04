@@ -77035,6 +77035,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -77266,13 +77268,16 @@ var render = function() {
                               [_c("i", { staticClass: "fas fa-chevron-left" })]
                             ),
                             _vm._v(" "),
-                            _c("img", {
-                              staticClass: "img-fluid",
-                              attrs: {
-                                src: "/storage" + _vm.selectedArtwork.imageLink,
-                                alt: "selectedArtwork.title"
-                              }
-                            }),
+                            _c("div", { staticClass: "img-container" }, [
+                              _c("img", {
+                                staticClass: "img-h-fluid",
+                                attrs: {
+                                  src:
+                                    "/storage" + _vm.selectedArtwork.imageLink,
+                                  alt: "selectedArtwork.title"
+                                }
+                              })
+                            ]),
                             _vm._v(" "),
                             _c(
                               "div",

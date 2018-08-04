@@ -11305,6 +11305,11 @@ p.text-big {
   font-weight: lighter;
 }
 
+.img-h-fluid {
+  max-height: 100%;
+  width: auto;
+}
+
 @media (min-width: 768px) {
   .bg-wedcontest {
     background-color: rgba(0, 0, 0, .59);
