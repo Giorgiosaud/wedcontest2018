@@ -172,7 +172,8 @@ Diproinduca reserves the right to eliminate any user who defrauds, alters or dis
     'upto3'                           => ' children up to 3 ',
     'upto7'                           => ' children between 4 and 7 ',
     'user'                            => ' We can\'t find a user with that e-mail address. ',
-    'winners'                         => ' Winners 2017 ',
+    'wedGallery'                      => 'WED Gallery 2018',
+    'winners'                         => ' Winners 2018 ',
     'winners_link'                    => ' http://wedcontest2018.diproinduca.com/winners/ ',
     'yearsOld'                        => ' years old',
 ];

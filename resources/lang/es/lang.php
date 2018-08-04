@@ -167,6 +167,7 @@ Y REGLAMENTOS DEL CONCURSO</h3>
     'upto15'                          => 'Entre 11 y 15',
     'upto3'                           => 'Niños hasta los 3',
     'upto7'                           => 'Niños entre 4 y 7',
+    'wedGallery'                      => 'WED Galeria 2018',
     'user'                            => 'No tenemos un usuario con ese email en el sistema',
     'winners'                         => 'Ganadores 2017',
     'winners_link'                    => 'http://wedcontest2018.diproinduca.com/es/ganadores/',

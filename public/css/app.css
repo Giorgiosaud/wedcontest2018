@@ -11331,3 +11331,8 @@ p.text-big {
 #app trix-toolbar .trix-button {
   border-bottom: none;
 }
+
+.gallery-bg {
+  background-image: url("../images/Artsubmit-1.jpg");
+  background-attachment: fixed;
+}

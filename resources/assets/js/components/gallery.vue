@@ -41,7 +41,9 @@ name="bounce"
     </div>
     <div class="d-flex align-items-center justify-content-center px-4">
      <div class="move movePrev" @click="selectPrev"><i class="fas fa-chevron-left"></i></div>
-     <img :src="'/storage'+selectedArtwork.imageLink" alt="selectedArtwork.title" class="img-fluid">
+     <div class="img-container">
+     <img :src="'/storage'+selectedArtwork.imageLink" alt="selectedArtwork.title" class="img-h-fluid">
+     </div>
      <div class="move moveNext" @click="selectNext"><i class="fas fa-chevron-right"></i></div>
    </div>
    <div class="container py-4">
@@ -143,7 +145,7 @@ created(){
 }
 .artwork{
   overflow:hidden;
-  height: 200px;
+  height: 248px;
   transition:all .5s ease-in-out;
   cursor:pointer;
 
@@ -151,7 +153,7 @@ created(){
     transition:all .5s ease-in-out;
   }
   img:hover{
-    transform:scale(1.3);
+    transform:scale(1.1);
   }
 }
 .detail{
