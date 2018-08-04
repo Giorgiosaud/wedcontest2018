@@ -27,8 +27,8 @@
 </transition-group>
 <transition 
 name="bounce"
-  enter-active-class="bounceInLeft"
-  leave-active-class="bounceOutRight"
+enter-active-class="bounceInLeft"
+leave-active-class="bounceOutRight"
 >
 <div class="detail" v-if="!hiddenDetail">
   <div class="p-4 container">
@@ -42,7 +42,7 @@ name="bounce"
     <div class="d-flex align-items-center justify-content-center px-4">
      <div class="move movePrev" @click="selectPrev"><i class="fas fa-chevron-left"></i></div>
      <div class="img-container">
-     <img :src="'/storage'+selectedArtwork.imageLink" alt="selectedArtwork.title" class="img-h-fluid">
+       <img :src="'/storage'+selectedArtwork.imageLink" alt="selectedArtwork.title" class="img-h-fluid">
      </div>
      <div class="move moveNext" @click="selectNext"><i class="fas fa-chevron-right"></i></div>
    </div>
@@ -107,9 +107,9 @@ export default {
 },
 computed:{
 
-    age() {
-      return differenceInYears(new Date(),this.selectedArtwork.contestant.dob);
-    },
+  age() {
+    return differenceInYears(new Date(),this.selectedArtwork.contestant.dob);
+  },
   filteredGallery(){
     return this.gallery.filter(art=>{
       if(this.category==='all'){
@@ -141,13 +141,16 @@ created(){
   }
 }
 .artworks {
-    min-height: 50vh;
+  min-height: 50vh;
 }
 .artwork{
   overflow:hidden;
   height: 248px;
   transition:all .5s ease-in-out;
   cursor:pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   img{
     transition:all .5s ease-in-out;
