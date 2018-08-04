@@ -33,7 +33,7 @@ leave-active-class="bounceOutRight"
 <div class="detail" v-if="!hiddenDetail">
   <div class="p-4 container">
     <div class="row">
-      <div class="container-fluid text-right">
+      <div class="container-fluid text-right close-btn">
         <button type="button" class="close"  @click="hiddenDetail=true" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -133,6 +133,11 @@ created(){
 </script>
 
 <style lang="scss" scoped>
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
 .filters{
   cursor:pointer;
   font-size:1.1rem;
