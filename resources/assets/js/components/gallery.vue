@@ -50,7 +50,6 @@ leave-active-class="bounceOutRight"
      <h1 v-html="translate(selectedArtwork,'title')"></h1>
      <h2 v-html="translate(selectedArtwork,'description')"></h2>
      <p>{{ selectedArtwork.contestant.name }} {{ selectedArtwork.contestant.last_name }} – {{ age }} {{ $t('lang.yearsOld') }} – {{ selectedArtwork.category.name}}</p>
-     <a :href="selectedArtwork->pathShow">{{$t('goToPRofile')}}</a>
    </div>
  </div>
 </div>

@@ -77037,7 +77037,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -77122,7 +77121,228 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function(){},staticRenderFns:[]}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "container text-center" }, [
+      _c("h1", {
+        domProps: {
+          innerHTML: _vm._s(_vm.translate(_vm.contest, "description"))
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _vm.contest
+      ? _c("div", { staticClass: "filters container text-center py-4" }, [
+          _c(
+            "div",
+            { staticClass: "d-flex align-items-center justify-content-around" },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "flex-expand",
+                  class: { selected: _vm.category === "all" },
+                  on: {
+                    click: function($event) {
+                      _vm.category = "all"
+                    }
+                  }
+                },
+                [_vm._v("All")]
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.contest.categories, function(cat) {
+                return _c("div", {
+                  staticClass: "flex-expand",
+                  class: { selected: _vm.category === cat.name },
+                  domProps: { textContent: _vm._s(cat.name) },
+                  on: {
+                    click: function($event) {
+                      _vm.selectedCat(cat.name)
+                    }
+                  }
+                })
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.gallery
+      ? _c(
+          "div",
+          { staticClass: "artworks container" },
+          [
+            _c(
+              "transition-group",
+              { staticClass: "row", attrs: { name: "fadeLeft", tag: "div" } },
+              _vm._l(_vm.filteredGallery, function(artwork) {
+                return _c(
+                  "div",
+                  {
+                    key: artwork.id,
+                    staticClass:
+                      "col-6 col-md-4  artwork-container p-2 d-flex align-items-center justify-content-center",
+                    on: {
+                      click: function($event) {
+                        _vm.openDetail(artwork)
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "m-2 artwork border" }, [
+                      _c("img", {
+                        staticClass: "img-fluid p-2",
+                        attrs: {
+                          src: "/storage" + artwork.imageLink,
+                          alt: artwork.title
+                        }
+                      })
+                    ])
+                  ]
+                )
+              })
+            ),
+            _vm._v(" "),
+            _c(
+              "transition",
+              {
+                attrs: {
+                  name: "bounce",
+                  "enter-active-class": "bounceInLeft",
+                  "leave-active-class": "bounceOutRight"
+                }
+              },
+              [
+                !_vm.hiddenDetail
+                  ? _c("div", { staticClass: "detail" }, [
+                      _c("div", { staticClass: "p-4 container" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "container-fluid text-right close-btn"
+                            },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "close",
+                                  attrs: {
+                                    type: "button",
+                                    "aria-label": "Close"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.hiddenDetail = true
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "span",
+                                    { attrs: { "aria-hidden": "true" } },
+                                    [_vm._v("×")]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex align-items-center justify-content-center px-4"
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "move movePrev",
+                                on: { click: _vm.selectPrev }
+                              },
+                              [_c("i", { staticClass: "fas fa-chevron-left" })]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "img-container" }, [
+                              _c("img", {
+                                staticClass: "img-h-fluid",
+                                attrs: {
+                                  src:
+                                    "/storage" + _vm.selectedArtwork.imageLink,
+                                  alt: "selectedArtwork.title"
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "move moveNext",
+                                on: { click: _vm.selectNext }
+                              },
+                              [_c("i", { staticClass: "fas fa-chevron-right" })]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "container py-4" }, [
+                          _c("h1", {
+                            domProps: {
+                              innerHTML: _vm._s(
+                                _vm.translate(_vm.selectedArtwork, "title")
+                              )
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("h2", {
+                            domProps: {
+                              innerHTML: _vm._s(
+                                _vm.translate(
+                                  _vm.selectedArtwork,
+                                  "description"
+                                )
+                              )
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              _vm._s(_vm.selectedArtwork.contestant.name) +
+                                " " +
+                                _vm._s(
+                                  _vm.selectedArtwork.contestant.last_name
+                                ) +
+                                " – " +
+                                _vm._s(_vm.age) +
+                                " " +
+                                _vm._s(_vm.$t("lang.yearsOld")) +
+                                " – " +
+                                _vm._s(_vm.selectedArtwork.category.name)
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ],
+          1
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
