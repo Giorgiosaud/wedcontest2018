@@ -28,6 +28,9 @@ class ArtworkUploadController extends Controller
         return view('artwork.edit', compact('contestant', 'artwork'));
     }
     public function show(Contestant $contestant, Artwork $artwork){
+        if($artwork->contestant_id!==$contestant->id){
+            abort('contestant dont match with artwork');
+        }
         return view('artwork.show', compact('contestant', 'artwork'));;
     }
     
