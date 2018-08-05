@@ -19330,7 +19330,7 @@ var app = new Vue({
           fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s);js.id = id;
-      if (window.App.locale == "en") js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=1118794128257582&autoLogAppEvents=1';else js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.1&appId=1118794128257582&autoLogAppEvents=1';
+      if (window.App.locale == "en") js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=235445060630804&autoLogAppEvents=1';else js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.1&appId=235445060630804&autoLogAppEvents=1';
       fjs.parentNode.insertBefore(js, fjs);
     })(document, 'script', 'facebook-jssdk');
   },
