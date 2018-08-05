@@ -79,6 +79,7 @@ Route::group([
     Route::get('/mycontestant/{contestant}/{artwork}/artwork-edit', 'ArtworkUploadController@edit')->middleware('auth')->name('artwork.edit');
     Route::put('/mycontestant/{contestant}/{artwork}/artwork-edit', 'ArtworkUploadController@update')->middleware('auth')->name('artwork.update');
     Route::get('/mycontestant/{contestant}/{artwork}/artwork-approve', 'ArtworkUploadController@approve')->middleware('auth')->name('artwork.approve');
+    Route::get('/mycontestant/{contestant}/{artwork}/artwork-profile', 'ArtworkUploadController@show')->middleware('auth')->name('artwork.show');
     Route::get('/mycontestant/{contestant}/{artwork}/artwork-review', 'ArtworkUploadController@review')->middleware('auth')->name('artwork.review');
     Route::get('/gallery', 'GalleryController@index')->name('gallery.index');
     Route::get('/gallery/{contest}', 'GalleryController@show')->name('gallery.show');

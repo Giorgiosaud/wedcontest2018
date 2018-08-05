@@ -27,7 +27,10 @@ class ArtworkUploadController extends Controller
     {
         return view('artwork.edit', compact('contestant', 'artwork'));
     }
-
+    public function show(Contestant $contestant, Artwork $artwork){
+        return view('artwork.show', compact('contestant', 'artwork'));;
+    }
+    
     public function store(Contestant $contestant)
     {
         $this->authorize('createArtwork', $contestant);

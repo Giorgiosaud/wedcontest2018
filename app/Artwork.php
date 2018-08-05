@@ -10,9 +10,14 @@ class Artwork extends Model
     use Translatable;
     public $translatedAttributes = ['title', 'description'];
     protected $fillable = ['url', 'contestant_id', 'category_id'];
-    protected $appends = ['imageLink', 'pathReview', 'pathEdit', 'pathApprove'];
+    protected $appends = ['imageLink', 'pathReview', 'pathEdit', 'pathApprove','pathShow'];
     protected $with = ['translations', 'category', 'contestant'];
-
+    public function pathShow(){
+        if ($this->contestant) {
+            return route('artwork.show', [$this->contestant->slug, $this->id]);
+        }
+    }
+    
     public function pathReview()
     {
         if ($this->contestant) {
@@ -44,6 +49,11 @@ class Artwork extends Model
     public function getPathReviewAttribute()
     {
         return $this->pathReview();
+    }
+
+    public function getPathShowAttribute()
+    {
+        return $this->pathShow();
     }
 
     public function getPathEditAttribute()
