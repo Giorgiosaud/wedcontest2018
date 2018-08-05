@@ -4,17 +4,17 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require("./bootstrap");
-require("./jQuery_ready");
-import Locales from "./vue-i18n-locales.generated.js";
-import VueI18n from "vue-i18n";
-import Datepicker from "vuejs-datepicker";
-import Multiselect from "vue-multiselect";
-Vue.component("multiselect", Multiselect);
+ require("./bootstrap");
+ require("./jQuery_ready");
+ import Locales from "./vue-i18n-locales.generated.js";
+ import VueI18n from "vue-i18n";
+ import Datepicker from "vuejs-datepicker";
+ import Multiselect from "vue-multiselect";
+ Vue.component("multiselect", Multiselect);
 
-Vue.component("Datepicker", Datepicker);
+ Vue.component("Datepicker", Datepicker);
 
-Vue.use(VueI18n);
+ Vue.use(VueI18n);
 // import VueInternalization from "vue-i18n";
 
 /**
@@ -33,15 +33,15 @@ Vue.component("Users", require("./components/Users.vue"));
 Vue.component(
   "RepresentantRegistrationForm",
   require("./components/RepresentantRegistrationForm.vue")
-);
+  );
 Vue.component(
   "ContestantRegistrationForm",
   require("./components/ContestantRegistrationForm.vue")
-);
+  );
 Vue.component(
   "ContestantEditForm",
   require("./components/ContestantEditForm.vue")
-);
+  );
 Vue.component('artworkUploadForm',require("./components/artworkUploadForm.vue"));
 Vue.component('artworkEditForm',require("./components/artworkEditForm.vue"));
 Vue.component("contestantCard", require("./components/ContestantCard.vue"));
@@ -50,7 +50,7 @@ Vue.component("EditMyProfile", require("./components/EditMyProfile.vue"));
 Vue.component(
   "UserNotifications",
   require("./components/UserNotifications.vue")
-);
+  );
 Vue.component("Dropdown", require("./components/Dropdown.vue"));
 Vue.component("Contest", require("./components/Contest.vue"));
 Vue.component("contest-create", require("./components/ContestCreate.vue"));
@@ -66,6 +66,19 @@ const app = new Vue({
   el: "#app",
   data: {
     searching: false
+  },
+  created(){
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      if(window.App.locale=="en")
+        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=1118794128257582&autoLogAppEvents=1';
+      else
+        js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.1&appId=1118794128257582&autoLogAppEvents=1';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
   },
   i18n
 });

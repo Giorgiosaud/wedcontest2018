@@ -19324,6 +19324,17 @@ var app = new Vue({
   data: {
     searching: false
   },
+  created: function created() {
+    (function (d, s, id) {
+      var js,
+          fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);js.id = id;
+      if (window.App.locale == "en") js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=1118794128257582&autoLogAppEvents=1';else js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.1&appId=1118794128257582&autoLogAppEvents=1';
+      fjs.parentNode.insertBefore(js, fjs);
+    })(document, 'script', 'facebook-jssdk');
+  },
+
   i18n: i18n
 });
 
@@ -56426,6 +56437,7 @@ $(window).scroll(function () {
             "category": " Category ",
             "change_password": " Change password ",
             "change_password_confirmation": " Confirm changed password ",
+            "comments": "Comments",
             "confirm_email": " Please confirm your e-mail address to participate. ",
             "contestant_last_name": " Last name ",
             "contestant_name": " Name ",
@@ -56453,6 +56465,7 @@ $(window).scroll(function () {
             "gamechangers": " Game changer between 11 and 15 ",
             "gamechangers_label": " Entre 11 y 15 ",
             "gallery": "Gallery",
+            "goToProfile": "Go to Profile",
             "header": " Registration to the World Environment Day Drawing Contest 2018 ",
             "header_closed": "Submissions to the World Environment Day Drawing Contest 2018 are now closed.",
             "header_closed_mini": "For any support please contact to: <a class=\"text-light\" href=\"mailto:wedcontest@diproinduca.com\">wedcontest@diproinduca.com<\/a>",
@@ -56547,7 +56560,8 @@ $(window).scroll(function () {
             "upto3": " children up to 3 ",
             "upto7": " children between 4 and 7 ",
             "user": " We can't find a user with that e-mail address. ",
-            "winners": " Winners 2017 ",
+            "wedGallery": "WED Gallery 2018",
+            "winners": " Winners 2018 ",
             "winners_link": " http:\/\/wedcontest2018.diproinduca.com\/winners\/ ",
             "yearsOld": " years old"
         },
@@ -56822,6 +56836,7 @@ $(window).scroll(function () {
             "from": "desde",
             "gamechangers": "Game Changer Entre 11 y 15 Años",
             "gallery": "Galeria",
+            "goToProfile": "Ir a Perfil",
             "header": "Registro al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente",
             "header_closed": "El tiempo de subir dibujos al concurso 2018 del medio ambiente terminó.",
             "header_closed_mini": "Para soporte contáctenos a: <a class=\"text-light\"href=\"mailto:wedcontest@diproinduca.com\">wedcontest@diproinduca.com<\/a>",
@@ -56915,6 +56930,7 @@ $(window).scroll(function () {
             "upto15": "Entre 11 y 15",
             "upto3": "Niños hasta los 3",
             "upto7": "Niños entre 4 y 7",
+            "wedGallery": "WED Galeria 2018",
             "user": "No tenemos un usuario con ese email en el sistema",
             "winners": "Ganadores 2017",
             "winners_link": "http:\/\/wedcontest2018.diproinduca.com\/es\/ganadores\/",
@@ -77037,6 +77053,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -77114,6 +77132,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     axios.get('/api/gallery/' + this.contest.slug).then(function (response) {
       return _this3.gallery = response.data;
     });
+  },
+  updated: function updated() {
+    FB.XFBML.parse();
   }
 });
 
@@ -77313,6 +77334,12 @@ var render = function() {
                             }
                           }),
                           _vm._v(" "),
+                          _c(
+                            "a",
+                            { attrs: { href: _vm.selectedArtwork.pathShow } },
+                            [_vm._v(_vm._s(_vm.$t("lang.goToProfile")))]
+                          ),
+                          _vm._v(" "),
                           _c("p", [
                             _vm._v(
                               _vm._s(_vm.selectedArtwork.contestant.name) +
@@ -77327,7 +77354,16 @@ var render = function() {
                                 " – " +
                                 _vm._s(_vm.selectedArtwork.category.name)
                             )
-                          ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", {
+                            staticClass: "fb-comments",
+                            attrs: {
+                              "data-numposts": "50",
+                              "data-width": "100%",
+                              "data-href": _vm.selectedArtwork.pathShow
+                            }
+                          })
                         ])
                       ])
                     ])

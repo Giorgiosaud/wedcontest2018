@@ -36,6 +36,7 @@
     </head>
 
     <body>
+        <div id="fb-root"></div>
         <div id="app">
             @include ('layouts.assets.nav')
             @yield('content')
@@ -51,7 +52,5 @@
                 </div>
             </div>
         </footer>
-
-
     </body>
     </html>

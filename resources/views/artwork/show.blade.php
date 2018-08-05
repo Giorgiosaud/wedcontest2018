@@ -33,6 +33,7 @@
 			</div>
 		</div>
 		@endif
+		<div class="fb-comments" data-numposts="50" data-width="100%"></div>
 	</div>
 </div>
 @endsection
