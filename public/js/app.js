@@ -77056,7 +77056,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -77318,57 +77317,55 @@ var render = function() {
                           ]
                         ),
                         _vm._v(" "),
-                        _c("div", { staticClass: "container py-4" }, [
-                          _c("h1", {
-                            domProps: {
-                              innerHTML: _vm._s(
-                                _vm.translate(_vm.selectedArtwork, "title")
-                              )
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("h2", {
-                            domProps: {
-                              innerHTML: _vm._s(
-                                _vm.translate(
-                                  _vm.selectedArtwork,
-                                  "description"
+                        _c(
+                          "div",
+                          { staticClass: "container py-4 text-center" },
+                          [
+                            _c("h1", {
+                              domProps: {
+                                innerHTML: _vm._s(
+                                  _vm.translate(_vm.selectedArtwork, "title")
                                 )
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("h2", {
+                              domProps: {
+                                innerHTML: _vm._s(
+                                  _vm.translate(
+                                    _vm.selectedArtwork,
+                                    "description"
+                                  )
+                                )
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("p", [
+                              _vm._v(
+                                _vm._s(_vm.selectedArtwork.contestant.name) +
+                                  " " +
+                                  _vm._s(
+                                    _vm.selectedArtwork.contestant.last_name
+                                  ) +
+                                  " – " +
+                                  _vm._s(_vm.age) +
+                                  " " +
+                                  _vm._s(_vm.$t("lang.yearsOld")) +
+                                  " – " +
+                                  _vm._s(_vm.selectedArtwork.category.name)
                               )
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            { attrs: { href: _vm.selectedArtwork.pathShow } },
-                            [_vm._v(_vm._s(_vm.$t("lang.goToProfile")))]
-                          ),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v(
-                              _vm._s(_vm.selectedArtwork.contestant.name) +
-                                " " +
-                                _vm._s(
-                                  _vm.selectedArtwork.contestant.last_name
-                                ) +
-                                " – " +
-                                _vm._s(_vm.age) +
-                                " " +
-                                _vm._s(_vm.$t("lang.yearsOld")) +
-                                " – " +
-                                _vm._s(_vm.selectedArtwork.category.name)
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", {
-                            staticClass: "fb-comments",
-                            attrs: {
-                              "data-numposts": "50",
-                              "data-width": "100%",
-                              "data-href": _vm.selectedArtwork.pathShow
-                            }
-                          })
-                        ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", {
+                              staticClass: "fb-comments",
+                              attrs: {
+                                "data-numposts": "50",
+                                "data-width": "100%",
+                                "data-href": _vm.selectedArtwork.pathShow
+                              }
+                            })
+                          ]
+                        )
                       ])
                     ])
                   : _vm._e()

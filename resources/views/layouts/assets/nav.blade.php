@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-wedcontest fixed-top">
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand" href="/">
             <img src="/images/logo.png" alt="">
         </a>
