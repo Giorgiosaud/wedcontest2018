@@ -154,10 +154,11 @@ class ContestController extends Controller
     {
         $contest->update($request->toArray());
         $contest->fill([
-            'en'=>$request->translations[0],
-            'es'=>$request->translations[1]
+            'en'=> $request->translations[0],
+            'es'=> $request->translations[1],
         ]);
         $contest->save();
+
         return $contest;
         if ($request->has('intro_image')) {
             $file = 'public/contest/'.$contest->slug.'.jpg';
