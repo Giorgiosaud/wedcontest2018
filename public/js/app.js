@@ -19309,6 +19309,7 @@ Vue.component("UserNotifications", __webpack_require__(302));
 Vue.component("Dropdown", __webpack_require__(305));
 Vue.component("Contest", __webpack_require__(308));
 Vue.component("contest-create", __webpack_require__(317));
+Vue.component("contest-edit", __webpack_require__(339));
 Vue.component("wysiwyg", __webpack_require__(322));
 Vue.component("gallery", __webpack_require__(332));
 
@@ -77393,6 +77394,678 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 338 */,
+/* 339 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(340)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(342)
+/* template */
+var __vue_template__ = __webpack_require__(343)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/ContestEdit.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-41e611d7", Component.options)
+  } else {
+    hotAPI.reload("data-v-41e611d7", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 340 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(341);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("61a76149", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-41e611d7\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ContestEdit.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-41e611d7\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ContestEdit.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 341 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nimg {\n  max-width: 100%;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--blue div {\n  background-color: #33f;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--blue div:after {\n  background-color: #0000e6;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--blue.vue-switcher--unchecked div {\n  background-color: #99f;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--blue.vue-switcher--unchecked div:after {\n  background-color: #33f;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 342 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_switches__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_switches___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_switches__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImageUploader_vue__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ImageUploader_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ImageUploader_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ImageUpload_vue__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ImageUpload_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__ImageUpload_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["contest"],
+  components: {
+    Switches: __WEBPACK_IMPORTED_MODULE_0_vue_switches___default.a,
+    ImageUploader: __WEBPACK_IMPORTED_MODULE_1__ImageUploader_vue___default.a,
+    ImageUpload: __WEBPACK_IMPORTED_MODULE_2__ImageUpload_vue___default.a
+  },
+  data: function data() {
+    return {
+      language: 'en',
+      method: '',
+      form: {
+        slug: '',
+        en: {
+          topic: '',
+          description: '',
+          logo_image: ''
+        },
+        es: {
+          topic: '',
+          description: '',
+          logo_image: ''
+        },
+        year: '',
+        background_image: '',
+        normalCategories: true
+      },
+      cropperOptions: {
+        viewMode: 1,
+        autoCropArea: 1,
+        movable: false,
+        zoomOnWheel: false
+      },
+      cropperLogoOptions: {
+        // aspectRatio: 16/9,
+        autoCropArea: 1,
+        viewMode: 1,
+        movable: false,
+        zoomOnWheel: false
+      }
+    };
+  },
+
+  methods: {
+    editContest: function editContest() {
+      axios.put('/admin/contest/' + this.contest.slug, this.contest).then(function (_ref) {
+        var data = _ref.data;
+
+        flash("El concurso fue editado exitosamente", "success");
+      }).catch(function (error) {
+        flash(error.response.data.message, "warning");
+      });
+    },
+
+    sanitize: function sanitize(title) {
+      var slug = "";
+      // Change to lower case
+      var titleLower = title.toLowerCase();
+      // Letter "e"
+      slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e');
+      // Letter "a"
+      slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a');
+      // Letter "o"
+      slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o');
+      // Letter "u"
+      slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u');
+      // Letter "d"
+      slug = slug.replace(/đ/gi, 'd');
+      // Trim the last whitespace
+      slug = slug.replace(/\s*$/g, '');
+      // Change whitespace to "-"
+      slug = slug.replace(/\s+/g, '-');
+
+      return slug;
+    }
+  },
+  computed: {
+    classes: function classes() {
+      var defaults = ["border-teal", "text-white"];
+      if (this.level === "success") defaults.push("bg-green", "border-green-dark");
+      if (this.level === "warning") defaults.push("bg-orange", "border-yellow-dark");
+      if (this.level === "danger") defaults.push("bg-red", "border-red-dark");
+
+      return defaults;
+    }
+  }
+
+});
+
+/***/ }),
+/* 343 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "btn-group",
+        attrs: { role: "group", "aria-label": "Basic example" }
+      },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary",
+            class: { active: _vm.language === "en" },
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                _vm.language = "en"
+              }
+            }
+          },
+          [_vm._v("English")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary",
+            class: { active: _vm.language === "es" },
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                _vm.language = "es"
+              }
+            }
+          },
+          [_vm._v("Español")]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _vm.language === "en"
+      ? _c("div", [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "topic" } }, [_vm._v("Topic")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.contest.translations[0].topic,
+                  expression: "contest.translations[0].topic"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "topic",
+                placeholder: "Topic",
+                "aria-label": "Topic"
+              },
+              domProps: { value: _vm.contest.translations[0].topic },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.contest.translations[0],
+                    "topic",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("label", { attrs: { for: "description" } }, [
+                _vm._v("Description")
+              ]),
+              _vm._v(" "),
+              _c("wysiwyg", {
+                attrs: { name: "desctiption.en", id: "descripcion" },
+                model: {
+                  value: _vm.contest.translations[0].description,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contest.translations[0], "description", $$v)
+                  },
+                  expression: "contest.translations[0].description"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "py-2" },
+            [
+              _c("label", { attrs: { for: "logo_image" } }, [
+                _vm._v("Contest Logo")
+              ]),
+              _vm._v(" "),
+              _c("image-uploader", {
+                staticClass: "mr-1",
+                attrs: {
+                  name: "logo_image",
+                  cropperOptions: _vm.cropperLogoOptions
+                },
+                model: {
+                  value: _vm.contest.translations[0].logo_image,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contest.translations[0], "logo_image", $$v)
+                  },
+                  expression: "contest.translations[0].logo_image"
+                }
+              })
+            ],
+            1
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.language === "es"
+      ? _c("div", [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "tema" } }, [_vm._v("Tema")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.contest.translations[1].topic,
+                  expression: "contest.translations[1].topic"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "tema",
+                placeholder: "Tema",
+                "aria-label": "Tema"
+              },
+              domProps: { value: _vm.contest.translations[1].topic },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.contest.translations[1],
+                    "topic",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("label", { attrs: { for: "description" } }, [
+                _vm._v("Descripción")
+              ]),
+              _vm._v(" "),
+              _c("wysiwyg", {
+                attrs: { name: "desctiption.en", id: "descripcion" },
+                model: {
+                  value: _vm.contest.translations[1].description,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contest.translations[1], "description", $$v)
+                  },
+                  expression: "contest.translations[1].description"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "py-2" },
+            [
+              _c("label", { attrs: { for: "logo_imagen" } }, [
+                _vm._v("Logo del Concurso")
+              ]),
+              _vm._v(" "),
+              _c("image-uploader", {
+                staticClass: "mr-1",
+                attrs: {
+                  name: "logo_imagen",
+                  cropperOptions: _vm.cropperLogoOptions
+                },
+                model: {
+                  value: _vm.contest.translations[1].logo_image,
+                  callback: function($$v) {
+                    _vm.$set(_vm.contest.translations[1], "logo_image", $$v)
+                  },
+                  expression: "contest.translations[1].logo_image"
+                }
+              })
+            ],
+            1
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "slug" } }, [_vm._v("Slug")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.contest.slug,
+            expression: "contest.slug"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          id: "slug",
+          placeholder: "slug",
+          "aria-label": "slug"
+        },
+        domProps: { value: _vm.contest.slug },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.contest, "slug", $event.target.value)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "small",
+        { staticClass: "text-muted", attrs: { id: "slugHelpInline" } },
+        [
+          _vm._v(
+            "\n      Must be in lowercase and not spaces between words ex(hello-world)\n    "
+          )
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "slug" } }, [_vm._v("Year/Año")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.contest.year,
+            expression: "contest.year"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          id: "year",
+          placeholder: "Year/Año",
+          "aria-label": "Year/Año"
+        },
+        domProps: { value: _vm.contest.year },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.contest, "year", $event.target.value)
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "py-2" }, [
+      _c("label", { attrs: { for: "normalCategories" } }, [
+        _vm._v("\n      Create Normal Categories\n    ")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "d-flex" },
+        [
+          _c("div", { staticClass: "px-2" }, [_vm._v("No")]),
+          _vm._v(" "),
+          _c("switches", {
+            attrs: {
+              id: "normalCategories",
+              theme: "bootstrap",
+              color: "blue"
+            },
+            model: {
+              value: _vm.contest.normalCategories,
+              callback: function($$v) {
+                _vm.$set(_vm.contest, "normalCategories", $$v)
+              },
+              expression: "contest.normalCategories"
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "px-2" }, [_vm._v("Yes")])
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "form-group" },
+      [
+        _c("label", { attrs: { for: "background_image" } }, [
+          _vm._v("Imagen de Fondo del Concurso")
+        ]),
+        _vm._v(" "),
+        _c("image-uploader", {
+          staticClass: "mr-1",
+          attrs: {
+            name: "background_image",
+            cropperOptions: _vm.cropperOptions
+          },
+          model: {
+            value: _vm.contest.background_image,
+            callback: function($$v) {
+              _vm.$set(_vm.contest, "background_image", $$v)
+            },
+            expression: "contest.background_image"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "py-2" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-wedcontest",
+          attrs: { type: "button" },
+          on: { click: _vm.editContest }
+        },
+        [_vm._v("Edit")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-41e611d7", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

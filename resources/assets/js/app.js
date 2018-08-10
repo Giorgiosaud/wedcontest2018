@@ -54,6 +54,7 @@ Vue.component(
 Vue.component("Dropdown", require("./components/Dropdown.vue"));
 Vue.component("Contest", require("./components/Contest.vue"));
 Vue.component("contest-create", require("./components/ContestCreate.vue"));
+Vue.component("contest-edit", require("./components/ContestEdit.vue"));
 Vue.component("wysiwyg", require("./components/wysiwyg.vue"));
 Vue.component("gallery", require("./components/gallery.vue"));
 
