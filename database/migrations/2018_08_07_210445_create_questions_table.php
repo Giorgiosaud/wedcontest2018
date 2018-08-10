@@ -17,7 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('role_id');
-            $table->json('questions');
+            $table->longText('questions')->nullable();
             $table->timestamps();
         });
     }
