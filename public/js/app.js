@@ -77152,7 +77152,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "container text-center" }, [
-      _c("h1", {
+      _c("h2", {
         domProps: {
           innerHTML: _vm._s(_vm.translate(_vm.contest, "description"))
         }

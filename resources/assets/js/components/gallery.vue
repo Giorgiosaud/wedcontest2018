@@ -1,7 +1,7 @@
 <template>
 	<div>
     <div class="container text-center">
-      <h1 v-html="translate(contest,'description')"></h1>
+      <h2 v-html="translate(contest,'description')"></h2>
     </div>
     <div v-if="contest" class="filters container text-center py-4">
       <div class="d-flex align-items-center justify-content-around">
