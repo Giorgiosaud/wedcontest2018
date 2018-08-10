@@ -398,6 +398,7 @@ export default {
             "category": "Categoria",
             "change_password": "Cambia tu contraseña",
             "change_password_confirmation": "Confirma tu contraseña cambiada",
+            "comments": "Comentarios",
             "confirm_email": "Por favor confirma el email para poder concursar.",
             "contestant_last_name": "Apellido",
             "contestant_name": "Nombre",
