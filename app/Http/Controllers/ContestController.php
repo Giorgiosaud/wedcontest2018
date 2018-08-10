@@ -153,12 +153,18 @@ class ContestController extends Controller
     public function update(Request $request, Contest $contest)
     {
         $contest->update($request->toArray());
+        $contest->fill([
+            'en'=>$request->translations[0],
+            'es'=>$request->translations[1]
+        ]);
+        $contest->save();
+        return $contest;
         if ($request->has('intro_image')) {
             $file = 'public/contest/'.$contest->slug.'.jpg';
-            if (Storage::exists($file)) {
-                Storage::delete($file);
+            if (Storage::disk('public')->exists($file)) {
+                Storage::disk('public')->delete($artworkFile);
             }
-            Storage::move('public/'.request('intro_image'), $file);
+            Storage::disk('public')->move('public/'.request('intro_image'), $file);
             $contest->intro_image = 'contest/'.$contest->slug.'.jpg';
             $contest->save();
         }

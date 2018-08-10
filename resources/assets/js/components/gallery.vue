@@ -1,7 +1,7 @@
 <template>
 	<div>
-    <div class="container text-center">
-      <h1 v-html="translate(contest,'description')"></h1>
+    <div class="container text-center pt-4">
+      <h2 v-html="translate(contest,'description')"></h2>
     </div>
     <div v-if="contest" class="filters container text-center py-4">
       <div class="d-flex align-items-center justify-content-around">
@@ -46,10 +46,9 @@ leave-active-class="bounceOutRight"
      </div>
      <div class="move moveNext" @click="selectNext"><i class="fas fa-chevron-right"></i></div>
    </div>
-   <div class="container py-4">
-     <h1 v-html="translate(selectedArtwork,'title')"></h1>
+   <div class="container py-4 text-center">
+     <h2 class="black-bold" v-html="translate(selectedArtwork,'title')"></h2>
      <h2 v-html="translate(selectedArtwork,'description')"></h2>
-     <a :href="selectedArtwork.pathShow">{{$t('lang.goToProfile')}}</a>
      <p>{{ selectedArtwork.contestant.name }} {{ selectedArtwork.contestant.last_name }} – {{ age }} {{ $t('lang.yearsOld') }} – {{ selectedArtwork.category.name}}</p>
      <div class="fb-comments" data-numposts="50" data-width="100%" :data-href="selectedArtwork.pathShow"></div>
    </div>
@@ -118,7 +117,7 @@ computed:{
         return true
       }
       return art.category.name===this.category;
-    })
+    }).sort((a,b)=>a.contestant.last_name.localeCompare(b.contestant.last_name));
   },
   indexOfSelectedArtwork(){
     return this.filteredGallery.findIndex(art=>art.id===this.selectedArtwork.id);

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-wedcontest fixed-top">
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand" href="/">
             <img src="/images/logo.png" alt="">
         </a>
@@ -46,7 +46,9 @@
 
                 </div>
             </li>
-            
+            <li class="nav-item">
+                <a href="{{route('gallery.show',$contest->slug)}}" class="nav-link">@lang('lang.gallery')</a>
+            </li>
 
             @if (auth()->check())
             <li class="nav-item dropdown">
@@ -61,7 +63,7 @@
                     @if(auth()->user()->isAdmin())
                     {{-- <a class="dropdown-item" href="{{ route('contest.create') }}" class="link">Add Contest</a> --}}
                     <a class="dropdown-item" href="{{ route('users.index') }}" class="link">List Of Representants and Contestants</a>
-                    <a href="{{route('gallery.show',$contest->slug)}}" class="dropdown-item">@lang('lang.gallery')</a>
+                    
                     <a href="{{route('admin.translations',$contest->slug)}}" class="dropdown-item">@lang('lang.translate')</a>
                     
                     <div class="dropdown-divider"></div>

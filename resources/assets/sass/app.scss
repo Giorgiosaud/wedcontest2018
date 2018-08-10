@@ -41,7 +41,7 @@ input:-webkit-autofill {
     transition:all 1s;
 }
 .navbar-dark.scrolled{
-  background:rgba(0,0,0,.59);
+  background:rgba(0,0,0,1);
 }
 .h-100vh{
 	min-height: 100vh;
@@ -209,5 +209,10 @@ p.text-big {
 .gallery-bg{
     background-image:url('../images/Artsubmit-1.jpg');
     background-attachment: fixed;   
+    min-height:400px;
+}
+.black-bold{
+    color:#000;
+    font-weight:bold;
 }
 // @import "components/input";
