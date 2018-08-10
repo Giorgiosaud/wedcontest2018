@@ -77113,8 +77113,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           return true;
         }
         return art.category.name === _this.category;
-      }).sort(function (artwork) {
-        return artwork.contestant.last_name;
+      }).sort(function (a, b) {
+        return a.contestant.last_name.localeCompare(b.contestant.last_name);
       });
     },
     indexOfSelectedArtwork: function indexOfSelectedArtwork() {

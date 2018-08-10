@@ -118,7 +118,7 @@ computed:{
         return true
       }
       return art.category.name===this.category;
-    }).sort(artwork=>artwork.contestant.last_name);
+    }).sort((a,b)=>a.contestant.last_name.localeCompare(b.contestant.last_name));
   },
   indexOfSelectedArtwork(){
     return this.filteredGallery.findIndex(art=>art.id===this.selectedArtwork.id);
