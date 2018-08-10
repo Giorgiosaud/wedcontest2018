@@ -133,7 +133,7 @@ class MyContestantController extends Controller
         $age = \Carbon\Carbon::now()->diffInYears($dob);
         $response = '';
         switch ($cat->name) {
-            case 'Seeds' :
+            case 'Seeds':
             if ($age >= 0 && $age <= $cat->max_age) {
                 $response = 'approved';
             }
