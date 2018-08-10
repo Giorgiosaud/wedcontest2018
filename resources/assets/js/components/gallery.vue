@@ -47,7 +47,7 @@ leave-active-class="bounceOutRight"
      <div class="move moveNext" @click="selectNext"><i class="fas fa-chevron-right"></i></div>
    </div>
    <div class="container py-4 text-center">
-     <h1 v-html="translate(selectedArtwork,'title')"></h1>
+     <h2 class="black-bold" v-html="translate(selectedArtwork,'title')"></h2>
      <h2 v-html="translate(selectedArtwork,'description')"></h2>
      <p>{{ selectedArtwork.contestant.name }} {{ selectedArtwork.contestant.last_name }} – {{ age }} {{ $t('lang.yearsOld') }} – {{ selectedArtwork.category.name}}</p>
      <div class="fb-comments" data-numposts="50" data-width="100%" :data-href="selectedArtwork.pathShow"></div>

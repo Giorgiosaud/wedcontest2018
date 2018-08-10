@@ -77321,7 +77321,8 @@ var render = function() {
                           "div",
                           { staticClass: "container py-4 text-center" },
                           [
-                            _c("h1", {
+                            _c("h2", {
+                              staticClass: "black-bold",
                               domProps: {
                                 innerHTML: _vm._s(
                                   _vm.translate(_vm.selectedArtwork, "title")
