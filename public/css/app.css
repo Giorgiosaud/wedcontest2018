@@ -11344,4 +11344,5 @@ p.text-big {
 .gallery-bg {
   background-image: url("../images/Artsubmit-1.jpg");
   background-attachment: fixed;
+  min-height: 400px;
 }
