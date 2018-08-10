@@ -16,7 +16,7 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('artwork_id');
-            $table->json('answers');
+            $table->json('answers')->nullable();
             $table->integer('points');
             $table->text('percentage');
             $table->timestamps();
