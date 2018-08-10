@@ -77113,6 +77113,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           return true;
         }
         return art.category.name === _this.category;
+      }).sort(function (artwork) {
+        return artwork.contestant.last_name;
       });
     },
     indexOfSelectedArtwork: function indexOfSelectedArtwork() {
