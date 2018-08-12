@@ -21,6 +21,7 @@ Route::get('lang/{route}/{language}', 'LanguageController@switchLang')->name('la
 
 Route::post('/images/upload', 'ImageController@store')->middleware('auth')->name('store.image');
 
+
 Route::group([
     'prefix'     => '/admin',
     'middleware' => ['admin'], // Route admin
@@ -48,6 +49,13 @@ Route::group([
     Route::get('/translate', 'AdminController@translateActive')->middleware('admin')->name('admin.translateActive');
     Route::get('/translate/{contest}', 'AdminController@translate')->middleware('admin')->name('admin.translations');
     Route::put('/translate/{artwork}', 'AdminController@SaveTranslation')->middleware('admin')->name('admin.save.translations');
+});
+Route::group([
+    'prefix'     => '/evaluation',
+    'middleware' => ['judges'], // Route admin
+],
+ function(){   
+    Route::get('init','EvaluationController@index');
 });
 Route::group([
     'prefix'     => LaravelLocalization::setLocale(),
