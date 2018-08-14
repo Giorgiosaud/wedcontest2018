@@ -77756,6 +77756,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     openDetail: function openDetail(artwork) {
       this.hiddenDetail = false;
+
       this.selectedArtwork = artwork;
     },
     selectNext: function selectNext() {
@@ -77798,6 +77799,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     maxIndexOfFilterArtworks: function maxIndexOfFilterArtworks() {
       return this.filteredGallery.length - 1;
+    }
+  },
+  watch: {
+    selectedArtwork: function selectedArtwork(val) {
+      window.location.hash = val.id;
     }
   },
   created: function created() {
@@ -78032,8 +78038,7 @@ var render = function() {
                               staticClass: "fb-comments",
                               attrs: {
                                 "data-numposts": "50",
-                                "data-width": "100%",
-                                "data-href": _vm.selectedArtwork.pathShow
+                                "data-width": "100%"
                               }
                             })
                           ]

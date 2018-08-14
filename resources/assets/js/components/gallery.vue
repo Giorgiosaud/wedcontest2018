@@ -50,7 +50,7 @@ leave-active-class="bounceOutRight"
      <h2 class="black-bold" v-html="translate(selectedArtwork,'title')"></h2>
      <h2 v-html="translate(selectedArtwork,'description')"></h2>
      <p>{{ selectedArtwork.contestant.name }} {{ selectedArtwork.contestant.last_name }} – {{ age }} {{ $t('lang.yearsOld') }} – {{ selectedArtwork.category.name}}</p>
-     <div class="fb-comments" data-numposts="50" data-width="100%" :data-href="selectedArtwork.pathShow"></div>
+     <div class="fb-comments" data-numposts="50" data-width="100%"></div>
    </div>
  </div>
 </div>
@@ -85,6 +85,7 @@ export default {
     },
     openDetail(artwork){
       this.hiddenDetail=false;
+
       this.selectedArtwork=artwork;
     },
     selectNext(){
@@ -124,6 +125,11 @@ computed:{
   },
   maxIndexOfFilterArtworks(){
     return this.filteredGallery.length-1;
+  }
+},
+watch:{
+  selectedArtwork(val){
+    window.location.hash=val.id;
   }
 },
 created(){
