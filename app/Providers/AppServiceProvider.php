@@ -4,34 +4,38 @@ namespace App\Providers;
 
 use App\Contest;
 use App\Country;
+use Illuminate\Foundation\Testing\TestResponse;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        if (!$this->app->runningInConsole()) {
-            $contest = Contest::whereActive(true)->first();
-            View::share('contest', $contest);
+/**
+ * Bootstrap any application services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    
+    TestResponse::macro('assertSeeMany', function ($array) {
+        foreach($array as $text){
+            $this->assertSee($text);
         }
-        // Blade::component('components.header', 'header');
-        // View::share('countries', Country::all());
-        //
-    }
+        return $this;
+    });
+    // Blade::component('components.header', 'header');
+    // View::share('countries', Country::all());
+    //
+}
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-    }
+/**
+ * Register any application services.
+ *
+ * @return void
+ */
+public function register()
+{
+}
 }

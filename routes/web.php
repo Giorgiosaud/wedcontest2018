@@ -52,10 +52,11 @@ Route::group([
 });
 Route::group([
     'prefix'     => '/evaluation',
-    'middleware' => ['judges'], // Route admin
+    'middleware' => ['judge'], // Route admin
 ],
  function(){   
-    Route::get('init','EvaluationController@index');
+    Route::get('/{selectedContest}','EvaluationController@show')->name('evaluation.show');
+    Route::get('/{contest}/{category}','EvaluationController@make')->name('evaluation.make');
 });
 Route::group([
     'prefix'     => LaravelLocalization::setLocale(),

@@ -15,3 +15,4 @@ Route::middleware('api')->get('countries', 'CountriesController@index')->name('a
 Route::middleware('api')->get('users', 'UserApiController@index')->name('api.users.index');
 Route::middleware('api')->get('gallery', 'ArtworkApiController@index')->name('api.artwork.index');
 Route::middleware('api')->get('gallery/{contest}', 'ArtworkApiController@show')->name('api.artwork.show');
+Route::middleware('api')->get('artworks/category/{category}', 'ArtworkApiController@get')->name('api.artwork.get');

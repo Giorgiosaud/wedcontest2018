@@ -39,6 +39,13 @@ abstract class TestCase extends BaseTestCase
 
         return $this;
     }
+    protected function asJudge($judge = null)
+    {
+        $judge = $judge ?: User::whereEmail('jorgelsaud@gmail.com')->first();
+        $this->actingAs($judge);
+
+        return $this;
+    }
 
     // Hat tip, @adamwathan.
     protected function disableExceptionHandling()

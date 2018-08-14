@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Artwork;
+use App\Category;
 use App\Contest;
 
 class ArtworkApiController extends Controller
@@ -21,6 +22,12 @@ class ArtworkApiController extends Controller
         $contest->load('categories.artworks')->get();
         $catsId = $contest->categories->pluck('id');
         $artworks = Artwork::whereIn('category_id', $catsId)->whereState('translated')->get();
+
+        return $artworks;
+    }
+    public function get(Category $category)
+    {
+        $artworks = Artwork::whereCategoryId($category->id)->whereState('translated')->get();
 
         return $artworks;
     }
