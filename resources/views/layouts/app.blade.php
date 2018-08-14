@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta property="fb:app_id" content="235445060630804" />
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="//fonts.googleapis.com/css?family=Nixie+One|PT+Sans:400,700" rel="stylesheet">
