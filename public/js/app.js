@@ -19251,7 +19251,7 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(82);
-module.exports = __webpack_require__(342);
+module.exports = __webpack_require__(347);
 
 
 /***/ }),
@@ -19312,7 +19312,7 @@ Vue.component("contest-create", __webpack_require__(317));
 Vue.component("contest-edit", __webpack_require__(322));
 Vue.component("wysiwyg", __webpack_require__(327));
 Vue.component("gallery", __webpack_require__(337));
-Vue.component("evaluation", __webpack_require__(344));
+Vue.component("evaluation", __webpack_require__(342));
 
 Vue.filter('capitalize', function (string) {
   return string.toUpperCase();
@@ -78067,25 +78067,18 @@ if (false) {
 
 /***/ }),
 /* 342 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 343 */,
-/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(345)
+  __webpack_require__(343)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(347)
+var __vue_script__ = __webpack_require__(345)
 /* template */
-var __vue_template__ = __webpack_require__(348)
+var __vue_template__ = __webpack_require__(346)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -78124,13 +78117,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 345 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(346);
+var content = __webpack_require__(344);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -78150,7 +78143,7 @@ if(false) {
 }
 
 /***/ }),
-/* 346 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -78164,7 +78157,7 @@ exports.push([module.i, "\n", ""]);
 
 
 /***/ }),
-/* 347 */
+/* 345 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78230,7 +78223,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 348 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -78291,6 +78284,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-0319529a", module.exports)
   }
 }
+
+/***/ }),
+/* 347 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
