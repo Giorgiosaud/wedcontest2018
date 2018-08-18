@@ -43,6 +43,8 @@ Route::group([
     Route::get('contest/{contest}', 'ContestController@show')->name('contest.show');
     Route::get('contest/{contest}/edit', 'ContestController@edit')->name('contest.edit');
     Route::get('contest/{contest}/categories', 'CategoriesController@index')->name('categories.index');
+    Route::get('evaluations/{contest}/{category}', 'EvaluationController@create')->name('evaluation.create');
+    Route::post('evaluations/{category}', 'EvaluationController@save')->name('evaluation.save');
     Route::post('contest', 'ContestController@store')->name('contest.store');
     Route::put('contest/{contest}', 'ContestController@update')->name('contest.update');
     Route::get('/review/{contest}/{contestant}/{artwork}', 'AdminController@review')->middleware('admin')->name('admin.review');
@@ -56,6 +58,15 @@ Route::group([
 ],
  function(){   
     Route::get('/{selectedContest}','EvaluationController@show')->name('evaluation.show');
+    Route::get('/{contest}/{category}','EvaluationController@make')->name('evaluation.make');
+    Route::post('/answers/{artwork}','EvaluationController@post')->name('evaluation.post');
+
+});
+Route::group([
+    'prefix'     => LaravelLocalization::setLocale().'/evaluation',
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'localize','judge'], // Route translate middleware
+],
+ function(){   
     Route::get('/{contest}/{category}','EvaluationController@make')->name('evaluation.make');
 });
 Route::group([

@@ -27,6 +27,7 @@
             'csrfToken' => csrf_token(),
             'user' => Auth::user(),
             'signedIn' => Auth::check(),
+            'roles' => Auth::check()?Auth::user()->roles->pluck('name'):null,
             'locale'=> LaravelLocalization::getCurrentLocale()
             ]) !!};
         </script>

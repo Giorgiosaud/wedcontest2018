@@ -57,6 +57,7 @@ Vue.component("contest-create", require("./components/ContestCreate.vue"));
 Vue.component("contest-edit", require("./components/ContestEdit.vue"));
 Vue.component("wysiwyg", require("./components/wysiwyg.vue"));
 Vue.component("gallery", require("./components/gallery.vue"));
+Vue.component("evaluation-create", require("./components/EvaluationCreate.vue"));
 Vue.component("evaluation", require("./components/Evaluation.vue"));
 
 Vue.filter('capitalize',string=>string.toUpperCase());

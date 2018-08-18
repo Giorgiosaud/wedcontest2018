@@ -103,7 +103,6 @@ export default {
     else{
       this.selectedArtwork=this.filteredGallery[this.indexOfSelectedArtwork-1];
     }
-
   }
 
 },
