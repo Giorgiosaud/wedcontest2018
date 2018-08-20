@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Contest;
 use App\Country;
 use App\Events\RegisterRepresentant;
+use App\Events\JudgeRegistered;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -12,6 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Webpatser\Countries\Countries;
+use Illuminate\Auth\Events\Registered;
+
 
 class RegisterController extends Controller
 {
@@ -28,12 +31,34 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    public function registerJudges(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return $this->registeredJudge($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
     public function showRegistrationForm()
     {
         $countries = Country::all();
         $contest = Contest::whereActive(true)->first();
 
         return view('auth.register', compact('countries', 'contest'));
+    }
+
+
+
+    public function showRegistrationFormForJudges()
+    {
+        $countries = Country::all();
+        $contest = Contest::whereActive(true)->first();
+
+        return view('auth.registerjudges', compact('countries', 'contest'));
     }
 
     /**
@@ -105,5 +130,9 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         event(new RegisterRepresentant($user));
+    }
+    protected function registeredJudge(Request $request, $user)
+    {
+        event(new JudgeRegistered($user));
     }
 }

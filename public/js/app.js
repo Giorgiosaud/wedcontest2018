@@ -19328,6 +19328,7 @@ Vue.component("Translation", __webpack_require__(134));
 Vue.component("Register", __webpack_require__(148));
 Vue.component("Users", __webpack_require__(151));
 Vue.component("RepresentantRegistrationForm", __webpack_require__(266));
+Vue.component("JudgesRegistrationForm", __webpack_require__(271));
 Vue.component("ContestantRegistrationForm", __webpack_require__(276));
 Vue.component("ContestantEditForm", __webpack_require__(283));
 Vue.component('artworkUploadForm', __webpack_require__(286));
@@ -56615,6 +56616,7 @@ $(window).scroll(function () {
             "editOrRotate": " Edit Crop or Rotate ",
             "editTooltip": "Edit Image",
             "email": " E-mail address ",
+            "evaluation": "Evaluation Process for the World Environment Day Drawing Contest 2018",
             "failed": " These credentials do not match our records. ",
             "faqlink": " http:\/\/wedcontest2018.diproinduca.com\/frequently-asked-questions\/ ",
             "forgot": " Forgot password ",
@@ -56697,6 +56699,10 @@ $(window).scroll(function () {
             "sprouts_label": " Niños entre 8 y 10 ",
             "subject": " Reset Pasword of Wedcontest ",
             "subscribed": " Subscribe to e-mail newsletter ",
+            "seedsEvaluation": " You are evaluating the Seeds category, for children under 3 years of age. The easiest way to go trough this process is to review all the drawings and then decide who in your opinion deserves to be 1st 2nd and 3rd. Place",
+            "sproutssEvaluation": "You are evaluating the Sprouts category, for children 4 to 7  years of age. The easiest way to go trough this process is to review all the drawings and then decide who in your opinion deserves to be 1st 2nd and 3rd. Place",
+            "thinkersEvaluation": "You are evaluating the Thinkers category, for children 8 to 10 years of age. For this category you would have to complete a questionnaire for each individual drawing.",
+            "gameChangersEvaluation": "You are evaluating the Game Changers category,  for children 11 to 15 years of age. For this category you would have to complete a questionnaire for each individual drawing",
             "the_contest": " the_contest ",
             "thinkers": " Thinker children between 8 and 10 ",
             "thinkers_label": " Niños entre 4 y 7 ",
@@ -56988,6 +56994,7 @@ $(window).scroll(function () {
             "editOrRotate": "Editar, recortar o rotar",
             "editTooltip": "Editar Imagen",
             "email": "e-mail",
+            "evaluation": "Proceso de evaluación para el Concurso de Dibujo del Día Mundial del Medio Ambiente 2018",
             "failed": "Estas credenciales no coinciden con los datos del sistema.",
             "faqlink": "http:\/\/wedcontest2018.diproinduca.com\/es\/preguntas-frecuentes\/",
             "forgot": "Olvido de clave",
@@ -57066,6 +57073,10 @@ $(window).scroll(function () {
             "specify": "Especifíque",
             "sprouts": "Sprout entre 4 y 7 Años",
             "subject": "Reiniciar clave de Wedcontest",
+            "seedsEvaluation": " Está evaluando la categoría Seeds, para niños menores de 3 años. La manera más fácil de pasar a través de este proceso es revisar todos los dibujos y luego decidir quién, en su opinión, merece ser 1 ° 2 ° y 3 °. Lugar",
+            "sproutssEvaluation": "Está evaluando la categoría de Sprouts, para niños de 4 a 7 años de edad. La forma más fácil de pasar por este proceso es revisar todos los dibujos y luego decidir quién, en su opinión, merece ser 1 ° 2 ° y 3 °. Lugar",
+            "thinkersEvaluation": "Está evaluando la categoría Thinkers, para niños de 8 a 10 años de edad. Para esta categoría, debe completar un cuestionario para cada dibujo individual.",
+            "gameChangersEvaluation": "Está evaluando la categoría Game Changers, para niños de 11 a 15 años. Para esta categoría, debe completar un cuestionario para cada dibujo individual",
             "subscribed": "Recibir notificaciones",
             "thinkers": "Thinker entre 8 y 10 Años",
             "throttle": "Muchos Intentos. Porfavor espere {seconds} segundos para intentarlo nuevamente.",
@@ -71321,11 +71332,866 @@ if (false) {
 }
 
 /***/ }),
-/* 271 */,
-/* 272 */,
-/* 273 */,
-/* 274 */,
-/* 275 */,
+/* 271 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(272)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(274)
+/* template */
+var __vue_template__ = __webpack_require__(275)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/JudgesRegistrationForm.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ea849020", Component.options)
+  } else {
+    hotAPI.reload("data-v-ea849020", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 272 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(273);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("d8f2f128", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-ea849020\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./JudgesRegistrationForm.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-ea849020\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./JudgesRegistrationForm.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 273 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.v-select input[type=search] {\n  background: #fff;\n}\n.v-select .dropdown-toggle {\n  background-color: #fff;\n}\ninput:-webkit-autofill {\n  -webkit-box-shadow: 0 0 0 1000px #fff inset;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 274 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['postTo'],
+    data: function data() {
+        return {
+            form: {
+                name: "",
+                last_name: "",
+                phone: "",
+                country: "",
+                referred: "",
+                language: "en",
+                email: "",
+                password: "",
+                referred_specify: "",
+                password_confirmation: "",
+                subscribed: true
+            },
+            countries: [],
+            country: "",
+            referred: "",
+            referredOptions: [{
+                label: this.$t("registration.referred.options.1"),
+                value: "employee"
+            }, {
+                label: this.$t("registration.referred.options.2"),
+                value: "invited"
+            }, {
+                label: this.$t("registration.referred.options.3"),
+                value: "other"
+            }],
+            feedback: "",
+            loading: false,
+            errors: {}
+        };
+    },
+
+    methods: {
+        register: function register() {
+            var _this = this;
+
+            this.loading = true;
+
+            axios.post(this.postTo, this.form).then(function (response) {
+                console.log(response);
+                _this.loading = false;
+                window.location.href = response.request.responseURL;
+            }).catch(function (error) {
+                _this.errors = error.response.data.errors;
+                _this.loading = false;
+            });
+        }
+    },
+    created: function created() {
+        var _this2 = this;
+
+        if (this.countries.length > 2) return;
+        axios.get("/api/countries").then(function (_ref) {
+            var data = _ref.data;
+            return _this2.countries = data;
+        }).catch(function (error) {
+            flash("Hubo un error refresca la pagina", "warning");
+        });
+    },
+
+    watch: {
+        country: function country(value) {
+            this.form.country = value.code;
+        },
+        referred: function referred(value) {
+            this.form.referred = value.value;
+        }
+    }
+});
+
+/***/ }),
+/* 275 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("h1", { staticClass: "pb-4" }, [
+      _vm._v(_vm._s(_vm.$t("registration.register")))
+    ]),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.register($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "name" } }, [
+            _vm._v(_vm._s(_vm.$t("registration.name")))
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.name,
+                expression: "form.name"
+              }
+            ],
+            staticClass: "form-control",
+            class: { "is-invalid": _vm.errors.length > 0 && _vm.errors.name },
+            attrs: {
+              type: "text",
+              id: "name",
+              "aria-describedby": "name",
+              autocomplete: "name",
+              required: ""
+            },
+            domProps: { value: _vm.form.name },
+            on: {
+              keydown: function($event) {
+                _vm.errors.name = false
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "name", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.errors.name
+            ? _c("div", {
+                staticClass: "invalid-feedback",
+                domProps: { textContent: _vm._s(_vm.errors.name[0]) }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "last_name" } }, [
+            _vm._v(_vm._s(_vm.$t("registration.last_name")))
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.last_name,
+                expression: "form.last_name"
+              }
+            ],
+            staticClass: "form-control",
+            class: { "is-invalid": _vm.errors.last_name },
+            attrs: {
+              type: "text",
+              id: "last_name",
+              "aria-describedby": "last_name",
+              required: ""
+            },
+            domProps: { value: _vm.form.last_name },
+            on: {
+              keydown: function($event) {
+                _vm.errors.last_name = false
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "last_name", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.errors.last_name
+            ? _c("div", {
+                staticClass: "invalid-feedback",
+                domProps: { textContent: _vm._s(_vm.errors.last_name[0]) }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "country" } }, [
+              _vm._v(_vm._s(_vm.$t("registration.country")))
+            ]),
+            _vm._v(" "),
+            _c("v-select", {
+              attrs: { label: "name", options: _vm.countries },
+              scopedSlots: _vm._u([
+                {
+                  key: "option",
+                  fn: function(option) {
+                    return [
+                      _c("span", { staticClass: "flag" }, [
+                        _c("img", {
+                          attrs: { src: option.flag, alt: option.name }
+                        })
+                      ]),
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(option.name) +
+                          "\n                "
+                      )
+                    ]
+                  }
+                }
+              ]),
+              model: {
+                value: _vm.country,
+                callback: function($$v) {
+                  _vm.country = $$v
+                },
+                expression: "country"
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors.country
+              ? _c("span", {
+                  staticClass: "text-xs text-red",
+                  domProps: { textContent: _vm._s(_vm.errors.country[0]) }
+                })
+              : _vm._e()
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "referred" } }, [
+              _vm._v(_vm._s(_vm.$t("registration.referred.label")))
+            ]),
+            _vm._v(" "),
+            _c("v-select", {
+              attrs: { options: _vm.referredOptions },
+              model: {
+                value: _vm.referred,
+                callback: function($$v) {
+                  _vm.referred = $$v
+                },
+                expression: "referred"
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors.referred
+              ? _c("span", {
+                  staticClass: "text-xs text-red",
+                  domProps: { textContent: _vm._s(_vm.errors.referred[0]) }
+                })
+              : _vm._e()
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _vm.form.referred !== "employee" && _vm.form.referred !== ""
+          ? _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                { staticClass: "sr-only", attrs: { for: "referredBy" } },
+                [_vm._v(_vm._s(_vm.$t("registration.specify")))]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.referred_specify,
+                    expression: "form.referred_specify"
+                  }
+                ],
+                staticClass: "form-control",
+                class: { "is-invalid": _vm.errors.referred_specify },
+                attrs: {
+                  type: "text",
+                  name: "referred_specify",
+                  autocomplete: "referred_specify",
+                  placeholder: _vm.$t("registration.specify")
+                },
+                domProps: { value: _vm.form.referred_specify },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "referred_specify", $event.target.value)
+                  }
+                }
+              })
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("div", { staticClass: "form-check form-check-inline" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.language,
+                  expression: "form.language"
+                }
+              ],
+              staticClass: "form-check-input",
+              class: { "is-invalid": _vm.errors.language },
+              attrs: {
+                type: "radio",
+                value: "en",
+                name: "language",
+                id: "en",
+                checked: "",
+                required: ""
+              },
+              domProps: { checked: _vm._q(_vm.form.language, "en") },
+              on: {
+                change: function($event) {
+                  _vm.$set(_vm.form, "language", "en")
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              { staticClass: "form-check-label", attrs: { for: "en" } },
+              [_vm._v(_vm._s(_vm.$t("registration.language.options.en")))]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-check form-check-inline" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.language,
+                  expression: "form.language"
+                }
+              ],
+              staticClass: "form-check-input",
+              class: { "is-invalid": _vm.errors.language },
+              attrs: {
+                type: "radio",
+                value: "es",
+                name: "language",
+                id: "es",
+                required: ""
+              },
+              domProps: { checked: _vm._q(_vm.form.language, "es") },
+              on: {
+                change: function($event) {
+                  _vm.$set(_vm.form, "language", "es")
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              { staticClass: "form-check-label", attrs: { for: "es" } },
+              [_vm._v(_vm._s(_vm.$t("registration.language.options.es")))]
+            )
+          ]),
+          _vm._v(" "),
+          _vm.errors.language
+            ? _c("div", { staticClass: "form-control" }, [
+                _c("div", {
+                  staticClass: "invalid-feedback",
+                  domProps: { textContent: _vm._s(_vm.errors.language[0]) }
+                })
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "phone" } }, [
+            _vm._v(_vm._s(_vm.$t("registration.phone")))
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.phone,
+                expression: "form.phone"
+              }
+            ],
+            staticClass: "form-control",
+            class: { "is-invalid": _vm.errors.phone },
+            attrs: {
+              type: "text",
+              id: "phone",
+              autocomplete: "tel-national",
+              "aria-describedby": "phone",
+              required: ""
+            },
+            domProps: { value: _vm.form.phone },
+            on: {
+              keydown: function($event) {
+                _vm.errors.phone = false
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "phone", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.errors.phone
+            ? _c("div", {
+                staticClass: "invalid-feedback",
+                domProps: { textContent: _vm._s(_vm.errors.phone[0]) }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "email" } }, [
+            _vm._v(_vm._s(_vm.$t("registration.email")))
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.email,
+                expression: "form.email"
+              }
+            ],
+            staticClass: "form-control",
+            class: { "is-invalid": _vm.errors.email },
+            attrs: {
+              type: "text",
+              id: "email",
+              autocomplete: "email",
+              "aria-describedby": "email",
+              required: ""
+            },
+            domProps: { value: _vm.form.email },
+            on: {
+              keydown: function($event) {
+                _vm.errors.email = false
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "email", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.errors.email
+            ? _c("div", {
+                staticClass: "invalid-feedback",
+                domProps: { textContent: _vm._s(_vm.errors.email[0]) }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "password" } }, [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.$t("registration.password")) +
+                "\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.password,
+                expression: "form.password"
+              }
+            ],
+            staticClass: "form-control",
+            class: { "is-invalid": _vm.errors.password },
+            attrs: {
+              type: "password",
+              id: "password",
+              autocomplete: "password",
+              name: "password"
+            },
+            domProps: { value: _vm.form.password },
+            on: {
+              keydown: function($event) {
+                _vm.errors.password = false
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "password", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.errors.password
+            ? _c("div", {
+                staticClass: "invalid-feedback",
+                domProps: { textContent: _vm._s(_vm.errors.password[0]) }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "password_confirmation" } }, [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.$t("registration.password_confirmation")) +
+                "\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.password_confirmation,
+                expression: "form.password_confirmation"
+              }
+            ],
+            staticClass: "form-control",
+            class: { "is-invalid": _vm.errors.password },
+            attrs: {
+              type: "password",
+              id: "password_confirmation",
+              autocomplete: "password_confirmation",
+              name: "password_confirmation"
+            },
+            domProps: { value: _vm.form.password_confirmation },
+            on: {
+              keydown: function($event) {
+                _vm.errors.password = false
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "password_confirmation", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.errors.password
+            ? _c("div", {
+                staticClass: "invalid-feedback",
+                domProps: { textContent: _vm._s(_vm.errors.password[0]) }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-wedcontest",
+            class: _vm.loading ? "loader" : "",
+            attrs: { type: "submit", disabled: _vm.loading }
+          },
+          [_vm._v(_vm._s(_vm.$t("registration.register")))]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-ea849020", module.exports)
+  }
+}
+
+/***/ }),
 /* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -79802,6 +80668,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -80055,16 +80924,23 @@ var render = function() {
     "div",
     [
       _c("div", { staticClass: "container text-center pt-4" }, [
-        _c("h2", {
-          domProps: {
-            innerHTML: _vm._s(_vm.translate(_vm.contest, "description"))
-          }
-        })
+        _vm.category.name === "Seeds"
+          ? _c("h2", [_vm._v(_vm._s(_vm.$t("lang.seedsEvaluation")))])
+          : _vm.category.name === "Sprouts"
+            ? _c("h2", [_vm._v(_vm._s(_vm.$t("lang.sproutssEvaluation")))])
+            : _vm.category.name === "Thinkers"
+              ? _c("h2", [_vm._v(_vm._s(_vm.$t("lang.thinkersEvaluation")))])
+              : _c("h2", [
+                  _vm._v(_vm._s(_vm.$t("lang.gameChangersEvaluation")))
+                ])
       ]),
       _vm._v(" "),
       _c(
         "transition-group",
-        { staticClass: "row", attrs: { name: "fadeLeft", tag: "div" } },
+        {
+          staticClass: "container row mx-auto",
+          attrs: { name: "fadeLeft", tag: "div" }
+        },
         _vm._l(_vm.filteredArtworks, function(artwork) {
           return _c(
             "div",
