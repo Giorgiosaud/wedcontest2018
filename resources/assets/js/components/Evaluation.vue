@@ -1,12 +1,15 @@
 <template>
 	<div>
 		<div class="container text-center pt-4">
-			<h2 v-html="translate(contest,'description')"></h2>
+			<h2 v-if="category.name==='Seeds'" >{{ $t("lang.seedsEvaluation")}}</h2>
+			<h2 v-else-if="category.name==='Sprouts'">{{ $t("lang.sproutssEvaluation")}}</h2>
+			<h2 v-else-if="category.name==='Thinkers'" >{{ $t("lang.thinkersEvaluation")}}</h2>
+			<h2 v-else >{{ $t("lang.gameChangersEvaluation")}}</h2>
 		</div>
 		<transition-group
 		name="fadeLeft"
 		tag="div"
-		class="row">
+		class="container row mx-auto">
 		<div
 		class="col-6 col-md-4  artwork-container p-2 d-flex align-items-center justify-content-center"
 		v-for="artwork in filteredArtworks"

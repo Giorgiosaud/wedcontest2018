@@ -35,6 +35,10 @@ Vue.component(
   require("./components/RepresentantRegistrationForm.vue")
   );
 Vue.component(
+  "JudgesRegistrationForm",
+  require("./components/JudgesRegistrationForm.vue")
+  );
+Vue.component(
   "ContestantRegistrationForm",
   require("./components/ContestantRegistrationForm.vue")
   );

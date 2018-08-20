@@ -76,6 +76,9 @@ Route::group([
 ], function () {
     // Route::resource('contest', 'ContestController');
     Auth::routes();
+    Route::get('registerjudge', 'Auth\RegisterController@showRegistrationFormForJudges')->name('register.judges');
+    Route::post('registerjudge', 'Auth\RegisterController@registerJudges')->name('registerjudge');
+
     Route::redirect('/', 'the_contest');
     Route::get(LaravelLocalization::transRoute('routes.the_contest'), 'TheContestController@index')
     ->name('the_contest');
