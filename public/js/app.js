@@ -80671,6 +80671,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -81168,7 +81169,9 @@ var render = function() {
                         return _vm.questionsToShow
                           ? _c("div", { staticClass: "row" }, [
                               _c("div", { staticClass: "col-12" }, [
-                                _c("h4", [_vm._v(_vm._s(theme.name))])
+                                _c("hr", { staticClass: "py-3" }),
+                                _vm._v(" "),
+                                _c("h2", [_vm._v(_vm._s(theme.name))])
                               ]),
                               _vm._v(" "),
                               _c(
@@ -81177,8 +81180,11 @@ var render = function() {
                                 _vm._l(theme.questions, function(q) {
                                   return _c(
                                     "div",
+                                    { staticClass: "py-3" },
                                     [
-                                      _c("strong", [_vm._v(_vm._s(q.name))]),
+                                      _c("h3", [
+                                        _c("strong", [_vm._v(_vm._s(q.name))])
+                                      ]),
                                       _vm._v(" "),
                                       _vm._l(q.options, function(
                                         option,
@@ -81186,7 +81192,7 @@ var render = function() {
                                       ) {
                                         return _c(
                                           "div",
-                                          { staticClass: "radio" },
+                                          { staticClass: "radio py-2" },
                                           [
                                             _c("label", [
                                               _c("input", {

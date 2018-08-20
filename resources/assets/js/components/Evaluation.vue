@@ -71,12 +71,13 @@ leave-active-class="bounceOutRight"
 			</div>
 			<div class="row" v-for="theme in questionsToShow" v-if="questionsToShow">
 				<div class="col-12">
-					<h4>{{theme.name}}</h4>
+					<hr class="py-3">
+					<h2>{{theme.name}}</h2>
 				</div>
 				<div class="col-12">
-					<div v-for="q in theme.questions">
-						<strong>{{q.name}}</strong>
-						<div class="radio" v-for="(option,index) in q.options">
+					<div class="py-3" v-for="q in theme.questions">
+						<h3><strong>{{q.name}}</strong></h3>
+						<div class="radio py-2" v-for="(option,index) in q.options">
 							<label >
 								<input :disabled="selectedArtwork.byPosition &&(
 								(index==0 && selectedFirstPosition) ||
