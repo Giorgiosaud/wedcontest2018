@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Listeners\RegisterAsRepresentant;
+use App\Listeners\RegisterAsJudge;
 use App\Listeners\ReSendEmail;
 use App\Listeners\SendEmail;
+use App\Listeners\SendJudgesEmail;
 use App\Listeners\SubscribeToNewsletter;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
@@ -21,6 +23,10 @@ class EventServiceProvider extends ServiceProvider
             RegisterAsRepresentant::class,
             SendEmail::class,
             SubscribeToNewsletter::class,
+        ],
+        'App\Events\JudgeRegistered' => [
+            RegisterAsJudge::class,
+            SendJudgesEmail::class,
         ],
         'App\Events\RegisterContestant' => [
             'App\Listeners\RegisterAsContestant',
