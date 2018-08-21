@@ -30,6 +30,7 @@ return [
     'country'                     => ' Country ',
     'countryselect'               => ' Select your country ',
     'evaluating'                  => 'Evaluating Process',
+    'goBackToList'                => 'Back to category List',
     'required'                    => ' This Field is Required ',
     'terms'                       => 'Accept <button type="button" class="p-0 btn btn-link" data-toggle="modal" data-target="#modal">Terms and Conditions</button> to continue',
     'termsConditions'             => '<h2>IMAGE RIGHTS, PROCESSING OF PERSONAL DATA AND INTELLECTUAL PROPERTY</h2></br>

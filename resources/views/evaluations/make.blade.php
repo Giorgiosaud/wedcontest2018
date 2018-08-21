@@ -7,6 +7,7 @@
 </div>
 <div class="pt-6">
    <div class="content py-4">
+   	<div class="container"><a href="{{route('evaluation.show',$contest)}}" class="btn btn-wedcontest">@lang('lang.goBackToList')</a></div>
    	<evaluation :contest="{{$contest}}" :category="{{$category}}">
    		
    	</evaluation>
