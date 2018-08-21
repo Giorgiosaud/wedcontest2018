@@ -7,7 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class RepresentantRegistered extends Mailable
+class JudgeRegistered extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,7 +28,7 @@ class RepresentantRegistered extends Mailable
      */
     public function build()
     {
-        return $this->subject('User Registered')->markdown('emails.usuario-registrado',
+        return $this->subject('Judge Registered')->markdown('emails.jurado-registrado',
             [
                 'logo'=> asset('/storage/contest/rethinking-plastic/enLogo.jpg'),
                 'user'=> $this->user,

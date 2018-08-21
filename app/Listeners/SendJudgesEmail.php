@@ -7,8 +7,10 @@ use App\Mail\PleaseConfirmYourEmail;
 use App\Mail\PorFavorConfirmeSuCorreo;
 use App\Mail\JudgeRegistered;
 use Illuminate\Support\Facades\Mail;
+use App\Events\JudgeRegistered as JudgeEvent;
 
-class SendEmail
+
+class SendJudgesEmail
 {
     /**
      * Create the event listener.
@@ -27,7 +29,7 @@ class SendEmail
      *
      * @return void
      */
-    public function handle(JudgeRegistered $event)
+    public function handle(JudgeEvent $event)
     {
 //        dd($event->user);
         $user = $event->user;

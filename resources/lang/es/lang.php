@@ -48,11 +48,17 @@ return [
     'goToProfile'                 => 'Ir a Perfil',
     'header'                      => 'Registro al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente',
     'header_closed'               => 'El tiempo de subir dibujos al concurso 2018 del medio ambiente terminó.',
+    'registerJudges'                      => ' Registro de jueces al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente ',
+
     'header_closed_mini'          => 'Para soporte contáctenos a: <a class="text-light"href="mailto:wedcontest@diproinduca.com">wedcontest@diproinduca.com</a>',
     'header_confirmed'            => 'Es hora de registrar a tus artistas participando este año.',
     'history'                     => 'Historia',
     'history_link'                => 'http://wedcontest2018.diproinduca.com/es/acerca-del-concurso/',
     'judges'                      => 'Jueces',
+    'judgename'                   => 'Nombre de Jurado',
+    'judge_last_name'=> 'Apellido de Jurado',
+    'judgetitle'                   => 'Registro de Jurado',
+
     'judges_link'                 => 'http://wedcontest2018.diproinduca.com/es/jurado/',
     'language'                    => [
         'label'    => '    Idioma',
