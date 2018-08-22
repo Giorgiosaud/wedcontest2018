@@ -26,7 +26,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\JudgeRegistered' => [
             RegisterAsJudge::class,
-            SendJudgesEmail::class,
+            //SendJudgesEmail::class,
         ],
         'App\Events\RegisterContestant' => [
             'App\Listeners\RegisterAsContestant',

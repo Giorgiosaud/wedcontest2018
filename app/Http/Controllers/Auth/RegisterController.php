@@ -35,9 +35,9 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        event(new Registered($user = $this->createJudge($request->all())));
+        event(new Registered($user = $this->create($request->all())));
 
-        $this->guard()->login($user);
+       // $this->guard()->login($user);
 
         return $this->registeredJudge($request, $user)
                         ?: redirect($this->redirectPath());

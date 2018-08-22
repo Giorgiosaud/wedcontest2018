@@ -29,5 +29,6 @@ class RegisterAsJudge
     {
         $role = Role::whereName('Judge')->first();
         $event->user->roles()->attach($role);
+        $event->user->confirm();
     }
 }
