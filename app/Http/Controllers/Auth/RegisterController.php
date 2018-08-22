@@ -35,7 +35,7 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        event(new Registered($user = $this->create($request->all())));
+        event(new Registered($user = $this->createJudge($request->all())));
 
         $this->guard()->login($user);
 
@@ -124,6 +124,24 @@ class RegisterController extends Controller
             'email'               => $data['email'],
             'password'            => Hash::make($data['password']),
             'confirmation_token'  => str_limit(md5($data['email'].str_random()), 25, ''),
+        ]);
+    }
+    protected function createJudge(array $data)
+    {
+        // dd($data);
+        return User::create([
+            'name'                => $data['name'],
+            'last_name'           => $data['last_name'],
+            'country'             => $data['country'],
+            'phone'               => $data['phone'],
+            'referred'            => $data['referred'],
+            'referred_specify'    => $data['referred_specify'],
+            'language'            => $data['language'],
+            'subscribed'          => $data['subscribed'],
+            'confirmed'           => true,
+            'email'               => $data['email'],
+            'password'            => Hash::make($data['password']),
+            'confirmation_token'  => null,
         ]);
     }
 
