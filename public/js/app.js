@@ -56704,10 +56704,10 @@ $(window).scroll(function () {
             "sprouts_label": " Niños entre 8 y 10 ",
             "subject": " Reset Pasword of Wedcontest ",
             "subscribed": " Subscribe to e-mail newsletter ",
-            "seedsEvaluation": " You are evaluating the Seeds category, for children under 3 years of age. The easiest way to go trough this process is to review all the drawings and then decide who in your opinion deserves to be 1st 2nd and 3rd. Place",
-            "sproutssEvaluation": "You are evaluating the Sprouts category, for children 4 to 7  years of age. The easiest way to go trough this process is to review all the drawings and then decide who in your opinion deserves to be 1st 2nd and 3rd. Place",
-            "thinkersEvaluation": "You are evaluating the Thinkers category, for children 8 to 10 years of age. For this category you would have to complete a questionnaire for each individual drawing.",
-            "gameChangersEvaluation": "You are evaluating the Game Changers category,  for children 11 to 15 years of age. For this category you would have to complete a questionnaire for each individual drawing",
+            "seedsEvaluation": "You are evaluating the Seeds category, for children under 3 years of age. The easiest way to go through this process is to review all the drawings and then decide who, in your opinion, deserves to be 1st, 2nd, and 3rd place",
+            "sproutssEvaluation": "You are evaluating the Sprouts category, for children 4 to 7 years of age. The easiest way to go through this process is to review all the drawings and then decide who, in your opinion, deserves to be 1st, 2nd and 3rd place",
+            "thinkersEvaluation": "You are evaluating the Thinkers category, for children 8 to 10 years of age. For this category you will have to complete a questionnaire for each individual drawing.",
+            "gameChangersEvaluation": "You are evaluating the Game Changers category, for children 11 to 15 years of age. For this category you will have to complete a questionnaire for each individual drawing",
             "the_contest": " the_contest ",
             "thinkers": " Thinker children between 8 and 10 ",
             "thinkers_label": " Niños entre 4 y 7 ",
@@ -57007,6 +57007,7 @@ $(window).scroll(function () {
             "gamechangers": "Game Changer Entre 11 y 15 Años",
             "gallery": "Galeria",
             "goToProfile": "Ir a Perfil",
+            "goBackToList": "Regresar a la Lista de Categorias",
             "header": "Registro al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente",
             "header_closed": "El tiempo de subir dibujos al concurso 2018 del medio ambiente terminó.",
             "registerJudges": " Registro de jueces al Concurso de Dibujo 2018 del Día mundial del Medio Ambiente ",
@@ -57082,10 +57083,10 @@ $(window).scroll(function () {
             "specify": "Especifíque",
             "sprouts": "Sprout entre 4 y 7 Años",
             "subject": "Reiniciar clave de Wedcontest",
-            "seedsEvaluation": " Está evaluando la categoría Seeds, para niños menores de 3 años. La manera más fácil de pasar a través de este proceso es revisar todos los dibujos y luego decidir quién, en su opinión, merece ser 1 ° 2 ° y 3 °. Lugar",
-            "sproutssEvaluation": "Está evaluando la categoría de Sprouts, para niños de 4 a 7 años de edad. La forma más fácil de pasar por este proceso es revisar todos los dibujos y luego decidir quién, en su opinión, merece ser 1 ° 2 ° y 3 °. Lugar",
-            "thinkersEvaluation": "Está evaluando la categoría Thinkers, para niños de 8 a 10 años de edad. Para esta categoría, debe completar un cuestionario para cada dibujo individual.",
-            "gameChangersEvaluation": "Está evaluando la categoría Game Changers, para niños de 11 a 15 años. Para esta categoría, debe completar un cuestionario para cada dibujo individual",
+            "seedsEvaluation": " Está evaluando la categoría Seeds, para niños menores de 3 años. La forma más fácil de pasar por este proceso es revisar todos los dibujos y luego decidir quién, en su opinión, merece ser el 1. °, 2. ° y 3. ° lugar",
+            "sproutssEvaluation": "Está evaluando la categoría de Sprouts, para niños de 4 a 7 años de edad. La forma más fácil de pasar por este proceso es revisar todos los dibujos y luego decidir quién, en su opinión, merece ser el primer, segundo y tercer lugar.",
+            "thinkersEvaluation": "Está evaluando la categoría Thinkers, para niños de 8 a 10 años de edad. Para esta categoría, deberá completar un cuestionario para cada dibujo individual.",
+            "gameChangersEvaluation": "Está evaluando la categoría Game Changers, para niños de 11 a 15 años. Para esta categoría, deberá completar un cuestionario para cada dibujo individual",
             "subscribed": "Recibir notificaciones",
             "thinkers": "Thinker entre 8 y 10 Años",
             "throttle": "Muchos Intentos. Porfavor espere {seconds} segundos para intentarlo nuevamente.",
@@ -80698,24 +80699,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 	computed: {
-		selectedFirstPosition: function selectedFirstPosition() {
+		selectedFirstPlace: function selectedFirstPlace() {
 			return this.artworks.filter(function (a) {
-				return a.position == 1;
+				return a.place == 1;
 			}).length > 0;
 		},
-		selectedSecondPosition: function selectedSecondPosition() {
+		selectedSecondPlace: function selectedSecondPlace() {
 			return this.artworks.filter(function (a) {
-				return a.position == 2;
+				return a.place == 2;
 			}).length > 0;
 		},
-		selectedThirdPosition: function selectedThirdPosition() {
+		selectedThirdPlace: function selectedThirdPlace() {
 			return this.artworks.filter(function (a) {
-				return a.position == 3;
+				return a.place == 3;
 			}).length > 0;
 		},
-		selectedFourthPosition: function selectedFourthPosition() {
+		selectedFourthPlace: function selectedFourthPlace() {
 			return this.artworks.filter(function (a) {
-				return a.position == 4;
+				return a.place == 4;
 			}).length > 0;
 		},
 		qtyAnswers: function qtyAnswers() {
@@ -80731,7 +80732,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}).map(function (artwork) {
 				if (!artwork.answers) {
 					artwork.evaluated = false;
-					artwork.position = 0;
+					artwork.place = 0;
 				}
 				return artwork;
 			});
@@ -80769,17 +80770,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		locale: function locale() {
 			if (App.locale === 'en') return 'en';else return 'es';
+		},
+		indexOfSelectedArtwork: function indexOfSelectedArtwork() {
+			var _this = this;
+
+			return this.filteredArtworks.findIndex(function (art) {
+				return art.id === _this.selectedArtwork.id;
+			});
+		},
+		maxIndexOfFilterArtworks: function maxIndexOfFilterArtworks() {
+			return this.filteredArtworks.length - 1;
 		}
 	},
 	methods: {
 		setAnswer: function setAnswer(questionId, answer) {
-			var _this = this;
+			var _this2 = this;
 
 			this.artworks.find(function (art) {
-				return art.id === _this.selectedArtwork.id;
+				return art.id === _this2.selectedArtwork.id;
 			}).answers[questionId] = 4 - answer;
-			if (this.selectedArtwork.byPosition) {
-				this.selectedArtwork.position = answer + 1;
+			if (this.selectedArtwork.byPlace) {
+				this.selectedArtwork.place = answer + 1;
 			}
 			this.selectedArtwork.evaluated = true;
 			this.completedAnswers = Object.keys(this.selectedArtwork.answers).length;
@@ -80790,50 +80801,50 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		clearAnswer: function clearAnswer() {
 			this.$set(this.selectedArtwork, 'answers', null);
 			this.$set(this.selectedArtwork, 'evaluated', false);
-			this.$set(this.selectedArtwork, 'position', 0);
+			this.$set(this.selectedArtwork, 'place', 0);
 			this.sendAnswers();
 		},
-		getPositionAndAnswers: function getPositionAndAnswers() {
-			var _this2 = this;
+		getPlaceAndAnswers: function getPlaceAndAnswers() {
+			var _this3 = this;
 
 			this.artworks.forEach(function (artwork) {
-				_this2.$set(artwork, 'questions', JSON.parse(artwork.category.questions.questions));
+				_this3.$set(artwork, 'questions', JSON.parse(artwork.category.questions.questions));
 				if (artwork.questions.subjectsEn.filter(function (sub) {
-					return sub.name == "Position";
+					return sub.name == "Place";
 				}).length) {
-					_this2.$set(artwork, 'byPosition', true);
+					_this3.$set(artwork, 'byPlace', true);
 				} else {
-					_this2.$set(artwork, 'byPosition', false);
+					_this3.$set(artwork, 'byPlace', false);
 				}
 				if (!artwork.answers) {
-					_this2.$set(artwork, 'answers', {});
-					_this2.$set(artwork, 'evaluated', false);
-					_this2.$set(artwork, 'position', 0);
+					_this3.$set(artwork, 'answers', {});
+					_this3.$set(artwork, 'evaluated', false);
+					_this3.$set(artwork, 'place', 0);
 				} else {
-					_this2.$set(artwork, 'answers', JSON.parse(artwork.answers.answers) || {});
-					_this2.$set(artwork, 'evaluated', true);
+					_this3.$set(artwork, 'answers', JSON.parse(artwork.answers.answers) || {});
+					_this3.$set(artwork, 'evaluated', true);
 
 					switch (artwork.answers[1]) {
 						case 4:
-							_this2.$set(artwork, 'position', 1);
+							_this3.$set(artwork, 'place', 1);
 							break;
 						case 3:
-							_this2.$set(artwork, 'position', 2);
+							_this3.$set(artwork, 'place', 2);
 							break;
 						case 2:
-							_this2.$set(artwork, 'position', 3);
+							_this3.$set(artwork, 'place', 3);
 							break;
 						case 1:
-							_this2.$set(artwork, 'position', 4);
+							_this3.$set(artwork, 'place', 4);
 							break;
 						default:
-							_this2.$set(artwork, 'position', 0);
+							_this3.$set(artwork, 'place', 0);
 					}
 				}
 			});
 		},
 		selectedOption: function selectedOption(index) {
-			if (this.questions.subjectsEn && this.questions.subjectsEn[0].name.toLowerCase() != 'position') {
+			if (this.questions.subjectsEn && this.questions.subjectsEn[0].name.toLowerCase() != 'place') {
 				if (App.locale === 'en') {
 					switch (index) {
 						case 0:
@@ -80872,38 +80883,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		selectNext: function selectNext() {
 			if (this.maxIndexOfFilterArtworks == this.indexOfSelectedArtwork) {
-				this.selectedArtwork = this.filteredGallery[0];
+				this.selectedArtwork = this.filteredArtworks[0];
 			} else {
-				this.selectedArtwork = this.filteredGallery[this.indexOfSelectedArtwork + 1];
+				this.selectedArtwork = this.filteredArtworks[this.indexOfSelectedArtwork + 1];
 			}
 		},
 		selectPrev: function selectPrev() {
 			if (this.indexOfSelectedArtwork === 0) {
-				this.selectedArtwork = this.filteredGallery[this.filteredGallery.length - 1];
+				this.selectedArtwork = this.filteredArtworks[this.filteredArtworks.length - 1];
 			} else {
-				this.selectedArtwork = this.filteredGallery[this.indexOfSelectedArtwork - 1];
+				this.selectedArtwork = this.filteredArtworks[this.indexOfSelectedArtwork - 1];
 			}
 		},
 		sendAnswers: function sendAnswers() {
-			var _this3 = this;
+			var _this4 = this;
 
 			axios.post('/evaluation/answers/' + this.selectedArtwork.id, this.selectedArtwork.answers).then(function (response) {
-				_this3.selectedArtwork.evaluated = true;
-				switch (_this3.selectedArtwork.answers[1]) {
+				_this4.selectedArtwork.evaluated = true;
+				switch (_this4.selectedArtwork.answers[1]) {
 					case 4:
-						_this3.selectedArtwork.position = 1;
+						_this4.selectedArtwork.place = 1;
 						break;
 					case 3:
-						_this3.selectedArtwork.position = 2;
+						_this4.selectedArtwork.place = 2;
 						break;
 					case 2:
-						_this3.selectedArtwork.position = 3;
+						_this4.selectedArtwork.place = 3;
 						break;
 					case 1:
-						_this3.selectedArtwork.position = 4;
+						_this4.selectedArtwork.place = 4;
 						break;
 				}
-				_this3.hiddenDetail = true;
+				_this4.hiddenDetail = true;
 			});
 		}
 	},
@@ -80913,11 +80924,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}
 	},
 	created: function created() {
-		var _this4 = this;
+		var _this5 = this;
 
 		axios.get('/api/artworks/category/' + this.category.id + '/' + App.user.id).then(function (response) {
-			_this4.artworks = response.data;
-			_this4.getPositionAndAnswers();
+			_this5.artworks = response.data;
+			_this5.getPlaceAndAnswers();
 		});
 	}
 });
@@ -80972,9 +80983,9 @@ var render = function() {
                   class: { evaluated: artwork.evaluated }
                 },
                 [
-                  artwork.byPosition && artwork.position !== 0
+                  artwork.byPlace && artwork.place !== 0
                     ? _c("div", { staticClass: "places" }, [
-                        _vm._v(_vm._s(artwork.position))
+                        _vm._v(_vm._s(artwork.place))
                       ])
                     : _vm._e(),
                   _vm._v(" "),
@@ -81094,7 +81105,7 @@ var render = function() {
                       _vm.locale === "es" &&
                       (_vm.questions.subjectsEn &&
                         _vm.questions.subjectsEn[0].name.toLowerCase() !==
-                          "position")
+                          "place")
                         ? _c("div", [
                             _c("h3", [
                               _vm._v(
@@ -81135,12 +81146,13 @@ var render = function() {
                           ])
                         : _vm.questions.subjectsEn &&
                           _vm.questions.subjectsEn[0].name.toLowerCase() !==
-                            "position"
+                            "place"
                           ? _c("div", [
                               _c("h3", [
                                 _vm._v(
-                                  "Evaluación de la categoria " +
-                                    _vm._s(_vm.category.name)
+                                  " Evaluation for the " +
+                                    _vm._s(_vm.category.name) +
+                                    " Category"
                                 )
                               ]),
                               _vm._v(" "),
@@ -81203,50 +81215,59 @@ var render = function() {
                                           "div",
                                           { staticClass: "radio py-2" },
                                           [
-                                            _c("label", [
-                                              _c("input", {
-                                                attrs: {
-                                                  disabled:
-                                                    _vm.selectedArtwork
-                                                      .byPosition &&
-                                                    ((index == 0 &&
-                                                      _vm.selectedFirstPosition) ||
-                                                      (index == 1 &&
-                                                        _vm.selectedSecondPosition) ||
-                                                      (index == 2 &&
-                                                        _vm.selectedThirdPosition) ||
-                                                      (index == 3 &&
-                                                        _vm.selectedFourthPosition)),
-                                                  type: "radio",
-                                                  name: q.id
-                                                },
-                                                domProps: {
-                                                  value: index,
-                                                  checked:
-                                                    _vm.answers &&
-                                                    _vm.answers[q.id] &&
-                                                    _vm.answers[q.id] ==
-                                                      4 - index
-                                                },
-                                                on: {
-                                                  click: function($event) {
-                                                    _vm.setAnswer(q.id, index)
-                                                  }
-                                                }
-                                              }),
-                                              _vm._v(" "),
-                                              _c("span", {
-                                                domProps: {
-                                                  textContent: _vm._s(
-                                                    _vm.selectedOption(index)
+                                            theme.name !== "Place" ||
+                                            (theme.name === "Place" &&
+                                              index !== 3)
+                                              ? _c("label", [
+                                                  _c("input", {
+                                                    attrs: {
+                                                      disabled:
+                                                        theme.name ===
+                                                          "Place" &&
+                                                        ((index == 0 &&
+                                                          _vm.selectedFirstPlace) ||
+                                                          (index == 1 &&
+                                                            _vm.selectedSecondPlace) ||
+                                                          (index == 2 &&
+                                                            _vm.selectedThirdPlace) ||
+                                                          (index == 3 &&
+                                                            _vm.selectedFourthPlace)),
+                                                      type: "radio",
+                                                      name: q.id
+                                                    },
+                                                    domProps: {
+                                                      value: index,
+                                                      checked:
+                                                        _vm.answers &&
+                                                        _vm.answers[q.id] &&
+                                                        _vm.answers[q.id] ==
+                                                          4 - index
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        _vm.setAnswer(
+                                                          q.id,
+                                                          index
+                                                        )
+                                                      }
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("span", {
+                                                    domProps: {
+                                                      textContent: _vm._s(
+                                                        _vm.selectedOption(
+                                                          index
+                                                        )
+                                                      )
+                                                    }
+                                                  }),
+                                                  _vm._v(
+                                                    _vm._s(option.name) +
+                                                      "\n\t\t\t\t\t\t\t"
                                                   )
-                                                }
-                                              }),
-                                              _vm._v(
-                                                _vm._s(option.name) +
-                                                  "\n\t\t\t\t\t\t\t"
-                                              )
-                                            ])
+                                                ])
+                                              : _vm._e()
                                           ]
                                         )
                                       })
@@ -81263,7 +81284,7 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "container" }, [
-                    _vm.selectedArtwork.byPosition
+                    _vm.selectedArtwork.byPlace
                       ? _c(
                           "button",
                           {

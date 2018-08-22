@@ -18,7 +18,7 @@
 		class="m-2 artwork border"
 		:class="{evaluated:artwork.evaluated}"
 		>
-		<div class="places" v-if="artwork.byPosition && artwork.position!==0">{{artwork.position}}</div>
+		<div class="places" v-if="artwork.byPlace && artwork.place!==0">{{artwork.place}}</div>
 		<img :src="'/storage'+artwork.imageLink" :alt="artwork.title" class="img-fluid p-2">
 	</div>
 </div>
@@ -49,7 +49,7 @@ leave-active-class="bounceOutRight"
 			<h2 v-html="translate(selectedArtwork,'description')"></h2>
 		</div>
 		<div class="container">
-			<div v-if="locale==='es' && (questions.subjectsEn && questions.subjectsEn[0].name.toLowerCase()!=='position')">
+			<div v-if="locale==='es' && (questions.subjectsEn && questions.subjectsEn[0].name.toLowerCase()!=='place')">
 				<h3>Evaluation for the category of {{category.name}}</h3>
 				<h4>Indicadores</h4>
 				<ul >
@@ -59,8 +59,8 @@ leave-active-class="bounceOutRight"
 					<li><small>DE: Debajo de las Expectativas</small></li>
 				</ul>
 			</div>
-			<div v-else-if="(questions.subjectsEn && questions.subjectsEn[0].name.toLowerCase()!=='position')">
-				<h3>Evaluación de la categoria {{category.name}}</h3>
+			<div v-else-if="(questions.subjectsEn && questions.subjectsEn[0].name.toLowerCase()!=='place')">
+				<h3> Evaluation for the {{category.name}} Category</h3>
 				<h4>INDICATORS</h4>
 				<ul>
 					<li><small>EE: Exceeds Expectations</small></li>
@@ -78,14 +78,14 @@ leave-active-class="bounceOutRight"
 					<div class="py-3" v-for="q in theme.questions">
 						<h3><strong>{{q.name}}</strong></h3>
 						<div class="radio py-2" v-for="(option,index) in q.options">
-							<label >
-								<input :disabled="selectedArtwork.byPosition &&(
-								(index==0 && selectedFirstPosition) ||
-								(index==1 && selectedSecondPosition) ||
-								(index==2 && selectedThirdPosition) ||
-								(index==3 && selectedFourthPosition)
+							<label v-if="theme.name!=='Place' || theme.name==='Place' && index!==3" >
+								<input :disabled="theme.name==='Place' &&(
+								(index==0 && selectedFirstPlace) ||
+								(index==1 && selectedSecondPlace) ||
+								(index==2 && selectedThirdPlace) ||
+								(index==3 && selectedFourthPlace)
 								)
-								" type="radio" :name="q.id" @click="setAnswer(q.id,index)" :value="index" :checked="answers && answers[q.id] && answers[q.id]==4-index">
+								" type="radio" :name="q.id" @click="setAnswer(q.id,index)" :value="index" :checked="answers && answers[q.id] && answers[q.id]==4-index" >
 								<span v-text="selectedOption(index)"></span>{{option.name}}
 							</label>
 							
@@ -97,7 +97,7 @@ leave-active-class="bounceOutRight"
 			</div>
 		</div>
 		<div class="container">
-			<button type="button" v-if="selectedArtwork.byPosition" @click="clearAnswer"  class="btn btn-block btn-wedcontest">Clear Answers</button>
+			<button type="button" v-if="selectedArtwork.byPlace" @click="clearAnswer"  class="btn btn-block btn-wedcontest">Clear Answers</button>
 			<button type="button" @click="sendAnswers" :disabled="!showSubmit" class="btn btn-block btn-wedcontest">Send Answers</button>
 		</div>
 	</div>
@@ -122,17 +122,17 @@ export default {
 		}
 	},
 	computed:{
-		selectedFirstPosition(){
-			return this.artworks.filter(a=>a.position==1).length>0;
+		selectedFirstPlace(){
+			return this.artworks.filter(a=>a.place==1).length>0;
 		},
-		selectedSecondPosition(){
-			return this.artworks.filter(a=>a.position==2).length>0;
+		selectedSecondPlace(){
+			return this.artworks.filter(a=>a.place==2).length>0;
 		},
-		selectedThirdPosition(){
-			return this.artworks.filter(a=>a.position==3).length>0;
+		selectedThirdPlace(){
+			return this.artworks.filter(a=>a.place==3).length>0;
 		},
-		selectedFourthPosition(){
-			return this.artworks.filter(a=>a.position==4).length>0;
+		selectedFourthPlace(){
+			return this.artworks.filter(a=>a.place==4).length>0;
 		},
 		qtyAnswers(){
 			if(!this.questionsTranslated)
@@ -144,7 +144,7 @@ export default {
 			return this.artworks.sort((a,b)=>a.contestant.last_name.localeCompare(b.contestant.last_name)).map(artwork=>{
 				if(!artwork.answers){
 					artwork.evaluated=false;
-					artwork.position=0;
+					artwork.place=0;
 				}
 				return artwork;
 			});
@@ -191,13 +191,19 @@ export default {
 				return 'en';
 			else
 				return 'es';
+		},
+		indexOfSelectedArtwork(){
+			return this.filteredArtworks.findIndex(art=>art.id===this.selectedArtwork.id);
+		},
+		maxIndexOfFilterArtworks(){
+			return this.filteredArtworks.length-1;
 		}
 	},
 	methods:{
 		setAnswer(questionId,answer){
 			this.artworks.find(art=>art.id===this.selectedArtwork.id).answers[questionId]=4-answer
-			if(this.selectedArtwork.byPosition){
-				this.selectedArtwork.position=answer+1;
+			if(this.selectedArtwork.byPlace){
+				this.selectedArtwork.place=answer+1;
 			}
 			this.selectedArtwork.evaluated=true;
 			this.completedAnswers=Object.keys(this.selectedArtwork.answers).length;
@@ -208,23 +214,23 @@ export default {
 		clearAnswer(){
 			this.$set(this.selectedArtwork,'answers',null);
 			this.$set(this.selectedArtwork,'evaluated',false);
-			this.$set(this.selectedArtwork,'position',0);
+			this.$set(this.selectedArtwork,'place',0);
 			this.sendAnswers();
 		},
-		getPositionAndAnswers(){
+		getPlaceAndAnswers(){
 
 			this.artworks.forEach(artwork=>{
 				this.$set(artwork,'questions',JSON.parse(artwork.category.questions.questions));
-				if(artwork.questions.subjectsEn.filter(sub=>sub.name=="Position").length){
-					this.$set(artwork,'byPosition',true);
+				if(artwork.questions.subjectsEn.filter(sub=>sub.name=="Place").length){
+					this.$set(artwork,'byPlace',true);
 				}
 				else{
-					this.$set(artwork,'byPosition',false);
+					this.$set(artwork,'byPlace',false);
 				}
 				if(!artwork.answers){
 					this.$set(artwork,'answers',{});
 					this.$set(artwork,'evaluated',false);
-					this.$set(artwork,'position',0);
+					this.$set(artwork,'place',0);
 				}
 				else{
 					this.$set(artwork,'answers',JSON.parse(artwork.answers.answers)||{});
@@ -232,25 +238,25 @@ export default {
 
 					switch(artwork.answers[1]){
 						case 4:
-						this.$set(artwork,'position',1);
+						this.$set(artwork,'place',1);
 						break;
 						case 3:
-						this.$set(artwork,'position',2);
+						this.$set(artwork,'place',2);
 						break;
 						case 2:
-						this.$set(artwork,'position',3);
+						this.$set(artwork,'place',3);
 						break;
 						case 1:
-						this.$set(artwork,'position',4);
+						this.$set(artwork,'place',4);
 						break;
 						default:
-						this.$set(artwork,'position',0);
+						this.$set(artwork,'place',0);
 					}
 				}
 			})
 		},
 		selectedOption(index){
-			if((this.questions.subjectsEn && this.questions.subjectsEn[0].name.toLowerCase()!='position')){
+			if((this.questions.subjectsEn && this.questions.subjectsEn[0].name.toLowerCase()!='place')){
 				if(App.locale==='en'){
 					switch(index){
 						case 0:
@@ -290,18 +296,18 @@ export default {
 
 		selectNext(){
 			if(this.maxIndexOfFilterArtworks==this.indexOfSelectedArtwork){
-				this.selectedArtwork=this.filteredGallery[0];
+				this.selectedArtwork=this.filteredArtworks[0];
 			}
 			else{
-				this.selectedArtwork=this.filteredGallery[this.indexOfSelectedArtwork+1];
+				this.selectedArtwork=this.filteredArtworks[this.indexOfSelectedArtwork+1];
 			}
 		},
 		selectPrev(){
 			if(this.indexOfSelectedArtwork===0){
-				this.selectedArtwork=this.filteredGallery[this.filteredGallery.length-1];
+				this.selectedArtwork=this.filteredArtworks[this.filteredArtworks.length-1];
 			}
 			else{
-				this.selectedArtwork=this.filteredGallery[this.indexOfSelectedArtwork-1];
+				this.selectedArtwork=this.filteredArtworks[this.indexOfSelectedArtwork-1];
 			}
 		},
 		sendAnswers(){
@@ -310,16 +316,16 @@ export default {
 				this.selectedArtwork.evaluated=true;
 				switch(this.selectedArtwork.answers[1]){
 					case 4:
-					this.selectedArtwork.position=1	;
+					this.selectedArtwork.place=1	;
 					break;
 					case 3:
-					this.selectedArtwork.position=2	;
+					this.selectedArtwork.place=2	;
 					break;
 					case 2:
-					this.selectedArtwork.position=3	;
+					this.selectedArtwork.place=3	;
 					break;
 					case 1:
-					this.selectedArtwork.position=4	;
+					this.selectedArtwork.place=4	;
 					break;
 				}
 				this.hiddenDetail=true;
@@ -335,7 +341,7 @@ export default {
 		axios.get(`/api/artworks/category/${this.category.id}/${App.user.id}`)
 		.then(response=>{
 			this.artworks=response.data;
-			this.getPositionAndAnswers();
+			this.getPlaceAndAnswers();
 		});
 	},
 }
