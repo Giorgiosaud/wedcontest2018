@@ -80682,6 +80682,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -81095,7 +81096,13 @@ var render = function() {
                           _vm.translate(_vm.selectedArtwork, "description")
                         )
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _c("h2", [
+                      _vm._v(
+                        _vm._s(_vm.age) + " " + _vm._s(_vm.$t("lang.yearsOld"))
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
                   _c(

@@ -47,6 +47,7 @@ leave-active-class="bounceOutRight"
 		<div class="container py-4 text-center">
 			<h2 class="black-bold" v-html="translate(selectedArtwork,'title')"></h2>
 			<h2 v-html="translate(selectedArtwork,'description')"></h2>
+			<h2>{{ age }} {{ $t('lang.yearsOld') }}</h2>
 		</div>
 		<div class="container">
 			<div v-if="locale==='es' && (questions.subjectsEn && questions.subjectsEn[0].name.toLowerCase()!=='place')">
