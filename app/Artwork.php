@@ -2,9 +2,6 @@
 
 namespace App;
 
-use App\Answer;
-use App\Category;
-use App\Question;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -90,7 +87,9 @@ class Artwork extends Model
     {
         return $this->pathApprove();
     }
-    public function answers(){
+
+    public function answers()
+    {
         return $this->hasOne(Answer::class);
     }
 }

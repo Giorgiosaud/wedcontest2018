@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Question;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -37,7 +36,9 @@ class Category extends Model
     {
         return $this->hasMany(Artwork::class);
     }
-    public function questions(){
-        return $this->belongsTo(Question::class,'question_id');
+
+    public function questions()
+    {
+        return $this->belongsTo(Question::class, 'question_id');
     }
 }

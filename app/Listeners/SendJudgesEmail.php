@@ -2,13 +2,12 @@
 
 namespace App\Listeners;
 
+use App\Events\JudgeRegistered as JudgeEvent;
 use App\Events\RegisterRepresentant;
+use App\Mail\JudgeRegistered;
 use App\Mail\PleaseConfirmYourEmail;
 use App\Mail\PorFavorConfirmeSuCorreo;
-use App\Mail\JudgeRegistered;
 use Illuminate\Support\Facades\Mail;
-use App\Events\JudgeRegistered as JudgeEvent;
-
 
 class SendJudgesEmail
 {
