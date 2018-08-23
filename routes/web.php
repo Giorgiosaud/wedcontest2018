@@ -21,7 +21,6 @@ Route::get('lang/{route}/{language}', 'LanguageController@switchLang')->name('la
 
 Route::post('/images/upload', 'ImageController@store')->middleware('auth')->name('store.image');
 
-
 Route::group([
     'prefix'     => '/admin',
     'middleware' => ['admin'], // Route admin
@@ -56,19 +55,18 @@ Route::group([
     'prefix'     => '/evaluation',
     'middleware' => ['judge'], // Route admin
 ],
- function(){   
-    Route::get('/{selectedContest}','EvaluationController@show')->name('evaluation.show');
-    Route::get('/{contest}/{category}','EvaluationController@make')->name('evaluation.make');
-    Route::post('/answers/{artwork}','EvaluationController@post')->name('evaluation.post');
-
-});
+ function () {
+     Route::get('/{selectedContest}', 'EvaluationController@show')->name('evaluation.show');
+     Route::get('/{contest}/{category}', 'EvaluationController@make')->name('evaluation.make');
+     Route::post('/answers/{artwork}', 'EvaluationController@post')->name('evaluation.post');
+ });
 Route::group([
     'prefix'     => LaravelLocalization::setLocale().'/evaluation',
-    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'localize','judge'], // Route translate middleware
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'localize', 'judge'], // Route translate middleware
 ],
- function(){   
-    Route::get('/{contest}/{category}','EvaluationController@make')->name('evaluation.make');
-});
+ function () {
+     Route::get('/{contest}/{category}', 'EvaluationController@make')->name('evaluation.make');
+ });
 Route::group([
     'prefix'     => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'localize'], // Route translate middleware

@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+
 //c19204190f3333eca314a425b
+use App\Contest;
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Contest;
 use Illuminate\Http\Request;
 
 class RegisterConfirmationController extends Controller
@@ -18,11 +19,12 @@ class RegisterConfirmationController extends Controller
             return redirect(route('the_contest'))->with('flash', 'Unknown token.');
         }
         $user->confirm();
-        if ($user->isJudge())
-        {
-            $contest=Contest::whereActive(true)->first();
-            return redirect(route('evaluation.show',$contest));
+        if ($user->isJudge()) {
+            $contest = Contest::whereActive(true)->first();
+
+            return redirect(route('evaluation.show', $contest));
         }
+
         return redirect(route('the_contest'))
             ->with('flash', 'Your account is now confirmed! Now you can register the participants.');
     }

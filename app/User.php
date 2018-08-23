@@ -68,6 +68,7 @@ class User extends Authenticatable
     {
         return $this->roles->pluck('name')->contains('Administrator');
     }
+
     /**
      *Check if user is Admin.
      */

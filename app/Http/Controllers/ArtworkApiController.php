@@ -6,7 +6,6 @@ use App\Artwork;
 use App\Category;
 use App\Contest;
 use App\User;
-use Illuminate\Support\Facades\Auth;
 
 class ArtworkApiController extends Controller
 {
@@ -27,13 +26,13 @@ class ArtworkApiController extends Controller
 
         return $artworks;
     }
-    public function get(Category $category,User $user)
-    {
-        $artworks = Artwork::whereCategoryId($category->id)->whereState('translated')->with(['answers'=> function($query) use ($user)
-        {
-            $query->where('answers.user_id', $user->id);
-       },'category.questions'])->get();
 
-return $artworks;
-}
+    public function get(Category $category, User $user)
+    {
+        $artworks = Artwork::whereCategoryId($category->id)->whereState('translated')->with(['answers'=> function ($query) use ($user) {
+            $query->where('answers.user_id', $user->id);
+        }, 'category.questions', ])->get();
+
+        return $artworks;
+    }
 }

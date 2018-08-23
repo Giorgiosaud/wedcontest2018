@@ -28,18 +28,21 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/mycontestants';
+
     /**
-     * [authenticated description]
+     * [authenticated description].
      *
      * @return [type] [description]
      */
-    public function authenticated($request , $user){
+    public function authenticated($request, $user)
+    {
         if ($user->isJudge()) {
-            $contest=Contest::whereActive(true)->first();
-            return redirect(route('evaluation.show',$contest));
+            $contest = Contest::whereActive(true)->first();
+
+            return redirect(route('evaluation.show', $contest));
         }
     }
-    
+
     /**
      * Create a new controller instance.
      *

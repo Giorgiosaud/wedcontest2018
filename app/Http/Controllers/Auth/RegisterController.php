@@ -4,17 +4,16 @@ namespace App\Http\Controllers\Auth;
 
 use App\Contest;
 use App\Country;
-use App\Events\RegisterRepresentant;
 use App\Events\JudgeRegistered;
+use App\Events\RegisterRepresentant;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Webpatser\Countries\Countries;
-use Illuminate\Auth\Events\Registered;
-
 
 class RegisterController extends Controller
 {
@@ -37,7 +36,7 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
-       // $this->guard()->login($user);
+        // $this->guard()->login($user);
 
         return $this->registeredJudge($request, $user)
                         ?: redirect($this->redirectPath());
@@ -50,8 +49,6 @@ class RegisterController extends Controller
 
         return view('auth.register', compact('countries', 'contest'));
     }
-
-
 
     public function showRegistrationFormForJudges()
     {
@@ -126,6 +123,7 @@ class RegisterController extends Controller
             'confirmation_token'  => str_limit(md5($data['email'].str_random()), 25, ''),
         ]);
     }
+
     protected function createJudge(array $data)
     {
         // dd($data);
@@ -149,6 +147,7 @@ class RegisterController extends Controller
     {
         event(new RegisterRepresentant($user));
     }
+
     protected function registeredJudge(Request $request, $user)
     {
         event(new JudgeRegistered($user));

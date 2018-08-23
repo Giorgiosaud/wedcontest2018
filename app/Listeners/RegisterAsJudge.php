@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\JudgeRegistered;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Role;
 
 class RegisterAsJudge
@@ -22,7 +20,8 @@ class RegisterAsJudge
     /**
      * Handle the event.
      *
-     * @param  JudgeRegistered  $event
+     * @param JudgeRegistered $event
+     *
      * @return void
      */
     public function handle(JudgeRegistered $event)

@@ -3,14 +3,11 @@
 namespace Tests\Unit;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class EvaluationTest extends TestCase
 {
-	use DatabaseMigrations;
+    use DatabaseMigrations;
     /**
      * @var
      */
@@ -27,23 +24,22 @@ class EvaluationTest extends TestCase
                 ['name' => 'Game Changers', 'max_age' => 15, 'color'=>'bg-game-changers-'.$this->contest->slug, 'contest_id' => $this->contest->id],
             ];
 
-            foreach ($categories as $category) {
-                \App\Category::create($category);
-            }
+        foreach ($categories as $category) {
+            \App\Category::create($category);
+        }
     }
+
     /**
      * A basic test example.
      *
      * @return void
-     @test
+     * @test
      */
-
     public function an_evaluation_page_is_shown_with_contest_categories_buttons()
     {
-    	$this->asJudge();
-    	$categories=$this->contest->categories->pluck('name');
-    		$this->get(route('evaluation.show', $this->contest->slug))
-    		->assertSeeMany($categories);
-            
+        $this->asJudge();
+        $categories = $this->contest->categories->pluck('name');
+        $this->get(route('evaluation.show', $this->contest->slug))
+            ->assertSeeMany($categories);
     }
 }

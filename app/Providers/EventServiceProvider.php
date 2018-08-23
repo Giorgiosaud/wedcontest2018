@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Listeners\RegisterAsRepresentant;
 use App\Listeners\RegisterAsJudge;
+use App\Listeners\RegisterAsRepresentant;
 use App\Listeners\ReSendEmail;
 use App\Listeners\SendEmail;
 use App\Listeners\SendJudgesEmail;

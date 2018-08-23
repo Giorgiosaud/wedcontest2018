@@ -19,7 +19,7 @@ class Judges
         if (auth()->check() && auth()->user()->isJudge()) {
             return $next($request);
         }
-         if ($request->wantsJson()) {
+        if ($request->wantsJson()) {
             abort(403, 'You do not have permission to perform this action.');
         }
 

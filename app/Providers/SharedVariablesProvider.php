@@ -18,10 +18,9 @@ class SharedVariablesProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $contest = Contest::whereActive(true)->first();
             View::share('contest', $contest);
+
             return $view->with('contest', $contest);
         });
-
-
     }
 
     /**
