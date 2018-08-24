@@ -13,7 +13,8 @@ class AdminEvaluationController extends Controller
 	}
 	public function show(Contest $contest, Category $category)
 	{	
-		$artworks=$category->artworks->load('answers');
+		$artworks=$category->artworks()->whereState('translated')->with('answers')->get();
+
 		$questions=$category->questions->preguntas->subjectsEn;
 		$q=[];
 		foreach ($questions as $question) {
