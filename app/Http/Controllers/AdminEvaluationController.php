@@ -21,7 +21,7 @@ class AdminEvaluationController extends Controller
 		}
 		$questions=collect($q);
 		if($category->name==='Seeds'||$category->name==='Sprouts')
-		return view('admin.evaluations.simple', compact('category', 'contest','artworks'));
+		return view('admin.evaluations.simple', compact('category', 'contest','artworks','questions'));
 		return view('admin.evaluations.complex', compact('category', 'contest','artworks','questions'));
 
 	}
