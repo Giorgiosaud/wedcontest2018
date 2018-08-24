@@ -25,12 +25,14 @@
 			@foreach($artwork->answers as $answer)
 				<h2>{{$answer->user->name}}
 				{{$answer->user->last_name}} </h2>
+				Puntos:{{$answer->judges_points}}
 			@foreach($answer->respuestas as $id=>$respuesta)
 			@if($questions->firstWhere('id',$id))
 				<h3>Question: {{$questions->firstWhere('id',$id)->name}} </h3>
 				@endif
 				Points: {{$respuesta}} <br>
 			@endforeach
+
 			@endforeach
 			@endif
 		</div>
