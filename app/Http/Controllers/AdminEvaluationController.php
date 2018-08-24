@@ -20,8 +20,6 @@ class AdminEvaluationController extends Controller
 			$q=array_merge($q, $question->questions);
 		}
 		$questions=collect($q);
-		if($category->name==='Seeds'||$category->name==='Sprouts')
-		return view('admin.evaluations.simple', compact('category', 'contest','artworks','questions'));
 		return view('admin.evaluations.complex', compact('category', 'contest','artworks','questions'));
 
 	}

@@ -23,14 +23,13 @@
 		<div class="col">
 			@if($artwork->answers)
 			@foreach($artwork->answers as $answer)
-				{{$answer->user->name}}
-				{{$answer->user->last_name}}
+				<h2>{{$answer->user->name}}
+				{{$answer->user->last_name}} </h2>
 			@foreach($answer->respuestas as $id=>$respuesta)
 			@if($questions->firstWhere('id',$id))
-				Question: {{$questions->firstWhere('id',$id)->name}} <br>
+				<h3>Question: {{$questions->firstWhere('id',$id)->name}} </h3>
 				@endif
 				Points: {{$respuesta}} <br>
-				id: {{$id}} <br>
 			@endforeach
 			@endforeach
 			@endif
