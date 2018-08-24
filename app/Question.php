@@ -12,4 +12,7 @@ class Question extends Model
     {
         return $this->hasMany(Category::class, 'question_id');
     }
+    public function getPreguntasAttribute(){
+		return json_decode($this->questions);
+	}
 }

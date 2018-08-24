@@ -8,5 +8,35 @@
 </div>
 <div class="container ">
 	<h1 class="text-dark">{{$category->name}}</h1>
+	<div class="row">
+		
+
+	</div>
+	@foreach($artworks as $artwork)
+
+	<div class="row">
+
+		<div class="col">
+			{{$artwork->id}}
+			<img src="http://contest.diproinduca.com/storage/{{$artwork->url}}" alt="{{$artwork->name}}" class="img-fluid">
+		</div>
+		<div class="col">
+			@if($artwork->answers)
+			@foreach($artwork->answers as $answer)
+				{{$answer->user->name}}
+				{{$answer->user->last_name}}
+			@foreach($answer->respuestas as $id=>$respuesta)
+			@if($questions->firstWhere('id',$id))
+				Question: {{$questions->firstWhere('id',$id)->name}} <br>
+				@endif
+				Points: {{$respuesta}} <br>
+				id: {{$id}} <br>
+			@endforeach
+			@endforeach
+			@endif
+		</div>
+	</div>
+	@endforeach
+	
 </div>
 @endsection
