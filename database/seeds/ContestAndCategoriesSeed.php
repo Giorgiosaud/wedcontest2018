@@ -49,10 +49,10 @@ class ContestAndCategoriesSeed extends Seeder
         foreach ($contests as $contest) {
             $cont = factory(App\Contest::class)->create($contest);
             $categories = [
-                ['name' => 'Seeds', 'max_age' => 3, 'color'=>'bg-seeds-'.$cont->slug, 'contest_id' => $cont->id],
-                ['name' => 'Sprouts', 'max_age' => 7, 'color'=>'bg-sprouts-'.$cont->slug, 'contest_id' => $cont->id],
-                ['name' => 'Thinkers', 'max_age' => 10, 'color'=>'bg-thinkers-'.$cont->slug, 'contest_id' => $cont->id],
-                ['name' => 'Game Changers', 'max_age' => 15, 'color'=>'bg-game-changers-'.$cont->slug, 'contest_id' => $cont->id],
+                ['name' => 'Seeds', 'max_age' => 3, 'color'=>'bg-seeds-'.$cont->slug, 'contest_id' => $cont->id,'question_id'=>9],
+                ['name' => 'Sprouts', 'max_age' => 7, 'color'=>'bg-sprouts-'.$cont->slug, 'contest_id' => $cont->id,'question_id'=>8],
+                ['name' => 'Thinkers', 'max_age' => 10, 'color'=>'bg-thinkers-'.$cont->slug, 'contest_id' => $cont->id,'question_id'=>1],
+                ['name' => 'Game Changers', 'max_age' => 15, 'color'=>'bg-game-changers-'.$cont->slug, 'contest_id' => $cont->id,'question_id'=>2],
             ];
             foreach ($categories as $category) {
                 \App\Category::create($category);

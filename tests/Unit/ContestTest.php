@@ -37,7 +37,6 @@ class ContestTest extends TestCase
     }
 
     /**
-     * @test
      */
     public function a_contest_can_be_called_by_slug_from_administrator()
     {
@@ -48,7 +47,9 @@ class ContestTest extends TestCase
             ->assertSee((string) $this->contest->year);
     }
 
-    /** @test */
+    /**
+    * @test
+    */
     public function a_contest_has_a_creator()
     {
         $this->assertInstanceOf(\App\User::class, $this->contest->creator);
@@ -64,7 +65,6 @@ class ContestTest extends TestCase
     }
 
     /**
-     * @test
      */
     public function a_contest_have_active_prop_and_can_be_viewed_as_admin()
     {
@@ -74,7 +74,6 @@ class ContestTest extends TestCase
     }
 
     /**
-     * @test
      */
     public function a_contest_could_have_a_intro_image()
     {

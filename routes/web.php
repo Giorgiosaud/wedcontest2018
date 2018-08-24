@@ -50,6 +50,8 @@ Route::group([
     Route::get('/translate', 'AdminController@translateActive')->middleware('admin')->name('admin.translateActive');
     Route::get('/translate/{contest}', 'AdminController@translate')->middleware('admin')->name('admin.translations');
     Route::put('/translate/{artwork}', 'AdminController@SaveTranslation')->middleware('admin')->name('admin.save.translations');
+    Route::get('/evaluations/{contest}', 'AdminEvaluationController@index')->name('admin.evaluation.index');
+    Route::get('/evaluations/{contest}/{category}', 'AdminEvaluationController@show')->name('admin.evaluation.show');
 });
 Route::group([
     'prefix'     => '/evaluation',
@@ -104,4 +106,5 @@ Route::group([
     Route::get('/mycontestant/{contestant}/{artwork}/artwork-review', 'ArtworkUploadController@review')->middleware('auth')->name('artwork.review');
     Route::get('/gallery', 'GalleryController@index')->name('gallery.index');
     Route::get('/gallery/{contest}', 'GalleryController@show')->name('gallery.show');
+
 });
