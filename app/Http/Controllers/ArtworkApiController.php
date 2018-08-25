@@ -29,10 +29,13 @@ class ArtworkApiController extends Controller
 
     public function get(Category $category, User $user)
     {
-        $artworks = Artwork::whereCategoryId($category->id)->whereState('translated')->with(['answers'=> function ($query) use ($user) {
-            $query->where('answers.user_id', $user->id);
-        }, 'category.questions', ])->get();
-
+        $artworks = Artwork::whereCategoryId($category->id)->whereState('translated')->with([
+            'answers'=> function ($query) use ($user) {
+                $query->where('answers.user_id', $user->id);
+                },
+            'category.questions'
+            ])->get();
+        
         return $artworks;
     }
 }

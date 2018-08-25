@@ -43,7 +43,9 @@ class EvaluationController extends Controller
 
     public function post(Artwork $artwork, Request $request)
     {
+
         $answer = Answer::firstOrNew(['user_id'=>auth()->user()->id, 'artwork_id'=>$artwork->id]);
+        
         $answers = $request->all();
         $answer->answers = json_encode($answers);
         $Allthemes = json_decode($artwork->category->questions->questions);

@@ -123,228 +123,241 @@ export default {
 		}
 	},
 	computed:{
-		selectedFirstPlace(){
-			return this.artworks.filter(a=>a.place==1).length>0;
-		},
-		selectedSecondPlace(){
-			return this.artworks.filter(a=>a.place==2).length>0;
-		},
-		selectedThirdPlace(){
-			return this.artworks.filter(a=>a.place==3).length>0;
-		},
-		selectedFourthPlace(){
-			return this.artworks.filter(a=>a.place==4).length>0;
-		},
-		qtyAnswers(){
-			if(!this.questionsTranslated)
-				return false;
-			let qtyOfQuestions=this.questionsToShow.reduce((sum,subject)=> sum+subject.questions.length,0);
-			return qtyOfQuestions;
-		},
-		filteredArtworks(){
-			return this.artworks.sort((a,b)=>a.contestant.last_name.localeCompare(b.contestant.last_name)).map(artwork=>{
-				if(!artwork.answers){
-					artwork.evaluated=false;
-					artwork.place=0;
-				}
-				return artwork;
-			});
-		},
-		age() {
-			return differenceInYears(new Date(),this.selectedArtwork.contestant.dob);
-		},
-		questions(){
-			return JSON.parse(this.selectedArtwork.category.questions.questions);
-		},
-		answers:{
-			get(){
+    questionsArray(){
+      let questionsArray=[];
+      this.questionsToShow.forEach(questionTheme=>{
+        questionsArray=questionsArray.concat(questionTheme.questions);
+      });
+      return questionsArray;
+    },
+    selectedFirstPlace(){
+     return this.artworks.filter(a=>a.place==1).length>0;
+   },
+   selectedSecondPlace(){
+     return this.artworks.filter(a=>a.place==2).length>0;
+   },
+   selectedThirdPlace(){
+     return this.artworks.filter(a=>a.place==3).length>0;
+   },
+   selectedFourthPlace(){
+     return this.artworks.filter(a=>a.place==4).length>0;
+   },
+   qtyAnswers(){
+     if(!this.questionsTranslated)
+      return false;
+    let qtyOfQuestions=this.questionsToShow.reduce((sum,subject)=> sum+subject.questions.length,0);
+    return qtyOfQuestions;
+  },
+  filteredArtworks(){
+   return this.artworks.sort((a,b)=>a.contestant.last_name.localeCompare(b.contestant.last_name)).map(artwork=>{
+    if(!artwork.answers){
+     artwork.evaluated=false;
+     artwork.place=0;
+   }
+   return artwork;
+ });
+ },
+ age() {
+   return differenceInYears(new Date(),this.selectedArtwork.contestant.dob);
+ },
+ questions(){
+   return JSON.parse(this.selectedArtwork.category.questions.questions);
+ },
+ answers:{
+   get(){
 
-				return this.selectedArtwork.answers;
-			},
-			set(value){
-				this.selectedArtwork.answers=value;
-			}
-		},
+    return this.selectedArtwork.answers;
+  },
+  set(value){
+    this.selectedArtwork.answers=value;
+  }
+},
 
 
-		questionsTranslated(){
-			if(this.questions==={})
-				return {};
-			else if (App.locale==='en')
-				return this.questions.subjectsEn;
-			else (App.locale==='en')
-				return this.questions.subjectsEs;
-		},
-		questionsToShow(){
-			if(!this.questionsTranslated)
-				return {};
-			return this.questionsTranslated.filter(question=>{
-				for(let i=0;i<App.roles.length;i++){
+questionsTranslated(){
+ if(this.questions==={})
+  return {};
+else if (App.locale==='en')
+  return this.questions.subjectsEn;
+else (App.locale==='en')
+  return this.questions.subjectsEs;
+},
+questionsToShow(){
+ if(!this.questionsTranslated)
+  return {};
+return this.questionsTranslated.filter(question=>{
+  for(let i=0;i<App.roles.length;i++){
 
-					if(question.role===App.roles[i])
-						return true;
-				}
-				return false;
-			})
-		},
-		locale(){
-			if(App.locale==='en')
-				return 'en';
-			else
-				return 'es';
-		},
-		indexOfSelectedArtwork(){
-			return this.filteredArtworks.findIndex(art=>art.id===this.selectedArtwork.id);
-		},
-		maxIndexOfFilterArtworks(){
-			return this.filteredArtworks.length-1;
-		}
-	},
-	methods:{
-		setAnswer(questionId,answer){
-			this.artworks.find(art=>art.id===this.selectedArtwork.id).answers[questionId]=4-answer
-			if(this.selectedArtwork.byPlace){
-				this.selectedArtwork.place=answer+1;
-			}
-			this.selectedArtwork.evaluated=true;
-			this.completedAnswers=Object.keys(this.selectedArtwork.answers).length;
-			if(this.completedAnswers===this.qtyAnswers){
-				this.showSubmit=true;
-			}
-		},
-		clearAnswer(){
-			this.$set(this.selectedArtwork,'answers',null);
-			this.$set(this.selectedArtwork,'evaluated',false);
-			this.$set(this.selectedArtwork,'place',0);
-			this.sendAnswers();
-		},
-		getPlaceAndAnswers(){
+   if(question.role===App.roles[i])
+    return true;
+}
+return false;
+})
+},
+locale(){
+ if(App.locale==='en')
+  return 'en';
+else
+  return 'es';
+},
+indexOfSelectedArtwork(){
+ return this.filteredArtworks.findIndex(art=>art.id===this.selectedArtwork.id);
+},
+maxIndexOfFilterArtworks(){
+ return this.filteredArtworks.length-1;
+}
+},
+methods:{
+  setAnswer(questionId,answer){
+    console.log(questionId);
+    this.artworks.find(art=>art.id===this.selectedArtwork.id).answers[questionId]=4-answer
+    if(this.selectedArtwork.byPlace){
+      this.selectedArtwork.place=answer+1;
+    }
+    this.selectedArtwork.evaluated=true;
+    this.completedAnswers=Object.keys(this.selectedArtwork.answers).length;
+    if(this.completedAnswers===this.qtyAnswers){
+      this.showSubmit=true;
+    }
+  },
+  clearAnswer(){
+   this.$set(this.selectedArtwork,'answers',{});
+   this.$set(this.selectedArtwork,'evaluated',false);
+   this.$set(this.selectedArtwork,'place',0);
+   this.sendAnswers();
+ },
+ getPlaceAndAnswers(){
+   this.artworks.forEach(artwork=>{
+    this.$set(artwork,'questions',JSON.parse(artwork.category.questions.questions));
+    if(artwork.questions.subjectsEn.filter(sub=>sub.name=="Place").length){
+     this.$set(artwork,'byPlace',true);
+   }
+   else{
+     this.$set(artwork,'byPlace',false);
+   }
+   
+   if(artwork.answers && artwork.answers.length!==1){
+     this.$set(artwork,'answers',{});
+     this.$set(artwork,'evaluated',false);
+     this.$set(artwork,'place',0);
+   }
+   else{
+    console.log(artwork.answers[0].answers);
+    let a=JSON.parse(artwork.answers[0].answers);
 
-			this.artworks.forEach(artwork=>{
-				this.$set(artwork,'questions',JSON.parse(artwork.category.questions.questions));
-				if(artwork.questions.subjectsEn.filter(sub=>sub.name=="Place").length){
-					this.$set(artwork,'byPlace',true);
-				}
-				else{
-					this.$set(artwork,'byPlace',false);
-				}
-				if(!artwork.answers){
-					this.$set(artwork,'answers',{});
-					this.$set(artwork,'evaluated',false);
-					this.$set(artwork,'place',0);
-				}
-				else{
-					this.$set(artwork,'answers',JSON.parse(artwork.answers.answers)||{});
-					this.$set(artwork,'evaluated',true);
+     this.$set(artwork,'answers',a);
 
-					switch(artwork.answers[1]){
-						case 4:
-						this.$set(artwork,'place',1);
-						break;
-						case 3:
-						this.$set(artwork,'place',2);
-						break;
-						case 2:
-						this.$set(artwork,'place',3);
-						break;
-						case 1:
-						this.$set(artwork,'place',4);
-						break;
-						default:
-						this.$set(artwork,'place',0);
-					}
-				}
-			})
-		},
-		selectedOption(index){
-			if((this.questions.subjectsEn && this.questions.subjectsEn[0].name.toLowerCase()!='place')){
-				if(App.locale==='en'){
-					switch(index){
-						case 0:
-						return 'EE:';
-						case 1:
-						return 'SE:';
-						case 2:
-						return 'ME:';
-						case 3:
-						return 'BE:';
-					}
-				}
-				switch(index){
-					case 0:
-					return 'EE:';
-					case 1:
-					return 'SE:';
-					case 2:
-					return 'ME:';
-					case 3:
-					return 'DE:';
-				}
-			}
-			else
-				return ""
-		},
-		translate(model, element){
-			if(this.contest){
-				return model.translations.find(translation=>translation.locale===App.locale)[element];
-			}
-		},
-		openDetail(artwork){
-			this.hiddenDetail=false;
+     //this.$set(artwork,'answers',JSON.parse(artwork.answers.answers)||{});
+     this.$set(artwork,'evaluated',true);
 
-			this.selectedArtwork=artwork;
-		},
+     switch(artwork.answers[1]){
+      case 4:
+      this.$set(artwork,'place',1);
+      break;
+      case 3:
+      this.$set(artwork,'place',2);
+      break;
+      case 2:
+      this.$set(artwork,'place',3);
+      break;
+      case 1:
+      this.$set(artwork,'place',4);
+      break;
+      default:
+      this.$set(artwork,'place',0);
+    }
+  }
+})
+ },
+ selectedOption(index){
+   if((this.questions.subjectsEn && this.questions.subjectsEn[0].name.toLowerCase()!='place')){
+    if(App.locale==='en'){
+     switch(index){
+      case 0:
+      return 'EE:';
+      case 1:
+      return 'SE:';
+      case 2:
+      return 'ME:';
+      case 3:
+      return 'BE:';
+    }
+  }
+  switch(index){
+   case 0:
+   return 'EE:';
+   case 1:
+   return 'SE:';
+   case 2:
+   return 'ME:';
+   case 3:
+   return 'DE:';
+ }
+}
+else
+  return ""
+},
+translate(model, element){
+ if(this.contest){
+  return model.translations.find(translation=>translation.locale===App.locale)[element];
+}
+},
+openDetail(artwork){
+ this.hiddenDetail=false;
 
-		selectNext(){
-			if(this.maxIndexOfFilterArtworks==this.indexOfSelectedArtwork){
-				this.selectedArtwork=this.filteredArtworks[0];
-			}
-			else{
-				this.selectedArtwork=this.filteredArtworks[this.indexOfSelectedArtwork+1];
-			}
-		},
-		selectPrev(){
-			if(this.indexOfSelectedArtwork===0){
-				this.selectedArtwork=this.filteredArtworks[this.filteredArtworks.length-1];
-			}
-			else{
-				this.selectedArtwork=this.filteredArtworks[this.indexOfSelectedArtwork-1];
-			}
-		},
-		sendAnswers(){
-			axios.post(`/evaluation/answers/${this.selectedArtwork.id}`,this.selectedArtwork.answers)
-			.then(response=>{
-				this.selectedArtwork.evaluated=true;
-				switch(this.selectedArtwork.answers[1]){
-					case 4:
-					this.selectedArtwork.place=1	;
-					break;
-					case 3:
-					this.selectedArtwork.place=2	;
-					break;
-					case 2:
-					this.selectedArtwork.place=3	;
-					break;
-					case 1:
-					this.selectedArtwork.place=4	;
-					break;
-				}
-				this.hiddenDetail=true;
-			});
-		}
-	},
-	watch:{
-		selectedArtwork(val){
-			window.location.hash=val.title;
-		}
-	},
-	created(){
-		axios.get(`/api/artworks/category/${this.category.id}/${App.user.id}`)
-		.then(response=>{
-			this.artworks=response.data;
-			this.getPlaceAndAnswers();
-		});
-	},
+ this.selectedArtwork=artwork;
+},
+
+selectNext(){
+ if(this.maxIndexOfFilterArtworks==this.indexOfSelectedArtwork){
+  this.selectedArtwork=this.filteredArtworks[0];
+}
+else{
+  this.selectedArtwork=this.filteredArtworks[this.indexOfSelectedArtwork+1];
+}
+},
+selectPrev(){
+ if(this.indexOfSelectedArtwork===0){
+  this.selectedArtwork=this.filteredArtworks[this.filteredArtworks.length-1];
+}
+else{
+  this.selectedArtwork=this.filteredArtworks[this.indexOfSelectedArtwork-1];
+}
+},
+sendAnswers(){
+ axios.post(`/evaluation/answers/${this.selectedArtwork.id}`,this.selectedArtwork.answers)
+ .then(response=>{
+  this.selectedArtwork.evaluated=true;
+  switch(this.selectedArtwork.answers[1]){
+   case 4:
+   this.selectedArtwork.place=1	;
+   break;
+   case 3:
+   this.selectedArtwork.place=2	;
+   break;
+   case 2:
+   this.selectedArtwork.place=3	;
+   break;
+   case 1:
+   this.selectedArtwork.place=4	;
+   break;
+ }
+ this.hiddenDetail=true;
+});
+}
+},
+watch:{
+  selectedArtwork(val){
+   window.location.hash=val.title;
+ }
+},
+created(){
+  axios.get(`/api/artworks/category/${this.category.id}/${App.user.id}`)
+  .then(response=>{
+   this.artworks=response.data;
+   this.getPlaceAndAnswers();
+ });
+},
 }
 </script>
 
