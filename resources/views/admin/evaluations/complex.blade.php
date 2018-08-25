@@ -35,6 +35,7 @@
 			@endif
 		</div>
 	</div>
+	<hr>
 	@endforeach
 	
 </div>
