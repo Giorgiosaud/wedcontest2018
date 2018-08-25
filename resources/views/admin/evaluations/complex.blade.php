@@ -9,28 +9,26 @@
 <div class="container ">
 	<h1 class="text-dark">{{$category->name}}</h1>
 	<div class="row">
-		
-
 	</div>
 	@foreach($artworks as $artwork)
 
 	<div class="row">
 
 		<div class="col">
-			{{$artwork->id}}
-			<img src="http://contest.diproinduca.com/storage/{{$artwork->url}}" alt="{{$artwork->name}}" class="img-fluid">
+			
+			<img src="http://contest.diproinduca.com/storage/{{$artwork->url}}" alt="{{$artwork->name}}" class="img-fluid {{$artwork->id}}">
 		</div>
 		<div class="col">
 			@if($artwork->answers)
 			@foreach($artwork->answers as $answer)
 				<h2>{{$answer->user->name}}
-				{{$answer->user->last_name}} </h2>
-				Puntos:{{$answer->judges_points}}
+				{{$answer->user->last_name}} <br>
+				Puntos:{{$answer->judges_points/100+$answer->judges_dipro_points/100}}</h2>
 			@foreach($answer->respuestas as $id=>$respuesta)
 			@if($questions->firstWhere('id',$id))
 				<h3>Question: {{$questions->firstWhere('id',$id)->name}} </h3>
 				@endif
-				Points: {{$respuesta}} <br>
+				Value: {{$respuesta}} <br>
 			@endforeach
 
 			@endforeach
