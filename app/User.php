@@ -82,7 +82,7 @@ class User extends Authenticatable
      */
     public function isJudge()
     {
-        return $this->roles->pluck('name')->contains('Judge');
+        return $this->roles->pluck('name')->contains('Judge') || $this->roles->pluck('name')->contains('Diproinduca Judge');
     }
 
     /**
