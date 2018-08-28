@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Answer;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -92,4 +93,12 @@ class Artwork extends Model
     {
         return $this->hasMany(Answer::class);
     }
+    public function judgesSumPoints()
+    {
+        return $this->hasMany(Answer::class) ->selectRaw('answers.artwork_id,SUM(answers.judges_points) as total') ->groupBy('answers.artwork_id');
+    }
+    public function judgesDiproSumPoints()
+    {
+      return $this->hasMany(Answer::class) ->selectRaw('answers.artwork_id,SUM(answers.judges_dipro_points) as total') ->groupBy('answers.artwork_id');
+  }
 }

@@ -17,8 +17,12 @@
 		<div class="col">
 			
 			<img src="http://contest.diproinduca.com/storage/{{$artwork->url}}" alt="{{$artwork->name}}" class="img-fluid {{$artwork->id}}">
+			
 		</div>
 		<div class="col">
+			<h2>Sum Points Normal Judges: {{$artwork->judgesSumPoints[0]->total/100}}</h2>
+			<h2>Sum Points Dipro Judges:{{$artwork->judgesDiproSumPoints[0]->total/100}}</h2>
+			<hr>
 			@if($artwork->answers)
 			@foreach($artwork->answers as $answer)
 				<h2>{{$answer->user->name}}
