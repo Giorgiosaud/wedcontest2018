@@ -106,5 +106,4 @@ Route::group([
     Route::get('/mycontestant/{contestant}/{artwork}/artwork-review', 'ArtworkUploadController@review')->middleware('auth')->name('artwork.review');
     Route::get('/gallery', 'GalleryController@index')->name('gallery.index');
     Route::get('/gallery/{contest}', 'GalleryController@show')->name('gallery.show');
-
 });
