@@ -13,6 +13,12 @@ class GalleryController extends Controller
         return view('gallery.index');
     }
 
+    public function show2(Contest $contest)
+    {
+        // $contestToShow=Contest::with('categories.artworks')->whereActive(true)->get();
+        // ,compact('contestToShow')
+        return view('gallery.show2', compact('contest'));
+    }
     public function show(Contest $contest)
     {
         // $contestToShow=Contest::with('categories.artworks')->whereActive(true)->get();
