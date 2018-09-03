@@ -1,8 +1,8 @@
 <template>
 	<div>
-    <div class="container text-center pt-4">
+    <!--div class="container text-center pt-4">
       <h2 v-html="translate(contest,'description')"></h2>
-    </div>
+    </div-->
     <div v-if="contest" class="filters container text-center py-4">
       <div class="d-flex align-items-center justify-content-around">
         <div class="flex-expand" :class="{selected:category==='all'}" @click="category='all'">All</div>
