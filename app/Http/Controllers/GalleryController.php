@@ -19,6 +19,7 @@ class GalleryController extends Controller
         // ,compact('contestToShow')
         return view('gallery.show2', compact('contest'));
     }
+
     public function show(Contest $contest)
     {
         // $contestToShow=Contest::with('categories.artworks')->whereActive(true)->get();
