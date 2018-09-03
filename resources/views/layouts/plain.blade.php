@@ -46,12 +46,12 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
         @yield('scripts')
-        <footer class="py-2 bg-dark">
+        <!--footer class="py-2 bg-dark">
             <div class="row">
                 <div class="container text-center text-light">
                     <small>Copyright ® <a href="http://wedcontest2018.diproinduca.com/" style="color:inherit">Diproinduca</a>  |  All Rights Reserved</small>
                 </div>
             </div>
-        </footer>
+        </footer-->
     </body>
     </html>
