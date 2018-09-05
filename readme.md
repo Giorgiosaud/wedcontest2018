@@ -99,3 +99,19 @@ s\Unit\User
 //Agregar correos a los niños que quieran recibir informacion TEST
 
 Agregar terminos y condiciones de servicio a newsletter
+
+
+
+SELECT * from `artworks`
+LEFT JOIN(
+    SELECT `artwork_id`, SUM(`judges_points`) as 'TOTAL JUDGES POINTS', SUM(`judges_dipro_points`) as 'TOTAL DIPRO JUDGES POINTS'
+    FROM `answers`
+GROUP BY `artwork_id`) s ON (s.`artwork_id`=artworks.id) where `state`="translated"
+
+
+
+SELECT * from `artworks`
+LEFT JOIN(
+    SELECT `artwork_id`, SUM(`judges_points`)/(7*100) + SUM(`judges_dipro_points`)/(2*100) as 'TOTAL POINTS'
+    FROM `answers`
+GROUP BY `artwork_id`) s ON (s.`artwork_id`=artworks.id) where `state`="translated"
