@@ -18,11 +18,11 @@
       class="col-6 col-md-4  artwork-container p-2 d-flex align-items-center justify-content-center" 
       v-for="artwork in filteredGallery" 
       :key="artwork.id">
-      <div 
+      <a :href="artwork.pathShow"><div 
       class="m-2 artwork border" 
       >
       <img :src="'/storage'+artwork.imageLink" :alt="artwork.title" class="img-fluid p-2">
-    </div>
+    </div></a>
   </div>
 </transition-group>
 <transition 
