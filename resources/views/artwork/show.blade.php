@@ -33,7 +33,7 @@
 			</div>
 		</div>
 		@endif
-		<div class="fb-comments" data-numposts="50" data-width="100%"></div>
+		<div class="fb-comments" data-numposts="50" data-width="100%" data-href="{{route('gallery.show',$contest->slug)}}#{{$artwork->id}}"></div>
 	</div>
 </div>
 @endsection
