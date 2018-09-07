@@ -21,8 +21,8 @@
 				<img src="/storage/{{($artwork->url)}}" class="img-fluid">
 			</div>
 		</div>
-		
-		
+
+
 		@if($artwork->state==='reviewing')
 		<hr>
 		<div class="row">
@@ -33,6 +33,11 @@
 			</div>
 		</div>
 		@endif
+	@if(App::getLocale()=="es")
+	<a href="http://wedcontest2018.diproinduca.com/es/ganadores-2018/" class="btn btn-wedcontest py-3">Regresar a Ganadores 2018</a>
+	@else
+	<a href="http://wedcontest2018.diproinduca.com/winners-2018/" class="btn btn-wedcontest py-3">Go back to Winners 2018</a>
+	@endif
 		<div class="fb-comments" data-numposts="50" data-width="100%" data-href="{{route('gallery.show',$contest->slug)}}#{{$artwork->id}}"></div>
 	</div>
 </div>
