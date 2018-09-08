@@ -19,7 +19,11 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-
+    <style>
+        body{
+            background: #fff;
+        }
+    </style>
 
     <!-- Scripts -->
     <script>
