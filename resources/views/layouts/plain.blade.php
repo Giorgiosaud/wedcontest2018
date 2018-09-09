@@ -34,10 +34,13 @@
         'roles' => Auth::check()?Auth::user()->roles->pluck('name'):null,
         'locale'=> LaravelLocalization::getCurrentLocale()
         ]) !!};
-    function resize() {
+    jQuery(document).ready(function($) {
+        function resize() {
       var height = document.getElementsByTagName("html")[0].scrollHeight;
       window.parent.postMessage(["setHeight", height], "*");
   }
+    });
+    
 </script>
 
 <script src='https://www.google.com/recaptcha/api.js'></script>
