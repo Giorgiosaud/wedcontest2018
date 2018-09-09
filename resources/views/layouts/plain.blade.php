@@ -20,36 +20,40 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
-        body{
-            background: #fff;
-        }
-    </style>
+    body{
+        background: #fff;
+    }
+</style>
 
+<!-- Scripts -->
+<script>
+    window.App = {!! json_encode([
+        'csrfToken' => csrf_token(),
+        'user' => Auth::user(),
+        'signedIn' => Auth::check(),
+        'roles' => Auth::check()?Auth::user()->roles->pluck('name'):null,
+        'locale'=> LaravelLocalization::getCurrentLocale()
+        ]) !!};
+    function resize() {
+      var height = document.getElementsByTagName("html")[0].scrollHeight;
+      window.parent.postMessage(["setHeight", height], "*");
+  }
+</script>
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+@yield('head')
+</head>
+
+<body  onLoad="resize();">
+    <div id="fb-root"></div>
+    <div id="app">
+        @yield('content')
+        <flash message="{{ session('flash') }}"></flash>
+    </div>
     <!-- Scripts -->
-    <script>
-        window.App = {!! json_encode([
-            'csrfToken' => csrf_token(),
-            'user' => Auth::user(),
-            'signedIn' => Auth::check(),
-            'roles' => Auth::check()?Auth::user()->roles->pluck('name'):null,
-            'locale'=> LaravelLocalization::getCurrentLocale()
-            ]) !!};
-        </script>
-
-        <script src='https://www.google.com/recaptcha/api.js'></script>
-
-        @yield('head')
-    </head>
-
-    <body>
-        <div id="fb-root"></div>
-        <div id="app">
-            @yield('content')
-            <flash message="{{ session('flash') }}"></flash>
-        </div>
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}"></script>
-        @yield('scripts')
+    <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts')
         <!--footer class="py-2 bg-dark">
             <div class="row">
                 <div class="container text-center text-light">
