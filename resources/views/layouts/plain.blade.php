@@ -50,25 +50,24 @@
     @yield('scripts')
     <script>
         window.addEventListener("message", receiveMessage, false);
-
         var parentMessageEvent;
 
         function receiveMessage(event) {
-            if (event.origin !== 'http://wedcontest2018.diproinduca.com') {
+            if (event.origin.indexOf('diproinduca')===-1) {
               return;
           }
           var object = JSON.parse(event.data);
           parentMessageEvent = event;
-          sendResizeToParentWindow;
+          sendResizeToParentWindow();
       }
-    function sendResizeToParentWindow() {
+      function sendResizeToParentWindow() {
         if (parentMessageEvent != undefined) {
-            parentMessageEvent.source.postMessage(JSON.stringify({
-              event: 'cambiado',
-              height: $(document).height()
-          }), parentMessageEvent.origin);
-        }
-    };
+           parentMessageEvent.source.postMessage(JSON.stringify({
+            event: 'resize',
+            height: $(document).height()
+        }), parentMessageEvent.origin);
+       }
+   };
 </script>
 </body>
 </html>
