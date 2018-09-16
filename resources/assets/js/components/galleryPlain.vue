@@ -104,21 +104,12 @@ computed:{
 },
 watch:{
   category(val){
-    setTimeout(function(){
-      window.parent.postMessage(JSON.stringify({
-        event: 'resize',
-        height: $(document).height()
-      }), 'http://wedcontest2018.diproinduca.com');
-    },2000);
+    window.parent.postMessage(JSON.stringify({
+      event: 'changedCat',
+    }),'http://wedcontest2018.diproinduca.com');
   }
 },
 mounted(){
-  setTimeout(function(){
-    window.parent.postMessage(JSON.stringify({
-      event: 'resize',
-      height: $(document).height()
-    }), 'http://wedcontest2018.diproinduca.com');
-  });
 },
 created(){
  axios.get(`/api/gallery/${this.contest.slug}`)

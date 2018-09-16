@@ -79533,22 +79533,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   watch: {
     category: function category(val) {
-      setTimeout(function () {
-        window.parent.postMessage(JSON.stringify({
-          event: 'resize',
-          height: $(document).height()
-        }), 'http://wedcontest2018.diproinduca.com');
-      }, 2000);
+      window.parent.postMessage(JSON.stringify({
+        event: 'changedCat'
+      }), 'http://wedcontest2018.diproinduca.com');
     }
   },
-  mounted: function mounted() {
-    setTimeout(function () {
-      window.parent.postMessage(JSON.stringify({
-        event: 'resize',
-        height: $(document).height()
-      }), 'http://wedcontest2018.diproinduca.com');
-    });
-  },
+  mounted: function mounted() {},
   created: function created() {
     var _this3 = this;
 

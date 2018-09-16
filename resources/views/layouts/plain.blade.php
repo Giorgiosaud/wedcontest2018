@@ -49,25 +49,25 @@
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
     <script>
-   //      window.addEventListener("message", receiveMessage, false);
-   //      var parentMessageEvent;
+         window.addEventListener("message", receiveMessage, false);
+         var parentMessageEvent;
 
-   //      function receiveMessage(event) {
-   //          if (event.origin.indexOf('diproinduca')===-1) {
-   //            return;
-   //        }
-   //        var object = JSON.parse(event.data);
-   //        parentMessageEvent = event;
-   //        sendResizeToParentWindow();
-   //    }
-   //    function sendResizeToParentWindow() {
-   //      if (parentMessageEvent != undefined) {
-   //         parentMessageEvent.source.postMessage(JSON.stringify({
-   //          event: 'resize',
-   //          height: $(document).height()
-   //      }), parentMessageEvent.origin);
-   //     }
-   // };
+         function receiveMessage(event) {
+             if (event.origin.indexOf('diproinduca')===-1) {
+               return;
+           }
+           var object = JSON.parse(event.data);
+           parentMessageEvent = event;
+           sendResizeToParentWindow();
+       }
+       function sendResizeToParentWindow() {
+         if (parentMessageEvent != undefined) {
+            parentMessageEvent.source.postMessage(JSON.stringify({
+             event: 'resize',
+             height: $(document).height()
+         }), parentMessageEvent.origin);
+        }
+    };
 </script>
 </body>
 </html>
