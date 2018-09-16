@@ -136,37 +136,39 @@ created(){
  .then(response=>this.gallery=response.data);
 },
 mounted(){
+  $(window).load(function() {
 
-  window.addEventListener("message", receiveMessage, false);
+    window.addEventListener("message", receiveMessage, false);
 
-  var parentMessageEvent;
+    var parentMessageEvent;
 
-  function receiveMessage(event) {
-    if (event.origin !== 'http://wedcontest2018.diproinduca.com') {
-      return;
+    function receiveMessage(event) {
+      if (event.origin !== 'http://wedcontest2018.diproinduca.com') {
+        return;
+      }
+      var object = JSON.parse(event.data);
+      appendToLog('Received postMessage.');
+      appendToLog('Origin: ' + event.origin);
+      appendToLog('Event: ' + object.event);
+      appendToLog('Message: ' + object.message);
+      parentMessageEvent = event;
+      sendResizeToParentWindow();
     }
-    var object = JSON.parse(event.data);
-    appendToLog('Received postMessage.');
-    appendToLog('Origin: ' + event.origin);
-    appendToLog('Event: ' + object.event);
-    appendToLog('Message: ' + object.message);
-    parentMessageEvent = event;
-    sendResizeToParentWindow();
-  }
 
-  function appendToLog(message) {
-    $('#log').append('<p>' + message + '</p>');
-  }
-
-  function sendResizeToParentWindow() {
-    if (parentMessageEvent != undefined) {
-      parentMessageEvent.source.postMessage(JSON.stringify({
-        event: 'resize',
-        height: $(document).height()
-      }), parentMessageEvent.origin);
+    function appendToLog(message) {
+      $('#log').append('<p>' + message + '</p>');
     }
-  };
-  
+
+    function sendResizeToParentWindow() {
+      if (parentMessageEvent != undefined) {
+        parentMessageEvent.source.postMessage(JSON.stringify({
+          event: 'resize',
+          height: $(document).height()
+        }), parentMessageEvent.origin);
+      }
+    };
+  });
+
 },
 updated(){
   FB.XFBML.parse();
