@@ -79557,7 +79557,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   watch: {
     selectedArtwork: function selectedArtwork(val) {
-      window.location.hash = val.id;
+      window.sendResizeToParentWindow;
     }
   },
   created: function created() {
@@ -79565,40 +79565,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     axios.get('/api/gallery/' + this.contest.slug).then(function (response) {
       return _this3.gallery = response.data;
-    });
-  },
-  mounted: function mounted() {
-    $(window).load(function () {
-
-      window.addEventListener("message", receiveMessage, false);
-
-      var parentMessageEvent;
-
-      function receiveMessage(event) {
-        if (event.origin !== 'http://wedcontest2018.diproinduca.com') {
-          return;
-        }
-        var object = JSON.parse(event.data);
-        appendToLog('Received postMessage.');
-        appendToLog('Origin: ' + event.origin);
-        appendToLog('Event: ' + object.event);
-        appendToLog('Message: ' + object.message);
-        parentMessageEvent = event;
-        sendResizeToParentWindow();
-      }
-
-      function appendToLog(message) {
-        $('#log').append('<p>' + message + '</p>');
-      }
-
-      function sendResizeToParentWindow() {
-        if (parentMessageEvent != undefined) {
-          parentMessageEvent.source.postMessage(JSON.stringify({
-            event: 'resize',
-            height: $(document).height()
-          }), parentMessageEvent.origin);
-        }
-      };
     });
   },
   updated: function updated() {
