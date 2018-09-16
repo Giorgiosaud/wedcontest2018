@@ -64,7 +64,7 @@
          if (parentMessageEvent != undefined) {
             parentMessageEvent.source.postMessage(JSON.stringify({
              event: 'resize',
-             height: $(document).height()
+             height: $('.artworks .row').eq(0).height()
          }), parentMessageEvent.origin);
         }
     };
