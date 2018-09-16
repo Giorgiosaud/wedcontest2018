@@ -79567,6 +79567,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return _this3.gallery = response.data;
     });
   },
+  mounted: function mounted() {
+
+    window.addEventListener("message", receiveMessage, false);
+
+    var parentMessageEvent;
+
+    function receiveMessage(event) {
+      if (event.origin !== 'http://wedcontest2018.diproinduca.com') {
+        return;
+      }
+      var object = JSON.parse(event.data);
+      appendToLog('Received postMessage.');
+      appendToLog('Origin: ' + event.origin);
+      appendToLog('Event: ' + object.event);
+      appendToLog('Message: ' + object.message);
+      parentMessageEvent = event;
+      sendResizeToParentWindow();
+    }
+
+    function appendToLog(message) {
+      $('#log').append('<p>' + message + '</p>');
+    }
+
+    function sendResizeToParentWindow() {
+      if (parentMessageEvent != undefined) {
+        parentMessageEvent.source.postMessage(JSON.stringify({
+          event: 'resize',
+          height: $(document).height()
+        }), parentMessageEvent.origin);
+      }
+    };
+  },
   updated: function updated() {
     FB.XFBML.parse();
   }
