@@ -79533,7 +79533,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   watch: {
     category: function category(val) {
-      setTimeOut(function () {
+      setTimeout(function () {
         window.parent.postMessage(JSON.stringify({
           event: 'resize',
           height: $(document).height()
@@ -79542,7 +79542,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   mounted: function mounted() {
-    setTimeOut(function () {
+    setTimeout(function () {
       window.parent.postMessage(JSON.stringify({
         event: 'resize',
         height: $(document).height()

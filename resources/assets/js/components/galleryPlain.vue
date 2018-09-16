@@ -104,7 +104,7 @@ computed:{
 },
 watch:{
   category(val){
-    setTimeOut(function(){
+    setTimeout(function(){
       window.parent.postMessage(JSON.stringify({
         event: 'resize',
         height: $(document).height()
@@ -113,7 +113,7 @@ watch:{
   }
 },
 mounted(){
-  setTimeOut(function(){
+  setTimeout(function(){
     window.parent.postMessage(JSON.stringify({
       event: 'resize',
       height: $(document).height()
