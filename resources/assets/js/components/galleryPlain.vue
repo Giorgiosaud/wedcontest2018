@@ -30,30 +30,6 @@
   enter-active-class="bounceInLeft"
   leave-active-class="bounceOutRight"
   >
-<!--div class="detail" v-if="!hiddenDetail">
-  <div class="p-4 container">
-    <div class="row">
-      <div class="container-fluid text-right close-btn">
-        <button type="button" class="close"  @click="hiddenDetail=true" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    </div>
-    <div class="d-flex align-items-center justify-content-center px-4">
-     <div class="move movePrev" @click="selectPrev"><i class="fas fa-chevron-left"></i></div>
-     <div class="img-container">
-       <img :src="'/storage'+selectedArtwork.imageLink" alt="selectedArtwork.title" class="img-h-fluid">
-     </div>
-     <div class="move moveNext" @click="selectNext"><i class="fas fa-chevron-right"></i></div>
-   </div>
-   <div class="container py-4 text-center">
-     <h2 class="black-bold" v-html="translate(selectedArtwork,'title')"></h2>
-     <h2 v-html="translate(selectedArtwork,'description')"></h2>
-     <p>{{ selectedArtwork.contestant.name }} {{ selectedArtwork.contestant.last_name }} – {{ age }} {{ $t('lang.yearsOld') }} – {{ selectedArtwork.category.name}}</p>
-     <div class="fb-comments" data-numposts="50" data-width="100%"></div>
-   </div>
- </div>
-</div-->
 </transition>
 </div>
 </div>
@@ -135,10 +111,6 @@ created(){
  axios.get(`/api/gallery/${this.contest.slug}`)
  .then(response=>this.gallery=response.data);
 },
-
-updated(){
-//  FB.XFBML.parse();
-}
 }
 </script>
 

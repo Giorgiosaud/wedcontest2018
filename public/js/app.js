@@ -79457,30 +79457,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -79566,9 +79542,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     axios.get('/api/gallery/' + this.contest.slug).then(function (response) {
       return _this3.gallery = response.data;
     });
-  },
-  updated: function updated() {
-    //  FB.XFBML.parse();
   }
 });
 
