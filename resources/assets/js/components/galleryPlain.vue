@@ -137,7 +137,7 @@ created(){
 },
 
 updated(){
-  FB.XFBML.parse();
+//  FB.XFBML.parse();
 }
 }
 </script>
