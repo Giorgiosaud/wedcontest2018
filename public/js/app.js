@@ -79538,7 +79538,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }), 'http://wedcontest2018.diproinduca.com');
     }
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    $(window).load(function () {
+      window.parent.postMessage(JSON.stringify({
+        event: 'changedCat'
+      }), 'http://wedcontest2018.diproinduca.com');
+    });
+  },
   created: function created() {
     var _this3 = this;
 

@@ -110,6 +110,11 @@ watch:{
   }
 },
 mounted(){
+  $( window ).load(function() {
+    window.parent.postMessage(JSON.stringify({
+      event: 'changedCat',
+    }),'http://wedcontest2018.diproinduca.com');
+  });
 },
 created(){
  axios.get(`/api/gallery/${this.contest.slug}`)
