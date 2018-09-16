@@ -135,47 +135,6 @@ created(){
  axios.get(`/api/gallery/${this.contest.slug}`)
  .then(response=>this.gallery=response.data);
 },
-mounted(){
-// Listen for postMessage events.
-window.addEventListener("message", receiveMessage, false);
-
-// A variable for storing our parent message event so we can
-// establish two-way communication.
-var parentMessageEvent;
-
-function receiveMessage(event) {
-    // Let's make sure the sender of this message is who we think it is.
-    if (event.origin !== 'http://wedcontest2018.diproinduca.com') {
-      return;
-    }
-    var object = JSON.parse(event.data);
-    appendToLog('Received postMessage.');
-    appendToLog('Origin: ' + event.origin);
-    appendToLog('Event: ' + object.event);
-    appendToLog('Message: ' + object.message);
-    // Store parent message event for two-way communication
-    parentMessageEvent = event;
-    sendResizeToParentWindow();
-  }
-
-  function appendToLog(message) {
-    $('#log').append('<p>' + message + '</p>');
-  }
-
-  function sendResizeToParentWindow() {
-    if (parentMessageEvent != undefined) {
-        // Note: Chrome is fine with sending JSON objects as the message data
-        // but some browsers (*glares at IE*) don't like it.  So, to make this
-        // work on all browsers I am stringifying my objects and JSON.parsing them
-        // on the other side.
-        parentMessageEvent.source.postMessage(JSON.stringify({
-          event: 'resize',
-          height: $(document).height()
-        }), parentMessageEvent.origin);
-      }
-    };
-
-},
 updated(){
   FB.XFBML.parse();
 }

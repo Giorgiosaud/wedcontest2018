@@ -25,30 +25,12 @@
     }
 </style>
 
-<!-- Scripts -->
-<script>
-    window.App = {!! json_encode([
-        'csrfToken' => csrf_token(),
-        'user' => Auth::user(),
-        'signedIn' => Auth::check(),
-        'roles' => Auth::check()?Auth::user()->roles->pluck('name'):null,
-        'locale'=> LaravelLocalization::getCurrentLocale()
-        ]) !!};
-    jQuery(document).ready(function($) {
-        function resize() {
-      var height = document.getElementsByTagName("html")[0].scrollHeight;
-      window.parent.postMessage(["setHeight", height], "*");
-  }
-    });
-    
-</script>
-
 <script src='https://www.google.com/recaptcha/api.js'></script>
 
 @yield('head')
 </head>
 
-<body  onLoad="resize();">
+<body>
     <div id="fb-root"></div>
     <div id="app">
         @yield('content')
@@ -57,12 +39,45 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
-        <!--footer class="py-2 bg-dark">
-            <div class="row">
-                <div class="container text-center text-light">
-                    <small>Copyright ® <a href="http://wedcontest2018.diproinduca.com/" style="color:inherit">Diproinduca</a>  |  All Rights Reserved</small>
-                </div>
-            </div>
-        </footer-->
-    </body>
-    </html>
+    <script>
+        // Listen for postMessage events.
+        window.addEventListener("message", receiveMessage, false);
+
+// A variable for storing our parent message event so we can
+// establish two-way communication.
+var parentMessageEvent;
+
+function receiveMessage(event) {
+    // Let's make sure the sender of this message is who we think it is.
+    if (event.origin !== 'http://wedcontest2018.diproinduca.com') {
+      return;
+  }
+  var object = JSON.parse(event.data);
+  appendToLog('Received postMessage.');
+  appendToLog('Origin: ' + event.origin);
+  appendToLog('Event: ' + object.event);
+  appendToLog('Message: ' + object.message);
+    // Store parent message event for two-way communication
+    parentMessageEvent = event;
+    sendResizeToParentWindow();
+}
+
+function appendToLog(message) {
+    $('#log').append('<p>' + message + '</p>');
+}
+
+function sendResizeToParentWindow() {
+    if (parentMessageEvent != undefined) {
+        // Note: Chrome is fine with sending JSON objects as the message data
+        // but some browsers (*glares at IE*) don't like it.  So, to make this
+        // work on all browsers I am stringifying my objects and JSON.parsing them
+        // on the other side.
+        parentMessageEvent.source.postMessage(JSON.stringify({
+          event: 'resize',
+          height: $(document).height()
+      }), parentMessageEvent.origin);
+    }
+};
+</script>
+</body>
+</html>
