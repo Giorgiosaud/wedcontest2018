@@ -79532,7 +79532,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   watch: {
-    selectedArtwork: function selectedArtwork(val) {
+    category: function category(val) {
       window.parent.postMessage(JSON.stringify({
         event: 'resize',
         height: $(document).height()

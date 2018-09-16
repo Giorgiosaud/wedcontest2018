@@ -103,7 +103,7 @@ computed:{
   }
 },
 watch:{
-  selectedArtwork(val){
+  category(val){
     window.parent.postMessage(JSON.stringify({
             event: 'resize',
             height: $(document).height()
