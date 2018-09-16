@@ -63,7 +63,8 @@
           appendToLog('Event: ' + object.event);
           appendToLog('Message: ' + object.message);
           parentMessageEvent = event;
-          sendResizeToParentWindow();
+          setInterval(
+            sendResizeToParentWindow,3000);
       }
 
       function appendToLog(message) {
