@@ -114,10 +114,11 @@ watch:{
 },
 mounted(){
   setTimeOut(function(){
-      window.parent.postMessage(JSON.stringify({
-        event: 'resize',
-        height: $(document).height()
-      }), 'http://wedcontest2018.diproinduca.com');
+    window.parent.postMessage(JSON.stringify({
+      event: 'resize',
+      height: $(document).height()
+    }), 'http://wedcontest2018.diproinduca.com');
+  });
 },
 created(){
  axios.get(`/api/gallery/${this.contest.slug}`)

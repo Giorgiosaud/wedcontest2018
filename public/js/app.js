@@ -79414,9 +79414,149 @@ exports.push([module.i, "\n.close-btn[data-v-ad0311a2] {\n  position: absolute;\
 
 /***/ }),
 /* 350 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token, expected , (122:9)\n\n\u001b[0m \u001b[90m 120 | \u001b[39m      })\u001b[33m,\u001b[39m \u001b[32m'http://wedcontest2018.diproinduca.com'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 121 | \u001b[39m}\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 122 | \u001b[39mcreated(){\n \u001b[90m     | \u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 123 | \u001b[39m axios\u001b[33m.\u001b[39mget(\u001b[32m`/api/gallery/${this.contest.slug}`\u001b[39m)\n \u001b[90m 124 | \u001b[39m \u001b[33m.\u001b[39mthen(response\u001b[33m=>\u001b[39m\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mgallery\u001b[33m=\u001b[39mresponse\u001b[33m.\u001b[39mdata)\u001b[33m;\u001b[39m\n \u001b[90m 125 | \u001b[39m}\u001b[33m,\u001b[39m\u001b[0m\n");
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_fns___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_date_fns__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+  name: 'gallery-plain',
+  props: ['contest'],
+  data: function data() {
+    return {
+      gallery: null,
+      category: 'all',
+      selectedArtwork: {},
+      hiddenDetail: true
+    };
+  },
+
+  methods: {
+    translate: function translate(model, element) {
+      if (this.contest) {
+        return model.translations.find(function (translation) {
+          return translation.locale === App.locale;
+        })[element];
+      }
+    },
+    selectedCat: function selectedCat(cat) {
+      this.category = cat;
+    },
+    openDetail: function openDetail(artwork) {
+      this.hiddenDetail = false;
+
+      this.selectedArtwork = artwork;
+    },
+    selectNext: function selectNext() {
+      if (this.maxIndexOfFilterArtworks == this.indexOfSelectedArtwork) {
+        this.selectedArtwork = this.filteredGallery[0];
+      } else {
+        this.selectedArtwork = this.filteredGallery[this.indexOfSelectedArtwork + 1];
+      }
+    },
+    selectPrev: function selectPrev() {
+      if (this.indexOfSelectedArtwork === 0) {
+        this.selectedArtwork = this.filteredGallery[this.filteredGallery.length - 1];
+      } else {
+        this.selectedArtwork = this.filteredGallery[this.indexOfSelectedArtwork - 1];
+      }
+    }
+  },
+  computed: {
+    age: function age() {
+      return Object(__WEBPACK_IMPORTED_MODULE_0_date_fns__["differenceInYears"])(new Date(), this.selectedArtwork.contestant.dob);
+    },
+    filteredGallery: function filteredGallery() {
+      var _this = this;
+
+      return this.gallery.filter(function (art) {
+        if (_this.category === 'all') {
+          return true;
+        }
+        return art.category.name === _this.category;
+      }).sort(function (a, b) {
+        return a.contestant.last_name.localeCompare(b.contestant.last_name);
+      });
+    },
+    indexOfSelectedArtwork: function indexOfSelectedArtwork() {
+      var _this2 = this;
+
+      return this.filteredGallery.findIndex(function (art) {
+        return art.id === _this2.selectedArtwork.id;
+      });
+    },
+    maxIndexOfFilterArtworks: function maxIndexOfFilterArtworks() {
+      return this.filteredGallery.length - 1;
+    }
+  },
+  watch: {
+    category: function category(val) {
+      setTimeOut(function () {
+        window.parent.postMessage(JSON.stringify({
+          event: 'resize',
+          height: $(document).height()
+        }), 'http://wedcontest2018.diproinduca.com');
+      }, 2000);
+    }
+  },
+  mounted: function mounted() {
+    setTimeOut(function () {
+      window.parent.postMessage(JSON.stringify({
+        event: 'resize',
+        height: $(document).height()
+      }), 'http://wedcontest2018.diproinduca.com');
+    });
+  },
+  created: function created() {
+    var _this3 = this;
+
+    axios.get('/api/gallery/' + this.contest.slug).then(function (response) {
+      return _this3.gallery = response.data;
+    });
+  }
+});
 
 /***/ }),
 /* 351 */
