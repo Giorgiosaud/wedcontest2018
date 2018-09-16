@@ -104,7 +104,10 @@ computed:{
 },
 watch:{
   selectedArtwork(val){
-    $emit('cambiado')
+    window.parent.postMessage(JSON.stringify({
+            event: 'resize',
+            height: $(document).height()
+        }), 'http://wedcontest2018.diproinduca.com');
   }
 },
 created(){

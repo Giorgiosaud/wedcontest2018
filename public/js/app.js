@@ -79533,7 +79533,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   watch: {
     selectedArtwork: function selectedArtwork(val) {
-      $emit('cambiado');
+      window.parent.postMessage(JSON.stringify({
+        event: 'resize',
+        height: $(document).height()
+      }), 'http://wedcontest2018.diproinduca.com');
     }
   },
   created: function created() {
