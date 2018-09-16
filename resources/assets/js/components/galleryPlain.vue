@@ -128,7 +128,7 @@ computed:{
 },
 watch:{
   selectedArtwork(val){
-   window.sendResizeToParentWindow;
+    $emit('cambiado')
   }
 },
 created(){

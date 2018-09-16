@@ -58,31 +58,13 @@
               return;
           }
           var object = JSON.parse(event.data);
-          appendToLog('Received postMessage.');
-          appendToLog('Origin: ' + event.origin);
-          appendToLog('Event: ' + object.event);
-          appendToLog('Message: ' + object.message);
           parentMessageEvent = event;
-          setInterval(
-            sendResizeToParentWindow,3000);
+          sendResizeToParentWindow;
       }
-
-      function appendToLog(message) {
-        $('#log').append('<p>' + message + '</p>');
-    }
-
     function sendResizeToParentWindow() {
         if (parentMessageEvent != undefined) {
             parentMessageEvent.source.postMessage(JSON.stringify({
-              event: 'resize',
-              height: $(document).height()
-          }), parentMessageEvent.origin);
-        }
-    };
-    window.sendResizeToParentWindow=function sendResizeToParentWindow() {
-        if (parentMessageEvent != undefined) {
-            parentMessageEvent.source.postMessage(JSON.stringify({
-              event: 'resize',
+              event: 'cambiado',
               height: $(document).height()
           }), parentMessageEvent.origin);
         }

@@ -79557,7 +79557,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   watch: {
     selectedArtwork: function selectedArtwork(val) {
-      window.sendResizeToParentWindow;
+      $emit('cambiado');
     }
   },
   created: function created() {
