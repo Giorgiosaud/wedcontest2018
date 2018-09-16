@@ -18,6 +18,15 @@
 
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script>
+        window.App = {!! json_encode([
+        'csrfToken' => csrf_token(),
+        'user' => Auth::user(),
+        'signedIn' => Auth::check(),
+        'roles' => Auth::check()?Auth::user()->roles->pluck('name'):null,
+        'locale'=> LaravelLocalization::getCurrentLocale()
+        ]) !!};
+    </script>
 
     <style>
     body{
