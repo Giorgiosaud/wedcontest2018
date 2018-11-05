@@ -28,6 +28,8 @@ Route::group([
 ], function () {
     Route::get('aliasify/{user}', 'UserController@aliasify');
     Route::get('users', 'UserController@index')->name('users.index');
+    Route::get('users/table', 'UserController@table')->name('users.table');
+    Route::get('users/export', 'UserController@export')->name('users.export');
     Route::get('users/{user}', 'UserController@toggleAdmin')->name('user.make.admin');
     Route::delete('users/{user}', 'UserController@destroy')->name('user.destroy');
     Route::get('users/resendConfirmationLink/{user}', 'UserController@resendConfirmationLink')->name('user.resend.link');
