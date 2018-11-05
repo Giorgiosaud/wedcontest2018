@@ -3,8 +3,11 @@
 @include('layouts.assets.noTextHeaderStandart')
 
 <div class="pt-6">
-<a href="http://contest.diproinduca.com/admin/users/export">download</a>
+
    <div class="content">
+<a href="http://contest.diproinduca.com/admin/users/export">download</a>
+
+
    	<users></users>
    </div>
 </div>
