@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Exports;
 
 use App\User;
@@ -9,7 +10,8 @@ class UsersExport implements FromView
 {
     public function view(): View
     {
-       $users= User::with('contestants')->get();
-        return view('users.table',compact('users'));
+        $users = User::with('contestants')->get();
+
+        return view('users.table', compact('users'));
     }
 }
